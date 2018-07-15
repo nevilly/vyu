@@ -19,13 +19,15 @@
       <file leaf-file-name="jscript.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/jscript/jscript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="116" column="59" selection-start-line="116" selection-start-column="59" selection-end-line="116" selection-end-column="59" />
+            <state relative-caret-position="324">
+              <caret line="96" column="25" selection-start-line="95" selection-end-line="96" selection-end-column="25" />
               <folding>
                 <element signature="e#203#204#0" expanded="true" />
                 <element signature="e#246#247#0" expanded="true" />
                 <element signature="e#267#268#0" expanded="true" />
                 <element signature="e#313#314#0" expanded="true" />
+                <element signature="e#2547#3138#0" expanded="true" />
+                <element signature="e#2721#3126#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -256,7 +258,7 @@
       <workItem from="1531062664167" duration="447000" />
       <workItem from="1531606161993" duration="66000" />
       <workItem from="1531642173460" duration="6411000" />
-      <workItem from="1531655594341" duration="1002000" />
+      <workItem from="1531655594341" duration="2103000" />
     </task>
     <task id="LOCAL-00001" summary="making all things look pretty">
       <created>1530984567541</created>
@@ -325,7 +327,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35709000" />
+    <option name="totallyTimeSpent" value="36810000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1696" height="1026" extended-state="0" />
@@ -452,6 +454,8 @@
             <element signature="e#246#247#0" expanded="true" />
             <element signature="e#267#268#0" expanded="true" />
             <element signature="e#313#314#0" expanded="true" />
+            <element signature="e#2547#3138#0" expanded="true" />
+            <element signature="e#2721#3126#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -527,6 +531,8 @@
             <element signature="e#246#247#0" expanded="true" />
             <element signature="e#267#268#0" expanded="true" />
             <element signature="e#313#314#0" expanded="true" />
+            <element signature="e#2547#3138#0" expanded="true" />
+            <element signature="e#2721#3126#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -602,6 +608,8 @@
             <element signature="e#246#247#0" expanded="true" />
             <element signature="e#267#268#0" expanded="true" />
             <element signature="e#313#314#0" expanded="true" />
+            <element signature="e#2547#3138#0" expanded="true" />
+            <element signature="e#2721#3126#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -809,13 +817,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jscript/jscript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="116" column="59" selection-start-line="116" selection-start-column="59" selection-end-line="116" selection-end-column="59" />
+        <state relative-caret-position="324">
+          <caret line="96" column="25" selection-start-line="95" selection-end-line="96" selection-end-column="25" />
           <folding>
             <element signature="e#203#204#0" expanded="true" />
             <element signature="e#246#247#0" expanded="true" />
             <element signature="e#267#268#0" expanded="true" />
             <element signature="e#313#314#0" expanded="true" />
+            <element signature="e#2547#3138#0" expanded="true" />
+            <element signature="e#2721#3126#0" expanded="true" />
           </folding>
         </state>
       </provider>
