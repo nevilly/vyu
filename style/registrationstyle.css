@@ -1,0 +1,640 @@
+
+*{
+    margin:0px;
+    padding: 0px;
+    font-family:Arial,sans-serif;
+    font-size: 13px;
+    color:grey;
+}
+
+body{
+	width:100%;
+   background: #30455c;
+}
+
+
+.Regmsg{
+  position: absolute;
+  margin-top:17%;
+  margin-left:69%;
+  color:rgba(255,255,255,.8);
+  font-size: 15px;
+  font-style: italic;
+  font-family: tohama;
+  transition: 1s;
+}
+
+.login_reg{
+  width:100%;
+  height: 100%;
+  float:left;
+  background: #30455c;
+}
+    
+.headerReg{
+  width:80%;
+  float:left;
+  color:white;
+  text-align: left;
+  padding-left:17%;
+  font-weight: bold;
+  font-size: 2em;
+  margin-top:10%;
+  font-style:italic;
+ }
+
+ .register_Submit{
+  border-radius: 3px;
+  background: #4dcadd;
+  font-size: 18px;
+  color:white;
+  border:none;
+  width:40%;
+  margin-left:8%;
+  margin-top:4%;
+  padding-top:1%;
+  padding-bottom:1%;
+  font-family:tohama;
+ }
+
+.login_reg > form{
+  width:70%;
+  float:left;
+  margin-left:15%;
+  margin-top:1%;
+}
+
+
+.reg_info{
+  width:70%;
+  margin-left:29%;
+  margin-top:5%;
+  float:left;
+}
+
+.reg_info > h3{
+  float:left;
+}
+
+.reg{
+	margin-top:1%;
+  float:left;
+	width:100%;
+	/*float:left;*/
+}
+.reg > input{
+    border-radius: 5px;
+    height:30px;
+    border:none;
+    font-size: 15px;
+	width:55%;
+  margin-top: 1%;
+   float:left;
+   text-align: center;
+   background: #293b4e;
+   padding-top: 1%;
+   color: white;
+}
+.reg > input:hover{
+     box-shadow :0px 0px 3px 0px rgba(77,202,221,.9);
+	/*float:left;*/
+}
+
+.gender{
+    margin-top:2%;
+     float:left;
+}
+
+.gender > .divradio{
+  width:20%;
+  margin-left: 15%;
+  float:left;
+}
+
+.gender > .divradio > span{
+  margin-left: 4%;
+  float:left;
+}
+
+
+.account{
+  margin-top:2%; 
+  float:left;
+  width:100%;
+}
+.account > h3{
+    margin-top:1%; 
+    float:left;
+    width:100%;
+    color:rgba(255,255,255,.9);
+     text-shadow: 1px 1px 2px rgba(255,255,255,.6); 
+  }
+
+.account > div{
+  margin-top:1%; 
+  margin-left:2%; 
+  float:left;
+  width:80%;
+  color:white;
+}
+.account > div > input{
+  margin-top:1px; 
+  float:left;
+}
+
+.account > div > span{
+  margin-top:1px; 
+  margin-left:2px;
+  float:left;
+  color:rgba(255,255,255,.4);
+   
+}
+
+.next_back_panel{
+  margin-left: 15%;
+  width:90%;
+  float:left;
+}
+
+.nextbotton{
+  border:1px groove #4dcadd;
+  padding-top:1px;
+  padding-bottom:1px;
+   float:left;
+  margin-left: 5%;
+  width:20%;
+  text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+  color:#4dcadd;
+}
+  .nextbotton:hover{
+   color:white;
+   background: #4dcadd;
+
+  }
+
+
+.all_info{
+  border:1px solid rgba(255,255,255,.2);
+  border-radius: 3px;
+  float:left;
+  width:75%;
+  margin-left:-5%;
+  margin-top:2%;
+  display:none;
+}
+
+
+.info_wraper{
+  float:left;
+  width:108%;
+  padding-left:2%;
+}
+
+.all_info >.info_wraper> h3{
+  color:white;
+  width:90%;
+  text-align: center;
+  color:rgba(255,255,255,.6);
+  padding-top:1%;
+}
+
+
+.student_info{
+  float:left;
+  display: none;
+}
+
+.student_info > h3{
+  margin-left:3%;
+  float:left;
+  color:rgba(255,255,255,.9);
+}
+
+
+.student_info > h3{
+   margin-left:3%;
+   float:left;
+}
+
+.gradInfo{
+  float:left;
+  width:100%;
+}
+
+.gradInfo > h3{
+  float:left;
+  width:90%;
+  margin-left:5%;
+  margin-top:1%;
+  margin-bottom:1px;
+  font-size:15px;
+}
+
+.gradInfo > div{
+  border:1px groove rgba(2,2,2,.2);
+  width:40%;
+  float:left;
+  text-align: center;
+  cursor: pointer;
+  padding-top: 1%;
+  margin-top: 1%;
+  padding-bottom: 1px;
+  font-weight: bold;
+  color:rgba(255,255,255,.9);
+}
+
+.gradInfo > div:hover{
+  background: rgba(115,115,115,.5);
+  color:white;
+}
+
+.Schoolname{
+  float:left;
+  width:100%;
+  margin-top:1%;
+  margin-left:1%;
+}
+
+
+.Schoolname > .Mkoa{
+  float:left;
+  width:43%;
+  padding-top:1%;
+  padding-bottom:1%;
+  margin-left: 3%;
+  margin-top: 2%;
+}
+
+
+/*Schoolname > .Mkoa > select{
+  float:right;
+  width:35%;
+  padding-top:1%;
+  padding-bottom:1%;
+  border:1px groove rgba(2,2,2,.2) ;
+  margin-left: 2%;
+}*/
+
+.Schoolname > input{
+  float:left;
+  width:50%;
+  padding-top:2%;
+  padding-bottom:1%;
+  border-radius: 3px;
+  border:1px groove rgba(2,2,2,.2) ;
+}
+
+ 
+
+.Mkoa > label{
+  font-size: 14px;
+  color:rgba(2,2,2,.7);
+  margin-right: 4%;
+  float:left;
+  font-size: 14px;
+}
+
+.Mkoa > select{
+  border:none;
+  border-bottom:1px solid rgba(2,2,2,.2);
+  padding-left: 2%;
+  padding-top: 5%;
+  padding-right:1%; 
+  padding-bottom:3%; 
+  float:right;
+  border-radius:3px;
+  width:77%;
+}
+
+choolname > .Mkoa > .SECTION{
+  float:left;
+  width:40%;
+  padding-top:1%;
+  padding-bottom:1%;
+  border:1px groove rgba(2,2,2,.2) ;
+  margin-left: 2%;
+  color:rgba(255,255,255,.9);
+  border-radius: 3px;
+}
+
+
+.Pr_sec_level{
+  float:left;
+  width:45%;
+  padding-left:3%;
+  border:1px solid rgba(255,255,255,.5);
+  padding-top:1%;
+  padding-bottom:2px;
+  background: rgba(155,155,155,.7);
+  color:white;
+  cursor:pointer;
+}
+
+.secVspr{
+  margin-left:5%;
+  margin-left:2%;
+}
+
+
+
+.divradio{
+  margin-left:3%;
+  margin-top:1%;
+  float:left;
+}
+
+.educationLevelInfo{
+  margin-top:3%;
+  width: 100%;
+  float:left;
+  display: none;
+}
+    
+.parentsInfo{
+  margin-top:3%;
+  width: 100%;
+  float:left;
+}
+
+
+.Schoolname{
+  width:90%;
+   float:left;
+}
+.Schoolname > input{
+  float:left;
+  color:white;
+  margin-top: 2%;
+}
+
+.p_info{
+  margin-top: 2%;
+}
+
+.Mkoa{
+  float:righ;
+  margin-left:10%;
+  width:200px;
+}
+
+.Mkoa > label{
+ font-size: 14px;
+ color:rgba(255,255,255,.4);
+ margin-top:2%;
+ margin-right: 4%;
+ float:left;
+}
+    /*.Mkoa > select{
+     border:none;
+     border-bottom:1px solid rgba(2,2,2,.2);
+     padding-left: 2%;
+     padding-top: 2%;
+     padding-right:3%; 
+     padding-bottom:1%; 
+      float:right;
+    }*/
+
+.Primary_secondInfo{
+  width:100%;
+  margin-top:6%;
+}
+
+
+.Primary_secondInfo > .Leve{
+  width:95%;
+  margin-top:2%;
+  float:left;
+}
+
+
+.Primary_secondInfo > .Leve{
+  width:90%;
+}
+
+.Leve > .verifyProfiles{
+  width:100%;
+}
+
+
+.Section{
+  width:35%;
+  float:left;
+  border-radius: 3px;
+  margin-left:2%;
+  margin-top:3%;
+}
+
+.Section > label{
+ font-size: 15px;
+ color:rgba(255,255,255,.4);
+ margin-left: 2%;
+ margin-top: 2%;
+ float:left;
+}
+
+.Section > select{
+ border:none;
+ border-bottom:1px solid rgba(2,2,2,.2);
+ padding-left: 2%;
+ padding-top: 6%;
+ padding-right:3%; 
+ padding-bottom:3%; 
+ float:right;
+ width:75%;
+ border-radius:3px;
+}
+
+
+.Combination{
+  margin-left:16%;
+  width:45%;
+}
+
+/*
+ .verifyProfiles{
+  width:90%;
+  height: 40%;
+  float:left;
+  margin-top:5%;
+  border-top:1px groove rgba(2,2,2,.2);
+ }
+
+ .verifyProfiles > h2{
+  width:100%;
+  height: 40%;
+  float:left;
+  margin-top:1%;
+ 
+ }
+
+
+.verifyProfiles > .slideVerify{
+   width:100%;
+   float:left;
+   border-top:1px groove rgba(2,2,2,.2);
+   border-bottom:1px groove rgba(2,2,2,.2);
+    margin-top:2%;
+}
+*/
+ .verifyProfiles{
+  width:90%;
+  height: 40%;
+  float:left;
+  margin-top:5%;
+  border-top:1px groove rgba(2,2,2,.2);
+ }
+
+ .verifyProfiles > h2{
+  width:100%;
+  height: 40%;
+  float:left;
+  margin-top:1%;
+ 
+ }
+
+
+.verifyProfiles > .slideVerify{
+   width:100%;
+   float:left;
+   border-top:1px groove rgba(2,2,2,.2);
+   border-bottom:1px groove rgba(2,2,2,.2);
+    margin-top:2%;
+}
+
+.verifedSymbol{
+   border:1px solid blue;
+   color:green;
+   width:25px;
+   border-radius:50%;
+   text-align: center;
+   margin-top:2%;
+   padding-top: 2%;
+   padding-bottom: 2%;
+   margin-left:2%;
+   float:left;
+   font-weight: bold;
+}
+
+.profpanel{
+  width:120px;
+  float:left;
+  margin-left:2%;
+  margin-top:3%;
+  border:1px groove rgba(2,2,2,.2);
+}
+
+.prof_cont{
+  width:100%;
+  float:left;
+  float:left;
+}
+
+.prof_cont{
+  width:100%;
+  float:left;
+}
+
+.prof_cont > .panel_title{
+  width:98%;
+  margin-left:2%;
+  margin-top: :2%;
+  float:left;
+}
+ .t_title{
+  font-size: 10px;
+  font-weight: bold;
+  float:left;
+  font-family: sans-serif;
+
+}
+
+ .t_nym{
+  font-size: 10px;
+  font-weight: bold;
+  float:left;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+.veryImg{
+  width:60px;
+  height:60px;
+  border:1px solid #4dcadd;
+  border-radius: 3px;
+  margin-left:15%;
+  margin-top:2%;
+  float:left;
+}
+
+.veryImg > img{
+  width:100%;
+  height:100%;
+  border-radius: 3px;
+}
+
+
+.verfyme{
+  width:90%;
+  margin-top:2%;
+}
+
+.subjectLectureHead{
+  margin-top:4%;
+  float:left;
+  width:90%;
+}
+.lecturesubject{
+  margin-top:1%;
+  margin-left: 2%;
+}
+
+/*.Enterprenuar_info{
+   width: 100%;
+  background: red;
+  float:left;
+}
+*/
+
+.Enterprenuar_info{
+ 
+  display: none;
+}
+.Enterprenuar_inf{
+  width: 100%;
+  margin-top: 2%;
+  float:left;
+}
+
+
+.Enterprenuar_inf > .Schoolname{
+  width: 100%;
+  float:left;
+  margin-top: 2%;
+}
+
+
+
+.Enterprenuar_info > .next_back_panel{
+   float:left;
+   width:100%;
+  margin-top: 2%;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

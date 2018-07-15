@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <style>
+                div#test{
+                    border:#000 1px solid; padding: 10px 40px 40px 40px;
+                }
+            </style>
+            <script>
+                var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, correct = 0;
+                var questions = [
+                        [ "What is 10 + 4 ?", "12", "14", "16", "B"],
+                        [ "What is 20 - 9 ?", "12", "14", "16", "C"],
+                        [ "What is 10 x 4 ?", "12", "14", "16", "B"],
+                        [ "What is 10 / 4 ?", "12", "14", "16", "A"]
+                ];
+                
+                function _(x) {
+                    return document.getElementById(x);
+                }
+            
+                
+                function renderQustion(){
+                    var test = _("test");
+                    
+                    if (pos >= questions.lenght) {
+                        //code
+                        test.innerHTML = "<h2>End Exams you got "+correct+" of "+questions.length+"question correct</h2>";
+                    _("test_status").innerHTML = "Test Complete ";
+                    pos = 0;
+                    correct = 0;
+                    //var start = '<div id = "startt">start</div>';
+                    //
+                    //test.innerHTML += start;
+                    //
+                    //_('start').onclick = function(){
+                    //    pos = 0;
+                    //    correct =0;
+                    //    
+                    //}
+                    return false;
+                    }
+                    
+                    
+                    _("test_status").innerHTML = "Qn"+(pos+1)+" of "+questions.length;
+                    
+                    question = questions[pos][0];
+                    chA = questions[pos][1];
+                    chB = questions[pos][2];
+                    chC = questions[pos][3];
+                    
+                    test.innerHTML = "<h3>"+question+"</h3>";
+                    test.innerHTML += "<input type = 'radio' name ='choices' Valaue = 'A'> "+chA +"<br/>";
+                    test.innerHTML += "<input type = 'radio' name ='choices' Valaue = 'B'> "+chB +"<br/>";
+                    test.innerHTML += "<input type = 'radio' name ='choices' Valaue = 'C'> "+chC +"<br/>";
+                    
+                    test.innerHTML += "<input type = 'submit' Value = 'Submit Answer'  onclick = 'CheckAnswer()'> ";
+                }
+                
+                function CheckAnswer() {
+                    //code
+                    choices = document.getElementsByName('choices');
+                    for(var i = 0; i < choices.length; i++){
+                        if (choices[i].checked) {
+                            choice = choices[i].value;
+                        }
+                    }
+                    
+                    if (choice == questions[pos][4]) {
+                        //code
+                        correct++;
+                    }
+                    pos++;
+                    renderQustion();
+                    
+                }
+                
+                window.addEventListener('load',renderQustion,false);
+            </script> 
+        </head>
+        <body>
+            
+            <h2 id = "test_status"></h2>
+            <div id = 'test'></div>
+        </body>
+    </html>
