@@ -19,7 +19,7 @@ header("Cache-Control: no-cache");
 if(isset($_GET['action']) && $_GET['action'] === 'get_post'){
     $sql = null;
     $data = '';
-    $section = preg_replace('#[^0-9]#','',$_GET['action']);
+    $section = preg_replace('#[^0-9]#','',$_GET['section']);
 
     if ($section == 1) {
         $page = 'main page';
@@ -60,6 +60,11 @@ if(isset($_GET['action']) && $_GET['action'] === 'get_post'){
             $height = 100;
             $prof = $db->prfl_pctwithClass($prof_chanel, $width, $height, $class);
 
+            $r = get_replies($msg_id,$db);
+            $replies = $r[0];
+            $rid = $r[1];
+            $lid .= $rid;
+
 
             $data .= "<div id = 'posted'>
               <div class = 'pageIdentifer'><span>" . $page . "</span></div>
@@ -74,7 +79,7 @@ if(isset($_GET['action']) && $_GET['action'] === 'get_post'){
 
 						<div class ='msg'>" . $post . "</div>
 						<div class ='icons'>
-							<span id='reply' class = 'ico reply" . $msg_id . "' onclick = \"onreply('" . $msg_id . "',replyDive" . $msg_id . ")\"><i class = 'fa fa-reply'></i>" . $i . "</span>
+							<span id='reply' class = 'ico reply" . $msg_id . "' onclick = \"onreply('$msg_id','replyDive$msg_id')\"><i class = 'fa fa-reply'></i>" . $i . "</span>
 							<span id='love' class = 'ico reply'><i class = 'fa fa-heart-o'></i></span>
 							<span id='thumb_up' class = 'ico reply'><i class = 'fa fa-thumbs-up'></i></span>
 							<span id='delete' class = 'ico reply'><i class= 'fa fa-remove'></i></span>
@@ -82,11 +87,13 @@ if(isset($_GET['action']) && $_GET['action'] === 'get_post'){
 							<span id='delete' class = 'ico reply'><i class= 'fa fa-unlock-alt'></i></span>
 						</div>
 
-            <div id = 'replyDive" . $msg_id . "' class = 'replyDive'>  </div>
+                    <div id = 'replyDive" . $msg_id . "' class = 'replyDive'>  </div>
 				    </div>
             
             
 				    <!-- replies -->
+				    
+				   $replies
 				    
 				    </div>";
         }
@@ -108,6 +115,58 @@ else if($_GET['action'] && $_GET['action'] === 'get_reply'){
 }
 
 echo "data:".json_encode($result)."\n\n";
+
+
+
+function get_replies($pid,$db){
+    $data = '';
+    $class = '';
+    $id = 0;
+    $sql = $db->query("SELECT r.*,u.profile,u.username FROM vy_reply as r 
+LEFT JOIN post as p ON(r.msg_id  = p.id) 
+LEFT JOIN vy_users as u ON(r.send_id = u.id) 
+WHERE r.msg_id = '$pid' ORDER by p.id DESC");
+
+    if($sql->count() > 0) {
+
+        //foreach
+        foreach ($sql->results() as $r) {
+            $user = $r->username;
+            $profile = $r->profile;
+            $user_id = $r->send_id;
+            $id = $r->id;
+            $reply = $r->msg;
+            $date = $r->date;
+
+            $width = 100;
+            $height = 100;
+            $profile = $db->prfl_pctwithClass($profile, $width, $height, $class);
+
+            $data .= "<div id = 'reply_posted'>
+                <div class = 'posted_profile'>
+                    <div class = 'posted_cicle'>
+                        $profile
+                   </div>
+                </div>
+                <div class ='name_time'><span class = 'name'>$user</span><span class = 'time_ago'>$date</span></div>
+                <div class ='msg'>$reply</div>
+                <div class ='icons'>
+                    <span id='reply' class = 'ico reply'><i class = 'fa fa-reply'></i></span>
+                    <span id='love' class = 'ico reply'><i class = 'fa fa-heart-o'></i></span>
+                    <span id='thumb_up' class = 'ico reply'><i class = 'fa fa-thumbs-up'></i></span>
+                    <span id='delete' class = 'ico reply'><i class= 'fa fa-remove'></i></span>
+                    <span id='spam' class = 'ico reply'>spam</span>
+                    <span id='delete' class = 'ico reply'><i class= 'fa fa-unlock-alt'></i></span>
+                </div>
+            </div> ";
+        }
+
+    }
+    
+    return [$data,$id];
+}
+
+
 //
 //class live
 //{

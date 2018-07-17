@@ -81,26 +81,68 @@
 	 });
 
 
-     // b.on('click',function(){
-     //     	var post = $(#msgBody),
-     //     	postholder = $('#msgBody').html(),
-     //     });
-
-
-    
-    
-
-
  })(Exile,sasha);
 
 
  function onreply(post_id, replyid) {
-     texttemplate = "<textarea></textarea>";
+     texttemplate = "<textarea id='rep'"+post_id+"></textarea>";
+     var replyid = _(replyid);
 
+     if(replyid.style.display === 'block'){
+         replyid.style.display = 'none';
+	 }else{
+     	replyid.style.display = 'block';
+	 }
 
      replyid.innerHTML = texttemplate;
-     _(replyid).style.display = "none";
-     // Exile('#'+replyid).html(texttemplate);
+
+     var replyArea = Exile('#rep'+post_id);
+
+     var post = $(this),
+         post_holder = Exile('#msgBody'),
+         post_data = post_holder.html(),
+
+
+         temp = "<div id = 'reply_posted'>\n" +
+             "                <div class = 'posted_profile'>\n" +
+             "                    <div class = 'posted_cicle'>\n" +
+             user.profile +
+             "                   </div>\n" +
+             "                </div>\n" +
+             "                <div class ='name_time'><span class = 'name'>"+
+             user.username
+             +"</span><span class = 'time_ago'>now</span></div>\n" +
+             "                <div class ='msg'>"+post.value()+"</div>\n" +
+             "            </div>";
+
+     replyArea.on('click', function (ev) {
+
+
+         if(!post.empty()){
+
+             //sasha
+             sasha().response({
+                 url:'post.php',
+                 meth:'post',
+                 query: 'action=post_reply&user=' + user.user_id + '&post=' + post.value()+'&pid='+post_id,
+                 success:function(data){
+                     if(s.state(this)){
+                         var r = s.jsonResponse(this);
+                         post.value('');
+                         if (r.data === true) {
+
+                             post_holder.html(temp+post_data);
+                             live();
+                         }else{
+                             alert(r.error);
+                         }
+                     }
+                 }
+             });
+         }else{
+             alert('Please type something to proceed!');
+         }
+     });
  }
 
 var lastEventId = '';
