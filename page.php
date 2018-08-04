@@ -66,7 +66,7 @@ if ($user->isLoggedIn()) {
       }          
     //>>>>>>>>>>>>>>>>>>>>>>>>> ACCOUNT FOUND student Account >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
       if($checkMainTable->first()->student_acc == 1){
-        $checksubject = $db->get('student_acc',array('user_id','=',$user_id))  ;
+        $checksubject = $db->get('student_acc',array('user_id','=',$user_id));
         if($checksubject->count() > 0){
         $subjects       =  $checksubject->first()->subjects;
         $comb           =  $checksubject->first()->facultOrComb_taken;
@@ -79,10 +79,62 @@ if ($user->isLoggedIn()) {
               if($level_identify == 'h') {
                 # Facult for Unversity OR Collage OR Institute
                
-                $l = $levelOrStandard ;
-                if($comb == 'Computer Sceince'){
-                  // $q = $subjectx;
+                
+              
+                if( $comb == 'Procurement'){
+                
+
+                  if($darasa == 'Certifiate'){
+                    $l = 'Certifiate';
+                    $q = 'commerce,Bookkeeping,act,interprenuer';
+                    
+                    echo " for cert procure";
+                  }
+
+                  if($darasa == 'Diploma 1year'){
+                    $q = 'busness,procure,interprenuer';
+                     $l = 'Diploma';
+                  
+                  }
+
+
+                  if($darasa == 'Diploma 2year'){
+                    $q = 'busness,procure,interprenuer';
+                    $l = 'Diploma 2year';
+                    
+                  
+                  }
+
+
+
+                  if($darasa == 'Diploma 3year'){
+                    $q = 'busness,procure,interprenuer';
+                    
+                    echo " for cert procure";
+                  }
+
+
+                  if($darasa == 'Degree 1year'){
+                    $q = 'busness,procure,interprenuer';
+                    
+                    echo " for cert procure";
+                  }
+
+
+                  if($darasa == 'Degree 2year'){
+                    $q = 'busness,procure,interprenuer';
+                    
+                    echo " for cert procure";
+                  }
+
+                   if($darasa == 'Degree 3year'){
+                    $q = 'busness,procure,interprenuer';
+                    
+                    echo " for cert procure";
+                  }
                 }
+
+
               }
             //*******************UNVESRSITY || COLLAGE || INSTITUTE*****************//
 
@@ -663,15 +715,15 @@ if ($user->isLoggedIn()) {
                 if($darasa == 'Form 2'){
                   # code.
                   $l = 2;   
-                    $q = $prof_subj_1.','.$prof_subj_2;
-                    $sub = explode(',' ,$q);
+                  $q = $prof_subj_1.','.$prof_subj_2;
+                  $sub = explode(',' ,$q);
                 }
 
                 if($darasa == 'Form 1'){
                   # code.
                   $l = 1;   
-                    echo $prof_subj_1;
-                    echo $prof_subj_2;
+                    $prof_subj_1;
+                    $prof_subj_2;
                     $q = $prof_subj_1 .','. $prof_subj_2;
                     $sub = explode(',' ,$q);
                 }

@@ -32,15 +32,19 @@
      });
      return y;
  }
+//______________________||_________________________\\
+//____________________|    |________________________\\
+//__________________|         |______________________\\
+//________________<    JERRY     >____________________\\
 
- (function($,s){
-     var b = $('#submit_post');
+    (function($,s){
+    var b = $('#submit_post');
 
-     b.on('click', function () {
-     	var post = $('#post_text'),
-		post_holder = $('#msgBody'),
-		post_data = post_holder.html(),
-			previledge = $('#Nav_everyone').value(),
+    b.on('click', function () {
+     	var post       = $('#post_text'),
+		post_holder    = $('#msgBody'),
+		post_data      = post_holder.html(),
+		previledge     = $('#Nav_everyone').value(),
 
 
             temp = "<div id = 'posted'>\n" +
@@ -78,106 +82,142 @@
 		}else{
             alert('Please type something to proceed!');
 		}
-	 });
+	});
+
+   
 
 
  })(Exile,sasha);
+//___-____-____-<  Reply Function  >___-___-_____-_____\\
+   
+    function onreply(post_id, replyid,user_id) {
+        
+        repId = 'rep'+post_id;
+        texttemplate = "<textarea id="+repId+" onclick='replytext("+repId+","+replyid+","+post_id+","+user_id+")' ></textarea><button id='sub'"+post_id+">send</button>";
+
+        var replyid = _(replyid);
+        if(replyid.style.display === 'block'){
+            replyid.style.display = 'none';
+    	}else{
+         	replyid.style.display = 'block';
+    	}
+        replyid.innerHTML = texttemplate;
+    }
+
+    function replytext(ar,ar1,p,u){
+        replyArea = ar;
+        divToReply = ar1;
+        post_id  = p;
+        replyArea.addEventListener("keypress",function(ev){
+
+            if(ev.keyCode == 13){
+
+                var post = Exile(replyArea),
+                    post_holder = Exile(divToReply),
+                    post_data = post_holder.html(),
 
 
- function onreply(post_id, replyid) {
-     texttemplate = "<textarea id='rep'"+post_id+"></textarea>";
-     var replyid = _(replyid);
-
-     if(replyid.style.display === 'block'){
-         replyid.style.display = 'none';
-	 }else{
-     	replyid.style.display = 'block';
-	 }
-
-     replyid.innerHTML = texttemplate;
-
-     var replyArea = Exile('#rep'+post_id);
-
-     var post = $(this),
-         post_holder = Exile('#msgBody'),
-         post_data = post_holder.html(),
+                    temp = "<div id = 'reply_posted'>\n" +
+                         "                <div class = 'posted_profile'>\n" +
+                         "                    <div class = 'posted_cicle'>\n" +
+                         user.profile +
+                         "                   </div>\n" +
+                         "                </div>\n" +
+                         "                <div class ='name_time'><span class = 'name'>"+
+                         user.username
+                         +"</span><span class = 'time_ago'>now</span></div>\n" +
+                         "                <div class ='msg'>"+post.value()+"</div>\n" +
+                         "           </div>";
 
 
-         temp = "<div id = 'reply_posted'>\n" +
-             "                <div class = 'posted_profile'>\n" +
-             "                    <div class = 'posted_cicle'>\n" +
-             user.profile +
-             "                   </div>\n" +
-             "                </div>\n" +
-             "                <div class ='name_time'><span class = 'name'>"+
-             user.username
-             +"</span><span class = 'time_ago'>now</span></div>\n" +
-             "                <div class ='msg'>"+post.value()+"</div>\n" +
-             "            </div>";
+                if(!post.empty()){
+                   
+                     console.log('this is sender'+u+' this is user repler'+user.user_id)
+                    sasha.response({
+                    url:'post.php',
+                    meth:'post',
+                    query: 'action=post_reply&user=' + user.user_id + '&post=' + post.value()+'&pid='+post_id+'&sender='+u,
+                    success:function(data){
+                        if(sasha.state(this)){
+                            var r = sasha.jsonResponse(this);
+                            post.value('');
+                            if (r.data === true) {
 
-     replyArea.on('click', function (ev) {
-
-
-         if(!post.empty()){
-
-             //sasha
-             sasha().response({
-                 url:'post.php',
-                 meth:'post',
-                 query: 'action=post_reply&user=' + user.user_id + '&post=' + post.value()+'&pid='+post_id,
-                 success:function(data){
-                     if(s.state(this)){
-                         var r = s.jsonResponse(this);
-                         post.value('');
-                         if (r.data === true) {
-
-                             post_holder.html(temp+post_data);
-                             live();
-                         }else{
-                             alert(r.error);
-                         }
-                     }
-                 }
-             });
-         }else{
-             alert('Please type something to proceed!');
-         }
-     });
- }
-
-var lastEventId = '';
-
- function live() {
-     var post_holder = $$('#msgBody');
-     if(user.user !== '' &&
-		 post_holder.element !== null){
-
-         var post_data = post_holder.html();
-         sasha.onMessage({
-			 meth:'post',
-			 url:'live.php',
-			 query:'action=get_post&section='+user.section,
-			 success:function (d) {
-                 console.log(d);
-                var r = sasha.data(d),
-                id = r.id;
-
-                if(r.status && lastEventId !== id){
-                	post_holder.html(r.data);
-				}
-
-				console.log(lastEventId);
-
-                 lastEventId = id;
-
+                                post_holder.html(temp+post_data);
+                                live();
+                            }else{
+                                alert(r.error);
+                            }
+                        }
+                    }
+                    }
+                    );
+             }else{
+                 alert('Please type something to proceed!');
              }
-		 });
-     }
- }
+            }
+        });
+    }
+//___-____-____< END Reply Function >__-___-___-_____-__\\
 
- live();
+    var lastEventId = 0;
+    var lastNotificationId  = 0;
+//___-____-____| live Event Function |___-___-_____-__\\
 
- //////////////////////////////////////////////////////////////////////////////////////
+
+
+ let k =  document.querySelectorAll('post_text');
+ console.log(k);
+    function live() {
+        var post_holder = $$('#msgBody'),
+        nh              = $$('#bellNotificationplace');
+        notfy           = $$('#noty_top_one');
+        
+        if(user.user_id   !== '' &&  post_holder.element  !== null){
+           
+            var post_data       =  post_holder.html();
+            
+            sasha.onMessage({
+    			meth:'post',
+    			url:'live.php',
+    			query:'action=get_post&section='+user.frompage+'&user_id='+user.user_id,
+    			
+                success:function (d) {
+                    var r        =  sasha.data(d),
+                        id       =  r.id,
+                        n_count  =  r.n_counts,
+                        nots     =  r.nots;
+                     
+                        // console.log(r);
+                    if(r.status && lastEventId !== id){
+                        post_holder.html(r.data);
+    				}
+
+                    if(r.status && lastNotificationId !== n_count){
+                        nh.html(nots);
+                        notfy.html(n_count);
+                    }
+
+    				// console.log(lastEventId);
+                    lastEventId = id;
+                }
+
+    		});
+        }
+    }
+  
+    live();
+//___-____-_____-_live Event Function___-___-_____-__\\
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
 
 
 // ///////////////////Ajax function  block
@@ -1437,14 +1477,14 @@ function swicthVisibility(arg) {
 	}
 
 
-	function dispVisibility(par_one,per_tw){
-	    //code
-		var first_panel =  _(par_one);
-		var sec_panel   =  _(per_tw);
+	// function dispVisibility(par_one,per_tw){
+	//     //code
+	// 	var first_panel =  _(par_one);
+	// 	var sec_panel   =  _(per_tw);
 
-		first_panel.style.display = "none";
-		sec_panel.style.display = "block";
-	}
+	// 	first_panel.style.display = "none";
+	// 	sec_panel.style.display = "block";
+	// }
 
 	function closeDiv(args) {
 	  var absolut_id = _(args);
@@ -1515,15 +1555,15 @@ function swicthVisibility(arg) {
 
 
 		function switchVisblty_parentChember(pa_one,pa_two,pa_three,parent_id) {
-		
+		// ('ParentsWrap','parentChat','parebt','$p_id')
 		var chev_one =  _(pa_one);
 		var chev_sec =  _(pa_two);
 		var mainKnolagde =  _(pa_three);
 		var  parentId =  parent_id;
 
-		_('datagiven').innerHTML = '".'+ parentId+'."';
+		// _('datagiven').innerHTML = '".'+ parentId+'."';
 
-        alert(parentId);
+         alert(parentId);
 		 
 		
 		if (getComputedStyle(chev_sec).display == 'none') {

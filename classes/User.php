@@ -160,9 +160,11 @@ public function IntableFind($table,$tablerow,$user = null){
         $user = $this->find($username);
 
       if ($user) {
+          #if ($this->data()->password === Hash::make($password,$this->data()->salt)) 
           # code...Hash::make($password, $this->data()->salt)
+            #if ($this->data()->salt === $password)  Baarki
 
-          if ($this->data()->salt === $password) {
+          if ($this->data()->password === Hash::make($password,$this->data()->salt))  {
               # session
               session::put($this->_sessionName, $this->data()->id);
 
