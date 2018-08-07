@@ -99,9 +99,11 @@ if(isset($_GET['action']) && $_GET['action'] === 'get_post'){
         }
 
 
+        // Teachers query
+        $teachers = teach_function_as_reply();
        
 
-        $result = array('data'=>$data,'status'=>$status,'id'=>$lid);
+        $result = array('data'=>$data,'status'=>$status,'id'=>$lid,'teachers'=>$teachers);
     }else{
         $result = array('data'=>'No data found','status'=>$status);
     }
@@ -116,7 +118,9 @@ else if($_GET['action'] && $_GET['action'] === 'get_reply'){
 
 echo "data:".json_encode($result)."\n\n";
 
+function teach_function_as_reply(){
 
+}
 
 function get_replies($pid,$db){
     $data = '';

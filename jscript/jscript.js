@@ -166,6 +166,12 @@ var lastEventId = '';
                 	post_holder.html(r.data);
 				}
 
+				if(!$().empty(r.teachers)){
+                	var teacher = r.teachers;
+
+                	// inner html teacher
+				}
+
 				console.log(lastEventId);
 
                  lastEventId = id;
