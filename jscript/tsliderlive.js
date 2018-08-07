@@ -29,11 +29,15 @@ function livliv() {
                  // console.log(d);
                 var r = sasha.data(d),
                 id = r.id;
+                var teacher = r.teachers;
 
                 if(r.status && lastEventId !== id){
-                	document.write(post_holder.html(r.data));
+                	post_holder.html(r.data);
 				}
 
+				if(teacher !== ''){
+                    _('sid').innerHTML = teacher;
+                }
 				// console.log(lastEventId);
 
                 lastEventId = id;

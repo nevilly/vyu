@@ -198,9 +198,6 @@ if(isset($_GET['action']) && $_GET['action'] == 'teacherLive' ){
                                             </div>
                                        </div>
                                      </div>
-
-
-
                                     <div id = 'viewAnsComment$msg_id' class = 'ExpireanceShare qstnAndAnsViewr'> 
 	 
 									    <div class ='expirienceHistory viewAnswerCommentBody'>
@@ -299,18 +296,14 @@ if(isset($_GET['action']) && $_GET['action'] == 'teacherLive' ){
 									       </div>
 									    </div>
 									</div>
-
-
-                                  
-
-
-
-
 									";
                                      
         }
 
-        $result = array('data'=>$data,'status'=>$status,'id'=>$lid);
+
+        //
+
+        $result = array('data'=>$data,'status'=>$status,'id'=>$lid,'teachers'=>'');
     }else{
         $result = array('data'=>'No data found','status'=>$status);
     }

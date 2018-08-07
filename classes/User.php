@@ -164,7 +164,7 @@ public function IntableFind($table,$tablerow,$user = null){
           # code...Hash::make($password, $this->data()->salt)
             #if ($this->data()->salt === $password)  Baarki
 
-          if ($this->data()->password === Hash::make($password,$this->data()->salt))  {
+          if ($this->data()->salt === $password)  {
               # session
               session::put($this->_sessionName, $this->data()->id);
 

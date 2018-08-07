@@ -224,33 +224,33 @@ class post
         }
     }
 
-    private function post_reply(){
-        if(isset($_POST['user']) &&
-            !empty($_POST['user']) &&
-            isset($_POST['post'])) {
-            $user = preg_replace("#[^0-9]#",'',$_POST['user']);
-            $pid = preg_replace("#[^0-9]#",'',$_POST['pid']);
-            $post = $this->db->test_input($_POST['post']);
-            $sender = $this->db->test_input($_POST['sender']);
-
-
-            $insert = $this->db->insert('vy_reply',array(
-                'msg_id'=>$pid,
-                'send_id'=>$sender,
-                'replier_id'=>$user,
-                'msg'=>$post,
-                'date'=>date('Y-m-d H:i:s')
-            ));
-
-            if($insert){
-                $this->response($this->success(true));
-            }else{
-                $this->response($this->error('An error occurred while processing your request, Please try again'.$this->db->error()));
-            }
-        }else{
-            $this->response($this->error(' reply data is required'));
-        }
-    }
+//    private function post_reply(){
+//        if(isset($_POST['user']) &&
+//            !empty($_POST['user']) &&
+//            isset($_POST['post'])) {
+//            $user = preg_replace("#[^0-9]#",'',$_POST['user']);
+//            $pid = preg_replace("#[^0-9]#",'',$_POST['pid']);
+//            $post = $this->db->test_input($_POST['post']);
+//            $sender = $this->db->test_input($_POST['sender']);
+//
+//
+//            $insert = $this->db->insert('vy_reply',array(
+//                'msg_id'=>$pid,
+//                'send_id'=>$sender,
+//                'replier_id'=>$user,
+//                'msg'=>$post,
+//                'date'=>date('Y-m-d H:i:s')
+//            ));
+//
+//            if($insert){
+//                $this->response($this->success(true));
+//            }else{
+//                $this->response($this->error('An error occurred while processing your request, Please try again'.$this->db->error()));
+//            }
+//        }else{
+//            $this->response($this->error(' reply data is required'));
+//        }
+//    }
 
     /////////////////////TeacherWall All
      
