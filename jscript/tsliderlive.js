@@ -31,7 +31,7 @@ function livliv() {
                 id = r.id;
 
                 if(r.status && lastEventId !== id){
-                	post_holder.html(r.data);
+                	document.write(post_holder.html(r.data));
 				}
 
 				// console.log(lastEventId);
@@ -41,11 +41,6 @@ function livliv() {
             }
 		});
      }
-
-
-     
-
-
 }
 
 livliv();

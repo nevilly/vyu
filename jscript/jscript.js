@@ -167,7 +167,7 @@
 
 
  let k =  document.querySelectorAll('post_text');
- console.log(k);
+
     function live() {
         var post_holder = $$('#msgBody'),
         nh              = $$('#bellNotificationplace');
@@ -1563,7 +1563,7 @@ function swicthVisibility(arg) {
 
 		// _('datagiven').innerHTML = '".'+ parentId+'."';
 
-         alert(parentId);
+         // alert(parentId);
 		 
 		
 		if (getComputedStyle(chev_sec).display == 'none') {

@@ -2,13 +2,17 @@
      return document.getElementById(x);
  }
 
+
+
+  
+
 (function($,s){
 
     var q = $('#sendQstn');
         // console.log(q);
     q.on('click', function () {
         
-            var q_section   = $('#SECTION_qstnwall'),
+            var q_section = $('#SECTION_qstnwall'),
             q_donedate  = $('#dateqstnDonewal'),
             q_sculname  = $('#qstnFromSchoolname'),
             subjectName = $('#subjectnameQstnWall'),
@@ -141,32 +145,32 @@ function live() {
    
    
     
-    if(user.user !== '' && post_holder.element !== null && post_holder.element['attributes'][0]['nodeValue'] == "subjectWallQstn"){
-    	// wall Subject chat live display
-    	console.log(post_holder.element);
-         var post_data = post_holder.html();
-         sasha.onMessage({
-			 meth:'post',
-			 url:'teacherLive.php',
+  //   if(user.user !== '' && post_holder.element !== null && post_holder.element['attributes'][0]['nodeValue'] == "subjectWallQstn"){
+  //   	// wall Subject chat live display
+  //   	console.log(post_holder.element);
+  //        var post_data = post_holder.html();
+  //        sasha.onMessage({
+		// 	 meth:'post',
+		// 	 url:'teacherLive.php',
 			
 
-			 query:'action=teacherLive&status=b&subjectId='+user.subject_id+'&real_user='+ user.user_id,
-			 success:function (d) {
-                 // console.log(d);
-                var r = sasha.data(d),
-                id = r.id;
+		// 	 query:'action=teacherLive&status=b&subjectId='+user.subject_id+'&real_user='+ user.user_id,
+		// 	 success:function (d) {
+  //                // console.log(d);
+  //               var r = sasha.data(d),
+  //               id = r.id;
 
-                if(r.status && lastEventId !== id){
-                	post_holder.html(r.data);
-				}
+  //               if(r.status && lastEventId !== id){
+  //               	post_holder.html(r.data);
+		// 		}
 
-				// console.log(lastEventId);
+		// 		// console.log(lastEventId);
 
-                lastEventId = id;
+  //               lastEventId = id;
 
-            }
-		});
-     } 
+  //           }
+		// });
+  //    } 
 
    
     if(user.user !== '' && post_holder2.element !== null && post_holder2.element['attributes'][0]['nodeValue'] == "sid"){

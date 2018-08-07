@@ -316,6 +316,8 @@ if(isset($_GET['action']) && $_GET['action'] == 'teacherLive' ){
     }
 }
 
+
+
 function get_replies($pid,$db,$classCss,$real_user){
     $data   = '';
     $reply  = '';
@@ -547,7 +549,7 @@ if(isset($_GET['action']) && $_GET['action'] === 'tSliderLive'){
 						                 
 						                    </div>
 
-						                      <div class='last' onclick=\"switch_parentChat('ParentsWrap','parentChat','parebt','$p_id','allParents','$p_uId').test()\">
+						                      <div class='last' onclick=\"switch_parentChat('ParentsWrap','parentChat','parebt','$p_id','allParents','$p_uId')\">
 						                            <i class='fa fa-angle-double-down'>$p_id </i>
 						                    </div>
 						                 

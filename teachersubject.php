@@ -1948,19 +1948,16 @@
 								                    <div class="infoDiv">
 								                            <span class="infod classLevel">reader:</span>
 								                            <span class="info2 parentNames">Chairman</span>
-								                 
 								                    </div>
 
 								                    <div class="infoDiv">
-								                            <span class="infod classLevel">Level:</span>
-								                            <span class="info2 parentNames">Form 1 B</span>
-								                 
+							                            <span class="infod classLevel">Level:</span>
+							                            <span class="info2 parentNames">Form 1 B</span>
 								                    </div>
 
-								                      <div class="last">
+								                    <div class="last">
 								                            
 								                            <i class="fa fa-angle-double-down" ></i>
-								                 
 								                    </div>
 								                 
 								                </div>
@@ -1978,20 +1975,19 @@
 			        </div>
 					
 					<div class ='ParentsWrap' id = 'ParentsWrap' >
-						
 						<div class = 'allParents'>
 							<div class = 'allparentsChart'>
 								<div class = 'chartParentProfile'>
 									<div class = 'chatarent'>
-										<textarea onclick ="swicthVisibility('send_botton');"placeholder='Discuss Here'></textarea>
+										<textarea onclick ="swicthVisibility('send_botton');"placeholder='Discuss Here' id = 't_To_p_wall'></textarea>
 								    </div>
 									
 									<div id = 'send_botton'>
-										<div id = 'post'><input class = 'p' type='submit' id='submit_post' value = 'Post Update'></div>
+										<div id = 'post'><input class = 'postToAllteacher' type='submit' id='submit_post' value = 'Post Update'></div>
 										<div id = 'upload_photo'><i class="fa fa-camera" id= 'cover_camera_prof'></i></div>
                                     </div>
 								</div>
-								<div class = 'xoverflow'>
+								<div id = "teacherToParentHolder" class = 'xoverflow'>
 									<div class = 'profileSender'>
 										<div class = 'profDisng'>
 											<div class = 'barName'>
@@ -2199,7 +2195,7 @@
 						</div>	
 					</div>
 
-					<div class ='ParentsWrap' id = 'parentChat' >
+					<div class ='ParentsWrap' id = 'parentChat3' >
 						<div class = "MsgContainer chatBox">
 						  <?php $parentId =  "<div id = 'datagiven' ></div>"?>
 
@@ -2442,10 +2438,12 @@
 				                            <div class = "clear"></div>
 				                    </div>
 						        </div>
-						        
+
 						    </div>
 						</div>
 					</div>	
+			
+
 				</div>
 
 				

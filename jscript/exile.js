@@ -135,7 +135,7 @@ Exile = function (selector) {
         return h;
     };
 
-    /**
+    /** 
      * @returns {string}
      */
     ex.class = function(){
@@ -143,6 +143,8 @@ Exile = function (selector) {
             return this.element.className;
         }
     };
+
+
 
     /**
      * @returns {string}
