@@ -36,7 +36,7 @@ if ($user->isLoggedIn()) {
 
 				<h2 class = "worrldWraper">ENTERPRENUER WORD</h2>
 
-                <?php $frompage = 4; //entarprenuers page ?>
+                <?php $frompage = 5; //entarprenuers page ?>
 				<?php include "include/chats.php";?>
 			</div>
 			

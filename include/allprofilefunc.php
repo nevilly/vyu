@@ -27,21 +27,22 @@
 			   
 			    if($profile_picture->first()->profile){
 			    	if($sesion_id == $user_id ){
-	                  $prof_dir = "<img src =userdata/".$profile_picture->first()->profile." width ='100px' height ='100px;'>";
+	                  $prof_dir = "<img src =userdata/".$profile_picture->first()->profile." width =\"100px\" height =\"100px;\">";
 	                }elseif ($sesion_id != $user_id) {
 	                	# code...
 
-	                	   $prof_dir = "<img  src =userdata/".$profile_picture->first()->profile." width ='100px' height ='100px;' style='margin:0px' >";
+	                	   $prof_dir = "<img  src =userdata/".$profile_picture->first()->profile." width =\"100px\" height = \"100px;\"
+	                	    style=\"margin:0px\" >";
 	                }
 
 	               
 			   
 			    }else{
 			    	if($sesion_id == $user_id ){
-			    	 $prof_dir = "<img src ='userdata/profile/pro3.png' width ='100px' height ='100px;' class = 'mainUserprofile'>";
+			    	 $prof_dir = "<img src =\"userdata/profile/pro3.png\"  width =\"100px\" height = \"100px;\"class = \"mainUserprofile\">";
 			    	}elseif ($sesion_id != $user_id) {
 			    		# code...
-	                    $prof_dir = "<img src ='userdata/profile/pro3.png' width ='100px' height ='100px;' style='margin:0px;' >";
+	                    $prof_dir = "<img src =\"userdata/profile/pro3.png\" width =\"100px\" height =\"100px;\" style=\"margin:0px;\" >";
 			    	}
 			    	
 			    }

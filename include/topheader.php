@@ -143,12 +143,12 @@ $acc->first()->username;
                  onclick = "top_headerhideshow('bellNotification');">
 				    <a href = '#'>
 				        <i class="fa fa-bell" aria-hidden="true"></i>
-				        <div class ='notfyCount noty_top_a'>5</div>
+				        <div class ='notfyCount noty_top_a' id = 'noty_top_one'></div>
 				    </a>
 				    <!---///=== All Notifications Pop Bell  //-->
                     <div id = "bellNotification" class = "displaySeachresult bellNotification">
 					 
-					    <div class = "xoverflow">
+					    <div id = "bellNotificationplace" class = "xoverflow">
 					        <div class = "despl">
 						        <div class = "searchprof"> 
 						          <div class = 'profImg'>

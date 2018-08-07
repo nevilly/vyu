@@ -8160,13 +8160,14 @@ abso_temprate > .centerPlace {
  width:100%;
  height: 900px;
  background:;
- float:left;
  margin-top:-7%;
  display:none ;
+  float:left;
 }
 
 #parentsChember > div{
   width:100%;
+  float:left;
 }
 
 
@@ -10992,7 +10993,7 @@ abso_temprate > .centerPlace {
   float:left;
   width:90%;
   margin-top:2%;
-    border: 1px solid red;
+  margin-left:2%;
 }
 
 .replyDive > textarea{
@@ -11036,8 +11037,8 @@ abso_temprate > .centerPlace {
 #posted > .posted_profile > .posted_cicle{
   border:1px solid grey;
   border-radius:50%;
-  width:60px;
-  height: 60px;
+  width:49px;
+  height: 49px;
   margin-left:8px;
 }
 
@@ -11072,7 +11073,7 @@ abso_temprate > .centerPlace {
 }
 
 #posted > .name_time > .time_ago{
-       font-size:16px;
+       font-size:12px;
        margin-right:4px;
        float:right;
        font-family:tohama;
@@ -11122,7 +11123,7 @@ abso_temprate > .centerPlace {
 
 #reply_posted{
        float:left;
-       width:78%;
+       width:88%;
        margin-top:2%;
        margin-left:14%;
        
@@ -11141,8 +11142,8 @@ abso_temprate > .centerPlace {
 #reply_posted > .posted_profile > .posted_cicle{
        border:1px solid grey;
        border-radius:50%;
-       width:60px;
-       height: 60px;
+       width:40px;
+       height: 40px;
        margin-left:8px;
 }
 
@@ -11156,7 +11157,7 @@ abso_temprate > .centerPlace {
 #reply_posted > .name_time{
        
        float:left;
-       width :88%;
+       width :87%;
        margin-bottom: 2%;
    
       
@@ -11164,7 +11165,7 @@ abso_temprate > .centerPlace {
 
 
  #reply_posted > .name_time >.name{
-       font-size:16px;
+       font-size:12px;
        font-weight:bold;
        padding-top:2px;
         margin-left:4px;
@@ -11181,7 +11182,7 @@ abso_temprate > .centerPlace {
 }
 
 #reply_posted > .name_time > .time_ago{
-       font-size:16px;
+       font-size:12px;
        float:right;
        font-family:tohama;
        font-style:italic;
@@ -39487,20 +39488,53 @@ color:white;
   margin-left: 1%;
 }
 
+.editReply{
+  float: right;
+  font-size: 8px;
+  font-style: italic;
+  color: #4dcadd;
+  padding-bottom: 2%;
+}
+
 .answi{
   float:left;
   width:100%;
-  height: 128px;
 }
 
 .answi > textarea{
   float:left;
   width:100%;
-  height: 95%;
+  height: 95px;
   resize: none;
   border-radius: 3px;
   border:1px groove rgba(2,2,2,.2);
 }
+
+.theanswer{
+  width:100%;
+}
+
+.theanswer > div{
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    margin-top: 5%;
+}
+
+
+
+.forExplainAnswer{
+  float:left;
+  width:100%;
+
+
+}
+.forExplainAnswer > div{
+  margin-top: 4%;
+  font-style:italic;
+  
+}
+
 
 
 .ansHeader{
@@ -39530,6 +39564,14 @@ color:white;
   font-size: 12px;
   cursor: pointer;
 }
+
+/*.answerHolder{
+  display:none;
+  border:1px solid red;
+  width:100px;
+  height:100px;
+}*/
+
 
 .clickedBoton{
   border:1px solid #4dcadd;
@@ -41222,7 +41264,7 @@ addplace{
 
 /* parent chatting her */
 
-    #parentChat{
+    #parentChat3{
       display:none;
     }
     .MsgContainer{
@@ -41265,7 +41307,6 @@ addplace{
   }
 
   .cicle{
-      
       width:55px;
       height:55px;
       border-radius:50%;
@@ -41273,6 +41314,12 @@ addplace{
       margin-top:5%;
       background: white;
 
+  }
+
+  .placeTwo{
+    width: 50%;
+    margin-left: 3%;
+    margin-top: 3%;
   }
 
   .Listheader{
@@ -41440,3 +41487,133 @@ addplace{
       cursor: pointer;
     }
 
+
+
+/*slider Oooohh*/
+
+
+                                      #slideDown{
+                                        display:block;
+                                      }
+
+                                      #slideUp{
+                                        display:none
+                                      }
+                                     
+                      .down_Document{
+                            margin-left: 10%;
+                      margin-left: 10%;
+                      width: 25%;
+                      height: 80px;
+                      float: left;
+                      padding-left: 2%;
+                      position: relative;
+                      top: 2px;
+                      transition: 1s;
+                      border-left: 1px solid rgba(2,2,2,.2);
+                      display: none;
+
+                      }
+                      .down_Document > .thedoc{
+                          border: 1px solid #eeefee;
+                      border-radius: 50px 50px;
+                      padding: 2% 7%;
+                      margin-top: 1%;
+                      width: 60%;
+                      background: white;
+                      transition: color 0.1s linear 0s; 
+                      transition: 1s; 
+                      }
+                      
+                      .down_Document > .thedoc:hover{
+                      margin-left: 4%;
+                      cursor:pointer;
+                      }
+
+                      .down_Document > .shadowDiv{
+                          margin-left:10%;
+                      }
+
+                      .down_Document > .potea{
+                          position: relative;
+                      top: -9px;
+                      left: -14%;
+                      border-radius: 50px;
+                      float: left;
+                      width: 10%;
+                      height: 17%;
+                      padding: 1% 1%;
+                      background: rgba(2,2,2,.5);
+                      cursor: pointer;
+                      color: white;
+                      text-align: center;
+                  }
+
+                  .down_Document > .potea:hover{
+                          margin-left:none;
+                      }
+
+                      .doc_slideBox{
+                        margin-left: 10%;
+                      width: 80%;
+                      height: 80px;
+                      float: left;
+                      position: relative;
+                      top: -3px;
+                      transition: 1s;
+                      display: none;
+                      }
+
+                      .doc_slideBox > div{
+                      width: 90px;
+                      height: 95%;
+                      float: left;
+                      border-radius: 3px 3px;
+                      margin-left: 5px;
+                      margin-top: 4px;
+                      box-shadow: 0px 0px 2px rgba(115,115,115,.5);
+                      }
+
+                      .doc_slideBox > .openAndClose{
+                          border: none;
+                      width: 80%;
+                      height: 10px;
+                      float: left;
+                      border-radius: 0px;
+                      margin-left: 8%;
+                      margin-top: -4%;
+                      font-size: 10px;
+                      text-align: center;
+                      padding: 2px 2px;
+                      border-radius: 2px 3px 0px 0px;
+                      cursor: pointer;
+                      box-shadow: none;
+
+                      }
+
+                      .doc_slideBox > .openAndClose > i{
+                          font-size:18px;
+                      }
+
+                      .doc_slideBox >div > .doc_discr{
+                        /*border:1px solid grey;*/
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 3px 3px;
+                        overflow: hidden;
+                        
+                      }
+
+                      .doc_slideBox >div > .doc_discr > span{
+                        padding: 2px 2px;
+                      width: 80%;
+                      border: ;
+                      border-bottom: 1px solid rgba(2,2,2,.2);
+                      text-align: center;
+                      font-style: italic;
+                      font-size: 10px;
+                      float: left;
+                      margin-left: 5%;
+
+                      }
+                    

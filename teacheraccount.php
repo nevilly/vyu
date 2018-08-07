@@ -231,6 +231,7 @@
         }
     /////////END: Check SUBJECT TYPE OF STUDENT
     ////////////////////////////////////////////////////////////////////////////////////
+         echo "<script>var user= {user_id:'$user_id',username:'$username',profile:'$prof_dir'};</script>" ;
 ?>
 
 
@@ -626,12 +627,8 @@
     </div>
     
 </div>
-<script type="text/javascript" src="jscript/jscript.js">
-	
-</script>
- <?php include 'include/positonAbsolute.php'; ?> 
-</body>
-</html>
+ <?php include 'include/positonAbsolute.php'; ?>
+<?php include 'include/skelotonBottom_login.php'; ?>
 
 <?php
   //}else{

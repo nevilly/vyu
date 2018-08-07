@@ -60,11 +60,24 @@
 	   //  	  //  }
 	   //  }
 
-		   @ $teacherId =  $teacher_info->first()->user_id;
+		   @ $teacherId         =  $teacher_info->first()->user_id;
 	       @ $teacher_schulname =  $teacher_info->first()->schoolname;
 		   @ $teacher_rname     =  $teacher_info->first()->region;
 	       @ $teacher_lev       =  $teacher_info->first()->levelOrStandard;
 	       @ $teacher_fa        =  $teacher_info->first()->facultOrComb_taken;
+	       @ $profesional_subj  =  $teacher_info->first()->prof_subject_1;
+	       @ $schoolname        =  $teacher_info->first()->schoolname;
+	       @ $level_identify    =  $teacher_info->first()->level_identify;
+	      
+
+
+	       if($level_identify == 'h'){
+	       	  $basedSubj = $profesional_subj."ist Lecture";
+	       }else{
+                $basedSubj = $profesional_subj."ist Teacher";
+	       }
+
+
 	///// END: Subject Name
     ////////////////////////////////////////////////////////////////////////////////////
 
@@ -74,8 +87,9 @@
 
 	///// END: Subject Name
     ////////////////////////////////////////////////////////////////////////////////////
-       
- 
+
+
+  
  ?>
 
 
@@ -392,7 +406,28 @@
                     <div id ='nav_quiz'     class ='nav_quiz'      onclick = "tp_hideshow('cv');"                           > CV Job Adv    </div>
                     <div id ='nav_inf'      class ='nav_inf'       onclick = "tp_hideshow('use_info');"                     > info       </div>
                 </header>
-            
+             
+            <div id="divuser_id" style="visibility:hidden">
+    <?php echo $user_id;
+    echo "<script>var user = {
+    	    user_id   : '$user_id',
+            username  : '$username',
+            profile   : '$profile',
+            frompage  : '$frompage',
+            status    : 'b',
+            subjectName : '$subj',
+            subject_id  : '$subject_id',
+            basedSubj   : '$basedSubj',
+            schoolname  : '$schoolname', 
+            region      : '$teacher_rname', 
+            levelOrStandard : '$teacher_lev'
+            };
+            </script>" ?>
+
+  <!--    $parent_acc = $db->query('SELECT * FROM  p_acc,vy_users WHERE  p_acc.user_id = vy_users.id AND schoolname =? AND region = ? AND levelOrStandard = ?', array($teacher_schulname,$teacher_rname,$teacher_lev)) -->
+    
+    	
+</div>
             	<div id = 'tmywall' class = 'mywall'>
                    <div class="divPost">
 	                   	<div class = " NormalIdeas" onclick = "dispVisibility('composqsn','whatsOnurmid');">Chats</div> 
@@ -433,7 +468,7 @@
                     	 
                     	    <div class = "rightQstnDive">
 
-		                    	<input type = "text" placeholder="date" id="dateqstnDonewall">
+		                    	<input type = "text" placeholder="date" id="dateqstnDonewal">
 		                    	<input type = "text" placeholder="School Name" id = "qstnFromSchoolname">
 		                    </div>
 
@@ -520,9 +555,9 @@
           	   	  	  	 		    <div class = "qstnImg">
           	   	  	  	 		        <img src = "">
           	   	  	  	 		    </div>
-
 	                            </div>
 		        			</div>
+
 		        			<div class="matchs">
 		        				<div class = "qstnNo">
 		        		          <span class = "ColomNo">B</span>
@@ -533,9 +568,9 @@
           	   	  	  	 		    <div class = "qstnImg">
           	   	  	  	 		        <img src = "">
           	   	  	  	 		    </div>
-
 	                            </div>
 		        			</div>
+
 		        			<div class="matchs">
 		        				<div class = "qstnNo">
 		        		          <span class = "ColomNo">C</span>
@@ -555,9 +590,7 @@
 							<div class = "iconGroup QstnSenderIcone">
 
                             	<div class = "sectIcon">
-                            	    <span class = "sendBotton" onclick="QstnchatVar('SECTION_qstnwall','dateqstnDonewall','qstnFromSchoolname','subjectnameQstnWall','topicnameQstnwal','subtopicQstnwall','Qn_selectNoQstnwall',
-                                         'Qn_selectNoColomQstnwall','mainqstnwall','match_a','match_b','match_c','b'
-                            	     ,'<?php echo $subj; ?>','<?php echo $subject_id; ?>')">Send</span>
+                            	    <span class = "sendBotton" id = "sendQstn" >Send</span>
                                 </div>
 
                             	<div class = "sectIcon" onclick = "openAbsolute('shareTo');">
@@ -568,348 +601,15 @@
 						</div>
                     </div>
 				  
-					<div class = 'xoverflow'>
-
-					<?php  
-                        // $query_subjectpost = $db->query('SELECT * FROM vy_users  LEFT OUTER JOIN vy_wallsubject ON vy_wallsubject.user_id = vy_users.id   WHERE subject_name = ?  ?',array($subject_id,'ORDER BY id DESC' ));
-                       /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-					   //////////subject Rply
-	                        $query_subjectpost = $db->query('SELECT * FROM vy_wallsubject WHERE subject_name = ? OR status = ? ORDER BY id DESC',array($subj,'a' ));
-
-	                        if($query_subjectpost->count()){
-	                       	    foreach ($query_subjectpost->results() as $subjectPost){
-
-	                       	    	$sid = $subjectPost->user_id;
-	                       	    	$wallsubject = $subjectPost->id;
-	                       	    	$query_userinfo = $db->query('SELECT * FROM vy_users WHERE id = ?',array($sid));
-	                       	  	    # code...
-	                       	  	 	$student_id = $subjectPost->user_id;
-	                                $name = $query_userinfo->first()->username;
-	                                $prof = $query_userinfo->first()->profile;
-	                                $ideaOrQstn = $subjectPost->ideaOrQstn;
-	                               
-	                                if(!$query_userinfo->first()->profile){
-									    $subjectChat_prof = "<img src ='userdata/profile/pro3.png'>";
-									}else{	
-									    $subjectChat_prof = "<img title = 'Patent Profile' src =userdata/".$prof." id = 'parent_img'>";
-									}
-
-	                            if($subjectPost->status == 'b'){
-	                           
-	                                $qstnNo = $subjectPost->qstnNo;
-	                                $columNo = $subjectPost->columNo;
-	                               
-	                                $match_a = "";
-	                                $match_b = "";
-	                                $match_c = "";
-	                                if($subjectPost->match_a){
-	                                   $match_a ='<div class = "qstnNo">
-					        		            <span class = "ColomNo">A: </span>
-						        		        </div>
-						        		        <div class = "matchAns">'.$subjectPost->match_a.'</div>';
-	                                }
-
-	                                if($subjectPost->match_b){
-	                                    $match_b ='<div class = "qstnNo">
-						        		            <span class = "ColomNo">B: </span>
-						        		            </div>
-						        		        <div class = "matchAns"> '.$subjectPost->match_b.'</div>';
-	                                }
-
-	                                if($subjectPost->match_c){
-	                                   $match_c ='<div class = "qstnNo">
-						        		          <span class = "ColomNo">C: </span>
-						        		        </div>
-						        		        <div class = "matchAns">'.$subjectPost->match_c.'</div>';
-	                                }
-
-	                                // $match_a = $subjectPost->match_a;
-	                                // $match_b = $subjectPost->match_b;
-	                                // $match_c = $subjectPost->match_c;
-	                                $mainAcount = $query_userinfo->first()->Main_account;
-	                                
-	                                if($mainAcount == "student_acc"){
-
-	                                    $student_acc = $db->query('SELECT * FROM student_acc WHERE user_id = ?',array($student_id));
-	                                	$qstn_stschul = $student_acc->first()->schoolname;
-	                                	$qstn_stfacult = $student_acc->first()->facultOrComb_taken;
+					<div  id = 'subjectWallQstn' class = 'xoverflow'>
+                       
 
 
-	                                }else if($mainAcount == "teacher_acc"){
-	                                	$steacher_acc = $db->query('SELECT * FROM teacher_acc WHERE user_id = ?',array($student_id,'id'));
-	                                	$qst_Tschul = $steacher_acc->first()->schoolname;
-	                                	$qst_tfacult =  $steacher_acc->first()->facultOrComb_taken ;
-	                                }
-
-
-	                                echo '<div class = "qstnAndAnsBody">
-									        <div class = "anseQstnDiv">
-								                <div class = "despl">
-											        <div class = "searchprof"> 
-											          <div class = "profImg">
-											           '.$subjectChat_prof.'
-												          </div>  
-											        </div>
-
-											        <div class = "detdispl">
-												        <div class = "firsdeta">
-												          <span class = "name">'.$name.'</span>
-												          <span class = "school">'.$qstn_stschul.'</span>
-												          <span class = "pozision">Geoligist Lecture</span>
-												        </div>
-											          <div class = "qstntype">'.$subj.'Question</div>
-											        </div>
-
-											        <div class = "qastbody">
-												        <div class = "qstn">
-												        		<div class = "qstnNo">
-												        		   <span class = "No">'.$qstnNo.'</span><span class = "ColomNo">'.$columNo.'</span>
-												        		</div>
-
-												        		<div class = "qstnBody">'.$ideaOrQstn.'
-												        		</div>
-
-												        		<div class = "matchitem">
-												        			<div class="matchs">
-												        				'.$match_a.'
-												        			</div>
-
-												        			<div class="matchs">
-												        				'.$match_b.'
-												        			</div>
-
-												        			<div class="matchs">
-												        				'.$match_c.'
-												        			</div>
-												        		</div>
-					                                           
-					                                            <div id= "yourAnse'.$wallsubject.'" class = "yourAnse">
-					                                                 <h3>Answer</h3>
-					                                                 <p>'.$wallsubject.'</p>
-					                                            </div>
-												        		
-												        		<div  class = "AnswerHer">
-												        		     <span class = "neckedBoton viewAnswer" onclick=\'swicthVisibility("yourAnse'.$wallsubject.'");\'>View Answer</span> 
-												        		    
-												        		    <span class = "neckedBoton viewComment"onclick=\'swicthVisibility("viewAnsComment'.$wallsubject.'");\'>>View comments</span>
-												        		</div>
-												        </div>
-											        </div>
-										        </div>
-
-									            <div class = "herToAns">
-					                                <div class = "ansHeader">ANSWER</div>
-										            <div class = "answi">
-										                <textarea placeholder="Anser Here"></textarea>
-										             </div>
-										            <span class = "clickedBoton sendHer">SEND ANSWER</span>
-									            </div>
-									        </div>
-									    </div>
-	                                     
-
-	                                    
-
-									    <div id = "viewAnsComment'.$wallsubject.'" class = "ExpireanceShare qstnAndAnsViewr "> 
-	 
-									    <div class = "expirienceHistory viewAnswerCommentBody">
-									   
-									        <div id = "close" onclick = \'closeDiv("viewAnsComment'.$wallsubject.'");\'>
-									             <i class = "fa fa-close"></i>
-									        </div>
-
-									        <div class = "wraper ">
-									              
-									        <div class = "placeOne">
-									          <div class = "despl">
-									            <div class = "searchprof"> 
-									              <div class = "profImg">
-									                <img title = "Patent Profile" src = "img/profiles/p8.jpg" id = "parent_img"/>
-									              </div>  
-									            </div>
-
-									            <div class = "detdispl">
-									              <div class = "firsdeta">
-									                <span class = "name">Nehemia Mwansasu</span>
-									                <span class = "school">Unversity of Dar Es Salaam</span>
-									                <span class = "pozision">Geoligist Lecture</span>
-									              </div>
-									            </div>
-									          </div>
-
-									          <div class = "xoverflow">
-									            <div class = "qastbody">
-									              <div class = "qstn">
-									                  <div class = "qstnNo">
-									                     <span class = "No">1</span><span class = "ColomNo">a</span>
-									                  </div>
-
-									                  <div class = "qstnBody">
-									                    dfasfasfadf,amg,fm.,ms.,mhfs fsmfsgmfg,sdm
-									                  </div>
-
-									                  <div class = "matchitem">
-									                    <div class="matchs">
-									                      <div class = "qstnNo">
-									                            <span class = "ColomNo">A</span>
-									                          </div>
-									                          <div class = "matchAns"><input type = "text"></div>
-									                    </div>
-									                    <div class="matchs">
-									                      <div class = "qstnNo">
-									                            <span class = "ColomNo">B</span>
-									                          </div>
-									                          <div class = "matchAns"><input type = "text"></div>
-									                    </div>
-									                    <div class="matchs">
-									                      <div class = "qstnNo">
-									                            <span class = "ColomNo">C</span>
-									                          </div>
-									                          <div class = "matchAns"><input type = "text"></div>
-									                    </div>
-									                  </div>
-									                  
-									                   
-									                  <h3>Answer
-									                  '.$wallsubject.'
-									                  </h3>
-									                  
-
-									                  <div id= "AReply" class = "yourAnse replyBox ">
-									                       
-									                          <div class = "profImg">
-									                            <img title = "Patent Profile" src = "img/profiles/p8.jpg" id = "parent_img"/>
-									                          </div> 
-									                       <div class = "replybady"><span>Nehemia Mwansasu</span
-									                       ><p>No Anser Now</p></div>
-									                  </div>
-									                  
-									            </div>
-									          </div>
-									          </div>
-
-									          <div  class = "AnswerHer">
-									              <textarea id = "BReply" class = "Areply"></textarea>
-									              <div class = "slidTone">
-									              
-									                <div>
-									                    <div class = "searchprof"> 
-									                      <div class = "profImg">
-									                      <img title = "Patent Profile" src = "img/profiles/p8.jpg" id = "parent_img"/>
-									                      </div> 
-									                    </div> 
-
-									                    <div class = "searchprof"> 
-									                      <div class = "profImg">
-									                      <img title = "Patent Profile" src = "img/profiles/p8.jpg" id = "parent_img"/>
-									                      </div> 
-									                    </div> 
-									                  
-									                    <div class = "searchprof"> 
-									                      <div class = "profImg">
-									                      <img title = "Patent Profile" src = "img/profiles/p8.jpg" id = parent_img/>
-									                      </div> 
-									                    </div> 
-									                </div>
-
-
-									              </div>
-									              <span class = "clickedBoton" onclick=\'swicthVisibility("BReply'.$wallsubject.'");\'>AReply</span> 
-									          </div>
-									        </div>
-									        
-									        <div class = "placeTwo">
-									            <div class = "xoverflow">
-
-									              
-									            </div>
-									        </div>
-
-									       </div>
-									    </div>
-									</div>';
-	                            }
-
-	                            if($subjectPost->status == 'a'){
-		                            echo "<div id = 'posted' class = 'chartUserOne'>
-											<div class = 'posted_profile'>
-												<div class = 'profImg'>
-													".$subjectChat_prof."
-											   </div>
-											</div>
-											
-											<div class ='name_time'>
-											    <span class = 'name'>".$name."</span>
-											    <span class = 'time_ago'>5hrs Ago</span>
-											</div>
-											
-											<div class ='msg'>
-											".$ideaOrQstn."
-											</div>
-
-											<div class ='icons'>
-												<span id='reply' class = 'ico reply'onclick = \"swicthVisibility('replySubject".$wallsubject."');\" ><i class = 'fa fa-reply'></i></span>
-												<span id='love' class = 'ico reply'><i class = 'fa fa-heart-o'></i></span>
-												<span id='thumb_up' class = 'ico reply'><i class = 'fa fa-thumbs-up'></i></span>
-												<span id='delete' class = 'ico reply'><i class= 'fa fa-remove'></i></span>
-												<span id='spam' class = 'ico reply'>spam</span>
-												<span id='delete' class = 'ico reply'><i class= 'fa fa-unlock-alt'></i></span>
-											</div>
-											<div id = 'replySubject".$wallsubject."' class ='replySubject'>
-	                                            <input type = 'text' id='SubjectRply".$wallsubject."'>
-	                                            <span class ='subjReply' onclick = \"chatVar('SubjectRply".$wallsubject."','".$wallsubject."','reply')\">
-	                                                <i class = 'fa fa-paper-plane'></i>
-	                                            </span>
-	                                        </div>
-									    </div>";
-
-	                                $wallsubjectreply = $db->query('SELECT * FROM vy_wallsubjectreply LEFT OUTER JOIN vy_users ON vy_wallsubjectreply.replier_id = vy_users.id WHERE wallsubjectreply_id = ?',array($wallsubject));
-	                                   
-	                                 foreach ($wallsubjectreply->results() as $wallsubjectrepl) {
-	                                 	# code...
-	                                 	$wallsubjectreply_id = $wallsubjectrepl->wallsubjectreply_id;
-	                                 	echo $fafa = $wallsubjectrepl->wallsubjectreply_id;
-
-	                                 	  if(@$wallsubjectreply_id == $wallsubject){
-	                                         @$rplierUsername = $wallsubjectreply->first()->username; 
-	                                         $rpliermsg = $wallsubjectreply->first()->msg.'<br/>';
-	                                        echo $masege =  "<div id = 'reply_posted'>
-											<div class = 'posted_profile'>
-												<div class = 'posted_cicle'>
-													<img src ='img/profiles/p1.jpg' >
-											   </div>
-											</div>
-											<div class ='name_time'>
-											<span class = 'name'>".$rplierUsername."</span><span class = 'time_ago'>8hrs Ago</span></div>
-											<div class ='msg'>".$rpliermsg."</div>
-											<div class ='icons'>
-												<span id='reply' class = 'ico reply'><i class = 'fa fa-reply'></i></span>
-												<span id='love' class = 'ico reply'><i class = 'fa fa-heart-o'></i></span>
-												<span id='thumb_up' class = 'ico reply'><i class = 'fa fa-thumbs-up'></i></span>
-												<span id='delete' class = 'ico reply'><i class= 'fa fa-remove'></i></span>
-												<span id='spam' class = 'ico reply'>spam</span>
-												<span id='delete' class = 'ico reply'><i class= 'fa fa-unlock-alt'></i></span>
-											</div>
-								        </div>";
-
-	                                }else if(@$wallsubjectreply_id == ""){
-
-	                                	echo $masege ="";
-	                                }
-	                                 }
-	                            }
-	                       	  	
-	                       	  }
-	                       }else{
-	                       	echo "Not found";
-	                       }
-                       //////////END: subject Rply
-                       /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-					   
-				    ?>
-	                   
                     </div>
 				</div>
+
+
+
 
 				<div class = 'Myfucults'>                	
                    
@@ -2047,77 +1747,7 @@
 
 				    	<div id = 'sid' class = "slider">
 
-				    	<?php 
-
-                            $parent_acc = $db->query('SELECT * FROM  p_acc,vy_users WHERE  p_acc.user_id = vy_users.id AND schoolname =? AND region = ? AND levelOrStandard = ?', array($teacher_schulname,$teacher_rname,$teacher_lev));
-
-					        if(!$parent_acc->count()){
-						   	  echo 'Ther is No Parent Registered in Your Class';
-						    }else{	
-
-						    	foreach($parent_acc->results() as $parent_acc){
-						            $parent_name = escape($parent_acc-> username);
-						            $class_level = escape($parent_acc-> levelOrStandard);
-						            $class_mkondo = escape($parent_acc-> mkondo);
-						            $parent_id =  escape($parent_acc-> user_id);
-						            $prof_chanel = $parent_acc-> profile;
-						            $width   =  100;
-						            $height  =  100;
-						            $class   =  'p_profile';
-
-						            $parent_profile  =  $db->prfl_pctwithClass($prof_chanel,$width,$height, $class);
-
-						            
-
-						         echo   '	<div class = "box">
-				    			<div class = parentSlider>
-					    			<div class="slideContainer">
-								        <div class="topcontainer">
-								            <a href="#" class="studentProfile"><img src =  "img/loginSlider/pa.png"></a>
-								        </div>
-								        <div class="another">
-								            
-								            <div class = "ParentPicture">
-								                '.$parent_profile .'
-								             </div>
-
-								            <div class="profileDetails">
-								                <div class="info">
-								                    <div class="infoDiv">
-								                        <span class="infod parentNames" title="">Parent:</span>
-								                        <span class="info2 parentNames"><a href="#">'.$parent_name.'</a></span>
-								                    </div>
-								                   
-								                    <div class="infoDiv">
-								                            <span class="infod classLevel">reader:</span>
-								                            <span class="info2 parentNames">Chairman</span>
-								                 
-								                    </div>
-
-								                    <div class="infoDiv">
-								                            <span class="infod classLevel">Level:</span>
-								                            <span class="info2 parentNames">'. $class_level .'  '. $class_mkondo .'</span>
-								                 
-								                    </div>
-
-								                      <div class="last" onclick=\'switchVisblty_parentChember("ParentsWrap","parentChat","parebt","'.$parent_id.'")\'>
-								                            <i class="fa fa-angle-double-down" ></i>
-								                    </div>
-								                 
-								                </div>
-								            </div>
-								        </div>
-
-	                                </div>
-				    			</div>
-				    		</div>';
-
-						    	}
-
-						    }
-
-				    	?>
-				    		
+				    	
 				    		<div class = "box">
 				    			<div class = parentSlider>
 					    			<div class="slideContainer">
@@ -2165,7 +1795,7 @@
 				    			<div class = parentSlider>
 					    			<div class="slideContainer">
 								        <div class="topcontainer">
-								            <a href="#" class="studentProfile"><img src =  'img/loginSlider/pa.png'></a>
+								            <a href="#" class="studentProfile"><img src = 'img/loginSlider/pa.png'></a>
 								        </div>
 								        <div class="another">
 								            
@@ -2318,19 +1948,16 @@
 								                    <div class="infoDiv">
 								                            <span class="infod classLevel">reader:</span>
 								                            <span class="info2 parentNames">Chairman</span>
-								                 
 								                    </div>
 
 								                    <div class="infoDiv">
-								                            <span class="infod classLevel">Level:</span>
-								                            <span class="info2 parentNames">Form 1 B</span>
-								                 
+							                            <span class="infod classLevel">Level:</span>
+							                            <span class="info2 parentNames">Form 1 B</span>
 								                    </div>
 
-								                      <div class="last">
+								                    <div class="last">
 								                            
 								                            <i class="fa fa-angle-double-down" ></i>
-								                 
 								                    </div>
 								                 
 								                </div>
@@ -2347,21 +1974,20 @@
 				    <div class = 'nav Next'     onclick  = "fNext()">></div>
 			        </div>
 					
-					<div class ='ParentsWrap' id = 'ParentsWrap'  >
-						
+					<div class ='ParentsWrap' id = 'ParentsWrap' >
 						<div class = 'allParents'>
 							<div class = 'allparentsChart'>
 								<div class = 'chartParentProfile'>
 									<div class = 'chatarent'>
-										<textarea onclick ="swicthVisibility('send_botton');"placeholder='Discuss Here'></textarea>
+										<textarea onclick ="swicthVisibility('send_botton');"placeholder='Discuss Here' id = 't_To_p_wall'></textarea>
 								    </div>
 									
 									<div id = 'send_botton'>
-										<div id = 'post'><input class = 'p' type='submit' id='submit_post' value = 'Post Update'></div>
+										<div id = 'post'><input class = 'postToAllteacher' type='submit' id='submit_post' value = 'Post Update'></div>
 										<div id = 'upload_photo'><i class="fa fa-camera" id= 'cover_camera_prof'></i></div>
                                     </div>
 								</div>
-								<div class = 'xoverflow'>
+								<div id = "teacherToParentHolder" class = 'xoverflow'>
 									<div class = 'profileSender'>
 										<div class = 'profDisng'>
 											<div class = 'barName'>
@@ -2569,14 +2195,11 @@
 						</div>	
 					</div>
 
-					<div class ='ParentsWrap' id = 'parentChat' >
+					<div class ='ParentsWrap' id = 'parentChat3' >
 						<div class = "MsgContainer chatBox">
 						  <?php $parentId =  "<div id = 'datagiven' ></div>"?>
 
-						<style>
-						
-
-						</style>
+				
 						   
 						     <div class = "back" onclick="switchVisbltyQ('ParentsWrap','parentChat','parebt')">Go Back </div>
 						    <div class="chatContainer">
@@ -2759,6 +2382,7 @@
 
 						        	}
 						        </style>
+						      
 						        <div class="textEditor">
 							        <div class = "down_Document" id = "textDownload">
 							            <div  class ="potea" onclick = "closeDiv('textDownload');">X</div>
@@ -2814,11 +2438,12 @@
 				                            <div class = "clear"></div>
 				                    </div>
 						        </div>
+
 						    </div>
 						</div>
-					</div>
+					</div>	
+			
 
-					
 				</div>
 
 				
@@ -4391,7 +4016,7 @@
 			    </div>
 
 			    </div>
-			
+			   
              <?php include 'include/infosection.php'; ?>
 		</div>
 		
@@ -4401,7 +4026,12 @@
 </div>
 
 <?php include 'include/skelotonBottom_login.php'; ?>
+
 <script src="jscript/tymtableSave.js"></script>
+<!-- <script src="jscript/tsliderlive.js"></script> -->
+<script src="jscript/teacherfunction.js"></script>
+<script src="jscript/tsliderSingleParent.js"></script>
+
 
 
 
