@@ -210,16 +210,6 @@
 //___-____-_____-_live Event Function___-___-_____-__\\
 
 //////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
 // ///////////////////Ajax function  block
 	function findVerif(adiv,url,parameter){
 	    if(window.XMLHttpRequest){
