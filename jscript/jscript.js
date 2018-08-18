@@ -1,10 +1,4 @@
- // window.setInterval("refreshDiv()", 500);
- //    function refreshDiv(){
- //        counter = counter + 1;
- //        document.getElementById("nehemiasdf").innerHTML = "nis";
- //    }
-
-
+ 
  function _(x) {
      return document.getElementById(x);
  }
@@ -32,62 +26,88 @@
      });
      return y;
  }
+
+
+// teacher sliding show
+ var showed_box = 0;
+ function fNext(){
+	  showed_box +=  -158;
+	 
+  
+
+	  if(showed_box < -800){
+	  showed_box = 0;
+	  }
+
+	  document.getElementById('sid').style.transform = "translateX("+ showed_box+"px)";
+ }  
+
+function fPrevious(){
+	  showed_box +=  158;
+
+	  if(showed_box > 0){
+	  showed_box = -800;
+	  }
+
+	  document.getElementById('sid').style.transform = "translateX("+ showed_box+"px)";
+ }  
+ 
+
 //______________________||_________________________\\
 //____________________|    |________________________\\
 //__________________|         |______________________\\
 //________________<    JERRY     >____________________\\
 
     (function($,s){
-    var b = $('#submit_post');
 
-    b.on('click', function () {
-     	var post       = $('#post_text'),
-		post_holder    = $('#msgBody'),
-		post_data      = post_holder.html(),
-		previledge     = $('#Nav_everyone').value(),
+		
+		var b = $('#submit_post');
+
+		b.on('click', function () {
+			var post       = $('#post_text'),
+			post_holder    = $('#msgBody'),
+			post_data      = post_holder.html(),
+			previledge     = $('#Nav_everyone').value(),
 
 
-            temp = "<div id = 'posted'>\n" +
-            "\t\t\t\t\t\t<div class = 'posted_profile'>\n" +
-            "\t\t\t\t\t\t\t<div class = 'posted_cicle'>\n" +
-            "\t\t\t\t\t\t\t\t<img src ='"+user.profile+"' >\n" +
-            "\t\t\t\t\t\t   </div>\n" +
-            "\t\t\t\t\t\t</div>\n" +
-            "\t\t\t\t\t\t<div class ='name_time'><span class = 'name'>"+user.username+"</span><span class = 'time_ago'>now</span></div>\n" +
-            "\t\t\t\t\t\t<div class ='msg'>"+post.value()+"</div>\n" +
-            "\t\t\t\t    </div>" +
-			"</div>";
+				temp = "<div id = 'posted'>\n" +
+				"\t\t\t\t\t\t<div class = 'posted_profile'>\n" +
+				"\t\t\t\t\t\t\t<div class = 'posted_cicle'>\n" +
+				"\t\t\t\t\t\t\t\t<img src ='"+user.profile+"' >\n" +
+				"\t\t\t\t\t\t   </div>\n" +
+				"\t\t\t\t\t\t</div>\n" +
+				"\t\t\t\t\t\t<div class ='name_time'><span class = 'name'>"+user.username+"</span><span class = 'time_ago'>now</span></div>\n" +
+				"\t\t\t\t\t\t<div class ='msg'>"+post.value()+"</div>\n" +
+				"\t\t\t\t    </div>" +
+				"</div>";
 
-     	if(!post.empty()){
+			if(!post.empty()){
 
-     		//sasha
-			s.response({
-				url:'post.php',
-				meth:'post',
-                query: 'action=post_data&user=' + user.user_id + '&post=' + post.value() + '&privilege=' + previledge + '&frompage=' + user.frompage,
-				success:function(data){
-					if(s.state(this)){
-						var r = s.jsonResponse(this);
-                        post.value('');
-                        if (r.data === true) {
+				//sasha
+				s.response({
+					url:'post.php',
+					meth:'post',
+					query: 'action=post_data&user=' + user.user_id + '&post=' + post.value() + '&privilege=' + previledge + '&frompage=' + user.frompage,
+					success:function(data){
+						if(s.state(this)){
+							var r = s.jsonResponse(this);
+							post.value('');
+							if (r.data === true) {
 
-                            post_holder.html(temp+post_data);
-                            live();
-						}else{
-							alert(r.error);
+								post_holder.html(temp+post_data);
+								live();
+							}else{
+								alert(r.error);
+							}
 						}
-            		}
-				}
-			});
-		}else{
-            alert('Please type something to proceed!');
-		}
-	});
+					}
+				});
+			}else{
+				alert('Please type something to proceed!');
+			}
+		});
 
-   
-
-
- })(Exile,sasha);
+    })(Exile,sasha);
 //___-____-____-<  Reply Function  >___-___-_____-_____\\
    
     function onreply(post_id, replyid,user_id) {
@@ -140,7 +160,7 @@
                     success:function(data){
                         if(sasha.state(this)){
                             var r = sasha.jsonResponse(this);
-                            post.value('');
+                            // post.value('');
                             if (r.data === true) {
 
                                 post_holder.html(temp+post_data);
@@ -173,7 +193,7 @@
         nh              = $$('#bellNotificationplace');
         notfy           = $$('#noty_top_one');
         
-        if(user.user_id   !== '' &&  post_holder.element  !== null){
+        if(user.user   !== '' &&  post_holder.element  !== null){
            
             var post_data       =  post_holder.html();
             
@@ -210,6 +230,9 @@
 //___-____-_____-_live Event Function___-___-_____-__\\
 
 //////////////////////////////////////////////////////////////////////////////////////
+
+
+
 // ///////////////////Ajax function  block
 	function findVerif(adiv,url,parameter){
 	    if(window.XMLHttpRequest){
@@ -282,40 +305,6 @@ function chatVar(par_1,par_2,par_3){
 
 
 
-// onclick="QstnchatVar('dateqstnDonewall','qstnFromSchoolname','subjectnameQstnWall','topicnameQstnwal','subtopicQstnwall','Qn_selectNoQstnwall',
-//                                          'Qn_selectNoColomQstnwall','mainqstnwall','match_a','match_b','match_c','b'
-
-function QstnchatVar(arg,arg_1,arg_2,arg_3,arg_4,arg_5,arg_6,arg_7,arg_8,arg_9,arg_10,arg_11,arg_12,arg_13,arg_14){
-    var SECTION_qstnwall     =   _(arg).value;
-    var dateqstnDonewall     =   _(arg_1).value;
-    var qstnFromSchoolname   =   _(arg_2).value;
-    var subjectnameQstnWall  =   _(arg_3).value;
-    var topicnameQstnwal     =   _(arg_4).value;
-    var subtopicQstnwall     =   _(arg_5).value;
-    var Qn_selectNoQstnwall  =   _(arg_6).value;
-    var Qn_selectNoColomQstnwall  =  _(arg_7).value;
-    var mainqstnwall         =   _(arg_8).value;
-    var match_a              =   _(arg_9).value;
-    var match_b              =   _(arg_10).value;
-    var match_c              =   _(arg_11).value;
-    var status               =     arg_12;
-    var subject_name         =   arg_13;
-    var subject_id           =   arg_14;
-
-
-    if(status == 'b'){
-    	if(mainqstnwall){
-	       url       = 'insidefunc.php';
-	       adiv      = 'gog';
-	      
-
-	      parameter = 'mainqstnwall='+mainqstnwall+'&&SECTION_qstnwall='+SECTION_qstnwall+'&&dateqstnDonewall='+dateqstnDonewall+'&&qstnFromSchoolname='+qstnFromSchoolname+'&&subjectnameQstnWall='+subjectnameQstnWall+'&&topicnameQstnwal='+topicnameQstnwal+'&&subtopicQstnwall='+subtopicQstnwall+'&&Qn_selectNoQstnwall='+Qn_selectNoQstnwall+'&&Qn_selectNoColomQstnwall='+Qn_selectNoColomQstnwall+'&&match_a='+match_a+'&&match_b='+match_b+'&&match_c='+match_c+'&&status='+status+'&&subject_name='+subject_name+'&&subject_id='+subject_id;
-	      findAcc(adiv,url,parameter);
-        }else{
-       	 alert('emty');
-       }
-    } 
-}
 
 
 // replyQuestion function
@@ -890,61 +879,35 @@ function showValues(subject_id,shulname,region,lev){
 
 	
 //navigation side navigation/
-var kaz = _('kaz');
-var nav_hover    =   _('nav_hover');
-var nav_open     =   _('sid_nav_open');
-var navtwo       =   _('navtwo');
-var navOne       =   _('navOne');
-var nav_close    =   _('sid_nav_close');
-var sid_One      =   _('side_One');
-var sid_two      =   _('side_two');
-var n_ico        =   _('n_ico');
-var logo         =   _('logo');
-var input_Top_header =  _('input_Top_header');
-var itemMore      =  _('itemMore');    // itemtwo sideNavigation page.php line 75
-var itemBoxed     =  _('itemBoxed'); 
+	var kaz = _('kaz');
+	var nav_hover    =   _('nav_hover');
+	var nav_open     =   _('sid_nav_open');
+	var navtwo       =   _('navtwo');
+	var navOne       =   _('navOne');
+	var nav_close    =   _('sid_nav_close');
+	var sid_One      =   _('side_One');
+	var sid_two      =   _('side_two');
+	var n_ico        =   _('n_ico');
+	var logo         =   _('logo');
+	var input_Top_header =  _('input_Top_header');
+	var itemMore      =  _('itemMore');    // itemtwo sideNavigation page.php line 75
+	var itemBoxed     =  _('itemBoxed'); 
 
-var itemChangeDot  =  _('itemChangeDot');
-var top_header     =  _('top_header');
-var H_triangle     =  _('H_triangle');
-var mainWraper     =  _('mainWraper');
-   
+	var itemChangeDot  =  _('itemChangeDot');
+	var top_header     =  _('top_header');
+	var H_triangle     =  _('H_triangle');
+	var mainWraper     =  _('mainWraper');
+//navigation side navigation/
+
 // var for  profile upload cover & close page.hp line 188
-var cover_camera_prof    = _('cover_camera_prof');
-var clos_cover_prof      = _('clos_cover_prof');
-var cover_uploads        = _('cover_uploads');	
-var bellNotification     = _('bellNotification');
-var displaySeachresult   = _('displaySeachresult');
-var bellNotification     = _('bellNotification');
-
-
-var lecture_schul_tich = _('lecture_schul_tich');
-   
-  
-
-// var b = $('#tmywall');
-// console.log(b);
-
-	
-
-	
-
-// var value = b('#techer_schulname').value;
-
-// b('#nextclick').onclick = function(){
-//    alert('value');
-// }
-
-// b.init.onclick = function(){
-// 	alert($(this).class());
-// }
-
-//  $$().prototype.simplealert = function(){
-//  	$()
-//  }
-
-
-// $$().register().submit;
+	var cover_camera_prof    = _('cover_camera_prof');
+	var clos_cover_prof      = _('clos_cover_prof');
+	var cover_uploads        = _('cover_uploads');	
+	var bellNotification     = _('bellNotification');
+	var displaySeachresult   = _('displaySeachresult');
+	var bellNotification     = _('bellNotification');
+	var lecture_schul_tich = _('lecture_schul_tich');
+//end var for  profile upload cover & close page.hp line 188
 
 
 
@@ -959,20 +922,20 @@ cover_camera_prof.onmouseout =function(){
     cover_uploads.style.display = 'none';
 };
 
-    if(clos_cover_prof != null){
+if(clos_cover_prof != null){
 
-        clos_cover_prof.onmouseover = function(){
-            cover_close.style.width = '17.6%';
-            cover_close.style.display = 'block';
-        };
+	clos_cover_prof.onmouseover = function(){
+		cover_close.style.width = '17.6%';
+		cover_close.style.display = 'block';
+	};
 
-        clos_cover_prof.onmouseout =function(){
-            cover_close.style.width = '10%';
-            cover_close.style.display = 'none';}
-	}
+	clos_cover_prof.onmouseout =function(){
+		cover_close.style.width = '10%';
+		cover_close.style.display = 'none';}
+}
 
 // open div navigation
-nav_close.onclick = function (){
+    nav_close.onclick = function (){
     sid_One.style.width      =  "4%";
     sid_two.style.width      =  "96%";
 	top_header.style.width   =  "96%";
@@ -991,7 +954,7 @@ nav_close.onclick = function (){
 };
 
 // close div navigation
-nav_open.onclick = function (){
+   nav_open.onclick = function (){
     sid_One.style.width      =  "16%";
     sid_two.style.width      =  "84%";
     nav_open.style.display   =  "none";
@@ -1044,62 +1007,50 @@ function swicthVisibility(arg) {
          par.style.display = 'none';
 	}
 
-	// var c = $$('#'+arg);
-	// $$().log(arg);
-
-	// if (c.element != null) {
-	// 	var cn = c.class();
-	// 	*
-	// 	hide element args are time/millseconds
-		
-	// 	$$('.'+cn).hide();
-	// 	if(c.element.display === 'none'){
-	// 		c.show(200);
-	// 	}
-	// }
+	
 }
 	
-	function blurChar(args) {
-	    //code
-		
-		var par =  _(arg);
-		
-		par.style.opacity = '';
-		par.style.cssText="opacity:3."+opacityPercent;
-	}
+function blurChar(args) {
+	//code
 	
-	function hideshow(d) {
-	    //code
-	    var divx = _(d);
-		var divs = ['upload_photo_qstn_exam',
-					'upload_photo_answ',
-					'upload_photo_A',
-					'upload_photo_B',
-					'upload_photo_C',
-					'upload_photo_D',
-					'mywall',
-					'check_covered_topic_teacher',
-					'parentsChember',
-					'Result',
-					'timetable',
-					'Stictix',
-					'cv',
-					'use_info',
-					'examscompose',
-					'teachersProfile',
-					'development',
-					'extrathing',
-					'noticsBoard'					
-				];
-	   
-		    for (var i = 0; i < divs.length; i++) {
-	           //code
-	       		if (divx  != _(divs[i])){
-				  _(divs[i]).style.display = 'none';
-	            }
-	        }
-			divx.style.display = 'block';    
-	}
+	var par =  _(arg);
+	
+	par.style.opacity = '';
+	par.style.cssText="opacity:3."+opacityPercent;
+}
+	
+function hideshow(d) {
+	//code
+	var divx = _(d);
+	var divs = ['upload_photo_qstn_exam',
+				'upload_photo_answ',
+				'upload_photo_A',
+				'upload_photo_B',
+				'upload_photo_C',
+				'upload_photo_D',
+				'mywall',
+				'check_covered_topic_teacher',
+				'parentsChember',
+				'Result',
+				'timetable',
+				'Stictix',
+				'cv',
+				'use_info',
+				'examscompose',
+				'teachersProfile',
+				'development',
+				'extrathing',
+				'noticsBoard'					
+			];
+	
+		for (var i = 0; i < divs.length; i++) {
+			//code
+			if (divx  != _(divs[i])){
+				_(divs[i]).style.display = 'none';
+			}
+		}
+		divx.style.display = 'block';    
+}
 
 
 	function top_headerhideshow(d) {

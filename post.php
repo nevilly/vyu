@@ -10,13 +10,11 @@ error_reporting(E_ALL);
 require_once ('core/init.php');
 
 
-class post
-{
+class post{
 
     public $db;
 
-    public function __construct()
-    {
+    public function __construct(){
         $this->db = DB::getInstance();
 
         if(isset($_POST['action']) && !empty($_POST['action'])){
@@ -27,13 +25,10 @@ class post
             }else{
                 $this->response($this->error('Error method is not allowed!'));
             }
-
         }else{
             $this->response($this->error('Error method is not allowed!'));
         }
     }
-
-    
 
     private function post_data(){
         if(isset($_POST['user']) &&
@@ -163,6 +158,7 @@ class post
         }
     }
 
+    
 
     private function reply_qstn(){
         if(isset($_POST['user']) &&
@@ -192,51 +188,59 @@ class post
         }
     }
 
-
     /////////////////////TeacherWall All
 
-
-    private function pTeachearAndParentsChat(){
+    private function teacherAndparentChat(){
         if(isset($_POST['user']) &&
             !empty($_POST['user']) &&
-            isset($_POST['post'])) {
-            $user = preg_replace("#[^0-9]#",'',$_POST['user']);
-            $post = $this->db->test_input($_POST['post']);
-            $priv = preg_replace("#[^0-9]#",'',$_POST['privilege']);
-            $frompage = 6; //teacher and parent chat
+            isset($_POST['post']) ) {
+                   
+            $teach_id     = preg_replace("#[^0-9]#",'',$_POST['teach_id']);
+            $user         = preg_replace("#[^0-9]#",'',$_POST['user']);
+            $subj_id      = preg_replace("#[^0-9]#",'',$_POST['subject_id']);
+            $post         = $this->db->test_input($_POST['post']);
+            $schoolname   = $this->db->test_input($_POST['schoolname']);
+            $leveldrd     = $this->db->test_input($_POST['levelOrStandard']);
+            $mkondo       = $this->db->test_input($_POST['mkondo']);
+            $region       = $this->db->test_input($_POST['region']);
+            $level_identify       = $this->db->test_input($_POST['level_identify']);
 
+            $insert = $this->db->insert('post_teachandparent',array('sender_id'=>$user,
+                'subject_id'  => $subj_id,
+                'msg'         => $post,
+                'photo'       => '',
+                'date'        => date('Y-m-d H:i:s'),
+                't_id'        => $teach_id,
+                'schoolname'  => $schoolname,
+                'levelOrStandard'    => $leveldrd,
+                'mkondo'      => $mkondo,
+                'region'      => $region,
+                'level_identify' => $level_identify
 
-            $insert = $this->db->insert('post',array('user_id'=>$user,
-                'post'=>$post,
-                'media'=>'',
-                'time_posted'=>date('Y-m-d H:i:s'),
-                'priviledge' => $priv,
-                'section' => $frompage
             ));
 
             if($insert){
                 $this->response($this->success(true));
             }else{
-                $this->response($this->error('An error occurred in teacher and parent wall Chat while processing your request, Please try again'.$this->db->error()));
+                $this->response($this->error('An error occurred while processing your request(parent Chember, Allchats), Please try again'.$this->db->error()));
             }
         }else{
-            $this->response($this->error(' post data in teacher and parent wall Chat is required'));
+            $this->response($this->error(' post data in teacher and parent chat wall is required'));
         }
     }
 
-    private function post_reply(){
+    private function teacherAndparentChat_reply(){
         if(isset($_POST['user']) &&
             !empty($_POST['user']) &&
             isset($_POST['post'])) {
             $user = preg_replace("#[^0-9]#",'',$_POST['user']);
             $pid = preg_replace("#[^0-9]#",'',$_POST['pid']);
             $post = $this->db->test_input($_POST['post']);
-            $sender = $this->db->test_input($_POST['sender']);
+           
 
-
-            $insert = $this->db->insert('vy_reply',array(
-                'msg_id'=>$pid,
-                'send_id'=>$sender,
+            $insert = $this->db->insert('post_teachandprntreply',array(
+                'post_id'=>$pid,
+                'sender_id'=>'',
                 'replier_id'=>$user,
                 'msg'=>$post,
                 'date'=>date('Y-m-d H:i:s')
@@ -252,15 +256,98 @@ class post
         }
     }
 
-    /////////////////////TeacherWall All
-     
+    private function pTeachearAndParentsChat(){
+        // if(isset($_POST['user']) &&
+        //     !empty($_POST['user']) &&
+        //     isset($_POST['post'])) {
+        //     $user = preg_replace("#[^0-9]#",'',$_POST['user']);
+        //     $post = $this->db->test_input($_POST['post']);
+        //     $priv = preg_replace("#[^0-9]#",'',$_POST['privilege']);
+        //     $frompage = 6; //teacher and parent chat
 
 
+        //     $insert = $this->db->insert('post',array('user_id'=>$user,
+        //         'post' =>$post,
+        //         'media'=>'',
+        //         'time_posted'=>date('Y-m-d H:i:s'),
+        //         'priviledge' => $priv,
+        //         'section' => $frompage
+        //     ));
+
+        //     if($insert){
+        //         $this->response($this->success(true));
+        //     }else{
+        //         $this->response($this->error('An error occurred in teacher and parent wall Chat while processing your request, Please try again'.$this->db->error()));
+        //     }
+        // }else{
+        //     $this->response($this->error(' post data in teacher and parent wall Chat is required'));
+        // }
+    }
+
+          // query: 'action=postExam&tea&user='+user.user_id +'&post=' + t_post.value()+'&subject_id='+user.subject_id +'&schoolname='+user.schoolname+'&mkondo='+user.mkondo +'&levelOrStandard='+user.levelOrStandard+'&region='+user.region+'&level_identify='+user.level_identify+'&q_section='+q_section.value()+'+qtnType='+qtnType.value()+'&dateforExam='+dateforExam.value()+'&strtExampTime='+strtExampTime.value()+'&EndExamTime='+EndExam.value()+'&TimeexamInstr='+TimeexamInstr.value(),
+
+public function postExam(){
+    
+    if(isset($_POST['user']) &&
+            !empty($_POST['user']) &&
+            isset($_POST['dateforExam']) ) {
+            $user         = preg_replace("#[^0-9]#",'',$_POST['user']);
+            $subj_id      = preg_replace("#[^0-9]#",'',$_POST['subject_id']);
+            $schoolname   = $this->db->test_input($_POST['schoolname']);
+            $leveldrd     = $this->db->test_input($_POST['levelOrStandard']);
+            $mkondo       = $this->db->test_input($_POST['mkondo']);
+            $region       = $this->db->test_input($_POST['region']);
+            $level_identify       = $this->db->test_input($_POST['level_identify']);
+
+
+            $Exam_name       = $this->db->test_input($_POST['Exam_name']);
+            $qtnType         = $this->db->test_input($_POST['qtnType']);
+            $dateforExam     = $this->db->test_input($_POST['dateforExam']);
+            $strtExampTime   = $this->db->test_input($_POST['strtExampTime']);
+            $EndExamTime     = $this->db->test_input($_POST['EndExamTime']);
+            $TimeexamInstr   = $this->db->test_input($_POST['TimeexamInstr']);
+
+
+
+            $insert = $this->db->insert('vy_exmCompoz',array('user_id'=>$user,
+                'subj_id'  => $subj_id,
+                'exam_name'       => $Exam_name,
+                'exam_type'       => $qtnType,
+                'strt_time'       => $strtExampTime,
+                'end_time'        => $EndExamTime,
+                'exam_date'       => $dateforExam,
+                'exam_instr'      => $TimeexamInstr,
+                'schoolname'      => $schoolname,
+                'levelOrStandard'    => $leveldrd,
+                'mkondo'          => $mkondo,
+                'region'          => $region,
+                'level_identify'  => $level_identify,
+                'date'            => date('Y-m-d H:i:s'),
+
+            ));
+
+            if($insert){
+
+                // $qr =  "SELECT lastInsertId() FROM vy_exmCompoz WHERE user_id = ? AND exam_name = ? AND schoolname = ? AND levelOrStandard = ? AND mkondo = ? AND subj_id = ?";
+                
+                // $dat = $this->_db->query($qr,array($user,$Exam_name,$schoolname,$leveldrd,$mkondo,$subj_id));
+
+                //  $last  =    $dat->first()->id;
+
+
+
+                $this->response($this->success('nehemia'));
+            }else{
+                $this->response($this->error('An error occurred while processing your request, Please try again'.$this->db->error()));
+            }
+        }else{
+            $this->response($this->error(' post data in teacher and parent chat wall is required'));
+        }
+}
 
     /////////////////////END TeacherWall All
 
-    public function error($msg)
-    {
+    public function error($msg){
         return array('error' => $msg);
     }
 
@@ -271,6 +358,8 @@ class post
     public function response($data){
         echo json_encode($data);
     }
+
+
 
 }
 

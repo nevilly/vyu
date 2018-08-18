@@ -1,37 +1,22 @@
-/* color used1
-  #4dcadd  hover: #5b9aa3
-  #999999
-  #f14e56  241,78,86
-  #30445c   48,68,92
 
-   #4a79a5  74 121 165
-   #94bae7  148 186 231
-   #639ace   99 154 206
-   #31659c   49 101 156
-   #ffffff  255 255 255
-   
-   #d3cec3  211 206 15
-  */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-  *{
-      margin:0px;
-      padding: 0px;
-      font-family:Arial,sans-serif;
-      font-family: 'Open Sans', sans-serif;
-      font-family: 'Lato', sans-serif;
-      /* font-family: LatoBlack; */
-      font-size: 13px;
-      color: grey;
-    }
+*{
+  margin:0px;
+  padding: 0px;
+  font-family:Arial,sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  color: grey;
+}
   
-     a{
-        text-decoration: none;
-        cursor: pointer;
-        -webkit-transition: color 0.1s linear 0s; 
-        -moz-transition: color 0.1s linear 0s;
-        -o-transition: color 0.1s linear 0s;
-        transition: color 0.1s linear 0s;
-       }
+a{
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-transition: color 0.1s linear 0s; 
+  -moz-transition: color 0.1s linear 0s;
+  -o-transition: color 0.1s linear 0s;
+  transition: color 0.1s linear 0s;
+}
    
      a:hover,
      a:active,
@@ -526,7 +511,7 @@
 
 
 
-                          /*page.php*/1
+                          /*page.php*/
            #Pagewraper{
                       width: 100%;
            }
@@ -979,7 +964,7 @@
                       width:34%;
                       font-size: 16px;
                       color:#999999;
-                      display:;
+                      
                       transition: 2s;  
            }
          
@@ -1019,21 +1004,13 @@
            
            
            #Pagewraper > #side_two > .top_header > .ItemTwo > .More {
-                  display: none;
+            display: none;
            }
 
-           #Pagewraper > #side_two > .top_header > .ItemTwo > .More > a{
-                 
-           }
-           
-           
            #Pagewraper > #side_two > .top_header > .ItemTwo > .Boxed {
-                  display: none;
+              display: none;
            }
-           #Pagewraper > #side_two > .top_header > .ItemTwo > .Boxed > a{
-                  
-                  
-           }
+          
            
            #Pagewraper > #side_two > .top_header > .ItemTwo > .dot{
               width:10%;
@@ -1058,7 +1035,6 @@
             #Pagewraper > #side_two > .top_header > .ItemThree{
                       width:26%;
                       height: 70%;
-                      background: ;
                       float:right;
                       margin-top:8px;
                 
@@ -1436,7 +1412,6 @@
       #mainWraper > .section > .subject_title{
        float:left;
        width:90%;
-       background: ;
        margin-top:5%;
        font-size:1.9em;
        text-align:white;
@@ -1764,7 +1739,6 @@
        padding:2%;
        margin-left:4%;
        font-size:14px;
-       font-family;
 }
 
 #divnavtwo > .divNavTwo > a:hover{
@@ -1799,7 +1773,6 @@
        float:left;
        width:80%;
        margin-top:5%;
-       margin-left:%;
        color:#f14e56;  
        font-family:tohama;
    
@@ -1908,7 +1881,8 @@
        padding-left: 17px;
        padding-right:17px;
        padding-bottom: 6px;
-       margin-right:2%;4ursor: pointer;
+       margin-right:2%;
+       cursor: pointer;
        border-radius:3px;
      
 }
@@ -2261,7 +2235,7 @@
 
 
 
-/* teachers profile in profile pager */ 1
+/* teachers profile in profile pager */ 
 
 .teachersProfile{
  border-right:1px solid #ccc;
@@ -2742,8 +2716,7 @@
        padding-bottom: 2%;
        width:70%; 
        text-align: center;
-       cursor: pointer;    
-       background: #4dcaam;
+       cursor: pointer;   
 }
 
 
@@ -3330,7 +3303,7 @@
  background:rgba(115,115,115,.5);
  background:rgba(0,10,10,.9);
  padding-left:.3%;
- box-shadow: 
+
 }
 
 
@@ -3474,7 +3447,7 @@
 
 #video_temprate > #v_documents > #quiztime >#quizx_div > #cover_q{
        width:69%;
-       display: ;
+       
        float:left;
        margin:17% 15%;
        display: block;
@@ -4191,7 +4164,6 @@
        background:rgba(115,115,115,.5);
        background:rgba(0,10,10,.9);
        padding-left:.3%;
-       box-shadow: 
 }
 
 
@@ -4337,7 +4309,7 @@
 
 #book_temprate > #v_documents > #quiztime >#quizx_div > #cover_q{
        width:69%;
-       display: ;
+      
        float:left;
        margin:17% 15%;
        display: block;
@@ -4993,7 +4965,6 @@
 #book_buy > .booxWraper > .xoverflow >.subtopicHeader > div {
        color:white; 
        float:right;
-/*     width:%; */
        background:white;
        color:grey;  
        padding-left:12px;
@@ -5156,12 +5127,11 @@
 
 #book_buy > .booxWraper > .BuyBookx{
        background:white;
-       border-radius:3px
+       border-radius:3px;
        color:grey;
        float:left;
        width:100.6%;
        height:6%;
-       margin-top:px;
       margin-left:-1%;
        font-weight:bold;
        font-size: 18px;
@@ -5637,10 +5607,9 @@
 
 #exam_temprate > #v_chart > #text_vchart >#postQandAns > .time_schol > div > input{
       padding-left:3%;
-      padding-top:%;
       width: 50%; 
-          float:right;
-       margin-top:1%;
+      float:right;
+      margin-top:1%;
 }
 
 #exam_temprate > #v_chart > #text_vchart >#postQandAns > #Qno{
@@ -5801,7 +5770,6 @@
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s >#navAsk{
   
    border-radius: 3px;
-   background:;
    width:65%;
    float:left;
    color:white;
@@ -5811,7 +5779,6 @@
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s >#navAsk > div{
   
    border-radius: 3px;
-   background:;
    float:left;
    width:33%;
    color:white;
@@ -5827,7 +5794,6 @@
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s > .overflow{
    border-top:1px solid white;
    border-radius: 3px;
-   background:;
    float:left;
    width:111%;
    color:white;
@@ -5852,12 +5818,11 @@
 
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s > .overflow > #profile_ask > #simpleProfile {
    border-radius: 3px;
-   background:;
    margin-top:7%;
    margin-left:2px;
    float:left;
    width:34%;
-   height: 60%
+   height: 60%;
    color:white;
    float:left;
 }
@@ -5865,7 +5830,7 @@
 
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s > .overflow > #profile_ask > #simpleProfile  > a{
    border-radius: 3px;
-   background:;
+ 
    float:left;
    width:100%;  
    color:white;
@@ -5875,7 +5840,7 @@
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s > .overflow > #profile_ask > #simpleProfile  > a > img{
    border:2px solid #4dcadd;
    border-radius: 3px;
-   background:;
+ 
    float:left;
    width:100%;  
    height:100%;
@@ -5885,7 +5850,6 @@
 
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s > .overflow > #profile_ask > #details_side{
    border-radius: 3px;
-   background:;
    float:left;
    width:58%;   
    color:white;
@@ -5895,7 +5859,7 @@
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s > .overflow > #profile_ask > #details_side > span{
  
    border-radius: 3px;
-   background:;
+   
    float:left;
    margin-top:2%;
    margin-left:6%;
@@ -5908,7 +5872,7 @@
 
 #send_exam > #share_to_s > .overflow > #profile_ask > #details_side > .name{
    border-radius: 3px;
-   background:;
+
    float:left;
    margin-top:2%;
    width:40%; 
@@ -6104,7 +6068,6 @@
        font-size:14px;
        float:left;
        width:7%;
-       margin-top:%;
        margin-right:2%;
          margin-left:-7%;
        background:#9999; 
@@ -6119,7 +6082,6 @@
        font-size:14px;
        float:left;
        width:100%;
-       margin-top:;
        margin-right:2%;
        border-bottom:2px solid grey;
        height: 20px;
@@ -6578,7 +6540,7 @@ color:white;
 
 
 .abso_temprate > #v_list >.v_overflow > #dayTopicDate >#dateTopic > #topicName{
-       float:;
+     
        color:grey; 
        margin-left:15px;
 }
@@ -6604,19 +6566,19 @@ color:white;
 }
 
 .abso_temprate > #v_list >.v_overflow > #dayTopicDate > .subtopic >.major_subTopic >span{
-       float:;
+     
        color:grey; 
        margin-left:5px;
-       trransition:2s;
+       transition:2s;
 }
 
 .abso_temprate > #v_list >.v_overflow > #dayTopicDate > #subtopic >.major_subTopic > span:hover{
-       float:;
+      
        color:grey; 
        padding-left:5px;
 }
 .abso_temprate > #v_list >.v_overflow > #dayTopicDate > .subtopic >.major_subTopic > #sub_topic{
-      float:;
+     
        color:grey; 
        margin-left:7px;
        cursor:pointer;
@@ -6624,7 +6586,7 @@ color:white;
 
 
 .abso_temprate > #v_list >.v_overflow > #dayTopicDate > .subtopic >.major_subTopic > #datetopictought{
-      float:;
+     
        color:grey; 
        margin-left:7px;
        font-size:13px;
@@ -6854,11 +6816,9 @@ abso_temprate > .centerPlace {
 
 .abso_temprate > #v_documents > #quiztime >#quizx_div > #cover_q{
        width:69%;
-       display: ;
        float:left;
        margin:17% 15%;
        display: block;
-      
 }
 
 
@@ -6874,7 +6834,7 @@ abso_temprate > .centerPlace {
       
    display: block;
    font-size:18px;
-   font-tamily:tohama;
+   font-family:tohama;
    text-align: center;
    color:#ccc;
       
@@ -7365,13 +7325,11 @@ abso_temprate > .centerPlace {
        width:72%;
        height:98%;
        float:left;
-       background:;
+     
 }
 
 #notesCompos > .NCompose_wraper >.wizwigNotes_Editor >h3{
-    
-       background:;
-       width:95%;
+      width:95%;
        padding-top:1px;
        padding-left:1%;
        color:silver;
@@ -7633,15 +7591,15 @@ abso_temprate > .centerPlace {
 
 /*mainheader header_tech*/
 #header_teach  {
- float: left;
- width:100%;
- height:40px;
- margin-top:4%;
-  padding-left:;
- background:#30445c;
- font-size:12px;
- font-style:italic;
- color: rgba(115,115,115,.9);
+  float: left;
+  width:100%;
+  height:40px;
+  margin-top:4%;
+  background:#30445c;
+  font-size:12px;
+  font-style:italic;
+  color: rgba(115,115,115,.9);
+  box-shadow: 0px 3px 4px 1px #30445c63;
 }
 
 
@@ -7685,26 +7643,25 @@ abso_temprate > .centerPlace {
 }
 
 #header_teach  > .nav_resul{
-       border-right: 1px solid rgba(225,225,225,.4); 
+  border-right: 1px solid rgba(225,225,225,.4); 
 }
 
 #header_teach  > .nav_inf{
-        width:10%;
-       border-right: none; 
-       padding-right:;
+  width:4%;
+  border-right: none; 
 
 }
 
 
 
 #header_teach  > .nav_static{
-        width:10%;
-       border-right: 1px solid rgba(225,225,225,.4); 
+  width:10%;
+  border-right: 1px solid rgba(225,225,225,.4); 
 }
 
 #header_teach  > .nav_pchember{
-        width:15%;
-       border-right: 1px solid rgba(225,225,225,.4); 
+    width:15%;
+    border-right: 1px solid rgba(225,225,225,.4); 
 }
 
 #header_teach  > .nav_hist{
@@ -7767,21 +7724,12 @@ abso_temprate > .centerPlace {
 
 
 .mywall{
-    background:;
     float:left;
     width:100%;
     margin-left:9px;
     margin-top:9px;
     display:block;
 }
-
-/*.mywall >{
-    background:;
-    float:left;
-    width:100%;
-    margin-left:9px;
-}
-*/
 .whatsOnurmid{
        float:left;
        width:98%; 
@@ -7954,7 +7902,6 @@ abso_temprate > .centerPlace {
  text-align: center;
  padding-top:2px;
  padding-bottom:4%;
- margin-top:;
  display:none;
 }
 
@@ -8049,7 +7996,7 @@ abso_temprate > .centerPlace {
 }
 
 .Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime >.startTime_p{
-   margin-left:%;
+
 }
 
 .Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime > .too{
@@ -8152,14 +8099,13 @@ abso_temprate > .centerPlace {
 }
 
 
-/* parent Chember on |Teacher profile */7
+/* parent Chember on |Teacher profile */
 
 #parentsChember{
  border-bottom: 1px groove rgba(2,2,2,.2);
  border-top: 1px groove rgba(2,2,2,.2);
  width:100%;
  height: 900px;
- background:;
  margin-top:-7%;
  display:none ;
   float:left;
@@ -8228,7 +8174,7 @@ abso_temprate > .centerPlace {
    width:23%; 
    height: 100%;
    border-radius:50%;
-   background: #dcadd;
+   background: #4dcadd;
    float:right;
    margin-right:18px;
    border:2px solid  #94bae7;     
@@ -8238,7 +8184,7 @@ abso_temprate > .centerPlace {
    width:100%; 
    height: 100%;
    border-radius:50%;
-   background: #dcadd;
+   background: #4dcadd;
 }
 
 .parentsProfiles >div > .prPrfl{ 
@@ -8368,7 +8314,6 @@ abso_temprate > .centerPlace {
 }
 
 .ParentsWrap > .allParents > .allparentsChart{
-   background:;
    float: left;
    height:100%;
    width:45%;
@@ -8404,20 +8349,20 @@ abso_temprate > .centerPlace {
 }
 
 .ParentsWrap > .allParents > .allparentsChart > div{
-       background:;
+      
        float: left;
        width:100%;
 }
 
 .ParentsWrap > .allParents > .allparentsChart > .chartParentProfile > div {
-   background:;
+  
    float: left;
    width:100%;
    border-bottom:1px groove rgba(2,2,2,.2);
 }
 
 .ParentsWrap > .allParents > .allparentsChart > .chartParentProfile > .chatarent >textarea {
-   background:;
+  
    float: left;
    width:97%;
    margin-top:2px;
@@ -8432,7 +8377,7 @@ abso_temprate > .centerPlace {
 }
 
 .ParentsWrap > .allParents > .allparentsChart > .chartParentProfile > #send_botton {
-   background:;
+   
    float: left;
    width:95%;
    margin-top:2px;
@@ -8505,7 +8450,7 @@ abso_temprate > .centerPlace {
 }
 
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow >div {
- background:;
+
  float: left;
  width:100%;
  margin-bottom:2px;
@@ -8513,7 +8458,7 @@ abso_temprate > .centerPlace {
 }
 
 #parentsChember > .ParentsWrap > .allParents > .allparentsChart >.xoverflow >div >.profDisng {
-   background:;
+  
    float: left;
    width:100%;
    height:50px;
@@ -8521,7 +8466,7 @@ abso_temprate > .centerPlace {
 }
 
 .profDisng {
-   background:;
+   
    float: left;
    width:100%;
    height:50px;
@@ -8529,7 +8474,7 @@ abso_temprate > .centerPlace {
 }
 
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow >div >.profDisng >a {
- background:;
+
  border:2px solid #4dcadd;
  border-radius:50px;
  float: left;
@@ -8539,7 +8484,7 @@ abso_temprate > .centerPlace {
 }
 
 .profDisng >a {
- background:;
+
  border:2px solid #4dcadd;
  border-radius:50px;
  float: left;
@@ -8549,7 +8494,7 @@ abso_temprate > .centerPlace {
 }
 
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow >div >.profDisng>div > .stdProf {
- background:;
+
  border-radius:50px;
  float: right;
  width:35px;
@@ -8560,7 +8505,7 @@ abso_temprate > .centerPlace {
 }
 
 .profDisng>div > .stdProf {
- background:;
+
  border-radius:50px;
  float: right;
  width:35px;
@@ -8571,7 +8516,7 @@ abso_temprate > .centerPlace {
 }
 
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow >div >.profDisng> div > .stdProf >img{
-   background:;
+  
    border-radius:50px;
    float: right;
    width:35px;
@@ -8579,7 +8524,7 @@ abso_temprate > .centerPlace {
 }
 
 .profDisng> div > .stdProf >img{
-   background:;
+ 
    border-radius:50px;
    float: right;
    width:35px;
@@ -8748,16 +8693,12 @@ abso_temprate > .centerPlace {
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow >div >.icon_time > .icons {
    float:left;
    font-size: 13px;
-   font-family:OpenSansSemibold;
-   color:;
    width:42%;
 }
 
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow >div >.icon_time > .icons > span{
    float:left;
    font-size: 14px;
-   color:;
-   width:;
    margin-left:7px;
 }
 
@@ -8785,7 +8726,7 @@ abso_temprate > .centerPlace {
 /* parents chember profilerepy */
 
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow > .profileReply{
- background:;
+ border:1px solid green;
  float: left;
  width:91%;
  margin-bottom:2px;
@@ -8793,7 +8734,7 @@ abso_temprate > .centerPlace {
 }
 
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow > .textReply {
- background:;
+
  float: left;
  width:91%;
  margin-bottom:2px;
@@ -8804,7 +8745,7 @@ abso_temprate > .centerPlace {
 
 
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow > .textReply >textarea {
-   background:;
+  
    float: left;
    width:83%;
    margin-bottom:2px;
@@ -8815,7 +8756,7 @@ abso_temprate > .centerPlace {
 }
    
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow > .textReply > .sendPlan {
-   background:;
+ 
    float: right;
    width:25px;
    border-radius:20px;
@@ -8825,7 +8766,7 @@ abso_temprate > .centerPlace {
 }
 
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow > .textReply > .sendPlan > i{
-   background:;
+ 
    float: right;
    width:25px;
    margin-right:-4px;
@@ -8847,13 +8788,13 @@ abso_temprate > .centerPlace {
 /* parents chember profilerepy */
 
 .ParentsWrap > .allParents > .parentsclassgroup{
-  background:;
+ 
   float: left;
   width:53%; 
 }
 
 .ParentsWrap > .allParents > .parentsclassgroup > .classParents{
-  background:;
+
   float: left;
  
   margin-top: 2%;
@@ -8870,9 +8811,8 @@ abso_temprate > .centerPlace {
 .parentProfAcc{
   width:30%;
   height:120px;
-  height:;
   float:left;
-    margin-left: 2%;
+  margin-left: 2%;
   margin-top: 2%;
 }
 
@@ -8915,24 +8855,22 @@ abso_temprate > .centerPlace {
 }
 
 .ParentsWrap > .allParents > .homeWorkPlace >div{
-       background:;
+    
        float: left;
        height:100%;
        width:40%; 
 }
 
 .ParentsWrap >.allParents > .homeWorkPlace > .homeWorkPlace{
-   background:;
+
    float: left;
    height:100%;
    width:100%; 
 }
 
 .ParentsWrap >.allParents > .homeWorkPlace > .homeWorkPlace >span{
-   background:;
+   
    float: left;
-   height:;
-   width:%; 
    border:2px solid #f14e56 ;
    padding-top:7px;
    padding-bottom:5px;
@@ -9050,7 +8988,6 @@ abso_temprate > .centerPlace {
        height: 30px;
        background: #edeef0;
        margin-bottom: 1%;
-       padding-left:%;
        font-style:italic;
        border:none;
        border-bottom: 1px groove rgba(2,2,2,2.2);
@@ -9208,7 +9145,7 @@ abso_temprate > .centerPlace {
 } 
 
 .startExamName > .contbutton{
-       padding-right:;
+      
        float:left;
        width:10%;
        border:2px solid #30445c ;
@@ -9236,10 +9173,7 @@ abso_temprate > .centerPlace {
 } 
 
 .startExamName > .contbutton >span{
-       margin-left:;
-       padding-right:;
        float:left;
-       width:;
       color: #30445c;
 } 
 
@@ -9253,30 +9187,26 @@ abso_temprate > .centerPlace {
 } 
 
 .startExamName > .InstructionBy {
-      margin-top:;
-       font-size:;
+    
+  
        float:left;
 } 
 
 .startExamName > .InstructionBy >div {
-       width:;
-       font-size: ;
        float:left;
 } 
 
 .startExamName > .InstructionBy > .ExamInstractn {
        width:100%;
-       font-size: ;
        float:left;
        margin-top:1%;
 } 
 
 .startExamName > .InstructionBy > .ExamInstractn > h4 {
-       margin-left:30%;
-       font-size: ;
-       float:left;
-        color:rgba(105,105,105,.6);
-       font-style:italic;
+      margin-left:30%;
+      float:left;
+      color:rgba(105,105,105,.6);
+      font-style:italic;
 } 
 
 .startExamName > .InstructionBy > .ExamInstractn > textarea {
@@ -9294,30 +9224,25 @@ abso_temprate > .centerPlace {
 } 
 
 .startExamName > .InstructionBy > .by_t{
-       width:;
-       margin-right:12%;
-       font-size: ;
-       float:right;
-       margin-top:10%;
+  margin-right:12%;
+  float:right;
+  margin-top:10%;
 } 
 
 .startExamName > .InstructionBy > .by_t >h4{
-       margin-left:;
-       margin-right:4px;
-       font-size: 13px; 
-       float:left;
-       color:rgba(105,105,105,.5);
-       font-style:italic;
+     
+  margin-right:4px;
+  font-size: 13px; 
+  float:left;
+  color:rgba(105,105,105,.5);
+  font-style:italic;
 } 
 
 .startExamName > .InstructionBy > .by_t >.teachName{
-       margin-left:;
-       margin-right:;
-       
-       float:left;
-       font-size: 12px;
-       font-style:italic;
-       color:rgba(105,105,105,.5);
+  float:left;
+  font-size: 12px;
+  font-style:italic;
+  color:rgba(105,105,105,.5);
 } 
 
 
@@ -9336,74 +9261,71 @@ abso_temprate > .centerPlace {
 } 
 
 .absolutePage > div >div{
-       width:100%%;
-       height:;
-       float:left;
+  width:100%;
+  float:left;
 } 
 
 
 .absolutePage > div > .close{
-       width:100.2%;
-       height:35px;
-       float:left;
-       margin:-1px -1px;
-       border-radius: 3px 3px 0px 0px;
-       box-shadow:0px 3px 3px rgba(0,0,0,.3);
-       background: #30445c  ;
+  width:100.2%;
+  height:35px;
+  float:left;
+  margin:-1px -1px;
+  border-radius: 3px 3px 0px 0px;
+  box-shadow:0px 3px 3px rgba(0,0,0,.3);
+  background: #30445c  ;
 } 
 
 .absolutePage > div > .close >#close{
-       width:25px;
-       height:25px;
-       float:right;
-       margin-right:19px;
-       margin-top:4px;
-       border-radius: 50px;
-       box-shadow:0px 1px 2px 2px rgba(0,0,0,.3);
-       background: #30445c  ;
-       text-align: center;
-       transition:1s;
+  width:25px;
+  height:25px;
+  float:right;
+  margin-right:19px;
+  margin-top:4px;
+  border-radius: 50px;
+  box-shadow:0px 1px 2px 2px rgba(0,0,0,.3);
+  background: #30445c  ;
+  text-align: center;
+  transition:1s;
 } 
 
 .absolutePage > div > .close >#close:hover{
-       background: #F5F5F5 ;
+  background: #F5F5F5 ;
        
 } 
 
 .absolutePage > div > .close > #close:hover > i {
-        color:#30445c;
+  color:#30445c;
 } 
 
 .absolutePage > div > .close >#close >i{
-      color:#F5F5F5;
-       margin-top:4px;  
+  color:#F5F5F5;
+  margin-top:4px;  
 }
 
 .absolutePage > div > .titleSearch{
-     border: 1px solid groove rgba(2,2,2,.2);
-       margin-top:2%;
-       width:100%;
+  border: 1px solid groove rgba(2,2,2,.2);
+  margin-top:2%;
+  width:100%;
 } 
 
 .absolutePage > div > .titleSearch >div{
-     float:left;
-       width:30%;
+  float:left;
+  width:30%;
 }
 
 .absolutePage > div > .titleSearch > .QuizName{
-       float:left;
-       width:25%;
-       color:grey;
-       font-family: nehemia;
-       font-size: 19px;
-       padding-left:12px;
+  float:left;
+  width:25%;
+  color:grey;
+  font-size: 19px;
+  padding-left:12px;
 } 
 
 .absolutePage > div > .titleSearch >  .searchQuiz{
-       float:right;
-       width:70%;
-       margin-right:1.5%;
-       
+  float:right;
+  width:70%;
+  margin-right:1.5%;
 } 
 
 .absolutePage > div > .titleSearch >  .searchQuiz >input{
@@ -9624,27 +9546,25 @@ abso_temprate > .centerPlace {
 }
 
 .absolutePage > div > .QuizCompoz > #send_exam{
-       float:left;
-       margin-left:;
-       margin-top:-13%;
-       width:95%;
-       border-radius:3px;
+  float:left;
+  margin-top:-13%;
+  width:95%;
+  border-radius:3px;
 }
 
 .absolutePage > div > .QuizCompoz > #send_exam >div{
-       float:right;
-       margin-left:1px;
-       margin-right:4%;
-       margin-top:2%;
-       border:1px solid #4dcadd;
-       border-radius:3px;
-       padding-top:2%;
-       padding-left:3%;
-       padding-right :3%;
-       padding-bottom:1%;
-       color:#4dcadd;
-       font-size: 12px;
-       font-family: DroidSerif;
+  float:right;
+  margin-left:1px;
+  margin-right:4%;
+  margin-top:2%;
+  border:1px solid #4dcadd;
+  border-radius:3px;
+  padding-top:2%;
+  padding-left:3%;
+  padding-right :3%;
+  padding-bottom:1%;
+  color:#4dcadd;
+  font-size: 12px;
 }
 
 .absolutePage > div > .QuizCompoz > #send_exam >div:hover{
@@ -9745,7 +9665,6 @@ abso_temprate > .centerPlace {
 .absolutePage > div > #QuizDisplayFromlist > .topName_goback > .name_time > .title{
        text-align: center;
        font-size:17px;
-       margin-top:%;
        margin-left:16%;
        padding-right:2%;
        color:rgba(255,255,255,.7);
@@ -9785,7 +9704,7 @@ abso_temprate > .centerPlace {
 }
 
 .absolutePage > div > .QuizDisplay >.xoverflow > .divSection >.testSection {
-       float:;
+      
        width:60%;
        font-size: 14px;
        font-family:DroidSerif;
@@ -9985,7 +9904,6 @@ abso_temprate > .centerPlace {
        padding-bottom:2px;
        color:#4dcadd;
        cursor:pointer;
-       font-weight:;
         font-size: 15px;
        font-family: DroidSerif;
 }
@@ -10261,12 +10179,10 @@ abso_temprate > .centerPlace {
 
 .takeQuest> div > .onTestSection{
        float:left;
-       margin-left:;
        width:18%;
 }
 
 .takeQuest> div > .onTestSection > select{
-       margin-left:;
 /*        width:66%; */
 }
 
@@ -10425,7 +10341,7 @@ abso_temprate > .centerPlace {
 }
 
  #class_static > .subjectmax > h3{
-        background:#ccc;f
+        background:#ccc;
         padding-top:1%;
         padding-bottom:1%;
         margin-top:2%;
@@ -10476,9 +10392,8 @@ abso_temprate > .centerPlace {
        margin-left:2%;
        float:left;
        color:#909b9e;
-       text-shadow: ;
        background:gainsboro;
-      color: rgba(0,0,0,0.6);
+      color: rgba(0,0,0,.6);
       text-shadow: 2px 2px 3px rgba(255,255,255,0.1); 
       
        
@@ -10614,7 +10529,7 @@ abso_temprate > .centerPlace {
 }
 
 
-/* navtwo NOw */2
+/* navtwo NOw */
 
 
            #Pagewraper > #side_One >#navtwo{
@@ -10804,7 +10719,7 @@ abso_temprate > .centerPlace {
 
              #nav_hova > #nav_enterpr{
                    width:200px;
-                   height: 9.1%;  
+                   height: 9.3%;  
                    margin-top: 482px;
              
             }
@@ -10852,7 +10767,6 @@ abso_temprate > .centerPlace {
        float:left;
        width:80%;
        margin-top:5%;
-       margin-left:%;
        color:#f14e56;  
        font-family:tohama;
    
@@ -10961,7 +10875,8 @@ abso_temprate > .centerPlace {
        padding-left: 17px;
        padding-right:17px;
        padding-bottom: 6px;
-       margin-right:2%;4ursor: pointer;
+       margin-right:2%;
+       cursor: pointer;
        border-radius:3px;
      
 }
@@ -10993,7 +10908,28 @@ abso_temprate > .centerPlace {
   float:left;
   width:90%;
   margin-top:2%;
-  margin-left:2%;
+}
+
+.chembaDiv{
+  float:right;
+  width:90%;
+  margin-left:5%;
+}
+
+.chembaDiv > .msg{
+  margin-left:12%;
+  padding-top:3%;
+  padding-bottom:2%;
+  float:left;
+  width:83%;
+}
+
+.chembaDiv > .icon_time > .icons{
+  width:80%;
+  margin-left:12%;
+}.chembaDiv > .icon_time > .sendTime{
+  width:12%;
+  float:right;
 }
 
 .replyDive > textarea{
@@ -11765,7 +11701,6 @@ abso_temprate > .centerPlace {
        background:rgba(115,115,115,.5);
        background:rgba(0,10,10,.9);
        padding-left:.3%;
-       box-shadow: 
 }
 
 
@@ -11911,7 +11846,6 @@ abso_temprate > .centerPlace {
 
 #book_temprate > #v_documents > #quiztime >#quizx_div > #cover_q{
        width:69%;
-       display: ;
        float:left;
        margin:17% 15%;
        display: block;
@@ -12567,7 +12501,6 @@ abso_temprate > .centerPlace {
 #book_buy > .booxWraper > .xoverflow >.subtopicHeader > div {
        color:white; 
        float:right;
-/*     width:%; */
        background:white;
        color:grey;  
        padding-left:12px;
@@ -12730,12 +12663,11 @@ abso_temprate > .centerPlace {
 
 #book_buy > .booxWraper > .BuyBookx{
        background:white;
-       border-radius:3px
+       border-radius:3px;
        color:grey;
        float:left;
        width:100.6%;
        height:6%;
-       margin-top:px;
       margin-left:-1%;
        font-weight:bold;
        font-size: 18px;
@@ -13193,7 +13125,6 @@ abso_temprate > .centerPlace {
 
 #exam_temprate > #v_chart > #text_vchart >#postQandAns > .time_schol > div > input{
       padding-left:3%;
-      padding-top:%;
       width: 50%; 
           float:right;
        margin-top:1%;
@@ -13357,7 +13288,6 @@ abso_temprate > .centerPlace {
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s >#navAsk{
   
    border-radius: 3px;
-   background:;
    width:65%;
    float:left;
    color:white;
@@ -13367,7 +13297,6 @@ abso_temprate > .centerPlace {
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s >#navAsk > div{
   
    border-radius: 3px;
-   background:;
    float:left;
    width:33%;
    color:white;
@@ -13383,7 +13312,6 @@ abso_temprate > .centerPlace {
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s > .overflow{
    border-top:1px solid white;
    border-radius: 3px;
-   background:;
    float:left;
    width:111%;
    color:white;
@@ -13408,12 +13336,11 @@ abso_temprate > .centerPlace {
 
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s > .overflow > #profile_ask > #simpleProfile {
    border-radius: 3px;
-   background:;
    margin-top:7%;
    margin-left:2px;
    float:left;
    width:34%;
-   height: 60%
+   height: 60%;
    color:white;
    float:left;
 }
@@ -13421,7 +13348,6 @@ abso_temprate > .centerPlace {
 
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s > .overflow > #profile_ask > #simpleProfile  > a{
    border-radius: 3px;
-   background:;
    float:left;
    width:100%;  
    color:white;
@@ -13431,7 +13357,6 @@ abso_temprate > .centerPlace {
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s > .overflow > #profile_ask > #simpleProfile  > a > img{
    border:2px solid #4dcadd;
    border-radius: 3px;
-   background:;
    float:left;
    width:100%;  
    height:100%;
@@ -13441,7 +13366,6 @@ abso_temprate > .centerPlace {
 
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s > .overflow > #profile_ask > #details_side{
    border-radius: 3px;
-   background:;
    float:left;
    width:58%;   
    color:white;
@@ -13451,7 +13375,6 @@ abso_temprate > .centerPlace {
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s > .overflow > #profile_ask > #details_side > span{
  
    border-radius: 3px;
-   background:;
    float:left;
    margin-top:2%;
    margin-left:6%;
@@ -13463,8 +13386,7 @@ abso_temprate > .centerPlace {
 
 
 #send_exam > #share_to_s > .overflow > #profile_ask > #details_side > .name{
-   border-radius: 3px;
-   background:;
+   border-radius:3px;
    float:left;
    margin-top:2%;
    width:40%; 
@@ -13660,7 +13582,6 @@ abso_temprate > .centerPlace {
        font-size:14px;
        float:left;
        width:7%;
-       margin-top:%;
        margin-right:2%;
          margin-left:-7%;
        background:#9999; 
@@ -14159,11 +14080,10 @@ color:white;
        border-radius:0px 0px 0px 5px;
 }
 
-.abso_temprate > #v_list >.v_overflow > #dayTopicDate > .subtopic >.major_subTopic >span{
-       float:;
+.abso_temprate > #v_list >.v_overflow > #dayTopicDate > .subtopic >.major_subTopic > span{
        color:grey; 
        margin-left:5px;
-       trransition:2s;
+       transition:2s;
 }
 
 .abso_temprate > #v_list >.v_overflow > #dayTopicDate > #subtopic >.major_subTopic > span:hover{
@@ -15371,7 +15291,7 @@ abso_temprate > .centerPlace {
        width:40px;
 }
 .Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime >.startTime_p{
-    margin-left:%;
+   
 }
 
 .Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime > .too{
@@ -15556,8 +15476,7 @@ abso_temprate > .centerPlace {
        width:99%;
        height: 30px;
        background: #edeef0;
-       margin-bottom: 1%;
-       padding-left:%;
+       
        font-style:italic;
        border:none;
        border-bottom: 1px groove rgba(2,2,2,2.2);
@@ -15842,9 +15761,8 @@ abso_temprate > .centerPlace {
        display:none;
 } 
 
-.absolutePage > div >div{
-       width:100%%;
-       height:;
+.absolutePage > div > div{
+       width:100%;
        float:left;
 } 
 
@@ -16252,7 +16170,7 @@ abso_temprate > .centerPlace {
 .absolutePage > div > #QuizDisplayFromlist > .topName_goback > .name_time > .title{
        text-align: center;
        font-size:17px;
-       margin-top:%;
+      
        margin-left:16%;
        padding-right:2%;
        color:rgba(255,255,255,.7);
@@ -16295,7 +16213,6 @@ abso_temprate > .centerPlace {
        float:;
        width:60%;
        font-size: 14px;
-       font-family:DroidSerif;
        color:rgba(2,2,2,.4);
 }
 
@@ -16450,7 +16367,7 @@ abso_temprate > .centerPlace {
 .absolutePage > .insideCover >.QuizList > .xoverflow > .QuizQust > .quizDone >.quizDaate{
        float:right;
        margin-right:3%;
-       font-family: OpenSansSemibold;
+     
        font-style:italic;
        color:rgba(105,105,105,.8); 
        padding-left:2%;
@@ -16464,7 +16381,7 @@ abso_temprate > .centerPlace {
        padding-top:2%;
        transition: 2s;
        font-size: 12px;
-       font-family: OpenSansSemibold;
+      
        color: rgba(0,0,0,0.3); 
        text-shadow: 2px 2px 3px rgba(255,255,255,0.1); 
        cursor:pointer;
@@ -16494,7 +16411,6 @@ abso_temprate > .centerPlace {
        cursor:pointer;
        font-weight:;
         font-size: 15px;
-       font-family: DroidSerif;
 }
 
 .absolutePage > .insideCover >.QuizList > .submitQuizBottons > span:hover{
@@ -16773,7 +16689,7 @@ abso_temprate > .centerPlace {
 }
 
 .takeQuest> div > .onTestSection > select{
-       margin-left:;
+    
 /*        width:66%; */
 }
 
@@ -16889,7 +16805,7 @@ abso_temprate > .centerPlace {
        padding-bottom:1%;
        padding-left:1%;
        margin-top: 1%;
-       margin-bottom: 1%;
+    
        color:grey;
        font-weight:bold;
  }
@@ -16931,7 +16847,7 @@ abso_temprate > .centerPlace {
 }
 
  #class_static > .subjectmax > h3{
-        background:#ccc;f
+        background:#ccc;
         padding-top:1%;
         padding-bottom:1%;
         margin-top:2%;
@@ -16982,7 +16898,6 @@ abso_temprate > .centerPlace {
        margin-left:2%;
        float:left;
        color:#909b9e;
-       text-shadow: ;
        background:gainsboro;
       color: rgba(0,0,0,0.6);
       text-shadow: 2px 2px 3px rgba(255,255,255,0.1); 
@@ -17086,7 +17001,7 @@ abso_temprate > .centerPlace {
        border-radius:50px;
  }
 
-/* posteed message */2
+/* posteed message */
 
 
 /* //choose questioin 
@@ -17130,7 +17045,7 @@ abso_temprate > .centerPlace {
   padding-bottom: 2px;
   color:white;
   background: #4dcadd;
-  font-weight:bold:
+  font-weight:bold;
   border-radius:3%; 
   text-align: center;
 }
@@ -17189,24 +17104,20 @@ abso_temprate > .centerPlace {
 }
 
 .BusnessStoryQstn > div > p{
-  margin-left:;
 }
 
 .BusnessStoryQstn > div > .qustion {
-  margin-left:;
   padding-left: 4%;
   
 }
 
 .BusnessStoryQstn > div > .answHist {
-  margin-left:;
   padding-left: 6%;
   padding-top:1%;
   padding-bottom:1%;
 }
 
 .answHist {
-  margin-left:;
   padding-left: 6%;
   padding-top:1%;
   padding-bottom:1%;
@@ -17664,7 +17575,7 @@ abso_temprate > .centerPlace {
   padding-left:1px;
   padding-right:1px;
   font-weight: bold;
-  font-size: 13px
+  font-size: 13px;
   color:#4dcadd;
   cursor:pointer;
 }
@@ -18442,7 +18353,7 @@ abso_temprate > .centerPlace {
   width:90%;
   padding-left: 2%;
   margin-top: 1%;
-  margin-bottom: 1%;
+  
 }
 
 .ardhHeader{
@@ -18871,7 +18782,7 @@ abso_temprate > .centerPlace {
 .infodiv > .uploadAsseetPhoto > .divIcon{
   width:100%;
   float:left; 
-  padding-top: 0px
+  padding-top: 0px;
   margin-top:1px;
 }
 
@@ -20034,10 +19945,9 @@ font-style: italic;
 
 #exam_temprate > #v_chart > #text_vchart >#postQandAns > .time_schol > div > input{
       padding-left:3%;
-      padding-top:%;
       width: 50%; 
-          float:right;
-       margin-top:1%;
+      float:right;
+      margin-top:1%;
 }
 
 #exam_temprate > #v_chart > #text_vchart >#postQandAns > #Qno{
@@ -20224,7 +20134,6 @@ font-style: italic;
 #exam_temprate > #v_chart > #text_vchart > #postQandAns > #send_exam > #share_to_s > .overflow{
    border-top:1px solid white;
    border-radius: 3px;
-   background:;
    float:left;
    width:111%;
    color:white;
@@ -20254,7 +20163,7 @@ font-style: italic;
    margin-left:2px;
    float:left;
    width:34%;
-   height: 60%
+   height: 60%;
    color:white;
    float:left;
 }
@@ -20501,7 +20410,6 @@ font-style: italic;
        font-size:14px;
        float:left;
        width:7%;
-       margin-top:%;
        margin-right:2%;
          margin-left:-7%;
        background:#9999; 
@@ -20788,7 +20696,7 @@ color:white;
        height: 93%;
        width:104%;
        margin-left:1%;
-        margin-top:1%;
+       margin-top:1%;
        overflow-x:hidden;
        background:rgba(0,10,10,.9);
 }
@@ -22286,7 +22194,7 @@ abso_temprate > .centerPlace {
        width:40px;
 }
 .Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime >.startTime_p{
-    margin-left:%;
+    
 }
 
 .Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime > .too{
@@ -22475,8 +22383,8 @@ abso_temprate > .centerPlace {
        width:99%;
        height: 30px;
        background: #edeef0;
-       margin-bottom: 1%;
-       padding-left:%;
+      
+      
        font-style:italic;
        border:none;
        border-bottom: 1px groove rgba(2,2,2,2.2);
@@ -22762,7 +22670,7 @@ abso_temprate > .centerPlace {
 } 
 
 .absolutePage > div >div{
-       width:100%%;
+       width:100%;
        height:;
        float:left;
 } 
@@ -23171,7 +23079,6 @@ abso_temprate > .centerPlace {
 .absolutePage > div > #QuizDisplayFromlist > .topName_goback > .name_time > .title{
        text-align: center;
        font-size:17px;
-       margin-top:%;
        margin-left:16%;
        padding-right:2%;
        color:rgba(255,255,255,.7);
@@ -23850,7 +23757,7 @@ abso_temprate > .centerPlace {
 }
 
  #class_static > .subjectmax > h3{
-        background:#ccc;f
+        background:#ccc;
         padding-top:1%;
         padding-bottom:1%;
         margin-top:2%;
@@ -24385,7 +24292,7 @@ abso_temprate > .centerPlace {
        width:40px;
 }
 .Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime >.startTime_p{
-    margin-left:%;
+
 }
 
 .Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime > .too{
@@ -24495,10 +24402,7 @@ abso_temprate > .centerPlace {
 
 /* Result for a studentfor all student */
 
-@font-face {
- font-family: "LatoBlack";
- src: url("familyfont/lato/LatoLight.ttf");
-}
+
 .resultPlace{
  float:left;
  width:100%;
@@ -24509,7 +24413,6 @@ abso_temprate > .centerPlace {
 .resultPlace >div{
   float:left;
   width:100%;
-  font-family: LatoBlack;
   color:grey;
 }
 
@@ -24736,7 +24639,7 @@ abso_temprate > .centerPlace {
        height: 30px;
        background: #edeef0;
        margin-bottom: 1%;
-       padding-left:%;
+    
        font-style:italic;
        border:none;
        border-bottom: 1px groove rgba(2,2,2,2.2);
@@ -25022,7 +24925,7 @@ abso_temprate > .centerPlace {
 } 
 
 .absolutePage > div >div{
-       width:100%%;
+       width:100%;
        height:;
        float:left;
 } 
@@ -25431,7 +25334,7 @@ abso_temprate > .centerPlace {
 .absolutePage > div > #QuizDisplayFromlist > .topName_goback > .name_time > .title{
        text-align: center;
        font-size:17px;
-       margin-top:%;
+      
        margin-left:16%;
        padding-right:2%;
        color:rgba(255,255,255,.7);
@@ -26110,7 +26013,7 @@ abso_temprate > .centerPlace {
 }
 
  #class_static > .subjectmax > h3{
-        background:#ccc;f
+        background:#ccc;
         padding-top:1%;
         padding-bottom:1%;
         margin-top:2%;
@@ -26265,7 +26168,7 @@ abso_temprate > .centerPlace {
        border-radius:50px;
  }
 
-/* posteed message */2
+/* posteed message  2 */
 
 
 
@@ -27453,7 +27356,6 @@ abso_temprate > .centerPlace {
 #book_buy > .booxWraper > .xoverflow >.subtopicHeader > div {
        color:white; 
        float:right;
-/*     width:%; */
        background:white;
        color:grey;  
        padding-left:12px;
@@ -27616,13 +27518,12 @@ abso_temprate > .centerPlace {
 
 #book_buy > .booxWraper > .BuyBookx{
        background:white;
-       border-radius:3px
+       border-radius:3px;
        color:grey;
        float:left;
        width:100.6%;
        height:6%;
-       margin-top:px;
-      margin-left:-1%;
+       margin-left:-1%;
        font-weight:bold;
        font-size: 18px;
 }
@@ -28096,10 +27997,9 @@ abso_temprate > .centerPlace {
 
 #exam_temprate > #v_chart > #text_vchart >#postQandAns > .time_schol > div > input{
       padding-left:3%;
-      padding-top:%;
       width: 50%; 
-          float:right;
-       margin-top:1%;
+      float:right;
+      margin-top:1%;
 }
 
 #exam_temprate > #v_chart > #text_vchart >#postQandAns > #Qno{
@@ -28316,7 +28216,7 @@ abso_temprate > .centerPlace {
    margin-left:2px;
    float:left;
    width:34%;
-   height: 60%
+   height: 60%;
    color:white;
    float:left;
 }
@@ -28563,7 +28463,7 @@ abso_temprate > .centerPlace {
        font-size:14px;
        float:left;
        width:7%;
-       margin-top:%;
+      
        margin-right:2%;
          margin-left:-7%;
        background:#9999; 
@@ -30053,7 +29953,7 @@ abso_temprate > .centerPlace {
        padding-left:2%;
        color:grey;  
 }
-/* teacher profile */1
+/* teacher profile 1 */
 #header_teach  {
        float: left;
        width:100%;
@@ -30247,7 +30147,7 @@ abso_temprate > .centerPlace {
        height: 30px;
        background: #edeef0;
        margin-bottom: 1%;
-       padding-left:%;
+      
        font-style:italic;
        border:none;
        border-bottom: 1px groove rgba(2,2,2,2.2);
@@ -30533,7 +30433,7 @@ abso_temprate > .centerPlace {
 } 
 
 .absolutePage > div >div{
-       width:100%%;
+       width:100%;
        height:;
        float:left;
 } 
@@ -30942,7 +30842,6 @@ abso_temprate > .centerPlace {
 .absolutePage > div > #QuizDisplayFromlist > .topName_goback > .name_time > .title{
        text-align: center;
        font-size:17px;
-       margin-top:%;
        margin-left:16%;
        padding-right:2%;
        color:rgba(255,255,255,.7);
@@ -31621,7 +31520,7 @@ abso_temprate > .centerPlace {
 }
 
  #class_static > .subjectmax > h3{
-        background:#ccc;f
+        background:#ccc;
         padding-top:1%;
         padding-bottom:1%;
         margin-top:2%;
@@ -31930,7 +31829,6 @@ abso_temprate > .centerPlace {
   padding-bottom: 1px;
   resize: none;
   border:none;
-  border
   font-style:italic;
 }
 
@@ -32034,10 +31932,7 @@ abso_temprate > .centerPlace {
 
 /* Result for a studentfor all student */
 
-@font-face {
-       font-family: "LatoBlack";
-       src: url("familyfont/lato/LatoLight.ttf");
-}
+
 .resultPlace{
        float:left;
        width:100%;
@@ -32051,7 +31946,6 @@ abso_temprate > .centerPlace {
 .resultPlace >div{
        float:left;
        width:100%;
-       font-family: LatoBlack;
        color:grey;
 }
 
@@ -33091,6 +32985,18 @@ abso_temprate > .centerPlace {
   margin-bottom:8%;
 }
 
+.todayPeriods{
+  border: 1px solid #c1c1c1;
+  width: 65%;
+  float: left;
+}
+
+.tommorowPeriods{
+  border: 1px solid #c1c1c1;
+  width: 30%;
+  float:right;
+}
+
 .teachertimetable{
     margin-top:2%;
 }
@@ -33331,14 +33237,14 @@ display: none;
 
 .tymorow{
   float:right;
-  width: 20%;
+  width: 90%;
   margin-top:6px;
 }
 
 
 .tymorow > .showsubject{
   float:left;
-  width: 20%;
+  width: 100%;
   border:1px solid rgba(2,2,2,.2);
   padding-left: 3%;
   padding-bottom: 2%;
@@ -33362,7 +33268,7 @@ display: none;
   
 .tymorow > .showsubject > .tymorotyme {
   float:left;
-  width: 40%;
+  width: 50%;
   margin-left:4px;
   margin-bottom:2%;
 }
@@ -33610,7 +33516,7 @@ display: none;
 
 /* <!-- //planner progress -->*/
 .ompregressAndAcomplshedDream {
-   float:left:
+   float:left;
    width:100%;
    margin-top:2%;
 }
@@ -35149,7 +35055,7 @@ donation{
   font-weight: bold;
   border-bottom:1px solid rgba(2,2,2,.2);
   padding-top:2%;
-  padding-bottom: 1%
+  padding-bottom: 1%;
   background:#4dcadd;
 }
 
@@ -35618,7 +35524,7 @@ donation{
 }
 
 
-/* End of  Choose Question */1
+/* End of  Choose Question1 */
 
 .tableList{
   background: #f3f5f7;
@@ -35916,7 +35822,7 @@ donation{
 
 
 .anybotton > h4{
-  border-bottom: :1px groove rgba(105,105,105,.5);
+  border-bottom:1px groove rgba(105,105,105,.5);
   float:left;
   width:100%;
  border-radius:3px;
@@ -35939,7 +35845,7 @@ donation{
 .browsdResult{
   float:left;
   width:98%;
-  height: 40%
+  height: 40%;
   background:#eff3f6;
   margin-top:2%;
   margin-left:1%;
@@ -36499,7 +36405,7 @@ donation{
        height: 30px;
        background: #edeef0;
        margin-bottom: 1%;
-       padding-left:%;
+      
        font-style:italic;
        border:none;
        border-bottom: 1px groove rgba(2,2,2,2.2);
@@ -36785,7 +36691,7 @@ donation{
 } 
 
 .absolutePage > div >div{
-       width:100%%;
+       width:100%;
        height:;
        float:left;
 } 
@@ -37194,7 +37100,6 @@ donation{
 .absolutePage > div > #QuizDisplayFromlist > .topName_goback > .name_time > .title{
        text-align: center;
        font-size:17px;
-       margin-top:%;
        margin-left:16%;
        padding-right:2%;
        color:rgba(255,255,255,.7);
@@ -37786,35 +37691,7 @@ donation{
 
 
 
-/* .takeQuest> div > .date >label{
-       content:"date"; 
-       font-style:italic;
-       font-size:13px;
-}
- */
 
-
-/* .takeQuest> div{
-       padding-left:3px;
-       padding-right:3px;
-       padding-top:3px;
-       padding-buttom:2px;
-       width:25%;
-}
-
-.takeQuest> .InmyTest{
-       width:25%;
-}
-
-.takeQuest> .InmyTest{
-       width:25%;
-} */
-
-.searchedDiv > .takeQuest >.InmyTest{
-       color:red;
-       border:1px solid yellowgreenow;
-       width:50px;
-}
 
 /* ***statistics page*** */ 
 #class_static{
@@ -37873,7 +37750,7 @@ donation{
 }
 
  #class_static > .subjectmax > h3{
-        background:#ccc;f
+        background:#ccc;
         padding-top:1%;
         padding-bottom:1%;
         margin-top:2%;
@@ -38047,17 +37924,16 @@ donation{
        float: left;
 }
 
-.profImg >img{
+.profImg > img{
        width:100%;
        height:100%;
        border-radius:50px;
  }
 
-/* posteed message */3
 
 
-/* //choose questioin 
- */
+
+/* //choose questioin */
 
 .takeQuest{
    float:left;
@@ -39048,7 +38924,7 @@ margin-left:13%;
 .changePasswraper > form >  div > input{
   margin-left:4%;
   border-radius:3px;
-  padding-left:2%
+  padding-left:2%;
   padding-top:2%;
   height:24px;
   width: 50%;
@@ -39058,7 +38934,6 @@ margin-left:13%;
 }
 
 .changePasswraper > form >  div > input:hover{
-
   box-shadow :0px 0px 3px 0px rgba(77,202,221,.9);
 }
 
@@ -39362,6 +39237,11 @@ color:white;
   margin-top:2%;
   float:left;
   width:90%;
+}
+
+#studentSubj > .qstnAndAnsBody{
+  max-height: 150px;
+
 }
 
 
@@ -39944,10 +39824,11 @@ font-weight: bold;
 .prof_cont > .panel_title{
   width:98%;
   margin-left:2%;
-  margin-top: :2%;
+  margin-top:2%;
   float:left;
 }
- .t_title{
+
+.t_title{
   font-size: 10px;
   font-weight: bold;
   float:left;
@@ -40170,21 +40051,25 @@ font-weight: bold;
 
 
 .divPost{
-  border-bottom:1px solid grey;
-  float:left;
-  width:60%;
+  float: left;
+  width: 60%;
   margin-left: 18%;
-  margin-top: 1%;
+  margin-top: -3.9%;
+  background: #30445c;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-shadow: 0px 1px 2px 1px rgba(48, 68, 92, 0.79);
 }
 
 .NormalIdeas{
-  border-right:1px solid #4dcadd;
-  float:left;
+  border-right: 1px solid #88909a;
+  float: left;
   margin-top: 2%;
-  width:50%;
+  width: 50%;
   text-align: center;
   font-size: 14px;
   cursor: pointer;
+  color:white;
 }
 
 .composeQstnWall{
@@ -40914,12 +40799,12 @@ addplace{
   }
 
 
-  .showsubject {
+  /*.showsubject {
     float:left;
     width: 30%;
     margin-left: 2%;
   }
-
+*/
   .choose_topics{
     float:left;
     width: 100%;
@@ -41605,9 +41490,8 @@ addplace{
                       }
 
                       .doc_slideBox >div > .doc_discr > span{
-                        padding: 2px 2px;
+                      padding: 2px 2px;
                       width: 80%;
-                      border: ;
                       border-bottom: 1px solid rgba(2,2,2,.2);
                       text-align: center;
                       font-style: italic;
@@ -41616,4 +41500,227 @@ addplace{
                       margin-left: 5%;
 
                       }
+
+               	  
+
+               	    #parentsChember > .main{
+               	    	width: 99%;
+               	    	margin-top:-10%;
+               	    	float:left;
+               	    }
+
+               	    #parentsChember > .main > .sliderContainer{
+               	    	width: 88%;
+               	    	height: 165px;
+               	    }
+
+
+               	    #parentsChember > .main > .nav{
+               	    	width: 5%;
+               	    }
+               	    
+                    .main{
+                    	width:98%;
+                    	float:left;
+                    }
+
+                    .sliderContainer{
+                    	width:755px;
+                    	height: 110px;
+                    	margin:30px auto;
+                        border:1px solid rgba(2,2,2,.2);
+                        overflow: hidden;
+                        float: left;
+                    }
+
+                    .sliderContainer .slider{
+                    	width:6000px;
+                    	height: 130px;
+                    	transition: all 1s ease-in-out;
+                    	/*border:1px solid yellow;*/
+                    }
+
+                    .sliderContainer .slider .box{
+                    	height: 100%;
+                    	float:left;
+                    	width:150px;
+                    	margin-left: 6px;
+                    }
                     
+                    .sliderContainer .slider .box{
+                    	
+                    }
+
+                    .sliderContainer .slider .box .parentSlider{
+                    	float:left;
+                    	width:100%;
+                    	height: 100%;
+                    	border-radius:3px;
+                    }
+
+                    .sliderContainer .slider .box .parentSlider > img{
+                    	float:left;
+                    	width:100%;
+                    	height: 100%;	
+                    }
+
+              
+                    .main .nav{
+                        float: left;
+                        width: 5%;
+                        line-height: 40px;
+                        border: 1px solid grey;
+                        cursor: pointer;
+                        text-align: center;
+                        background: rgba(36,33,32,.4);
+                        color:#fff;
+                        cursor: pointer;
+                        font-size: 25px;
+                        opacity: 0.5;
+                        transition: all .5s ease-in-out;
+                        margin-top: 7%;
+                    }
+
+                    .main .nav{
+                    	opacity:1;
+                    }
+
+                    .main .nav:hover{
+                    	background: rgba(10,10,10,.6);
+                    	color:orangered;
+                    }
+
+                    .Next{    
+                    	right: 0px;
+                    }
+
+                    .prevouis{
+                    	left: 0px;
+                    }
+                     
+                    /* >>>>>>>>>>>> >>>>> parent slider profile */
+			       .slideContainer{
+			           width:100%;
+			           height: 100%;
+			           border-radius: 3px;
+			       }
+
+			        .topcontainer{
+			           width:100%;
+			           height: 20%;
+			           float:left;
+			        }
+
+			        .topcontainer > a{
+			           border:1px solid green;
+			           width:25%;
+			           height:130%;
+			           border-radius:50%;
+			           text-decoration:none;
+			           float:right;
+			           position: relative;
+			        }
+
+			       
+			        .topcontainer > a > img{
+			           border:1px solid green;
+			           width:100%;
+			           height:100%;
+			           border-radius:50%;
+			       }
+
+
+			       .another{
+			           width:100%;
+			           height: 80%;
+			           float:left;
+			       }
+
+			       .ParentPicture{
+			        width:80%;
+			        height: 60%;
+			        margin-top:-7%;
+			        float:left;
+			        margin-left:8%;
+
+			       }
+
+			        .ParentPicture img{
+			           width:100%;
+			           height: 100%;
+			           border-radius:3px;
+			       }
+			      .profileDetails{
+			        width:100%;
+			           height:55%;
+			           border:1px solid rgba(2,2,2,.2);
+			           padding-top:2%;
+			           float:left;
+			           margin-top:-2%;
+			      }
+			      
+			      .profileDetails > .info{
+			          width:98%;
+			          height: 90%;
+			          padding-left: 2%;
+			          float:left;
+			          
+			      }
+
+			      .infod{
+			        color:grey;
+			        font-size: 10px;
+			        width:25%;
+			        float:left;
+			        padding-top:1px;
+			        font-weight: bold;
+			      }
+
+			      .info2{
+			        font-size: 10px;
+			        color:grey;
+			        width:70%;
+			        float:left;
+			      }
+
+
+			      .info2 > a{
+			        text-decoration: none;
+			        color:grey;
+			         font-size: 10px;
+			      }
+
+			      .infoDiv{
+			          width:100%;
+			          float:left;
+			          padding-left:2%;
+			          padding-top:1%;
+			          margin-top:1%;
+			         
+			      }
+
+			       .last{
+			          width:100%;
+			          float:left;
+			          background: #4dcadd;
+			          color:white;
+			          padding: 0px;
+			          margin: 0px;
+			          margin-top:3%;
+			      }
+
+
+			      .last > i{
+			        width:100%;
+			        font-size:18px;
+			        text-align: center;
+
+			      }
+
+			      .last:hover > i{
+			       border:1px solid #4dcadd;
+			       color:#4dcadd;
+			       background: white
+			      }
+		 /* END parent slider profile */
+          

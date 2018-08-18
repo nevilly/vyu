@@ -1,4 +1,4 @@
-
+ 
 
 <?php  
  include 'include/allprofilefunc.php';
@@ -39,7 +39,6 @@
 		}
     /////////END: check FrndShp Bottom
     ////////////////////////////////////////////////////////////////////////////////////
-    
 
     ///////////////////////////////////////////////////////////////////////////////////
 	///// Subject Name
@@ -59,16 +58,18 @@
 	   //     //       echo escape($user-> suubject_name ).'<br/>';
 	   //  	  //  }
 	   //  }
-
-		   @ $teacherId         =  $teacher_info->first()->user_id;
+	       @ $teach_Id      =  $teacher_info->first()->id;
+		   @ $teacherId    =  $teacher_info->first()->user_id;
 	       @ $teacher_schulname =  $teacher_info->first()->schoolname;
 		   @ $teacher_rname     =  $teacher_info->first()->region;
 	       @ $teacher_lev       =  $teacher_info->first()->levelOrStandard;
 	       @ $teacher_fa        =  $teacher_info->first()->facultOrComb_taken;
 	       @ $profesional_subj  =  $teacher_info->first()->prof_subject_1;
 	       @ $schoolname        =  $teacher_info->first()->schoolname;
-	       @ $level_identify    =  $teacher_info->first()->level_identify;
-	      
+		   @ $level_identify    =  $teacher_info->first()->level_identify;
+		   @ $mkondo            =  $teacher_info->first()->mkondo;
+		
+	    
 
 
 	       if($level_identify == 'h'){
@@ -87,10 +88,7 @@
 
 	///// END: Subject Name
     ////////////////////////////////////////////////////////////////////////////////////
-
-
-  
- ?>
+?>
 
 
 
@@ -110,290 +108,6 @@
 			<div class = 'section'>
 				<?php include 'include/profileheader.php'; ?>
 
-			<!-- 	<script>
-					image = new array('img/profiles/63.png',  'img/profiles/img1.jpg','img/profiles/life.jpg');
-					img_number = 0;
-					img_Length =  image.lenght - 1;
-
-					function change_img(num){
-                        img_number = img_number + num;
-
-                        if(img_number > img_Length){
-                             img_number = 0;
-                        }
-
-                        if(img_number < 0){
-                           img_number  = img_Length;
-                        }
-
-                         document.slidShow.src = image[img_number]; 
-                         return false;
-					}
-				</script>
-  
-                <div class = "trial" style = "border:1px solid red; width:100%;"
-                >
-					<img src =  'img/profiles/63.jpg' name = 'slidShow'>
-
-					  <table>
-				    	<tr>
-				    		<td align="left"><div onclick = "return change_img(-1)">Prev</div></td>
-				    		<td align="left"><div onclick = "return change_img(1)" >Next</div></td>
-				    	</tr>
-				    </table>
-			    </div> -->
-               <style>
-               	  
-
-               	    #parentsChember > .main{
-               	    	width: 99%;
-               	    	margin-top:-10%;
-               	    	float:left;
-               	    }
-
-               	    #parentsChember > .main > .sliderContainer{
-               	    	width: 88%;
-               	    	height: 165px;
-               	    }
-
-
-               	    #parentsChember > .main > .nav{
-               	    	width: 5%;
-               	    }
-               	    
-                    .main{
-                    	width:98%;
-                    	float:left;
-                    }
-
-                    .sliderContainer{
-                    	width:755px;
-                    	height: 110px;
-                    	margin:30px auto;
-                        border:1px solid rgba(2,2,2,.2);
-                        overflow: hidden;
-                        float: left;
-                    }
-
-                    .sliderContainer .slider{
-                    	width:6000px;
-                    	height: 130px;
-                    	transition: all 1s ease-in-out;
-                    	/*border:1px solid yellow;*/
-                    }
-
-                    .sliderContainer .slider .box{
-                    	height: 100%;
-                    	float:left;
-                    	width:150px;
-                    	margin-left: 6px;
-                    }
-                    
-                    .sliderContainer .slider .box{
-                    	
-                    }
-
-                    .sliderContainer .slider .box .parentSlider{
-                    	float:left;
-                    	width:100%;
-                    	height: 100%;
-                    	border-radius:3px;
-                    }
-
-                    .sliderContainer .slider .box .parentSlider > img{
-                    	float:left;
-                    	width:100%;
-                    	height: 100%;	
-                    }
-
-              
-                    .main .nav{
-                        float: left;
-                        width: 5%;
-                        line-height: 40px;
-                        border: 1px solid grey;
-                        cursor: pointer;
-                        text-align: center;
-                        background: rgba(36,33,32,.4);
-                        color:#fff;
-                        cursor: pointer;
-                        font-size: 25px;
-                        opacity: 0.5;
-                        transition: all .5s ease-in-out;
-                        margin-top: 7%;
-                    }
-
-                    .main .nav{
-                    	opacity:1;
-                    }
-
-                    .main .nav:hover{
-                    	background: rgba(10,10,10,.6);
-                    	color:orangered;
-                    }
-
-                    .Next{    
-                    	right: 0px;
-                    }
-
-                    .prevouis{
-                    	left: 0px;
-                    }
-                     
-                    /* >>>>>>>>>>>> >>>>> parent slider profile */
-			       .slideContainer{
-			           width:100%;
-			           height: 100%;
-			           border-radius: 3px;
-			       }
-
-			        .topcontainer{
-			           width:100%;
-			           height: 20%;
-			           float:left;
-			        }
-
-			        .topcontainer > a{
-			           border:1px solid green;
-			           width:25%;
-			           height:130%;
-			           border-radius:50%;
-			           text-decoration:none;
-			           float:right;
-			           position: relative;
-			        }
-
-			       
-			        .topcontainer > a > img{
-			           border:1px solid green;
-			           width:100%;
-			           height:100%;
-			           border-radius:50%;
-			       }
-
-
-			       .another{
-			           width:100%;
-			           height: 80%;
-			           float:left;
-			       }
-
-			       .ParentPicture{
-			        width:80%;
-			        height: 60%;
-			        margin-top:-7%;
-			        float:left;
-			        margin-left:8%;
-
-			       }
-
-			        .ParentPicture img{
-			           width:100%;
-			           height: 100%;
-			           border-radius:3px;
-			       }
-			      .profileDetails{
-			        width:100%;
-			           height:55%;
-			           border:1px solid rgba(2,2,2,.2);
-			           padding-top:2%;
-			           float:left;
-			           margin-top:-2%;
-			      }
-			      
-			      .profileDetails > .info{
-			          width:98%;
-			          height: 90%;
-			          padding-left: 2%;
-			          float:left;
-			          
-			      }
-
-			      .infod{
-			        color:grey;
-			        font-size: 10px;
-			        width:25%;
-			        float:left;
-			        padding-top:1px;
-			        font-weight: bold;
-			      }
-
-			      .info2{
-			        font-size: 10px;
-			        color:grey;
-			        width:70%;
-			        float:left;
-			      }
-
-
-			      .info2 > a{
-			        text-decoration: none;
-			        color:grey;
-			         font-size: 10px;
-			      }
-
-			      .infoDiv{
-			          width:100%;
-			          float:left;
-			          padding-left:2%;
-			          padding-top:1%;
-			          margin-top:1%;
-			         
-			      }
-
-			       .last{
-			          width:100%;
-			          float:left;
-			          background: #4dcadd;
-			          color:white;
-			          padding: 0px;
-			          margin: 0px;
-			          margin-top:3%;
-			      }
-
-
-			      .last > i{
-			        width:100%;
-			        font-size:18px;
-			        text-align: center;
-
-			      }
-
-			      .last:hover > i{
-			       border:1px solid #4dcadd;
-			       color:#4dcadd;
-			       background: white
-			      }
-			      /* >>>>>>>>>>>> >>>>> END parent slider profile */
-               </style>
-                
-                
-                <script>
-
-                	var showed_box = 0;
-                 	function fNext(){
-                 	 	showed_box +=  -158;
-                         
-                      
-
-                 	 	if(showed_box < -800){
-                          showed_box = 0;
-                 	 	}
-
-                 	 	document.getElementById('sid').style.transform = "translateX("+ showed_box+"px)";
-                 	}  
-
-                    function fPrevious(){
-                 	 	showed_box +=  158;
-
-                 	 	if(showed_box > 0){
-                          showed_box = -800;
-                 	 	}
-
-                 	 	document.getElementById('sid').style.transform = "translateX("+ showed_box+"px)";
-                 	}  
-                     
-                </script>
 				<span class = 'subject_title'><?php echo strtoupper(escape($subj)); ?> WORLD</span>
 				<header id = 'header_teach'>
 					<div id ='myWall'       class ='myWall'        onclick = "tp_hideshow('tmywall');"                       > My Wall         </div>
@@ -408,8 +122,11 @@
                 </header>
              
             <div id="divuser_id" style="visibility:hidden">
+   
     <?php echo $user_id;
     echo "<script>var user = {
+    	    user      : '$user_id',
+		    id        : '$teach_Id',
     	    user_id   : '$user_id',
             username  : '$username',
             profile   : '$profile',
@@ -420,13 +137,18 @@
             basedSubj   : '$basedSubj',
             schoolname  : '$schoolname', 
             region      : '$teacher_rname', 
-            levelOrStandard : '$teacher_lev'
+			levelOrStandard  : '$teacher_lev',
+			mkondo           : '$mkondo',
+			level_identify   : '$level_identify'
+			
             };
             </script>" ?>
 
-  <!--    $parent_acc = $db->query('SELECT * FROM  p_acc,vy_users WHERE  p_acc.user_id = vy_users.id AND schoolname =? AND region = ? AND levelOrStandard = ?', array($teacher_schulname,$teacher_rname,$teacher_lev)) -->
-    
-    	
+
+
+
+
+  
 </div>
             	<div id = 'tmywall' class = 'mywall'>
                    <div class="divPost">
@@ -434,8 +156,7 @@
 	                    <div class = " composeQstnWall"  onclick="dispVisibility('whatsOnurmid','composqsn');">Compose Question</div>
                     </div>
 
-				    <!-- <div id = "neno"></div>
-				    <div id = "nen"></div> -->
+				  
 				    
 				    <div id ='whatsOnurmid'  class = 'whatsOnurmid'>
 				    	<textarea  id = 'WallMsg' class = 'Onurmind'></textarea>
@@ -449,162 +170,11 @@
                         </div>
 				    </div>
 
-				    
-                    <div id = "composqsn" class = "composqsnWall">
-
-                    	<div class = "upperInstr">
-                    		<div id ='exam_section'>
-			                    <label for='SECTION'>SECTION</label>
-			                    <select id='SECTION_qstnwall'> 
-			                        <option selected="selected">SECTION A</option>
-			                        <option>SECTION A</option>
-			                        <option>SECTION B</option>
-			                        <option>SECTION C</option>
-			                        <option>SECTION D</option>
-			                        <option>SECTION E</option>
-			                        <option> NO SECTION</option>
-			                    </select>
-		                     </div>
-                    	 
-                    	    <div class = "rightQstnDive">
-
-		                    	<input type = "text" placeholder="date" id="dateqstnDonewal">
-		                    	<input type = "text" placeholder="School Name" id = "qstnFromSchoolname">
-		                    </div>
-
-
-                    	 <div class = "topcAndSubtopcQstn">
-                           <input style="text-align: center;" type = "text" class = "SUbjectName" placeholder="SUbject Name" value = "<?php echo strtoupper($subj); ?>" id="subjectnameQstnWall">
-                    	   <input type = "text" style="text-align: center;" class = "TopcName" placeholder="Topc Name"  id ="topicnameQstnwal">
-                    	   <input type = "text" style="text-align: center;" class = "SubtopcName" placeholder="Subtopc Name" id ="subtopicQstnwall">
-                    	 </div>
-                    	</div>
-
-
-
-                    	<div class = "midleInstr">
-                    		<div class = "qstnNo">
-							    <span class = "No">
-							    <label for='Qno'>Qn</label>
-			                        <select id='Qn_selectNoQstnwall'> 
-			                            <option selected="selected">0</option>
-			                            <option>1</option>
-			                            <option>2</option>
-			                            <option>3</option>
-			                            <option>4</option>
-			                            <option>5</option>
-			                            <option>6</option>
-			                            <option>6</option>
-			                            <option>7</option>
-			                            <option>8</option>
-			                            <option>9</option>
-			                            <option>10</option>
-			                            <option>11</option>
-			                            <option>12</option>
-			                            <option>13</option>
-			                            <option>14</option>
-			                            <option>15</option>
-			                        </select>
-			                    </span>
-			                    <span class = "ColomNo">
-			                    	 <label for='Qno'>Qn</label>
-				                        <select id='Qn_selectNoColomQstnwall'> 
-				                            <option selected="selected">0</option>
-				                            <option>1.1</option>
-				                            <option>1.2</option>
-				                            <option>1.3</option>
-				                            <option>1.4</option>
-				                            <option>1.5</option>
-				                            <option>1.6</option>
-				                            <option>1.6</option>
-				                            <option>1.7</option>
-				                            <option>1.8</option>
-				                            <option>1.9</option>
-				                            <option>1.10</option>
-				                            <option>1.11</option> 
-				                        </select>
-			                    </span>
-							</div>
-
-							<div class = "qstnBody chatbox">
-							    <textarea id="mainqstnwall" onclick ="panelText_hidshow('panelTex_one');"></textarea>
-
-							    <span id ="panelTex_one" class = "camraqstn"><i class = "fa fa-camera"></i></span>
-							    <div class = "ReprImg">
-          	   	  	  	 		    <div class = "qstnImg">
-          	   	  	  	 		        <img src = "img/loginSlider/proce.jpg">
-          	   	  	  	 		    </div>
-
-          	   	  	  	 		    <div class = "qstnImg">
-          	   	  	  	 		        <img src = "">
-          	   	  	  	 		    </div>
-	                            </div>
-							</div>
-                    	</div>
-
-                        <div onclick="swicthVisibility('matchitem');" class = "usMatchItm">Use Match Items</div>
-						
-						<div id = "matchitem" class = "matchitem qstnMatach">
-		        			<div class="matchs">
-		        				<div class = "qstnNo">
-		        		          <span class = "ColomNo">A</span>
-		        		        </div>
-		        		        <div class = "matchAns"><input onclick ="panelText_hidshow('panelTex_two');" type = "text" id = "match_a"></div>
-		        		        <span class = "camraqstn" id = "panelTex_two"><i class = "fa fa-camera"></i></span>
-		        		        <div class = "ReprImg">
-          	   	  	  	 		    <div class = "qstnImg">
-          	   	  	  	 		        <img src = "">
-          	   	  	  	 		    </div>
-	                            </div>
-		        			</div>
-
-		        			<div class="matchs">
-		        				<div class = "qstnNo">
-		        		          <span class = "ColomNo">B</span>
-		        		        </div>
-		        		        <div class = "matchAns"><input onclick ="panelText_hidshow('panelTex_three');"  type = "text" id =match_b></div>
-		        		         <span class = "camraqstn" id = "panelTex_three"><i class = "fa fa-camera"></i></span>
-		        		        <div class = "ReprImg">
-          	   	  	  	 		    <div class = "qstnImg">
-          	   	  	  	 		        <img src = "">
-          	   	  	  	 		    </div>
-	                            </div>
-		        			</div>
-
-		        			<div class="matchs">
-		        				<div class = "qstnNo">
-		        		          <span class = "ColomNo">C</span>
-		        		        </div>
-		        		        <div class = "matchAns"><input type = "text" onclick ="panelText_hidshow('panelTex_four');" id ='match_c'></div>
-		        		        <span class = "camraqstn" id = "panelTex_four"><i class = "fa fa-camera"></i></span>
-		        		        <div class = "ReprImg">
-          	   	  	  	 		    <div class = "qstnImg">
-          	   	  	  	 		        <img src = "img/loginSlider/proce.jpg">
-          	   	  	  	 		    </div>
-
-	                            </div>
-		        			</div>
-						</div>
-
-						<div class = "lasInstr">
-							<div class = "iconGroup QstnSenderIcone">
-
-                            	<div class = "sectIcon">
-                            	    <span class = "sendBotton" id = "sendQstn" >Send</span>
-                                </div>
-
-                            	<div class = "sectIcon" onclick = "openAbsolute('shareTo');">
-                            	     <span class="usMatchItm">Ask Fellow Genius </span>
-                            	</div>
-                            	
-                            </div>
-						</div>
-                    </div>
+				    <?php $submitforpage = 'teach_page';?>
+                    <!-- feeds question for the wall -->
+                    <?php include_once 'include/askquestion.php';?>
 				  
 					<div  id = 'subjectWallQstn' class = 'xoverflow'>
-                       
-
-
                     </div>
 				</div>
 
@@ -1983,7 +1553,7 @@
 								    </div>
 									
 									<div id = 'send_botton'>
-										<div id = 'post'><input class = 'postToAllteacher' type='submit' id='submit_post' value = 'Post Update'></div>
+										<div id = 'post'><input class = 'postToAllteacher' type='submit' id='p_Vs_T_chat' value = 'Post Kero'></div>
 										<div id = 'upload_photo'><i class="fa fa-camera" id= 'cover_camera_prof'></i></div>
                                     </div>
 								</div>
@@ -2064,7 +1634,8 @@
 										
 									
 									</div>
-									<div id ='textreply' class = 'textReply'><textarea></textarea>
+									<div id ='textreply' class = 'textReply'>
+									<textarea></textarea>
 									  <div class = 'sendPlan'><i class ='fa fa-send'></i></div>
 									</div>
 									
@@ -2195,252 +1766,9 @@
 						</div>	
 					</div>
 
-					<div class ='ParentsWrap' id = 'parentChat3' >
-						<div class = "MsgContainer chatBox">
-						  <?php $parentId =  "<div id = 'datagiven' ></div>"?>
 
-				
-						   
-						     <div class = "back" onclick="switchVisbltyQ('ParentsWrap','parentChat','parebt')">Go Back </div>
-						    <div class="chatContainer">
-						        <div class = "chatheader divdivision" >
-						            <div class="introHeader">
-						                <span class="parentTitle">Parent</span><span class="pname">Nehemia Daud Mwansasu</span>
-						                <div ><a href = "#"><span>Moses Mwakatobe :</span><span style="font-style:italic; ">Form 1 B ,</span></a></div>
-						                <div ><a href = "#"><span>Moses Mwakatobe Mwansasu :</span><span style="font-style:italic; ">Form 1 B ,</span></a></div>
-						                <div ><a href = "#"><span>Moses Mwakatobe :</span><span style="font-style:italic; ">Form 1 B ,</span></a></div>
-						            </div>
-						        </div>
-
-						        <div class = "ContainerChat">
-			
-
-						            <div class="xoverflow">
-
-						                <div class="chatholder">
-						                    <div class="divcirlce">
-
-						                        <div class = "cicle"></div>
-						                    </div>
-						                    
-						                    <div class = "textChat">
-						                    
-						                        <p>
-						                                hellow teacher
-						                    
-						                        </p>
-						                                
-						                                    
-						                    </div>
-						                    <div class = "clear"></div>
-						                </div>
-
-						                <div class="chatholder">
-						                    
-					                        <div class="divcirlce rightdiv" style ="float:right">
-					                            <div class = "cicle"></div>
-					                        </div>
-					                        
-					                        <div class = "textChat" style ="float:right">
-					                            <p>
-					                                    asdfsafafjkalfaf akjsfakljfafa fkaljfak fakj fka
-					                            </p>         
-					                        </div>
-					                    
-					                        <div class = "clear"></div>
-						                </div>
-
-						                <div class="chatholder">
-					                        <div class="divcirlce">
-					                            <div class = "cicle"></div>
-					                        </div>
-					                        
-					                        <div class = "textChat">
-					                            <p>
-					                                hellow teacher
-					                            </p>                
-					                        </div>
-					                        <div class = "clear"></div>
-						                </div>
-						           </div>
-						        </div>
-						        <style >
-						        	.down_Document{
-						                margin-left: 10%;
-									    margin-left: 10%;
-									    width: 25%;
-									    height: 80px;
-									    float: left;
-									    padding-left: 2%;
-									    position: relative;
-									    top: 2px;
-									    transition: 1s;
-									    border-left: 1px solid rgba(2,2,2,.2);
-									    display: none;
-
-						        	}
-						        	.down_Document > .thedoc{
-						        	    border: 1px solid #eeefee;
-									    border-radius: 50px 50px;
-									    padding: 2% 7%;
-									    margin-top: 1%;
-									    width: 60%;
-									    background: white;
-									    transition: color 0.1s linear 0s; 
-									    transition: 1s; 
-						        	}
-						        	
-						        	.down_Document > .thedoc:hover{
-									    margin-left: 4%;
-									    cursor:pointer;
-						        	}
-
-						        	.down_Document > .shadowDiv{
-						        	    margin-left:10%;
-						        	}
-
-						        	.down_Document > .potea{
-							            position: relative;
-									    top: -9px;
-									    left: -14%;
-									    border-radius: 50px;
-									    float: left;
-									    width: 10%;
-									    height: 17%;
-									    padding: 1% 1%;
-									    background: rgba(2,2,2,.5);
-									    cursor: pointer;
-									    color: white;
-									    text-align: center;
-									}
-
-									.down_Document > .potea:hover{
-						        	    margin-left:none;
-						        	}
-
-						        	.doc_slideBox{
-						        		margin-left: 10%;
-									    width: 80%;
-									    height: 80px;
-									    float: left;
-									    position: relative;
-									    top: -3px;
-									    transition: 1s;
-									    display: none;
-						        	}
-
-						        	.doc_slideBox > div{
-									    width: 90px;
-									    height: 95%;
-									    float: left;
-									    border-radius: 3px 3px;
-									    margin-left: 5px;
-									    margin-top: 4px;
-									    box-shadow: 0px 0px 2px rgba(115,115,115,.5);
-						        	}
-
-						        	.doc_slideBox > .openAndClose{
-						        	    border: none;
-									    width: 80%;
-									    height: 10px;
-									    float: left;
-									    border-radius: 0px;
-									    margin-left: 8%;
-									    margin-top: -4%;
-									    font-size: 10px;
-									    text-align: center;
-									    padding: 2px 2px;
-									    border-radius: 2px 3px 0px 0px;
-									    cursor: pointer;
-									    box-shadow: none;
-
-						        	}
-
-						        	.doc_slideBox > .openAndClose > i{
-						        	    font-size:18px;
-						        	}
-
-						        	.doc_slideBox >div > .doc_discr{
-						        		/*border:1px solid grey;*/
-						        		width: 100%;
-						        		height: 100%;
-						        		border-radius: 3px 3px;
-						        		overflow: hidden;
-						        		
-						        	}
-
-						        	.doc_slideBox >div > .doc_discr > span{
-						        		padding: 2px 2px;
-									    width: 80%;
-									    border: ;
-									    border-bottom: 1px solid rgba(2,2,2,.2);
-									    text-align: center;
-									    font-style: italic;
-									    font-size: 10px;
-									    float: left;
-									    margin-left: 5%;
-
-						        	}
-						        </style>
-						      
-						        <div class="textEditor">
-							        <div class = "down_Document" id = "textDownload">
-							            <div  class ="potea" onclick = "closeDiv('textDownload');">X</div>
-
-							            <div class="thedoc"  onclick ="docchoosen('doc_slideBox','textDownload')">Test.txt</div>
-							            <div class="thedoc" onclick ="docchoosen('doc_slideBox','textDownload')">Assiment</div>
-							            <div class="thedoc" onclick ="docchoosen('doc_slideBox','textDownload')">Photo</div>
-							        </div>
-                                     <style type="text/css">
-                                     	#slideDown{
-                                     		display:block;
-                                     	}
-
-                                     	#slideUp{
-                                     		display:none
-                                     	}
-                                     </style>
-							        <div id ="doc_slideBox" class ="doc_slideBox">
-							         <div id = "slideDown" class = 'openAndClose'  onclick = "changeHeightslideDown('slideDown','slideUp','doc_slideBox')">  <i class = "fa fa-angle-down"></i></div>
-
-
-							         <div id = "slideUp" class = 'openAndClose'   onclick = "changeHeightslideUp('slideUp','slideDown','doc_slideBox')"> <i class = "fa fa-angle-up"></i></div>
-
-
-							        	<div  id = 'doc_title' class = 'doc_title'>
-
-							        	    <div class="doc_discr">
-							        	     	<span>Test Name</span>
-							        	     	<span>Form 3 B</span>
-							        	     	<span>created: 27/2/2008</span>
-							        	    </div>
-							            </div>
-
-							            <div  id = 'doc_title' class = 'doc_title'>
-
-							        	    <div class="doc_discr">
-							        	     	<span>Test Name</span>
-							        	     	<span>Form 3 B</span>
-							        	     	<span>created: 27/2/2008</span>
-							        	    </div>  
-							        	</div>
-                                          
-							        </div>
-
-				                    <div class="chatholder">
-				                            <div class="divcirlce">
-				                                <div class = "cicle" id = 'chehh' onclick= "plusdoc('textDownload','doc_slideBox');">+</div>
-				                            </div>
-				                            
-				                            <div class = "textChat">
-				                                <textarea  autofocus="none"   placeholder = "write something" name="" id="" cols="" rows=""></textarea>      
-				                            </div>
-				                            <div class = "clear"></div>
-				                    </div>
-						        </div>
-
-						    </div>
-						</div>
+                    <div class ='ParentsWrap' id = 'parentChatSingle' >
+						
 					</div>	
 			
 
@@ -4030,7 +3358,7 @@
 <script src="jscript/tymtableSave.js"></script>
 <!-- <script src="jscript/tsliderlive.js"></script> -->
 <script src="jscript/teacherfunction.js"></script>
-<script src="jscript/tsliderSingleParent.js"></script>
+<!-- <script src="jscript/tsliderSingleParent.js"></script> -->
 
 
 

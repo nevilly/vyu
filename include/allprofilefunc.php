@@ -55,9 +55,9 @@
 
 	        $profile_cover = $db->query('SELECT user_id,photo FROM vy_photo WHERE user_id =? AND p_status=?', array($user_id,'b'));
 		    if(!$profile_cover->count()){
-			    $prof_cover_dir = "<img src = 'img/profiles/life.jpg'/>";
+			    $prof_cover_dir = '<img src = "img/profiles/life.jpg"/>';
 			}else{	
-			    $prof_cover_dir = "<img src =userdata/".$profile_cover->first()->photo." width ='100px' height ='100px;'>";
+			    $prof_cover_dir = '<img src =userdata/'.$profile_cover->first()->photo.' width ="100px" height ="100px;">';
 			}
 	/////// End Profile Queries				   	
 	//////////////////////////////////////////////////////////////////////////////////////
@@ -102,19 +102,20 @@
 
     $user_info = $db->query('SELECT * FROM student_acc,vy_users WHERE student_acc.user_id = vy_users.id AND user_id =?', array($user_id));
 	   // if(!$user_info->count()){
-	   // 	  echo 'fail';
+	   // 	  echo 'faschoolnameil';
 	   // }else{	
 	   //  	  // foreach($user->results() as $user){
 	   //     //       echo escape($user-> suubject_name ).'<br/>';
 	   //  	  //  }
 	   //  }
-	@ $st_schulname = $user_info->first()->schoolname;
-	@ $st_rname=$user_info->first()->region;
-	@ $st_lev =$user_info->first()->levelOrStandard;
-	@ $st_fa  = $user_info->first()->facultOrComb_taken;
+	@ $st_schulname      = $user_info->first()->schoolname;
+	@ $st_rname          = $user_info->first()->region;
+	@ $st_lev            = $user_info->first()->levelOrStandard;
+	@ $st_fa             = $user_info->first()->facultOrComb_taken;
 	@ $st_levelidentify  = $user_info->first()->level_identify;
+	@ $mkondo            = $user_info->first()->mkondo;
 
- 
+
 
 
 

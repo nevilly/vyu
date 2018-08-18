@@ -157,6 +157,9 @@ if(isset($_GET['action']) && $_GET['action'] === 'get_post'){
 
 
 
+
+
+    
     $result = array('data'=>$data,'status'=>$status,'id'=>$lid,'nots'=>$nots,'n_counts'=>$nots_count);
 
 

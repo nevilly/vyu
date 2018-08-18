@@ -83,7 +83,7 @@
         }
   }
 
-  public function idreturn($user){
+public function idreturn($user){
      // $u_id = $this->_db->get('vy_users',$fields);
      //  if($u_id->count()){
      //    echo "Yes";
@@ -102,9 +102,9 @@
         }else{
           echo "No";
         }
-      }
-      
-  
+}
+
+
 
 
 public function find($user = null){
@@ -136,17 +136,17 @@ public function Myfind($table,$user = null){
 }
 
 public function IntableFind($table,$tablerow,$user = null){
-      if ($user) {
-          # code...
-          $field = (is_numeric($user)) ? 'id' : 'username';
-          $data = $this->_db->get($table, array($tablerow, '=', $user));
+  if ($user) {
+      # code...
+      $field = (is_numeric($user)) ? 'id' : 'username';
+      $data = $this->_db->get($table, array($tablerow, '=', $user));
 
-          if ($data->count()) {
-           $this->_data = $data->first();
-              return true;
-          }
+      if ($data->count()) {
+       $this->_data = $data->first();
+          return true;
       }
-      return false;
+  }
+  return false;
 }
 
 

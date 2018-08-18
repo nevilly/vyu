@@ -254,7 +254,7 @@
             <div class = "Absolutwraper summaryNotesWraper">
                 <textarea class = "notesSummarise"></textarea>
                 <div class = "geneleralButton">
-                    <div class = "button1 postSummary">
+                    <div  id = "postSummary" class = "button1 postSummary">
                         Post Summary
                     </div>
                     
@@ -1390,8 +1390,9 @@
         <div class = 'close'>
           <div id = 'close' onclick = "closeDivHomekComp('HomeworkCompose');"><i class = '  fa fa-close'></i></div>
         </div>
-         <div class = 'titleSearch'>
-            <div class = 'QuizName'>Quiz Name ..</div>
+
+        <div class = 'titleSearch'>
+            <div class = 'QuizName' id = 'QuizNme' >Quiz Name ..</div>
             <div class = 'searchQuiz'><input id = 'searchQ' type = "text" placeholder = 'Search Quiz qustion..'></div>
         </div>
         
@@ -1520,6 +1521,7 @@
                <div id = 'hideAns' onclick= "blurChar('typeQn_ans');">FICHA JIBU</div> 
             </div>
         </div>
+
 
         <div id ='QuizDisplay' class = 'QuizDisplay'>
             <div class = 'xoverflow'>
@@ -2636,168 +2638,57 @@
           </div>
           
           <div class = 'startExamName'>
-               <div class = 'ExamName' >
-                    <div class = 'examname'>
-                         <input type = 'text' placeholder = 'Test Name'>
-                    </div>
-                    <div class = 'chuseQtionType'>
-                         <label for='qstty'></label>
-                         <select id='qtnType'> 
-                              <option selected="selected">Examination</option>
-                              <option>Quiz</option>
-                              <option>Test</option>
-                              <option>Speed Test</option>
-                              <option>Assigment</option>
-                              <option>Homework</option>
-                         </select>
-                    </div>
-               </div>
+                <div class = 'ExamName' >
+                  <div class = 'examname'>
+                    <input type = 'text' id = 'Exam_name' placeholder = 'Test Name'>
+                  </div>
+                  <div class = 'chuseQtionType'>
+                       <label for='qstty'></label>
+                       <select id='qtnType'> 
+                            <option selected="selected">Examination</option>
+                            <option>Quiz</option>
+                            <option>Test</option>
+                            <option>Speed Test</option>
+                            <option>Assigment</option>
+                            <option>Homework</option>
+                       </select>
+                  </div>
+                </div>
+               
                
                <div class = 'timeForExam'>
                     <div class = 'doingtime'>
-                         <div class = 'starttime'>
-                              <h4>Start</h4>
-                              <div class = 'hrx'>
-                                   <select id='hrz'> 
-                                        <option selected="selected">00</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                   </select>
-                              </div>
+                        <div class = 'starttime'>
+                          <h4>Start</h4>
+                          <input type="time" id="startExampTime" class="Endclassperiod">
+                        </div>
                          
-                              
-                               <div class = 'Semdotds'> : </div>
-                              
-                              <div class = 'Minx'>
-                                   <select id='Minitc'> 
-                                        <option selected="selected">00</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                   </select>
-                              </div>
-                              
-                             
-                              <div class = 'pm_am'>
-                                   <select id='qtnType'> 
-                                        <option selected="selected">PM</option>
-                                        <option>AM</option>
-                                        
-                                   </select>
-                              </div>
+
+                        <div class = 'Endtime'>
+                          <h4>End</h4>
+                          <input type="time" id="EndExamTime" class="Endclassperiod">
                          
-                         </div>
+                        </div> 
                          
-                         <div class = 'Endtime'>
-                              <h4>End</h4>
-                              <div class = 'hrx'>
-                                   <select id='hrz'> 
-                                        <option selected="selected">00</option>
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                        <option>04</option>
-                                        <option>05</option>
-                                   </select>
-                              </div>
-                         
-                              
-                               <div class = 'Semdotds'> : </div>
-                              
-                              <div class = 'Minx'>
-                                   <select id='Minitc'> 
-                                        <option selected="selected">00</option>
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                        <option>04</option>
-                                        <option>05</option>
-                                   </select>
-                              </div>
-                              
-                             
-                              <div class = 'pm_am'>
-                                   <select id='qtnType'> 
-                                        <option selected="selected">PM</option>
-                                        <option>AM</option>
-                                        
-                                   </select>
-                              </div>
-                         
-                         </div>
-                         
-                         <div class = 'Endtime daterecord'>
-                              <h4>Date</h4>
-                              
-                               <div class = 'hrx wiki'>
-                                   <select id='hrz wikibox'> 
-                                        <option selected="selected">Monday</option>
-                                        <option>Tue</option>
-                                        <option>Wesnd</option>
-                                        <option>Thursd</option>
-                                        <option>frie</option>
-                                        <option>sat</option>
-                                        <option>Sund</option>
-                                   </select>
-                              </div>
-                               
-                               
-                              <div class = 'hrx datee'>
-                                   <select id='hrz datebox'> 
-                                        <option selected="selected">00</option>
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                        <option>04</option>
-                                        <option>05</option>
-                                   </select>
-                              </div>
-                         
-                              
-                               <div class = 'Semdotds datestrok'> / </div>
-                              
-                              <div class = 'Minx monthee'>
-                                   <select id='Minitc monthbox'> 
-                                        <option selected="selected">00</option>
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                        <option>04</option>
-                                        <option>05</option>
-                                   </select>
-                              </div>
-                              
-                             <div class = 'Semdotds datestrok'> / </div>
-                             
-                              <div class = 'pm_am yearx'>
-                                   <select id='qtnType yearbox'> 
-                                        <option selected="selected">2017</option>
-                                        <option>2018</option>
-                                        <option>2019</option>
-                                        <option>2020</option>
-                                        <option>2021</option>
-                                   </select>
-                              </div>
+                        <div class = 'Endtime daterecord'>
+                            <h4>Date</h4>
+                            <input type="date" id="dateforExam" class="datefortymtable">
                          
                          </div>
                     </div>
                </div>
                
               
-               <div class = 'contbutton' onclick = "HomekComp('insideCoverfirst','insideCoverSecond');" >
+               <div class = 'contbutton'  id = 'Exam_cont' >
                     <span class = 'cont'>CONTINUE</span>
                     <span class = 'Next'>>></span>
                </div>
+
                
                <div class = 'InstructionBy'>
                     <div class = 'ExamInstractn'>
                          <h4>Instruction</h4>
-                         <textarea class ='instruction' placeholder = 'Your Instructuion'></textarea>
+                         <textarea class ='instruction' id = 'examInstruction' placeholder = 'Your Instructuion'></textarea>
                     </div>
                     
                     <div class = 'by_t'>
@@ -4771,8 +4662,9 @@
     </div></div>
 
 <div id = 'timetable_temprate' class = 'abso_temprate'>
-  
+     
 </div>
+
 
 <div id = 'book_buy'>
     <div id = 'close' onclick = "closeDiv('book_buy');"><i class = 'fa fa-close'></i></div>
