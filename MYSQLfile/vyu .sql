@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 18, 2018 at 06:46 PM
+-- Generation Time: Sep 07, 2018 at 12:51 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -153,7 +153,10 @@ INSERT INTO `post` (`id`, `user_id`, `post`, `media`, `time_posted`, `priviledge
 (69, 23, 'dfgdgdf', '', '2018-08-08 16:25:04', '0', '1'),
 (70, 23, 'sjkdljdsfd', '', '2018-08-09 17:41:13', '0', '1'),
 (71, 28, 'ooukey', '', '2018-08-12 15:24:56', '0', '1'),
-(72, 23, 'nki kutuma utaend', '', '2018-08-12 15:26:34', '0', '1');
+(72, 23, 'nki kutuma utaend', '', '2018-08-12 15:26:34', '0', '1'),
+(73, 23, 'so unataka niambia nn', '', '2018-08-23 08:33:31', '0', '1'),
+(74, 23, ',zm.mvz', '', '2018-08-23 08:36:06', '0', '5'),
+(75, 23, 'ad enterprenuer', '', '2018-08-23 08:36:39', '0', '5');
 
 -- --------------------------------------------------------
 
@@ -190,7 +193,8 @@ INSERT INTO `post_teachandparent` (`id`, `subject_id`, `sender_id`, `msg`, `phot
 (5, 18, 23, 'safarii ndo hioi', '', '', '2018-08-14 08:25:26', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', 23, 0),
 (6, 18, 23, 'jjj', '', '', '2018-08-14 12:07:25', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', 23, 0),
 (7, 18, 23, 'AM hap tumemaliza msim wa kwanza tuishen nyumbani kwangu', '', '', '2018-08-14 13:05:43', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', 23, 0),
-(8, 18, 23, 'OOoookkk....!', '', '', '2018-08-14 19:30:35', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', 23, 0);
+(8, 18, 23, 'OOoookkk....!', '', '', '2018-08-14 19:30:35', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', 23, 0),
+(9, 18, 23, 'it work fine nw', '', '', '2018-08-30 11:08:19', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', 23, 0);
 
 -- --------------------------------------------------------
 
@@ -224,7 +228,16 @@ INSERT INTO `post_teachandprntreply` (`id`, `post_id`, `sender_id`, `replier_id`
 (9, 7, 0, 23, 'post thisjhk', '', '2018-08-14 17:32:18'),
 (10, 7, 0, 23, 'post this ad blin', '', '2018-08-14 17:32:49'),
 (11, 8, 0, 23, 'post this', '', '2018-08-14 19:31:00'),
-(12, 8, 0, 23, 'post thisb', '', '2018-08-14 19:31:38');
+(12, 8, 0, 23, 'post thisb', '', '2018-08-14 19:31:38'),
+(13, 8, 0, 23, 'post dfzgdfzfgzdthis', '', '2018-08-19 07:39:03'),
+(14, 8, 0, 23, 'post thisdfgdfg', '', '2018-08-25 11:59:49'),
+(15, 8, 0, 23, 'post thisjhkjhk', '', '2018-08-26 17:46:04'),
+(16, 8, 0, 23, 'post thisjhkjhk', '', '2018-08-26 17:46:08'),
+(17, 6, 0, 23, 'post this Whyyy', '', '2018-08-26 17:49:40'),
+(18, 8, 0, 23, 'post this Whyy', '', '2018-08-26 17:50:15'),
+(19, 7, 0, 23, 'khjkljkjl', '', '2018-08-26 17:50:54'),
+(20, 5, 0, 23, 'why', '', '2018-08-26 17:52:53'),
+(21, 7, 0, 23, 'Mwanzo ndo mwish au', '', '2018-08-27 07:25:11');
 
 -- --------------------------------------------------------
 
@@ -304,7 +317,8 @@ INSERT INTO `student_acc` (`id`, `user_id`, `acc_belong_id`, `subjects`, `school
 (20, 34, 0, '', 'secondary', 'Dar es Salaam', 0, 'Form 1', 'B', '', 'o', ''),
 (21, 36, 0, '', 'zom zom collage', 'Dar es Salaam', 0, 'Certifiate', '', 'Procurement', 'h', ''),
 (22, 37, 0, '', 'zom zom collage', 'Dar es Salaam', 0, 'Certifiate', '', 'Procurement', 'h', ''),
-(23, 38, 0, '109,111,113,', 'Jangwani secondary school', 'Dar es Salaam', 0, 'Form 6', 'B', 'PCB', 'a', '');
+(23, 38, 0, '109,111,113,', 'Jangwani secondary school', 'Dar es Salaam', 0, 'Form 6', 'B', 'PCB', 'a', ''),
+(24, 39, 0, '15,16,17,18,19,20,21,22,,23,24,25,26,27,28,', 'agape', 'Dar es Salaam', 0, 'Form 1', 'A', '', 'o', '');
 
 -- --------------------------------------------------------
 
@@ -375,6 +389,135 @@ INSERT INTO `vyu_notf` (`id`, `user`, `initiator`, `app`, `note`, `did_read`, `d
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `vy_books`
+--
+
+CREATE TABLE `vy_books` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `subj_id` int(11) NOT NULL,
+  `author` varchar(50) NOT NULL,
+  `editin` varchar(30) NOT NULL,
+  `book` varchar(9999) NOT NULL,
+  `cost` int(11) NOT NULL,
+  `mustHaveBook` enum('0','1') NOT NULL DEFAULT '0',
+  `usesBook` enum('0','1') NOT NULL DEFAULT '0',
+  `parmfect` enum('0','1') DEFAULT '0',
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vy_books`
+--
+
+INSERT INTO `vy_books` (`id`, `user_id`, `subj_id`, `author`, `editin`, `book`, `cost`, `mustHaveBook`, `usesBook`, `parmfect`, `date`) VALUES
+(1, 0, 18, 'G.wahiga', '', 'img\\books_cover\\kiswahili\\kdato cha1.jpg', 0, '', '0', '0', '0000-00-00'),
+(2, 0, 18, 'Moran', '', 'img\\books_cover\\kiswahili\\kd.jpg', 0, '', '1', '0', '0000-00-00'),
+(3, 0, 18, 'nehemia Mwansasu', '', 'img\\books_cover\\kiswahili\\maridioKdto1.jpg', 1, '', '0', '0', '0000-00-00'),
+(4, 0, 18, '', '', 'img\\books_cover\\kiswahili\\maridioKdto1.jpg', 0, '1', '0', '1', '0000-00-00'),
+(5, 0, 18, '', '', 'img\\books_cover\\kiswahili\\cha1 Kenya.jpg	', 0, '0', '1', '1', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vy_dreamholder`
+--
+
+CREATE TABLE `vy_dreamholder` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `header` varchar(100) NOT NULL,
+  `body` longtext NOT NULL,
+  `planCost` int(250) NOT NULL,
+  `status` varchar(11) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vy_dreamholder`
+--
+
+INSERT INTO `vy_dreamholder` (`id`, `user_id`, `header`, `body`, `planCost`, `status`, `date`) VALUES
+(1, 28, 'Houses', '1/ Gharama za Nyumbani ...', 200000, 'h', '2018-08-22'),
+(2, 28, 'Ferrari', '1/ Gharama za Ferrarrii ...', 150000000, 'c', '2018-08-22'),
+(3, 28, 'UFUGAJI WA KUKU', '1/ Gharama za wa kuku wa kienyeji ...', 300000, 'f', '2018-08-22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vy_dreamhussle`
+--
+
+CREATE TABLE `vy_dreamhussle` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `subj_id` int(11) NOT NULL,
+  `dream_id` int(11) NOT NULL,
+  `planName` varchar(50) NOT NULL,
+  `start_date` date NOT NULL,
+  `doneDream` date NOT NULL,
+  `planAvgMax` int(11) NOT NULL,
+  `sumOfExam` int(11) NOT NULL,
+  `periodNo` int(11) NOT NULL,
+  `period` varchar(10) NOT NULL,
+  `money_assumption` varchar(250) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vy_dreamhussle`
+--
+
+INSERT INTO `vy_dreamhussle` (`id`, `user_id`, `subj_id`, `dream_id`, `planName`, `start_date`, `doneDream`, `planAvgMax`, `sumOfExam`, `periodNo`, `period`, `money_assumption`, `date`) VALUES
+(1, 23, 18, 1, 'REVOLUTION', '2018-08-25', '0000-00-00', 0, 34, 9, 'day', '40,000,000', '2018-08-22'),
+(2, 23, 18, 1, 'PESA I PESA', '2018-08-25', '0000-00-00', 0, 34, 10, 'day', '50,0000', '2018-08-22'),
+(3, 23, 18, 2, 'PESA I PESA', '2018-08-25', '0000-00-00', 0, 34, 10, 'day', '50,0000', '2018-08-22'),
+(4, 23, 18, 1, 'NEW MIND IN MY LIFE', '2018-08-31', '0000-00-00', 0, 10, 10, 'week', '2,000,000', '2018-08-22'),
+(5, 23, 18, 3, 'REVOLUTION', '2018-08-25', '0000-00-00', 0, 20, 10, 'year', '23,000,000', '2018-08-22'),
+(6, 23, 18, 0, 'mm', '2018-08-28', '0000-00-00', 0, 66, 9, 'week', '60,000,000', '2018-08-22'),
+(7, 23, 18, 2, 'mm', '2018-08-28', '0000-00-00', 0, 66, 9, 'week', '60,000,000', '2018-08-22'),
+(8, 23, 18, 1, 'xlk;lfdgfds', '2018-08-25', '0000-00-00', 0, 35, 10, 'year', '30,000,000', '2018-08-22'),
+(9, 23, 18, 1, 'xlk;lfdgfds', '2018-08-25', '0000-00-00', 0, 35, 10, 'year', '30,000,000', '2018-08-22'),
+(10, 23, 18, 1, 'xlk;lfdgfds', '2018-08-25', '0000-00-00', 0, 35, 10, 'year', '30,000,000', '2018-08-22'),
+(11, 23, 18, 1, 'xlk;lfdgfds', '2018-08-25', '0000-00-00', 0, 35, 10, 'year', '30,000,000', '2018-08-22'),
+(12, 23, 18, 1, 'xlk;lfdgfds', '2018-08-25', '0000-00-00', 0, 35, 10, 'year', '30,000,000', '2018-08-22'),
+(13, 23, 18, 3, 'revo', '2018-08-25', '0000-00-00', 0, 23, 10, 'Month', '90,000,000', '2018-08-22'),
+(14, 23, 18, 3, 'revo', '2018-08-25', '0000-00-00', 0, 23, 10, 'Month', '90,000,000', '2018-08-22'),
+(15, 23, 18, 0, 'LOVE IN AFFECTION', '2018-08-14', '0000-00-00', 0, 32, 10, 'week', '100,000,000', '2018-08-22'),
+(16, 23, 18, 1, 'HHH', '2018-08-14', '2018-08-29', 0, 23, 8, 'week', '50.000,000', '2018-08-23'),
+(17, 23, 18, 3, 'asdfa', '2018-08-30', '2018-08-30', 0, 56, 8, 'Month', 'xcvxcvxv', '2018-08-28'),
+(18, 23, 18, 1, 'zcxzxc', '2018-08-31', '2018-08-31', 0, 23, 6, 'day', '23232', '2018-08-28'),
+(19, 23, 18, 1, 'JI', '2018-08-31', '2018-08-31', 36, 45, 7, 'day', '565656', '2018-08-28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vy_dreamworkexam`
+--
+
+CREATE TABLE `vy_dreamworkexam` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `dream_id` int(11) NOT NULL,
+  `paperNo` int(11) NOT NULL,
+  `examChoosenId` int(11) NOT NULL,
+  `complishion` varchar(1) NOT NULL,
+  `result` int(11) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vy_dreamworkexam`
+--
+
+INSERT INTO `vy_dreamworkexam` (`id`, `user_id`, `dream_id`, `paperNo`, `examChoosenId`, `complishion`, `result`, `date`) VALUES
+(1, 23, 16, 1, 1, '1', 0, '0000-00-00 00:00:00'),
+(2, 23, 19, 0, 46, '1', 0, '0000-00-00 00:00:00'),
+(3, 23, 19, 3, 56, '', 0, '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `vy_exmcompoz`
 --
 
@@ -412,7 +555,74 @@ INSERT INTO `vy_exmcompoz` (`id`, `user_id`, `subj_id`, `exam_name`, `exam_type`
 (9, 23, 18, 'cvbcvb', 'Examination', '12:59:00', '12:59:00', '2018-08-16', 'cvbcbcb', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-15 19:31:56'),
 (10, 23, 18, 'kjasho knawatoka', 'Examination', '13:00:00', '12:00:00', '2018-08-22', 'gfgjhhgjsdjdfsklds\nklhdslfjlkf\nlms;dfk;jsdf', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 18:23:42'),
 (11, 23, 18, 'dfgfd', 'Examination', '12:59:00', '12:59:00', '2018-08-15', 'sdfsfds\nfghfh\nfghfh\ndfgd', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 18:30:34'),
-(12, 23, 18, 'sdfgd', 'Examination', '12:59:00', '12:59:00', '2018-08-22', 'dtgydetgertgre\nfdghgf', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 18:32:36');
+(12, 23, 18, 'sdfgd', 'Examination', '12:59:00', '12:59:00', '2018-08-22', 'dtgydetgertgre\nfdghgf', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 18:32:36'),
+(13, 23, 18, 'sfdsf', 'Examination', '14:34:00', '14:34:00', '2018-08-22', 'wertwrtewtrwet\nwetewrtwet\nwrtwe\nrt\nwet\new\nt\new\ntwe\n\nterw', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 18:54:35'),
+(14, 23, 18, 'njhknhkhk', 'Examination', '15:45:00', '16:35:00', '2018-08-22', 'gfhjghjghjgjh', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 19:18:40'),
+(15, 23, 18, 'hgfghfh', 'Examination', '14:34:00', '15:45:00', '2018-08-22', 'hgjh\nhjgjgh\njkhkhk', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 19:24:21'),
+(16, 23, 18, 'jhgj', 'Examination', '12:45:00', '17:32:00', '2018-08-22', 'hgjghj', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 19:30:32'),
+(17, 23, 18, 'gfdghdgfh', 'Examination', '13:45:00', '15:45:00', '2018-08-15', 'gfhgfh\nfghfhg\nhjj', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 19:33:38'),
+(18, 23, 18, 'jhggjh', 'Examination', '17:06:00', '15:44:00', '2018-08-08', 'mhvvm', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 20:13:57'),
+(19, 23, 18, 'sdfsdf', 'Examination', '15:24:00', '05:34:00', '2018-08-16', '34535zsdvczxv', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 20:15:49'),
+(20, 23, 18, 'ghfghfgh', 'Examination', '12:45:00', '17:46:00', '2018-08-15', 'gfhfh\nhgfhjgh', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 20:18:34'),
+(21, 23, 18, 'ghfghfgh', 'Examination', '12:45:00', '17:46:00', '2018-08-15', 'gfhfh\nhgfhjgh', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 20:20:01'),
+(22, 23, 18, 'ghfghfgh', 'Examination', '12:45:00', '17:46:00', '2018-08-15', 'gfhfh\nhgfhjgh', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 23:12:57'),
+(23, 23, 18, 'ghfghfgh', 'Examination', '12:45:00', '17:46:00', '2018-08-15', 'gfhfh\nhgfhjgh', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 23:13:12'),
+(24, 23, 18, 'zdxfcz', 'Examination', '12:59:00', '14:32:00', '2018-08-23', 'bvcbcbv\ncvbcbcv', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 23:16:24'),
+(25, 23, 18, 'hjk', 'Examination', '12:59:00', '12:59:00', '0000-00-00', 'hjbkj', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-18 23:18:05'),
+(26, 23, 18, 'zxcvzxcv', 'Examination', '12:34:00', '12:34:00', '2018-08-21', 'zfasfda\nxzvczxvz', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 00:11:42'),
+(27, 23, 18, 'dfgdfgdfgd', 'Examination', '14:34:00', '14:34:00', '0000-00-00', 'sefrsffs', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 06:22:42'),
+(28, 23, 18, 'dfg', 'Examination', '12:31:00', '12:12:00', '2018-08-15', 'fsfdfsd', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 07:09:40'),
+(29, 23, 18, 'srfsdf', 'Examination', '12:12:00', '12:12:00', '2018-08-22', 'sdfs', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 07:11:46'),
+(30, 23, 18, 'jhgjhgkjhjkhk', 'Examination', '16:53:00', '14:43:00', '2018-08-22', 'jkhjhkhk', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 08:17:52'),
+(31, 23, 18, 'vchbchgvh', 'Examination', '14:32:00', '14:32:00', '2018-08-21', 'hgfgh', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 09:18:12'),
+(32, 23, 18, 'fsdfsfdf', 'Examination', '14:13:00', '14:34:00', '0000-00-00', '234ewr', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 12:36:59'),
+(33, 23, 18, 'knjljad', 'Examination', '14:32:00', '14:32:00', '2018-08-15', 'sdfsadf', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 12:44:23'),
+(34, 23, 18, 'dsf', 'Examination', '14:32:00', '14:32:00', '2018-08-29', 'asdfjkaf', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 12:49:15'),
+(35, 23, 18, 'sd', 'Examination', '14:32:00', '14:03:00', '2018-08-28', 'qwer', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 12:50:50'),
+(36, 23, 18, 'adsf', 'Examination', '13:23:00', '14:03:00', '2018-08-14', '234', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 12:53:38'),
+(37, 23, 18, ',kjklasd', 'Examination', '14:32:00', '14:03:00', '2018-08-21', '234', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 12:57:23'),
+(38, 23, 18, 's', 'Examination', '14:32:00', '14:32:00', '2018-08-21', 'weqwer', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 12:59:42'),
+(39, 23, 18, 'sd', 'Examination', '14:32:00', '14:03:00', '2018-08-22', '23werwer', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 13:08:39'),
+(40, 23, 18, 'sd', 'Examination', '14:32:00', '14:33:00', '2018-08-07', 'sd', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 13:12:59'),
+(41, 23, 18, 'a', 'Examination', '14:03:00', '00:00:00', '2018-08-21', 'sd', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 13:14:57'),
+(42, 23, 18, 'gagag', 'Examination', '12:12:00', '12:12:00', '2018-08-14', 'dsasas', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 13:37:57'),
+(43, 23, 18, 'fgghfgh', 'Examination', '15:43:00', '15:43:00', '2018-08-14', 'wsfgdfg', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 20:40:53'),
+(44, 23, 18, 'Bufuruni', 'Examination', '14:32:00', '14:32:00', '2018-08-22', 'lk;jl;dfsgfsf', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 20:44:10'),
+(45, 23, 18, 'hkajjlfda', 'Examination', '13:34:00', '15:44:00', '2018-08-22', 'lkdl;fgdgfd', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 20:47:59'),
+(46, 23, 18, 'kjhkhkjhjk', 'Examination', '12:34:00', '15:54:00', '2018-08-21', 'jkhkk', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 20:51:49'),
+(47, 23, 18, 'kjhk', 'Examination', '00:00:00', '14:33:00', '2018-08-14', 'dfbgv', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 20:53:49'),
+(48, 23, 18, 'jhkhk', 'Examination', '12:34:00', '15:43:00', '2018-08-15', 'vjhgjhgj', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-19 21:04:55'),
+(49, 23, 18, 'Stak unipe maisha', 'Examination', '12:12:00', '12:12:00', '2018-08-22', 'dszdfszzf', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-20 00:34:52'),
+(50, 23, 18, 'cvb', 'Examination', '23:59:00', '15:24:00', '2018-08-21', 'dfgdfg', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-20 00:39:56'),
+(51, 23, 18, 'sdfdsf', 'Examination', '15:43:00', '15:43:00', '2018-08-22', 'dfgdfg', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-20 00:43:14'),
+(52, 23, 18, 'sdfdsf', 'Examination', '15:43:00', '15:43:00', '2018-08-22', 'dfgdfg', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-20 00:43:24'),
+(53, 23, 18, 'df', 'Examination', '14:32:00', '14:03:00', '2018-08-22', 'dfggdfgd', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-20 00:47:27'),
+(54, 23, 18, 'df', 'Examination', '14:32:00', '14:03:00', '2018-08-22', 'hj', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-20 14:07:02'),
+(55, 23, 18, 'swd', 'Examination', '14:32:00', '14:32:00', '2018-08-22', '2323asd', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-20 14:12:40'),
+(56, 23, 18, 'rfhg', 'Examination', '14:32:00', '14:32:00', '2018-08-22', 'fdhdf', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-20 14:19:07'),
+(57, 23, 18, 'fgh', 'Examination', '00:00:00', '00:00:00', '2018-08-15', 'xfgd', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-20 14:20:40'),
+(58, 23, 18, 'jkh', 'Examination', '00:00:00', '00:00:00', '0000-00-00', '', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-20 14:24:30'),
+(59, 23, 18, 'sd', 'Examination', '00:00:00', '00:00:00', '0000-00-00', '', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-20 15:03:36'),
+(60, 23, 18, 'New Compose', 'Examination', '12:32:00', '14:32:00', '2018-08-26', 'New compose', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-24 10:07:10'),
+(61, 23, 18, 'now is moving', 'Examination', '12:23:00', '14:03:00', '2018-08-29', '1/fcxhfgfggd gdfs g dfg', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-24 16:45:17'),
+(62, 23, 18, 'ghghgh', 'Examination', '14:32:00', '14:32:00', '2018-08-27', '1/ hjhjfdjhjhgh hg hghjhghg', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-24 16:50:15'),
+(63, 23, 18, 'speed test', 'Examination', '12:23:00', '14:32:00', '2018-08-26', '1dfsdfsfdsdfds', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-24 16:58:29'),
+(64, 23, 18, 'xfvxdc', 'Examination', '14:32:00', '14:32:00', '2018-08-28', '1//xcvxvx', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-24 17:03:42'),
+(65, 23, 18, 'cfbgcxfg', 'Examination', '15:43:00', '15:43:00', '2018-08-29', 'fgdgfhh', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-24 17:14:47'),
+(66, 23, 18, 'drgdfg', 'Examination', '12:23:00', '14:32:00', '2018-08-15', 'fdsgdfgfdg', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-24 17:20:54'),
+(67, 23, 18, 'Parents Time', 'Examination', '14:23:00', '15:22:00', '2018-08-29', '1/ no chabo\n2/ jipime kiuwakika', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-24 18:02:15'),
+(68, 23, 18, 'ghj', 'Examination', '12:34:00', '14:32:00', '2018-08-26', '1.hgjg hgjgjhgjgj', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-24 18:30:05'),
+(69, 23, 18, 'sdfsd', 'Examination', '14:32:00', '14:33:00', '2018-08-29', 'swdsfsfsfsf', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-24 18:56:50'),
+(70, 23, 18, 'fsf', 'Examination', '14:32:00', '12:12:00', '2018-08-28', 'xcvxvcx', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-24 21:36:00'),
+(71, 23, 18, 'se,ma', 'Examination', '14:32:00', '14:32:00', '2018-08-29', '1/ ok wey back home now', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-25 08:09:37'),
+(72, 23, 18, 'frty', 'Examination', '14:32:00', '14:32:00', '2018-08-29', 'dfghg', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-25 10:09:37'),
+(73, 23, 18, 'mkjsdklf', 'Examination', '14:32:00', '14:32:00', '2018-08-29', 'werwr', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-25 10:17:46'),
+(74, 23, 18, 'rtfh', 'Examination', '14:33:00', '14:32:00', '2018-08-28', 'werwrvwrvwrwv  fsdf', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-25 10:26:14'),
+(75, 23, 18, 'fcgv', 'Examination', '14:32:00', '14:32:00', '2018-08-29', 'sdfsfsd', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-25 10:34:57'),
+(76, 23, 18, 'ccvbc', 'Examination', '14:32:00', '14:32:00', '2018-08-28', 'ewrfsdf', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-25 10:43:01'),
+(77, 23, 18, 'jmkd,mz.', 'Examination', '14:32:00', '14:32:00', '2018-08-29', 'sdfsd', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-25 11:16:14'),
+(78, 23, 18, 'nehemia', 'Examination', '14:33:00', '14:32:00', '2018-08-28', '1/ maeneo ya pwani wajameni\n2/ maeneo ya pwani', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-25 11:31:01'),
+(79, 23, 18, 'Nehemia', 'Examination', '12:23:00', '14:32:00', '2018-08-23', '', 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-08-26 17:59:53');
 
 -- --------------------------------------------------------
 
@@ -536,10 +746,59 @@ INSERT INTO `vy_photo` (`id`, `user_id`, `photo`, `p_status`) VALUES
 
 CREATE TABLE `vy_qustion` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `exam_id` int(11) NOT NULL,
-  `qstn` int(11) NOT NULL
+  `qstnCompz_id` int(11) NOT NULL,
+  `section` varchar(20) NOT NULL,
+  `qNo` varchar(20) NOT NULL,
+  `qColum` varchar(10) NOT NULL,
+  `topic_title` varchar(100) NOT NULL,
+  `sub_tpc` varchar(250) NOT NULL,
+  `qstn` text NOT NULL,
+  `match_a` varchar(300) NOT NULL,
+  `match_b` varchar(300) NOT NULL,
+  `match_c` varchar(300) NOT NULL,
+  `match_d` varchar(300) NOT NULL,
+  `tch_ans` longtext NOT NULL,
+  `status` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vy_qustion`
+--
+
+INSERT INTO `vy_qustion` (`id`, `qstnCompz_id`, `section`, `qNo`, `qColum`, `topic_title`, `sub_tpc`, `qstn`, `match_a`, `match_b`, `match_c`, `match_d`, `tch_ans`, `status`) VALUES
+(1, 1, 'SECTION A', '0', '0', 'dfg', '', 'dfdgdg', '', '', '', '', 'dfg', ''),
+(2, 1, 'SECTION A', '0', '0', 'dfg', '', 'dfdgdg', 'match a', 'match b', 'match c', '', 'dfg', ''),
+(3, 0, 'SECTION A', '3', '1.3', 'dada', '', 'brabrararararara unaweza kusema ni nini ?', '', '', '', '', 'ni kumMa mamako', ''),
+(4, 1, 'SECTION A', '7', '1.6', 'hhha', '', 'fani na fanani tofaut', '', '', '', '', '', ''),
+(5, 1, 'SECTION A', '7', '1.6', 'hhha', '', 'tafadhari nioneshe wey', '', '', '', '', 'bnmnb', ''),
+(6, 1, 'SECTION A', '7', '1.6', 'hhha', '', 'kwenu ni wap tena', '', '', '', '', 'Nyumbani', ''),
+(7, 1, 'SECTION A', '10', '1.5', 'Saim', '', 'sdfsdfss', '', '', '', '', 'sdfsfssfsdf', ''),
+(8, 1, 'SECTION A', '5', '1.5', 'Buguruni', '', 'fgfgfgf  gfgf g gf gfgfgfgfg', '', '', '', '', 'bhgjgjgjhg  hgjh gjhgjhg', ''),
+(9, 1, 'SECTION A', '13', '1.11', 'dad', '', 'sdfsdfsfs', '', '', '', '', 'sdfsdsdfsdfs', ''),
+(10, 1, 'SECTION A', '6', '1.5', 'dfdsfs', '', 'sxcv', '', '', '', '', 'sdfsfsfs', ''),
+(11, 0, 'SECTION A', '5', '1.6', 'df', '', 'dfgdfgdgdf', '', '', '', '', 'dfgdgdgd', ''),
+(12, 0, 'SECTION A', '5', '1.6', 'df', '', 'dfgdfgdgdf', '', '', '', '', 'dfgdgdgd', ''),
+(13, 0, 'SECTION A', '5', '1.6', 'df', '', 'dfgdfgdgdf', '', '', '', '', 'dfgdgdgd', ''),
+(14, 0, 'SECTION A', '5', '1.6', 'df', '', 'dfgdfgdgdf', '', '', '', '', 'dfgdgdgd', ''),
+(15, 1, 'SECTION A', '8', '1.6', 'dfgd', '', 'dfgdgdg', '', '', '', '', 'dfgdgdg', ''),
+(16, 1, 'SECTION A', '0', '0', 'erte', '', 'ertet', '', '', '', '', 'ertet', ''),
+(17, 1, 'SECTION A', '0', '0', 'erte', '', 'ertet', '', '', '', '', 'ertet', ''),
+(18, 1, 'SECTION A', '0', '0', 'erte', '', 'ertet', '', '', '', '', 'ertet', ''),
+(19, 1, 'SECTION A', '0', '0', 'erte', '', 'ertet', '', '', '', '', 'ertet', ''),
+(20, 0, 'SECTION A', '5', '1.6', 'df', '', 'dfgdfgdgdf', '', '', '', '', 'dfgdgdgd', ''),
+(21, 1, 'SECTION A', '12', '1.10', 'B ugutruni', '', 'Fasihi ni  nn', '', '', '', '', 'fasihi ni kazi ya sanaa inayofikaisha ujumbe kwa mafumbo', ''),
+(22, 1, 'SECTION A', '0', '0', 'gfghg', '', 'jhgjjkhj', '', '', '', '', 'bnmbmbmbm', ''),
+(23, 1, 'SECTION A', '10', '1.6', 'sdf', '', 'sdf', '', '', '', '', 'sdfs', ''),
+(24, 1, 'SECTION A', '10', '1.5', 'cvccvc', '', 'xcxxc', '', '', '', '', 'zxxzxz', ''),
+(25, 1, 'SECTION A', '0', '0', 'Bugurunio', '', 'Mayai viza mawili ni sawa na shiling ngap now', '', '', '', '', 'kwann umeamua kuchukua uamuzi huo wakati unaona maisha hailis jins ya livyo', ''),
+(26, 1, 'SECTION A', '4', '1.4', 'fgh', '', 'ertete', '', '', '', '', 'ertetete', ''),
+(27, 1, 'SECTION A', '0', '0', 'xcfbgvc', '', 'cvbcbc', '', '', '', '', 'cvbcvbcv', ''),
+(28, 1, 'SECTION A', '0', '0', 'dfgd', '', 'dfgdgfd', '', '', '', '', 'dfgdfgd', ''),
+(29, 1, 'SECTION A', '6', '1.3', 'xdvx', '', 'xcvxv', '', '', '', '', 'xcvxv', ''),
+(30, 1, 'SECTION A', '6', '0', 'zxczc', '', 'zxczxcz', '', '', '', '', 'zxczcz', ''),
+(31, 1, 'SECTION A', '1', '1.1', 'Pasua Kichwa', '', 'Pasua Kichwa ss', '', '', '', '', 'Ok', ''),
+(32, 1, 'SECTION A', '1', '1.1', 'Pasua Kichwa', '', 'Pasua Kichwa ss', '', '', '', '', 'Ok', ''),
+(33, 1, 'SECTION A', '4', '0', 'Buguruni', '', 'sdexcept here somthing', '', '', '', '', 'a thing', '');
 
 -- --------------------------------------------------------
 
@@ -604,7 +863,8 @@ INSERT INTO `vy_reply` (`id`, `msg_id`, `send_id`, `replier_id`, `msg`, `date`) 
 (41, 50, 23, 28, 'hallow aa', '2018-08-01 14:31:49'),
 (42, 66, 23, 28, 'kjkasdjlkfa', '2018-08-03 18:46:19'),
 (43, 67, 28, 28, 'ddfgd', '2018-08-08 16:22:45'),
-(44, 69, 23, 23, 'xzcfsdfsdf', '2018-08-08 16:25:14');
+(44, 69, 23, 23, 'xzcfsdfsdf', '2018-08-08 16:25:14'),
+(45, 73, 23, 23, 'hey acha ulongo ww', '2018-08-23 08:34:26');
 
 -- --------------------------------------------------------
 
@@ -639,7 +899,42 @@ INSERT INTO `vy_req` (`id`, `user_id`, `recv_id`, `state`, `status`) VALUES
 (29, 23, 25, 'f', '0'),
 (30, 27, 2, 'f', '0'),
 (32, 28, 5, 'f', '0'),
-(33, 37, 36, 'v', '0');
+(33, 37, 36, 'v', '0'),
+(34, 39, 33, 'v', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vy_results`
+--
+
+CREATE TABLE `vy_results` (
+  `id` int(11) NOT NULL,
+  `t_id` int(11) NOT NULL,
+  `s_id` int(11) NOT NULL,
+  `subj_id` int(11) NOT NULL,
+  `exm_name` varchar(50) NOT NULL,
+  `exmType` varchar(20) NOT NULL,
+  `dateDone` date NOT NULL,
+  `result` int(11) NOT NULL,
+  `schoolName` varchar(50) NOT NULL,
+  `levelOrStandard` varchar(10) NOT NULL,
+  `mkondo` varchar(2) NOT NULL,
+  `region` varchar(50) NOT NULL,
+  `level_identify` varchar(10) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vy_results`
+--
+
+INSERT INTO `vy_results` (`id`, `t_id`, `s_id`, `subj_id`, `exm_name`, `exmType`, `dateDone`, `result`, `schoolName`, `levelOrStandard`, `mkondo`, `region`, `level_identify`, `date`) VALUES
+(1, 23, 23, 18, 'Now', 'Examination', '2018-09-19', 56, 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-09-04'),
+(2, 23, 33, 18, 'Now', 'Examination', '2018-09-19', 65, 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-09-04'),
+(5, 23, 23, 18, 'Three Data', 'Examination', '2018-09-03', 67, 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-09-04'),
+(6, 23, 33, 18, 'Three Data', 'Examination', '2018-09-03', 78, 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-09-04'),
+(7, 23, 39, 18, 'Three Data', 'Examination', '2018-09-03', 87, 'agape', 'Form 1', 'a', 'Dar es Salaam', 'o', '2018-09-04');
 
 -- --------------------------------------------------------
 
@@ -824,7 +1119,8 @@ INSERT INTO `vy_subjecttopics` (`id`, `user_id`, `subject_id`, `topic_title`, `t
 (20, 23, 18, 'weya waya', 'Riwaya', NULL, 'Agape Mama', '', '', '0000-00-00 00:00:00', '0'),
 (21, 26, 24, 'Chemistry', 'Is a branch of science which deals with matters and decomposition of matters..', NULL, 'agape', '', '', '0000-00-00 00:00:00', '0'),
 (22, 23, 18, 'fdsfsdfsd', 'sdfsdfsfsdfsfdfs', NULL, 'agape', 'Dar es Salaam', 'Form 1', '0000-00-00 00:00:00', '0'),
-(23, 23, 24, 'Chemistry', 'Is a branch of science which deals with matters and decomposition of matters..', NULL, 'agap', 'Dar es Salaam', 'Form 1', '0000-00-00 00:00:00', '0');
+(23, 23, 24, 'Chemistry', 'Is a branch of science which deals with matters and decomposition of matters..', NULL, 'agap', 'Dar es Salaam', 'Form 1', '0000-00-00 00:00:00', '0'),
+(24, 23, 18, 'Mambo Mambo', 'kladjfkladsjfkljaldfjl lf la fdlkj dflakfd kfdj klsd', NULL, 'agape', 'Dar es Salaam', 'Form 1', '0000-00-00 00:00:00', '0');
 
 -- --------------------------------------------------------
 
@@ -900,7 +1196,9 @@ INSERT INTO `vy_subtpc` (`id`, `user_id`, `topic_id`, `subject_id`, `subtpc`, `s
 (54, 23, 22, 20, '', '', '0'),
 (55, 23, 23, 24, 'branches of chemistry', '1/ Analyitical chemistry\n2/ physical chemistry\n', '0'),
 (56, 23, 23, 24, 'Importance of Chemistry', '1. to improve agriculture in term of fartilaztaion\n2/ help in mining activities\n3/extration of oils', '0'),
-(57, 23, 23, 24, '', '', '0');
+(57, 23, 23, 24, '', '', '0'),
+(58, 23, 24, 18, 'Ya mot time', '', '0'),
+(59, 23, 24, 18, '', '', '0');
 
 -- --------------------------------------------------------
 
@@ -978,7 +1276,9 @@ INSERT INTO `vy_subtpccover` (`id`, `user_id`, `teacher_id`, `subj_id`, `subtpc_
 (54, 30, 0, 19, 0, '0'),
 (55, 38, 0, 109, 0, '0'),
 (56, 23, 0, 15, 0, '0'),
-(57, 23, 0, 28, 0, '0');
+(57, 23, 0, 28, 0, '0'),
+(58, 23, 23, 18, 58, '0'),
+(59, 23, 23, 18, 59, '0');
 
 -- --------------------------------------------------------
 
@@ -1007,7 +1307,23 @@ INSERT INTO `vy_summaries` (`id`, `subject_id`, `student_id`, `topic_title`, `su
 (3, 18, 23, 'dfsfsgsdfs', 'dfgsdfgsdfs', 'gfhrsdfsgf', '', '2018-08-18 13:23:07'),
 (4, 18, 23, 'dfsfsgsdfs', 'dfgsdfgsdfs', 'gfhrsdfsgfvcbvcxbx', '', '2018-08-18 13:26:09'),
 (5, 18, 23, 'kljlkj', '.km;lk', ',mn,mn, nm', '', '2018-08-18 13:32:44'),
-(6, 18, 23, 'zxcv', 'zxc', 'zvzxc', '', '2018-08-18 16:06:55');
+(6, 18, 23, 'zxcv', 'zxc', 'zvzxc', '', '2018-08-18 16:06:55'),
+(7, 18, 23, ',mnklmnlk', 'm.,.,m.', 'kjkkkhl', '', '2018-08-20 18:04:07'),
+(8, 18, 23, 'WORK ON', 'WORK DONE', 'work done is equal to zero', '', '2018-08-20 20:00:23'),
+(9, 18, 23, 'Work 2', 'xdf', 'Work 2', '', '2018-08-21 06:43:55'),
+(10, 18, 23, 'My summari', '', 'KIswahili ni ni\n\n  safari ya mkurugenzi na mimi anisemaje', '', '2018-08-22 03:50:15'),
+(11, 32, 27, 'MY FIRST', 'S', 'ksdafjla', '', '2018-08-27 21:35:32'),
+(12, 109, 38, 'knljlknk', 'jk', 'nmm', '', '2018-08-28 06:37:22'),
+(13, 18, 23, 'thj', 'ghj', 'ghhhhhhhhhhhhhhh', '', '2018-08-28 22:49:48'),
+(14, 18, 23, 'yryr', 'gdgdg', 'xdfgzdxgfzdg xf gxg x  xdfg fxgxbgfxbgzx f xfh gf', '', '2018-09-02 13:10:49'),
+(15, 18, 23, 'sdfs', 'sdfsdfsdf', 'Fasihi \n     Ni kazi ya sanaaa inayo wakilishwa kwa Maandishi \n\n  Aina Za Fasihi..\n   1.    Fasihi Andishi\n   2     Fasihi Simulizi', '', '2018-09-02 13:15:17'),
+(16, 18, 23, 'sdfs', 'sdfsdfsdf', 'Fasihi \n     Ni kazi ya sanaaa inayo wakilishwa kwa Maandishi \n\n  Aina Za Fasihi..\n   1.    Fasihi Andishi\n   2     Fasihi Simulizi', '', '2018-09-02 13:15:27'),
+(17, 18, 23, 'fasihi', 'fasihi andishi fasih Simuliz', 'Fasihi \n     Ni kazi ya sanaaa inayo wakilishwa kwa Maandishi \n\n  Aina Za Fasihi..\n   1.    Fasihi Andishi\n   2     Fasihi Simulizi', '', '2018-09-02 13:16:06'),
+(18, 18, 23, 'fasihi', 'fasihi andishi fasih Simuliz', 'Fasihi \n     Ni kazi ya sanaaa inayo wakilishwa kwa Maandishi \n\n  Aina Za Fasihi..\n   1.    Fasihi Andishi\n   2     Fasihi Simulizi', '', '2018-09-02 13:16:17'),
+(19, 18, 23, 'fasihi', 'fasihi andishi, fasih Simuliz', 'Fasihi \n     Ni kazi ya sanaaa inayo wakilishwa kwa Maandishi \n\n  Aina Za Fasihi..\n   1.    Fasihi Andishi\n   2     Fasihi Simulizi', '', '2018-09-02 13:16:31'),
+(20, 18, 23, 'fasihi', 'Fasihi Andishi , Fasihi Simulizi', 'Fasihi \n     Ni kazi ya sanaaa inayo wakilishwa kwa Maandishi \n\n  Aina Za Fasihi..\n   1.    Fasihi Andishi\n   2     Fasihi Simulizi', '', '2018-09-02 13:17:42'),
+(21, 18, 23, 'fasihi', 'Fasihi Andishi , Fasihi Simulizi', 'Fasihi \n    Wanasumbua sana xjui kwa nini', '', '2018-09-02 13:18:41'),
+(22, 18, 23, 'kjhkhjk', 'hghjh', 'kjhkhkjkj hjgjgjgh', '', '2018-09-02 17:30:31');
 
 -- --------------------------------------------------------
 
@@ -1021,8 +1337,23 @@ CREATE TABLE `vy_themsg` (
   `u_two` int(11) NOT NULL,
   `msj` text NOT NULL,
   `photo` varchar(9999) NOT NULL,
-  `status` varchar(11) NOT NULL
+  `status` varchar(11) NOT NULL,
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `vy_themsg`
+--
+
+INSERT INTO `vy_themsg` (`id`, `u_one`, `u_two`, `msj`, `photo`, `status`, `date`) VALUES
+(1, 23, 31, 'Mwanangu sio mtulive', '', '', '2018-08-27 00:00:00'),
+(2, 23, 31, 'Mwanangu sio mtulive', '', '', '2018-08-27 00:00:00'),
+(3, 23, 31, 'Sasa tu fanyeje kumtuliza', '', '', '2018-08-27 19:53:16'),
+(4, 23, 31, 'dfd', '', '', '2018-08-27 19:53:47'),
+(5, 23, 31, 'xdfsdf', '', '', '2018-08-30 12:44:09'),
+(6, 23, 31, 'dfsdfs', '', '', '2018-08-30 13:23:00'),
+(7, 23, 0, ']fjkfh', '', '', '2018-09-03 02:04:15'),
+(8, 23, 0, 'fghghjug', '', '', '2018-09-03 02:05:20');
 
 -- --------------------------------------------------------
 
@@ -1110,7 +1441,7 @@ INSERT INTO `vy_users` (`id`, `username`, `phoneNo`, `password`, `fullname`, `st
 (20, 'teach', '', '1a6eed26c6d63f7f97a3e8df0c6dd9e347c0cf6c08a83c1f37b4a43702124562', 'teacher', 0, 0, 0, 1, 'teacher_acc', '«=ÔªÃnèU—›Õ€XGó¤†„x9´KµR%íd¬=', '0000-00-00 00:00:00', '', 'a', 1),
 (21, 'two Acc', '', '197d936ca1e3abf7f95a8e09bdded01e366463f66e9b4ada7791b76147c193a2', 'twoAcount', 1, 0, 0, 1, 'student_acc', '’\'ß¹½í~õ‘S« €ØÚ‡OmôËØv8Â£ˆ§\n¦Pšy', '0000-00-00 00:00:00', '', 'a', 1),
 (22, 'checkTwo', '', '552283a5c99984cf6125bb1f64568bd3d416cc6c790b7010637adcf3775f60c1', 'checkTwo', 1, 0, 0, 1, 'teacher_acc', '4ü)\r¡¶Ñ\0E,EJeˆ¦7Ý,O­òYŠ~*:à°', '0000-00-00 00:00:00', '', 'a', 1),
-(23, 'baraka', '', 'bc93bba87dfa5bffcd6f50c087eb2e71aae06237fc6e8ccac4b1ce440bacdeac', 'Bx', 1, 1, 1, 1, 'p_acc', 'Q‰Ô.Cæ0“+ÓÏ<(ç_†H¿áP—ð‰²\"WÚ', '0000-00-00 00:00:00', 'profile_pct/YLlQHFDWSba7MB1/IMG-20151218-WA0002.jpg', 'a', 1),
+(23, 'Nehemia', '', 'bc93bba87dfa5bffcd6f50c087eb2e71aae06237fc6e8ccac4b1ce440bacdeac', 'Bx', 1, 1, 1, 1, 'p_acc', 'Q‰Ô.Cæ0“+ÓÏ<(ç_†H¿áP—ð‰²\"WÚ', '0000-00-00 00:00:00', 'profile_pct/YLlQHFDWSba7MB1/IMG-20151218-WA0002.jpg', 'a', 1),
 (24, 'chacha', '', '2e15adc4e0d660c6f9f443af8de813282648ea1220f540ce4dd9e62b7e8e704a', 'chacha Mwansasu', 0, 0, 0, 1, 'teacher_acc', '‹7!HÛ´±5Í¸ÌªTìHSiw–eä§x½ûöjV', '0000-00-00 00:00:00', '', 'a', 1),
 (25, 'cheche', '', '8fb7af4d5a0663a0010b7413d4653be2166e5c9d45ec9e49e2432d962f31cd1b', 'hahaa', 0, 0, 0, 1, 'teacher_acc', '„sçF/n‰: |E[”0·uªìN&šì[Û!íDh°', '0000-00-00 00:00:00', '', 'a', 1),
 (26, 'ttmwa', '', '923fae9ec04bce71102eba560ae820e938cb4415146ceac2c5ac00d7299b8e65', 'trial', 0, 0, 0, 1, 'teacher_acc', 'ƒ¦«\0#ƒðF†˜Üø<:=¶v£	uÝ\" !<\rQ‚Ž', '0000-00-00 00:00:00', '', 'a', 1),
@@ -1125,7 +1456,8 @@ INSERT INTO `vy_users` (`id`, `username`, `phoneNo`, `password`, `fullname`, `st
 (35, 'semaa', '', 'd897e2acb5fdcadbf3c91e33d64a1a5905d760937956ccdf48e895e4cd9eb0f0', 'haha', 0, 1, 0, 0, '', 'frîÇ%ÝšK@ùË-ôƒ$*yÏ‡”>ÈQ\r]ˆÔÓ9', '0000-00-00 00:00:00', '', 'a', 1),
 (36, 'k sym', '', '62a2e9402954fcb152508e7b73d9afb65929007fc6512eb6e5f2c974c320446a', 'kasim mganga', 1, 0, 0, 0, 'student_acc', 'Žà–êŒ*aESº’(G8bî|˜#ÅÀÞÇ<l0,', '0000-00-00 00:00:00', '', 'a', 1),
 (37, 'gey', '', 'c8a0ac7212510087e526ab9db4a5c5c0838f7200e6b8aa10e749d9f77b149b69', 'gey jar', 1, 0, 0, 0, 'student_acc', 'ežWè5.ô¼‚çá0y¹à]~YîG«*NýËµ', '0000-00-00 00:00:00', '', 'a', 1),
-(38, 'Mute', '', '22954c99282cc50d04ca40784d1e3b45262d69f120d1190aae6153565bdf8d93', 'Masayo Musa', 1, 0, 0, 0, 'student_acc', 'àG:I¨?§è«ñ<0ÐHyÇryb¦¸ŠŠû-_¬à', '0000-00-00 00:00:00', '', 'a', 1);
+(38, 'Mute', '', '22954c99282cc50d04ca40784d1e3b45262d69f120d1190aae6153565bdf8d93', 'Masayo Musa', 1, 0, 0, 0, 'student_acc', 'àG:I¨?§è«ñ<0ÐHyÇryb¦¸ŠŠû-_¬à', '0000-00-00 00:00:00', '', 'a', 1),
+(39, 'Kaka', '', 'ffb8f351d44fdf89762126cf602bb3b3a68e157e28c659691ebf49a20d44d1d5', 'Kaka Mwansasu', 1, 0, 0, 0, 'student_acc', '+€\nš…ŽE~\nj­·Ìà¼à,UÂmSÏÙp', '0000-00-00 00:00:00', '', 'a', 1);
 
 -- --------------------------------------------------------
 
@@ -1229,7 +1561,10 @@ INSERT INTO `vy_wallsubject` (`id`, `user_id`, `section`, `qstnNo`, `columNo`, `
 (69, 23, 'SECTION A', '10', '1.5', '', '', 'jkdsfa', 'kjsadf', 'asdf', 'sadfa', 18, 'kiswahili', 'asfdadf', 'aksdjkla', '2018-08-16 06:30:58', 'b'),
 (70, 23, 'SECTION A', '14', '1.8', 'Ok Mr Account', 'dsfa', 'What is Account', '', '', '', 28, 'accounts', 'Agape', '', '2018-08-16 14:12:45', 'b'),
 (71, 23, 'SECTION A', '0', '0', '', '', 'jhgjgjkjhk', '', '', '', 18, 'kiswahili', 'knkjk', '', '2018-08-17 19:02:19', 'b'),
-(72, 23, 'SECTION A', '6', '1.3', 'Fassib', 'asdfa', 'Am gona suck his dick', '', '', '', 18, 'kiswahili', 'Buguruni Secondary School', 'kjhk', '2018-08-17 21:46:42', 'b');
+(72, 23, 'SECTION A', '6', '1.3', 'Fassib', 'asdfa', 'Am gona suck his dick', '', '', '', 18, 'kiswahili', 'Buguruni Secondary School', 'kjhk', '2018-08-17 21:46:42', 'b'),
+(73, 23, 'SECTION C', '15', '1.3', 'wewwwew', 'we', 'hellow wapenda', '', '', '', 18, 'kiswahili', 'hEKIMA', '23', '2018-08-22 10:59:24', 'b'),
+(74, 23, 'SECTION C', '11', '0', 'Uchambuz Wa Vitabu', 'Ngoswe Penz Kitovu Cha Uzembe', 'Orozesha Dhima za zinazopatikana katika kitabu hichi', '', '', '', 18, 'kiswahili', 'NECTA school', '2/2/2', '2018-08-23 15:57:46', 'b'),
+(75, 27, 'SECTION A', '15', '1.3', 'Kumbe Kume', '', 'Kumbe Form 2', '', '', '', 32, 'kiswahili', 'Agape', '2/2/200', '2018-08-27 21:36:39', 'b');
 
 -- --------------------------------------------------------
 
@@ -1306,7 +1641,13 @@ INSERT INTO `vy_wallsubjectreply` (`id`, `wallsubject_id`, `sender_id`, `replier
 (56, 66, 23, 23, 0, 'Sawa ndo jib', '2018-08-14 10:17:46'),
 (57, 68, 23, 23, 0, 'c', '2018-08-16 05:22:03'),
 (58, 69, 23, 23, 0, 'J', '2018-08-16 08:05:34'),
-(59, 72, 23, 23, 0, 'A', '2018-08-18 06:56:18');
+(59, 72, 23, 23, 0, 'A', '2018-08-18 06:56:18'),
+(60, 74, 23, 23, 0, '1/ ubinasfi\n2/kwashakoo\n3/kanumba\n4/tafa jamani tafa', '2018-08-23 15:58:39'),
+(61, 75, 27, 27, 0, 'kjhk', '2018-08-27 21:38:14'),
+(62, 67, 23, 23, 0, 'A', '2018-08-31 14:50:52'),
+(63, 65, 23, 23, 0, 'A', '2018-08-31 14:51:11'),
+(64, 62, 28, 23, 0, 'A', '2018-08-31 14:51:25'),
+(65, 73, 23, 23, 0, 'A', '2018-09-06 04:05:11');
 
 --
 -- Indexes for dumped tables
@@ -1367,6 +1708,30 @@ ALTER TABLE `vyu_notf`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `vy_books`
+--
+ALTER TABLE `vy_books`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vy_dreamholder`
+--
+ALTER TABLE `vy_dreamholder`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vy_dreamhussle`
+--
+ALTER TABLE `vy_dreamhussle`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vy_dreamworkexam`
+--
+ALTER TABLE `vy_dreamworkexam`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `vy_exmcompoz`
 --
 ALTER TABLE `vy_exmcompoz`
@@ -1418,6 +1783,12 @@ ALTER TABLE `vy_reply`
 -- Indexes for table `vy_req`
 --
 ALTER TABLE `vy_req`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vy_results`
+--
+ALTER TABLE `vy_results`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1504,17 +1875,17 @@ ALTER TABLE `parent_acc`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 --
 -- AUTO_INCREMENT for table `post_teachandparent`
 --
 ALTER TABLE `post_teachandparent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `post_teachandprntreply`
 --
 ALTER TABLE `post_teachandprntreply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `p_acc`
 --
@@ -1524,7 +1895,7 @@ ALTER TABLE `p_acc`
 -- AUTO_INCREMENT for table `student_acc`
 --
 ALTER TABLE `student_acc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `teacher_acc`
 --
@@ -1536,10 +1907,30 @@ ALTER TABLE `teacher_acc`
 ALTER TABLE `vyu_notf`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `vy_books`
+--
+ALTER TABLE `vy_books`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `vy_dreamholder`
+--
+ALTER TABLE `vy_dreamholder`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `vy_dreamhussle`
+--
+ALTER TABLE `vy_dreamhussle`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `vy_dreamworkexam`
+--
+ALTER TABLE `vy_dreamworkexam`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `vy_exmcompoz`
 --
 ALTER TABLE `vy_exmcompoz`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 --
 -- AUTO_INCREMENT for table `vy_frnds`
 --
@@ -1569,17 +1960,22 @@ ALTER TABLE `vy_photo`
 -- AUTO_INCREMENT for table `vy_qustion`
 --
 ALTER TABLE `vy_qustion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `vy_reply`
 --
 ALTER TABLE `vy_reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `vy_req`
 --
 ALTER TABLE `vy_req`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+--
+-- AUTO_INCREMENT for table `vy_results`
+--
+ALTER TABLE `vy_results`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `vy_subjects`
 --
@@ -1589,27 +1985,27 @@ ALTER TABLE `vy_subjects`
 -- AUTO_INCREMENT for table `vy_subjecttopics`
 --
 ALTER TABLE `vy_subjecttopics`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `vy_subtpc`
 --
 ALTER TABLE `vy_subtpc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 --
 -- AUTO_INCREMENT for table `vy_subtpccover`
 --
 ALTER TABLE `vy_subtpccover`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 --
 -- AUTO_INCREMENT for table `vy_summaries`
 --
 ALTER TABLE `vy_summaries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `vy_themsg`
 --
 ALTER TABLE `vy_themsg`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `vy_timtable`
 --
@@ -1619,7 +2015,7 @@ ALTER TABLE `vy_timtable`
 -- AUTO_INCREMENT for table `vy_users`
 --
 ALTER TABLE `vy_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `vy_users_session`
 --
@@ -1629,12 +2025,12 @@ ALTER TABLE `vy_users_session`
 -- AUTO_INCREMENT for table `vy_wallsubject`
 --
 ALTER TABLE `vy_wallsubject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 --
 -- AUTO_INCREMENT for table `vy_wallsubjectreply`
 --
 ALTER TABLE `vy_wallsubjectreply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
