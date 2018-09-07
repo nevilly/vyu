@@ -40939,11 +40939,136 @@ addplace{
     /* >>>>>>>>>>>> >>>>> END parent slider profile */
 
 
+#slideDown{
+    display:block;
+}
+
+#slideUp{
+    display:none
+}
+.down_Document{
+    margin-left: 10%;
+    margin-left: 10%;
+    width: 25%;
+    height: 80px;
+    float: left;
+    padding-left: 2%;
+    position: relative;
+    top: 2px;
+    transition: 1s;
+    border-left: 1px solid rgba(2,2,2,.2);
+    display: none;
+
+}
+.down_Document > .thedoc{
+    border: 1px solid #eeefee;
+    border-radius: 50px 50px;
+    padding: 2% 7%;
+    margin-top: 1%;
+    width: 60%;
+    background: white;
+    transition: color 0.1s linear 0s;
+    transition: 1s;
+}
+
+.down_Document > .thedoc:hover{
+    margin-left: 4%;
+    cursor:pointer;
+}
+
+.down_Document > .shadowDiv{
+    margin-left:10%;
+}
+
+.down_Document > .potea{
+    position: relative;
+    top: -9px;
+    left: -14%;
+    border-radius: 50px;
+    float: left;
+    width: 10%;
+    height: 17%;
+    padding: 1% 1%;
+    background: rgba(2,2,2,.5);
+    cursor: pointer;
+    color: white;
+    text-align: center;
+}
+
+.down_Document > .potea:hover{
+    margin-left:0px;
+}
+
+.doc_slideBox{
+    margin-left: 10%;
+    width: 80%;
+    height: 80px;
+    float: left;
+    position: relative;
+    top: -3px;
+    transition: 1s;
+    display: none;
+}
+
+.doc_slideBox > div{
+    width: 90px;
+    height: 95%;
+    float: left;
+    border-radius: 3px 3px;
+    margin-left: 5px;
+    margin-top: 4px;
+    box-shadow: 0px 0px 2px rgba(115,115,115,.5);
+}
+
+.doc_slideBox > .openAndClose{
+    border: none;
+    width: 80%;
+    height: 10px;
+    float: left;
+    border-radius: 0px;
+    margin-left: 8%;
+    margin-top: -4%;
+    font-size: 10px;
+    text-align: center;
+    padding: 2px 2px;
+    border-radius: 2px 3px 0px 0px;
+    cursor: pointer;
+    box-shadow: none;
+
+}
+
+.doc_slideBox > .openAndClose > i{
+    font-size:18px;
+}
+
+.doc_slideBox >div > .doc_discr{
+    /*border:1px solid grey;*/
+    width: 100%;
+    height: 100%;
+    border-radius: 3px 3px;
+    overflow: hidden;
+
+}
+
+.doc_slideBox >div > .doc_discr > span{
+    padding: 2px 2px;
+    width: 80%;
+    border: ;
+    border-bottom: 1px solid rgba(2,2,2,.2);
+    text-align: center;
+    font-style: italic;
+    font-size: 10px;
+    float: left;
+    margin-left: 5%;
+
+}
+
 /* parent chatting her */
 
     #parentChat3{
       display:none;
     }
+
     .MsgContainer{
        width:100%;
        min-height: 700px;
