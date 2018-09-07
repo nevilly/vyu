@@ -1,5 +1,7 @@
   _ = (x) => document.getElementById(x); 
 
+  let alvar  = [];
+  latsti = 0;
 
 (function($,s){
 
@@ -23,7 +25,7 @@
         post_holder = $('#subjectWallQstn'),
         post_data = post_holder.html(),
         // previledge = $('#Nav_everyone').value(),
-
+        
         
         temp =      "<div class = 'qstnAndAnsBody'>\n" +
                     "<div class='anseQstnDiv'>\n" +
@@ -108,6 +110,9 @@
                     if(s.state(this)){
                         var r = s.jsonResponse(this);
                         console.log(r);
+
+                     
+
                         q_body.value('');
                         if (r.data === true) {
 
@@ -123,6 +128,7 @@
             alert('Please type something to proceed!');
         }
     });
+
 
     //parents and teacher discussion...
     r = $('#p_Vs_T_chat');
@@ -167,7 +173,7 @@
 					url:'post.php',
 					meth:'post',
                     query: 'action=teacherAndparentChat&teach_id='+user.id+'&user='+user.user_id +'&post=' + t_post.value()+'&subject_id='+user.subject_id +'&schoolname='+user.schoolname+'&mkondo='+user.mkondo +'&levelOrStandard='+user.levelOrStandard+'&region='+user.region+'&level_identify='+user.level_identify,
-                      success:function(data){
+                        success:function(data){
 						if(s.state(this)){
 							var r = s.jsonResponse(this);
 							
@@ -186,6 +192,7 @@
 			}
     });
 
+  
     // Exams Compose
 
     let exm_compz = $('#Exam_cont');
@@ -200,10 +207,6 @@
         QuizNmeHolder = $('#QuizNme'),
         post_QuizNmeHolder = QuizNmeHolder.html()
 
-       
-    	
-    	
-    	
 
     	HomekComp('insideCoverfirst','insideCoverSecond');
 
@@ -218,9 +221,14 @@
                   success:function(data){
 					if(s.state(this)){
 						var r = s.jsonResponse(this);
-						
-						
-						if (r.data === 'Nehemia') {
+						    qstnId = r.id;
+
+                       
+                        latsti += r.id;
+					    
+                        
+
+						if (r.data === true) {
                              console.log(r.data);
 							// t_postHolder.html(t_temp+t_postData);
 							// live();
@@ -235,9 +243,84 @@
 		}
         
     });
-
 })(Exile,sasha);
 
+
+
+function qstncomposer(){
+    alert('work');
+    let qc_section  =   Exile('.qstnCmpz_section'),
+        qc_date     =   Exile('.qstnCmpz_date'),
+        qc_sName    =   Exile('.qstnCmpz_sculName'),
+        qc_tpcQstn  =   Exile('.qstnCmpz_topicQstn'),
+        qc_no       =   Exile('.qstnCmpz_No'),
+        qc_ctgry    =   Exile('.qstnCmpz_ctgry'),
+        qc_qstn     =   Exile('.qstnCmpz_qstn'),
+        qc_gessA    =   Exile('.qstnCmpz_gess_a'),
+        qc_gessB    =   Exile('.qstnCmpz_gess_b'),
+        qc_gessC    =   Exile('.qstnCmpz_gess_c'),
+        qc_gessD    =   Exile('.qstnCmpz_gess_d'),
+        qc_Ans      =   Exile('.qstnCmpz_answer'),
+
+        qc_vns      =   Exile('.qc_viewansw');          // view anser check or un check
+        qs_lastId   =   latsti;                         // returned lust id from  Exams Compose response function;
+        
+        
+        if(qc_vns.value == true){
+            qc_ansDsply = 1;
+            console.log(qc_ansDsply);
+        }else{
+            qc_ansDsply = 0;
+        }
+
+    
+    if(!qc_qstn.empty()){
+            //sasha
+
+            alert('work1')
+            sasha.response({
+                url:'post.php',
+                meth:'post',
+                query:'action=postComposeQstn&user='+user.user_id+
+                    '&level_identify='+user.level_identify+
+                    '&qc_section='+qc_section.value()+
+                    '&qc_date='+qc_date.value()+
+                    '&qc_sName='+qc_sName.value()+
+                    '&qc_tpcQstn='+qc_tpcQstn.value()+
+                    '&qc_no='+qc_no.value()+
+                    '&qc_ctgry='+qc_ctgry.value()+
+                    '&qc_qstn='+qc_qstn.value()+
+                    '&qc_gessA='+qc_gessA.value()+
+                    '&qc_gessB='+qc_gessB.value()+
+                    '&qc_gessC='+qc_gessC.value()+
+                    '&qc_gessD='+qc_gessD.value()+
+                    '&qc_Ans='+qc_Ans.value()+
+                    '&qc_lastId='+qs_lastId+
+                    '&qc_ansDsply='+qc_ansDsply,
+
+                  success:function(data){
+                    if(sasha.state(this)){
+                        var r = sasha.jsonResponse(this);
+                            alert('work2');
+                        if (r.data === true) {
+                            // console.log(r.data);
+                            // t_postHolder.html(t_temp+t_postData);
+                          alert('work3' +qs_lastId);
+                            livee(qs_lastId,'','composeQstn');
+                        }else{
+                            alert(r.error);
+                        }
+                    }
+                }
+            });
+    }else{
+        alert('Please type something In your Composer to proceed!');
+    }
+
+
+    //function mtupio(ar,url,qry);
+}
+ 
 
 //parent Box chat
 function switch_parentChat(a,b,c,d,e,f){
@@ -248,66 +331,180 @@ function switch_parentChat(a,b,c,d,e,f){
     p_allp = e;
     p_uId  = f;    // parent user_id
 
-    divId = document.getElementById(p_chat+d);
+    //divId = p_chat+''+p_id;
+    
+    divId = p_chat;
 
-     livee(p_id,p_uId);
-      console.log(p_chat+d);
+    let id_w = _(divId);
+
+
+    // livee(p_id,p_uId,'parentChat');
+      
+    // console.log('this =>'+divId);
+
+    // if(id_w){
+    //     // console.log("prencence"+ id_w);
+    // }else{
+    //      console.log("Not prencence"+ id_w);
+    // }
    
-    if (getComputedStyle(divId).display == 'none') {
+    if (getComputedStyle(id_w).display == 'none') {
         _(p_wrap).style.display = 'none';
-        divId.style.display = 'block';
+        id_w.style.display = 'block';
         // _(this.parebt).style.display = 'block';
             
-    }else if (getComputedStyle(_(divId)).display == 'block') {
+    }else if (getComputedStyle(id_w).display == 'block') {
         _(p_wrap).style.display = 'block';
-        divId.style.display = 'none';
+        id_w.style.display = 'none';
         // _(tmp.parebt).style.display = 'none';
     }
+    
+     sasha.response({
+                url:'post.php',
+                meth:'post',
+                query:'action=idOnly&pid='+p_id+'&u_two='+p_uId+'&real_user='+user.user_id,
+
+                  success:function(data){
+                    
+                    if(sasha.state(this)){
+                        var r = sasha.jsonResponse(this);
+                       
+
+                        if (r.status === true) {
+                            r.data
+                            //console.log(r.data);
+                        //t_postHolder.html(t_temp+t_postData);
+                          // alert('work3' +qs_lastId);
+                          //   livee(qs_lastId,'','composeQstn');
+                        }else{
+                            alert(r.error);
+                        }
+                    }
+                }
+            });
 }
 
-
  
-function livee(a,b) {
+lastpch_AllChatId      = 0;
+last_prt_ChatSingleId  = 0;
+lastunc_date           = 0;
 
-    var the_qry  =  'action=teacherLive&sect_tfeed=b&subjectId='+user.subject_id+'&real_user='+ user.user_id+'&user_id='+ user.user_id+'&schoolname='+user.schoolname+'&region='+user.region+'&levelOrStandard='+user.levelOrStandard+'&mkondo='+user.mkondo+'&level_identify='+user.level_identify;
-                
+function livee(a,b,c) {
     
-    if(typeof a !== 'undefined' && typeof a !== 'undefined' &&  a != null && b != null){ 
-    	the_qry = 'action=teacherLive&sect_tfeed=b&subjectId='+user.subject_id+'&real_user='+ user.user_id+'&user_id='+ user.user_id+'&schoolname='+user.schoolname+'&region='+user.region+'&levelOrStandard='+user.levelOrStandard+'&mkondo='+user.mkondo+'&level_identify='+user.level_identify+'&action=singleParentChat&p_accId='+a+'&p_accuserId='+b;
+   
+    var the_qry  =  'action=teacherLive&sect_tfeed=b&subjectId='+user.subject_id+
+                    '&real_user='+ user.user_id+
+                    '&sesion_id='+ user.sesion_id+
+                    '&user_id='+ user.user_id+
+                    '&subjectName='+ user.subjectName+
+                    '&teacher_id='+user.teacher_id+
+                    '&teacherUname='+ user.teacherUname+
+                    '&schoolname='+user.schoolname+
+                    '&region='+user.region+
+                    '&levelOrStandard='+user.levelOrStandard+
+                    '&mkondo='+user.mkondo+
+                    '&level_identify='+user.level_identify;
+                
+    if(typeof c !== 'undefined'&& c == 'parentChat'){
+        console.log('gitting Her NOw');
+        if(typeof a !== 'undefined' && typeof b !== 'undefined' &&  a != null && b != null){ 
+            the_qry += '&p_accId='+a+'&p_accuserId='+b;
+        }
+    }
+    
+
+    if(typeof c !== 'undefined' && c == 'composeQstn'){
+        if(typeof a !== 'undefined' &&  a != null ){ 
+            the_qry += '&Actionx=qstnComoser&qstnCompose_lastId='+a;
+             alert("Nehemia  x work"+ a);
+            
+        }
     }
 
-    if(user.user !== '' && post_holder.element !== null ){var post_data = post_holder.html();} 
+    //console.log(the_qry);
+
+ 
+    //if(user.user !== '' && post_holder.element !== null ){var post_data = post_holder.html();} 
     // var post_data = post_holder.html();
     var post_holder       = $$('#subjectWallQstn');         // teacher subject wall
     var pSlider_holder    = $$('#sid');                     // parent chember slider
     var t_postHolder      = $$('#teacherToParentHolder');   // parent chember all teacher and parent convarsation
     var parentChatSingle  = $$('#parentChatSingle');
+    var qstn_compsrHolder = $$('#qc_dsply');
+    let resultWrap        = $$('#resultWraper');            // result id to return ;
     
     return {
         gett:() => {
             sasha.onMessage({
-                meth:'post',
+                meth:'post',  
                 url:'Liveteacher.php',
                 query: the_qry,
                 success:function (d){
+
+
                     var r             =  sasha.data(d),
                     id                =  r.id;
                     pch_slider        =  r.PrntSlider_pch;  // parent chember on teacher slider
+                    pch_AllChatId     =  r.AllChat_Id;      // Id for parent All teacher and Student
                     pch_AllChat       =  r.AllCaht_pCh;     // parent Chember All teacher and parents Discussion
-                    prt_ChatSingle    =  r.pdata;
+                       
+                    prt_ChatSingleId  =  r.parent_SingleChatId;
+                    prt_ChatSingle    =  r.parent_SingleChat;
+                    qstn_compsed      =  r.qdata;
+                   
+                    result_info       =  r.resultInfo;
+                    undate            =  r.resultdate;
+
+
+                    // console.log(result_info);
+
+                    // issetOn = r.check1;
+                    // issetOf = r.check;
+                    
+
+                  //  console.log('issetOn => '+issetOn);
+                  //  console.log('issetOf => '+issetOf);
+
+
+                    //  if(typeof r.qdata !== 'undefined' && r.data !== ''){
+                    //     qstn_compsed =  r.qdata;
+                    //     console.log(qstn_compsed);
+                    //     qstn_compsrHolder.html(qstn_compsed);
+                    // }
+                  
+
+                    // console.log(qstn_compsed)
     
                     if(r.status && lastEventId !== id){
                         post_holder.html(r.data);
                     }
-   
-                    pSlider_holder.html(pch_slider);    // parent chember on teacher slider
                     
-                    t_postHolder.html(pch_AllChat);     // parent Chember All t and p Discussion
+                    pSlider_holder.html(pch_slider);    // parent chember on teacher slider
 
-                    parentChatSingle.html(prt_ChatSingle);
+                    if(lastpch_AllChatId !== pch_AllChatId){
+                        t_postHolder.html(pch_AllChat);     // parent Chember All t and p Discussion
+                    }
+                    
+                    if(last_prt_ChatSingleId !== prt_ChatSingleId){
+                        parentChatSingle.html(prt_ChatSingle);
+                    }
+
+                    qstn_compsrHolder.html(qstn_compsed);
+
+                   
+                    
+                    // if(lastunc_date !== undate){
+                       resultWrap.html(result_info);
+                    // }
+
                     
                     // console.log(lastEventId);
                     lastEventId = id;
+
+                    lastpch_AllChatId    = pch_AllChatId;
+                    last_prt_ChatSingleId = prt_ChatSingleId
+
+                    lastunc_date = undate;
                 }
             });
         },
@@ -317,6 +514,35 @@ function livee(a,b) {
         }  
     }
 }
+
+
+function mtupio(ar,url,qry){
+    if(!ar.empty()){
+            //sasha
+            sasha.response({
+                url:url,
+                meth:'post',
+                query: qry,
+
+                  success:function(data){
+                    if(sasha.state(this)){
+                        var r = sasha.jsonResponse(this);
+                            
+                        if (r.data === true) {
+                             // console.log(r.data);
+                            // t_postHolder.html(t_temp+t_postData);
+                            // live();
+                        }else{
+                            alert(r.error);
+                        }
+                    }
+                }
+            });
+        }else{
+            alert('Please type something to proceed!');
+        }
+}
+
 
 var lastEventId = '';
 var teachLive  = livee();
@@ -378,9 +604,9 @@ function sendAnswer(msj_id,sender_id){
 	        }
         });
     }else{
-            alert('Please type something to proceed!');
-            document.getElementById(textId).style.display = "block";
-		}
+        alert('Please type something to proceed!');
+        document.getElementById(textId).style.display = "block";
+	}
 }
 
 function updateAnwser(msj_id,sender_id){
@@ -483,7 +709,7 @@ function allChembar(txtid,post_id,RplyDiv){
     
     var  txtValue =  _(txtid).value;
     var rplDiv  = RplyDiv+post_id;
-     console.log(rplDiv);
+     // console.log(rplDiv);
         var rply_post   = Exile('#'+txtid),
         allChat_holder  = Exile('#'+rplDiv),
         post_data       = allChat_holder.html(),
@@ -538,9 +764,110 @@ function allChembar(txtid,post_id,RplyDiv){
                 }
             }
         }
-        }
+    }
         );
  }else{
      alert('Please type something to proceed!');
  }
+}
+
+function allChembar_pvtMsg(prvtTxt_tp,id,prvtMsgs,u_two){
+    let idtext_pt    =  prvtTxt_tp+''+id;
+    let idWall_pt    =  prvtMsgs+id;
+
+   var   textV_pt    = Exile('#'+idtext_pt),
+         prv_holder  = Exile('#'+idWall_pt),
+      
+         post_holder =  prv_holder.html();
+      
+       console.log("chek Id=> "+u_two);
+      // console.log(textV_pt);
+     // console.log(idtext_pt+ ' '+ textV_pt +' '+textV_pt.value());
+
+   let spt_tmp = " <div class='chatholder'>\n" +
+                "\t\t\t\t\t\t        <div class='divcirlce'>\n" +
+                "\t\t\t\t\t\t                            <div class = 'cicle'></div>\n" +
+                "\t\t\t\t\t\t         </div>\n" +
+                "\t\t\t\t\t\t        <div class ='textChat'>\n" +
+                "\t\t\t\t\t\t            <p>"+textV_pt.value()+"</p>\n" +
+                "\t\t\t\t\t\t        </div>\n" +
+                "\t\t\t\t\t\t          <div class = 'clear'></div>\n" +
+                "\t\t\t\t\t\t   </div>" ;
+
+   if(!textV_pt.empty()){
+        sasha.response({
+        url:'post.php',
+        meth:'post',
+        query: 'action=teacherAndparentChat_priveteChat&user='+user.user_id+'&post=' +textV_pt.value()+'&u_two='+u_two,
+        success:function(data){
+            if(sasha.state(this)){
+                var r = sasha.jsonResponse(this);
+                if (r.data === true) {
+
+                    prv_holder.html(spt_tmp+post_holder);
+                    // live();
+                }else{
+                    alert(r.error);
+                }
+            }
+        }
+    })
+    }
+}
+
+function post_ExamResult(a,b,c,d,e,f,g){
+    // a  => Result max ;
+    // b  => DatetoSeeTeacher ;
+    // c  => teacher_option ;
+    // d  => r_fesReason ;
+    // e  => r_examName ;
+    // f  => r_qtnType ;
+    // g  => r_resultDate ;
+
+   // post_ExamResult('max_r','DatetoSeeTeacher','teacher_option','r_fesReason');"
+  
+
+    let  itm_data = '';
+    let  itm = '';
+
+    let  r_examName =  _(e);
+    let  r_qtnType  =  _(f);
+    let  r_rsltDate =  _(g);
+
+    $$().each('.'+a,function(item,index){
+
+        console.log(item);
+
+        let item_v = item.value;
+        let item_id = $$(item).Id();
+         
+         itm_data += item_v+'-'+ item_id+',';
+        
+    });
+
+    // if(!post.empty()){
+        
+       // console.log( user.subject_id );
+        
+        sasha.response({
+            url:'post.php',
+            meth:'post',
+            query: 'action=ExamResult&user=' + user.user_id +'&rdata=' +itm_data+'&subject_id='+user.subject_id+'&examname='+r_examName.value+'&examType='+r_qtnType.value+'&rDate='+r_rsltDate.value+'&schoolname='+user.schoolname +'&mkondo='+user.mkondo + '&levelOrStandard='+user.levelOrStandard +'&region='+user.region +'&level_identify='+user.level_identify, 
+            success:function(data){
+                if(sasha.state(this)){
+                    var r = sasha.jsonResponse(this);
+                    
+                    if (r.data == true){
+
+                        console.log('this => worrk');
+                    }else{
+                        alert(r.error);
+                    }
+                }
+            }
+        });
+    // }else{
+    //     alert('Please type something to proceed!');
+    //     document.getElementById(textId).style.display = "block";
+    // }   
 }

@@ -133,5 +133,12 @@
 	  }
 	}
 
+	function get($db,$table,$col,$row,$return){
+
+		$qry = $db->get($table,array($col,'=',$row));
+        return $qry->first()->$return;
+    }
+
+
 ?>
 

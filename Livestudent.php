@@ -18,6 +18,22 @@ if(isset($_GET['action']) && $_GET['action'] == 'studentLive' ){
     $subjectId    =  preg_replace("#[^0-9]#",'',$_GET['subjectId']);
     $real_user    =  preg_replace("#[^0-9]#",'',$_GET['real_user']);
 
+
+    $user_id     =  preg_replace("#[^0-9]#",'',$_GET['user_id']);
+    $sesion_id   =  preg_replace("#[^0-9]#",'',$_GET['sesion_id']);       // login session id
+
+    $teach_id    =  preg_replace("#[^0-9]#",'',$_GET['teacher_id']);      // teacher id
+    $teach_Uname =  preg_replace("#[^0-9]#",'',$_GET['teacherUname']);    // teacher username
+
+    #School Info
+    $subjectName =  $_GET['subjectName'];
+    $schoolname  =  $_GET['schoolname'];
+    $region      =  $_GET['region'];
+    $lvl_Std     =  $_GET['levelOrStandard'];
+    $mkondo      =  $_GET['mkondo'];
+    $lvl_id      =  $_GET['level_identify'];
+
+
     if ($sect_tfeed == 'b') {
         $sql  = $db->query("SELECT 
 		                        p.*,
@@ -319,38 +335,35 @@ if(isset($_GET['action']) && $_GET['action'] == 'studentLive' ){
         $result = array('data'=>'Nooo data found','status'=>$status);
     }
 
-        #parent and their student profiles slide show on Parents Chember
         
-        $user_id     =  preg_replace("#[^0-9]#",'',$_GET['user_id']);
-        $sesion_id   =  preg_replace("#[^0-9]#",'',$_GET['sesion_id']);       // login session id
+    #student Period subject function
+    $dayPeridiod =  todayPereod($db,$user_id,$sesion_id,$teach_id,$teach_Uname,$subjectName,$subjectId,$schoolname,$region,$lvl_Std,$mkondo);
+    $dayPeriod   =  $dayPeridiod[0];
+    $tmrwPeriod  =  $dayPeridiod[1];
 
-        $teach_id    =  preg_replace("#[^0-9]#",'',$_GET['teacher_id']);      // teacher id
-        $teach_Uname =  preg_replace("#[^0-9]#",'',$_GET['teacherUname']);    // teacher username
+    $result['dayPeriod']       = $dayPeriod;
+    $result['tommorowPeriod']  = $tmrwPeriod;
 
-        #School Info
-        $subjectName =  $_GET['subjectName'];
-        $schoolname  =  $_GET['schoolname'];
-        $region      =  $_GET['region'];
-        $lvl_Std     =  $_GET['levelOrStandard'];
-        $mkondo      =  $_GET['mkondo'];
-        $lvl_id      =  $_GET['level_identify'];
 
-        
-        #student Period subject function
-        $dayPeridiod =  todayPereod($db,$user_id,$sesion_id,$teach_id,$teach_Uname,$subjectName,$subjectId,$schoolname,$region,$lvl_Std,$mkondo);
-        $dayPeriod   =  $dayPeridiod[0];
-        $tmrwPeriod  =  $dayPeridiod[1];
+    #Students Summaries 
+    $smary                  =  summaries($db,$user_id,$subjectId);
+    $result['summary']      =  $smary[0];
+    $result['summaryWall']  =  $smary[1];
 
-        $result['dayPeriod']      = $dayPeriod;
-        $result['tommorowPeriod'] = $tmrwPeriod;
 
-        #
-        if(isset($_GET['tymtableId'])){
-            $tymtid      =  $_GET['tymtableId'];
-            $timetable   = tymtable_reviewNotes($db,$tymtid);    //time tableee
-            $tpcrvw      = $timetable[0];
-            $result['tpcrvw'] = $tpcrvw;  //not working function
-        }
+    #Students Summaries 
+    $dreamSlider            =  planAccomplish_dream($db,$user_id,$subjectId);
+    $result['dreamSlider']  =  $dreamSlider[0];
+    $result['dreamSldrId']  =  $dreamSlider[1];
+
+    #tyme table Viewx
+    if(isset($_GET['tymtableId'])){
+
+        $tymtid      =  $_GET['tymtableId'];
+        $timetable   = tymtable_reviewNotes($db,$tymtid);    //time tableee
+        $tpcrvw      = $timetable[0];
+        $result['tpcrvw'] = $tpcrvw;  //not working function
+    }
 }
 
 
@@ -360,6 +373,7 @@ function get_replies($pid,$db,$classCss,$real_user){
     $reply  = '';
     $class  = '';
     $id     = 0;
+
     $sql = $db->query("SELECT r.*,u.profile,u.username FROM vy_wallsubjectreply as r 
 	LEFT JOIN vy_wallsubject as p ON(r.wallsubject_id  = p.id) 
 	LEFT JOIN vy_users as u ON(r.replier_id = u.id) 
@@ -634,7 +648,6 @@ function todayPereod($db,$user_id,$sesion_id,$teach_id,$teach_Uname,$subjectName
 }
 
 
-
 function tymtable_reviewNotes($db,$tymtid){
     $rvw = '';
 
@@ -644,7 +657,7 @@ function tymtable_reviewNotes($db,$tymtid){
 
     if($qry_subjectopic->count() > 0){
         
-        foreach($qry_subjectopic->result() as $r){
+        foreach($qry_subjectopic->results() as $r){
             $dayTopic      =   $r->dayTopic;
             $daySubtpc     =   $r->daySubtpc;
             $subject_id    =   $r->subject_id;
@@ -1121,6 +1134,366 @@ function tymtable_reviewNotes($db,$tymtid){
 }
 
 
+function summaries($db,$user_id,$subjectId){
+    $sumary      = '';
+    $Allsumary   = '';
+    $id          = 0;
+
+    $qry = "SELECT s.*,  s.id as sid, u.profile,u.username,v.id,v.suubject_name  as vname FROM vy_summaries s 
+                LEFT JOIN vy_users as u ON(s.student_id = u.id) 
+                LEFT JOIN vy_subjects as v ON(s.subject_id = v.id) 
+                WHERE s.subject_id = ? AND s.student_id = ?
+                ORDER by s.id DESC
+            ";
+
+
+    $sql  = $db->query($qry,array($subjectId,$user_id));
+   
+
+    if($sql->count() > 0) {
+        foreach ($sql->results() as $r) {
+            # code...
+            $sid       =    $r->sid;
+            $uname     =    $r->username;
+            $proifle   =    $r->profile;
+            $width     =    100;
+            $height    =    100;
+            $class     =    '';
+            $prof      =    $db->prfl_pctwithClass($proifle, $width, $height, $class);
+            $subjname  =    $r->vname;          //subject name
+            
+
+            $tpc_title  =    $r->topic_title;    //subject 
+            $subtpc_lst =    $r->subtpc_list;    //subject 
+            $body       =    $r->body;           //subject 
+
+            $sumary .=  "<div id = 'summary$sid' class='AllpostestesSummaries mysummaries'>
+                            <div class = 'divSenderDetels'>
+                                <a href = '#'>
+                                    <div class = 'profImg'>
+                                        $prof
+                                    </div>
+
+                                    
+                                    <div class ='name_time'>
+                                        <span class = 'name'>$uname</span>
+                                        <span class = 'time_ago'>5hrs Ago</span>
+                                    </div>
+
+                                    <span class = 'summary_print' onclick = print_f('summary$sid')>
+                                        <i class = \"fa fa-print\"></i>
+                                    </span>
+
+                                </a>
+                                
+                            </div>
+
+                            <div class = 'summaryPanel'>
+                                <div class = 'sumaruHeader'>
+                                    <div class = 'title'>
+                                       <span class = 'SumaryTopic'>Topic:</span>
+                                       <span class = 'SumaryTopicName'>$tpc_title</span>
+                                    </div>
+
+                                    <div class = 'summaryNo'>
+                                       <span class = 'SumaryTopic'>Summery No</span>
+                                       <span class = 'SumaryNo'>00</span>
+                                    </div>
+
+                                    <div class = 'subtitle'>
+                                       <span class = 'SumaryTopic'>Sub Topic</span>
+                                       <span class = 'SumaryTopicName'>$subtpc_lst</span>
+                                    </div>
+                                </div>
+
+                                <div class = 'summarybody'>
+                                    <div class = 'MainBodySummaary'>
+                                        $body
+                                    </div>
+                                    
+                                    <footer>
+                                        <div class = 'writenBy'>
+                                            <a href = '#'>
+                                                <span class = 'writenTitle' >Written By</span>
+                                                <span class = 'writenname' >$uname</span>
+                                            </a>
+                                        </div>
+                                    </footer>
+                                </div>
+
+                                <div class = 'iconGroup summaryIcon'>
+                                    <div class = 'firstIcon'><span><i class = 'fa fa-thumbs-o-up'></i></span><span>125</span></div>
+                                    <div class = 'sectIcon' onclick = \"openAbsolute('shareTo');\"><span ><i class = 'fa fa-share-square'></i></span><span>45</span></div>
+                                    <div class = 'thirdIcon'><span><i class = 'readed'>readed</i></span><span>425</span></div>
+                                    <div class = 'forthIcon' onclick = \"openAbsolute('printList');\"><span><i class = \"fa fa-print\"></i></span><span>printList</span></div>
+                                </div>
+                            </div>
+                        </div>
+            ";
+        }
+    }else{
+        $sumary .= "No Summaries";
+    }
+
+
+    $qry1 = "SELECT s.*,u.profile,u.username,v.id,v.suubject_name  as vname   FROM vy_summaries s 
+                LEFT JOIN vy_users as u ON(s.student_id = u.id) 
+                LEFT JOIN vy_subjects as v ON(s.subject_id = v.id) 
+                
+                ORDER by s.id DESC
+            ";
+
+    $sql1 = $db->query($qry1);
+
+    if($sql1->count() > 0) {
+        foreach ($sql1->results() as $r1) {
+            # code...
+            $uname     =    $r1->username;
+            $proifle   =    $r1->profile;
+            $width     =    100;
+            $height    =    100;
+            $class     =    '';
+            $prof      =    $db->prfl_pctwithClass($proifle, $width, $height, $class);
+            $subjname  =    $r1->vname;          //subject name
+            
+
+            $tpc_title  =    $r1->topic_title;    //subject 
+            $subtpc_lst =    $r1->subtpc_list;    //subject 
+            $body       =    $r1->body;           //subject 
+
+            $Allsumary .=  "<div class = 'summaryPanel'>
+                                <div class = 'sumaruHeader'>
+                                    <div class = 'title'>
+                                       <span class = 'SumaryTopic'>Topic:</span>
+                                       <span class = 'SumaryTopicName'>$tpc_title</span>
+                                    </div>
+
+                                    <div class = 'summaryNo'>
+                                       <span class = 'SumaryTopic'>Summery No</span>
+                                       <span class = 'SumaryNo'>01</span>
+                                    </div>
+
+                                    <div class = 'subtitle'>
+                                       <span class = 'SumaryTopic'>Sub Topic</span>
+                                       <span class = 'SumaryTopicName'>$subtpc_lst</span>
+                                    </div>
+                                </div>
+
+                                <div class = 'summarybody'>
+                                    <div class = 'MainBodySummaary'>
+                                       $body
+
+                                    </div>
+                                    
+                                    <footer>
+                                        <div class = 'writenBy'>
+                                            <a href = '#'>
+                                                <span class = 'writenTitle' >Written By</span>
+                                                <span class = 'writenname' >$uname </span>
+                                            </a>
+                                        </div>
+                                    </footer>
+                                </div>
+
+                                <div class = 'iconGroup summaryIcon'>
+                                    <div class = 'firstIcon'><span><i class = 'fa fa-thumbs-o-up'></i></span><span>125</span></div>
+                                    <div class = 'sectIcon' onclick = \"openAbsolute('shareTo');\"><span ><i class = 'fa fa-share-square'></i></span><span>45</span></div>
+                                    <div class = 'thirdIcon'><span><i class = 'readed'>readed</i></span><span>425</span></div>
+                                    <div class = 'forthIcon' onclick = \"openAbsolute('printList');\"><span><i class = 'fa fa-print'></i></span><span>printList</span></div>
+                                </div>
+                            </div>
+            ";
+        }
+    }else{
+        $Allsumary .= "No Summaries";
+    }
+
+
+    return[$sumary,$Allsumary];
+}
+
+
+function planAccomplish_dream($db,$user_id,$subjectId){
+    #slide on parent chember;){
+
+    $sql        =  null;
+    $box        =  'No Slider found';
+
+    $qry =  "SELECT 
+                    d.id          as did,
+                    d.user_id     as d_uId,
+                    d.subj_id     as d_sId,
+                    d.dream_id    as d_drm,
+                    d.planName    as d_pname,
+                    d.start_date  as d_start,
+                    d.doneDream   as d_done,
+                    d.planAvgMax  as d_AvgMax,  
+                    d.sumOfExam   as d_se,
+                    d.periodNo    as d_prNo,
+                    d.period      as d_prd,
+                    d.money_assumption  as d_m,
+
+                    dh.id         as  dh_id,
+                    dh.header     as dh_h,
+                    dh.planCost   as dh_c,
+
+                    x.username    as du,
+                    x.profile     as dpr
+
+                    FROM vy_dreamhussle  d 
+                      
+                    LEFT JOIN vy_users as x ON (d.user_id = x.id)
+                    LEFT JOIN vy_dreamholder as dh ON (d.dream_id = dh.id)
+                   
+                    WHERE d.user_id = ?  AND
+                        d.subj_id = ?   ORDER BY d.id DESC ";
+    ;
+
+    $sql =  $db->query($qry,array($user_id,$subjectId));
+    if($sql->count() > 0){
+        
+        $sid          =  0;
+        $planBox      =  '';
+        $exm_temp     =  '';
+        $class        =  '';
+        $width        =  '';
+        $height       =  '';
+        $st_profile   =  '';
+
+        foreach ($sql->results() as $r) {
+           
+            $id       =  $r->did;           // parent id
+            $sid     +=  $id;               // parent id
+            $uId      =  $r->d_uId;         // user id
+            $sId      =  $r->d_sId;         // subjeect id
+            $drm_id   =  $r->d_drm;         // Dream id
+            $planName =  $r->d_pname;       // Dream id
+            $start    =  $r->d_start;       // parent Student Id
+            $done     =  $r->d_done;        //  done dream
+            $avgMax   =  $r->d_AvgMax;      //  Avarege Max Student Plan to get On each Exam
+            $se       =  $r->d_se;          // sum of Exam
+            $prdNo    =  $r->d_prNo;        // time to do
+            $period   =  $r->d_prd;         // period
+            $mnyAss   =  $r->d_m;           // money assume
+
+            #DreamHolder table Details
+            $header   =  $r->dh_h;           // header
+            $planCost =  $r->dh_c;           // planCost in dream Holder
+
+
+            $uname    =  $r->du;            // username
+            $prof     =  $r->dpr;           // profile
+
+            $class  =  '';
+            $p_prof   =  $db->prfl_pctwithClass($prof, $width, $height, $class);    // parent profile 
+
+
+            for($x = 0; $x < 5; $x++){
+                $exm_temp .= " <div class = 'examspage'>
+                                    <div class = 'examheader'>
+                                        <div class = 'examNo'>No:$x</div>
+                                        <div class = 'examDoneDate'>$done</div>
+                                    </div>
+
+                                    <div class = 'DisplayMax'> 
+                                        <span class = 'GetAbove'>GET ABOVE</span>
+                                        <span class = 'RealMax'> $avgMax %</span>
+                                    </div>
+
+                                    <div class = 'bottomExamdiv'> 
+                                        <span class = 'upload'>Upload</span>
+                                        <a href = 'examtime.php?user=$uname&subjectid=$sId&exmno=$x&examid=$id' class = 'startExam'>$uname</a>
+                                    </div>
+                            </div>
+                    "
+                ;
+            }
+
+          $planBox .= "
+                    <div class ='panelPlaner'>
+                           <!--  panel Exam show pepars and Maxs progress -->
+                            <div class = 'panelExams'>
+                                <div class = 'header_planExams'>
+                                    <h3 class ='PlanningName'>$planName</h3>
+                                    <div class ='PlanningSumOfExam'>
+                                       <span >
+                                            <span>Total Exam</span>
+                                            <span>$se</span>
+                                       </span>
+
+                                       <span >
+                                           <span>Exam Done</span>
+                                           <span>0</span>
+                                       </span>
+
+                                       <span >
+                                           <span>Total Money Plan To Get</span>
+                                           <span class = 'AssumMoney'>$mnyAss</span>
+                                       </span>
+                                    </div>
+                                    <h3 class = 'dataStart'>$start</h3>
+                                </div>
+
+                                <div class ='panelExamWraper'>
+                                    <div class = 'slideArrow backArrwo' onclick  = \"fPrevious('planSlider$id',158)\"><i class = 'fa fa-angle-double-left'></i></div>
+                                    <div class ='panelExamBody'>
+                                        <div id = 'planSlider$id' class = 'xoverflow slider'>
+                                            
+                                           $exm_temp 
+                                            
+                                        </div>
+                                    </div>
+                                    <div class = 'slideArrow forwardArrwo' onclick=\"fNext('planSlider$id',158);\"><i class = 'fa fa-angle-double-right'></i></div>
+                                </div>
+                            </div>
+                            
+
+
+                            <!--  panel DREAM show aside pepars and Maxs progress -->
+                            <div class = 'panelDream'>
+                                <div class = 'topheader'>
+                                    <div class = 'firstheader'>
+                                        <span class = 'nameOfDream'>$header</span>
+                                    </div>
+
+                                    <div class = 'DreamWinning'>
+                                        <!-- <i class = 'fa  fa-trophy'></i> -->
+                                        <div class = 'dreamWining'>
+                                            <img class = 'imgWin' src = 'img/planner/house/hous1/house.jpeg'/>
+                                                           
+                                            <div class = 'details'>
+                                                <div class = 'sold'>
+                                                    <span class = 'roundColor'></span>
+                                                    <span class = 'cash'>MONEY:</span>
+                                                    <span class = 'cash'> $planCost tzs</span>
+                                                </div>
+
+                                                <div class = 'sold plannerButton'>
+                                                    <span class = 'CheckDetails' onclick = \"PlanInfo('MyDream','$drm_id ');\">Check Details 
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <!--    
+                                    <div class = 'seconfHeader'>
+                                        <span class ='progressBar'>ON PROGRESS</span>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+          ";
+
+        }
+    }
+
+    return [$planBox,$sid];
+}
+
+
+
+
 echo "data:".json_encode($result)."\n\n";
+
 
 

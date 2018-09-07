@@ -1,0 +1,211 @@
+
+
+.summary_print{
+  display:none;
+}
+
+.divSenderDetels{
+  width:100%;
+  float:left;
+  margin-left: 1mm;
+  border:none;
+  /*border-radius:3px;*/
+  /*margin-top:5%;
+  margin-left:5%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background: white;
+*/}
+
+.divSenderDetels > a{
+  width:20%;
+  float:left;
+  margin-left: 0mm;
+}
+
+.divSenderDetels  > a > .profImg{
+  border-radius: 5px;
+  width:120px;
+  height: 120px;
+}
+
+
+.divSenderDetels  > a > .profImg > img{
+  border-radius: 3px;
+}
+
+.divSenderDetels  > a > .name_time{
+  font-size:17px;
+  color:red;
+  display: none;
+  width:100%;
+}
+
+.divSenderDetels  > a > .name_time > .name{
+  font-size: 14px;
+  color:red;
+  margin-top: 65px;
+}
+
+.divSenderDetels  > a > .name_time > .time_ago{
+  display: none;
+}
+.divSenderDetels  > a > span{
+  display: none;
+}
+.divSenderDetels > span{
+  display: none;
+}
+
+.mysummaries{
+  width:100%;
+  border:none;
+}
+
+.summaryPanel{
+  width:90%;
+  height: 78%;
+  float:left;
+  border:none;
+}
+
+.summaryPanel > .sumaruHeader{
+  width:60%;
+  height: 10%;
+  position: absolute;
+  margin-top:-22%;
+  margin-left:12%;
+  border: none;
+}
+
+.summarybody{
+  width:100%;
+  height:100%;
+  font-size: 16px;
+  border: none;
+ 
+}
+
+.summarybody > .MainBodySummaary{
+  width:97%;
+  height: 95%;
+  float:left;
+  font-size: 16px;
+  border: none;
+}
+
+.summarybody > .MainBodySummaary > img{
+  width:100%;
+  height:185px;
+  float:left;
+  font-size: 12px;
+  border: none;
+  /* border:1px solid green;*/
+}
+
+.summarybody > footer{
+  width:100%;
+  float:left;
+  border:none;
+}
+
+.summarybody > footer > .writenBy{
+  float:right;
+  width:100%;
+  font-size:16px;
+}
+
+.summarybody > footer > .writenBy a{
+  width:100%;
+  float:right;
+
+}
+
+.summarybody > footer > .writenBy > a > span{
+  float:left;
+  width:100%;
+}
+
+
+.summarybody > footer > .writenBy > a > .writenTitle{
+  font-style: italic;
+  font-size: 10px;
+  margin-left:3%;
+}
+
+.summarybody > footer > .writenBy > a > .writenname {
+  text-align: left;
+  font-style: italic;
+  font-size: 16px;
+  width:90%;
+  margin-left:5%;
+}
+
+.summaryIcon{  
+display: none;
+}
+
+.iconGroup{
+ display: none;
+  
+}
+
+
+
+/*<div id="summary13" class="AllpostestesSummaries mysummaries">
+    <div class="divSenderDetels">
+        <a href="#">
+            <div class="profImg">
+                <img src="userdata/profile_pct/YLlQHFDWSba7MB1/IMG-20151218-WA0002.jpg" width="100px" height="100px" class="">
+            </div>
+
+            <div class="name_time">
+                <span class="name">baraka</span>
+                <span class="time_ago">5hrs Ago</span>
+            </div>
+        </a>
+        <span onclick="print_f('summary13')"><i class="fa fa-print"></i></span>
+    </div>
+
+    <div class="summaryPanel">
+        <div class="sumaruHeader">
+            <div class="title">
+               <span class="SumaryTopic">Topic:</span>
+               <span class="SumaryTopicName">thj</span>
+            </div>
+
+            <div class="summaryNo">
+               <span class="SumaryTopic">Summery No</span>
+               <span class="SumaryNo">00</span>
+            </div>
+
+            <div class="subtitle">
+               <span class="SumaryTopic">Sub Topic</span>
+               <span class="SumaryTopicName">ghj</span>
+            </div>
+        </div>
+
+        <div class="summarybody">
+            <div class="MainBodySummaary">
+                ghhhhhhhhhhhhhhh
+            </div>
+            
+            <footer>
+                <div class="writenBy">
+                    <a href="#">
+                        <span class="writenTitle">Written By</span>
+                        <span class="writenname">baraka</span>
+                    </a>
+                </div>
+            </footer>
+        </div>
+
+        <div class="iconGroup summaryIcon">
+            <div class="firstIcon"><span><i class="fa fa-thumbs-o-up"></i></span><span>125</span></div>
+            <div class="sectIcon" onclick="openAbsolute('shareTo');"><span><i class="fa fa-share-square"></i></span><span>45</span></div>
+            <div class="thirdIcon"><span><i class="readed">readed</i></span><span>425</span></div>
+            <div class="forthIcon" onclick="openAbsolute('printList');"><span><i class="fa fa-print"></i></span><span>printList</span></div>
+        </div>
+    </div>
+</div*/
+           

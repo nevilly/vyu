@@ -245,14 +245,15 @@
         <div class = "absoluteBody summaryBody">
             <h3>CREATE SUMMARY</h3>
             <header>  
-              <input type = "text" placeholder="Topic Name" name = "" class = "TopicName" > 
-              <input type = "text" placeholder="Sub Topic" name = ""  class = "subTopicName" > 
-              <input type = "text" placeholder="Summary Number" name = "" class = "SummaryNumber" > 
+              <input type = "text" placeholder="Topic Name" name = "" class = "TopicName" id = 's_topicName' > 
+              <input type = "text" placeholder="Sub Topic" name = ""  class = "subTopicName" id = 's_subtopicName' > 
+              <input type = "text" placeholder="Summary Number" name = "" class = "SummaryNumber" id = 's_sumaryNo' > 
 
             </header>
-          
+            
+         
             <div class = "Absolutwraper summaryNotesWraper">
-                <textarea class = "notesSummarise"></textarea>
+                <textarea  class = "notesSummarise" id = "summarybody"></textarea>
                 <div class = "geneleralButton">
                     <div  id = "postSummary" class = "button1 postSummary">
                         Post Summary
@@ -1400,7 +1401,7 @@
             <div  class = 'QuizCompozWarper'>
                 <div id ='exam_section'>
                     <label for='SECTION'>SECTION</label>
-                    <select id='SECTION'> 
+                    <select id='SECTION' class='qstnCmpz_section'> 
                         <option selected="selected">SECTION A</option>
                         <option>SECTION A</option>
                         <option>SECTION B</option>
@@ -1411,24 +1412,25 @@
                     </select>
                 </div>
                 
+
                 <div class = 'time_schol'>
                     <div id ='exam_date'>
-                        <input type = 'date' placeholder = 'Exam date'>
+                        <input class='qstnCmpz_date' type = 'date' placeholder = 'Exam date'>
                     </div>
                     
                     <div id ='exam_schoolName'>
-                      <input type = 'text' placeholder = 'School name'>
+                      <input  class='qstnCmpz_sculName' type = 'text' placeholder = 'School name'>
                     </div>
                 </div>
                
                <div class = 'topicQstn'>
-                    <input type = 'text' placeholder ='Question from Topic' name = 'topicQstn'>
+                    <input class='qstnCmpz_topicQstn' type = 'text' placeholder ='Question from Topic' name = 'topicQstn'>
                </div>
                
                 <div class = 'qustin_number'>
                     <div id = 'Qno'>
                         <label for='Qno'>Qn</label>
-                        <select id='Qn_selectNo'> 
+                        <select id='Qn_selectNo' class='qstnCmpz_No' > 
                             <option selected="selected">0</option>
                             <option>1</option>
                             <option>2</option>
@@ -1451,7 +1453,7 @@
                     
                    <div id = 'Qno_rum'>
                         <label for='Qno'>category</label>
-                        <select id='Qn_selectrum'> 
+                        <select id='Qn_selectrum' class='qstnCmpz_ctgry'> 
                             <option selected="selected">0</option>
                             <option>1.1</option>
                             <option>1.2</option>
@@ -1470,33 +1472,34 @@
                     </div>
                </div>
                
-               <textarea id = 'qstn_exam' placeholder = 'Type Exam Question here' onclick = "hideshow_profileUploder('upload_photo_qstn_exam');"/></textarea>
-                <div id = 'upload_photo_qstn_exam' class = 'match_photo qstn_phot'>
-                     <i class="fa fa-camera" id= 'cover_camera_prof'></i>
-                </div>
+              <textarea id = 'qstn_exam' placeholder = 'Type Exam Question here' class='qstnCmpz_qstn' onclick = "hideshow_profileUploder('upload_photo_qstn_exam');"/></textarea>
+              
+              <div id = 'upload_photo_qstn_exam' class = 'match_photo qstn_phot'>
+                <i class="fa fa-camera" id= 'cover_camera_prof'></i>
+              </div>
              
                <span class = 'matchItemsBoton'>
                     <span onclick = "swicthVisibility('ans_qstn');" class = 'enableMatch'>Enable match items</span>
                    <!--  <span class = 'disableMatch'>Disiable match items</span>  -->        
-                </span>
+              </span>
                 
-                <div class = 'matchitemx' id = 'ans_qstn'>
+              <div class = 'matchitemx' id = 'ans_qstn'>
                     <div class = 'matchA'>
-                        <span class = 'Aitem'>A.</span><textarea class = 'gess_a' onclick = "hideshow_profileUploder('upload_photo_A');"></textarea>
+                        <span class = 'Aitem'>A.</span><textarea class = 'qstnCmpz_gess_a gess_a' onclick = "hideshow_profileUploder('upload_photo_A');"></textarea>
                         <div id = 'upload_photo_A' class = 'match_photo match_upload_A'>
                             <i class="fa fa-camera" id= 'cover_camera_prof'></i>
                         </div>
                     </div>
                     
                    <div class = 'matchB'>
-                         <span class = 'Bitem'>B.</span><textarea class = 'gess_b' onclick = "hideshow_profileUploder('upload_photo_B');" ></textarea>
+                         <span class = 'Bitem'>B.</span><textarea class = 'qstnCmpz_gess_b gess_b' onclick = "hideshow_profileUploder('upload_photo_B');" ></textarea>
                          <div id = 'upload_photo_B' class = 'match_photo match_photo_B'>
                               <i class="fa fa-camera" id= 'cover_camera_prof'></i>
                          </div>
                     </div>
                    
                     <div class = 'matchC'>
-                         <span class = 'Citem'>C.</span><textarea class = 'gess_c' onclick = "hideshow_profileUploder('upload_photo_C');"></textarea>
+                         <span class = 'Citem'>C.</span><textarea class = 'qstnCmpz_gess_c gess_c' onclick = "hideshow_profileUploder('upload_photo_C');"></textarea>
                          <div id = 'upload_photo_C' class = 'match_photo match_photo_C'>
                               <i class="fa fa-camera" id= 'cover_camera_prof'></i>
                          </div>
@@ -1504,21 +1507,23 @@
                     </div>
                     
                     <div class = 'matchD'>
-                         <span class = 'Aitem'>D.</span><textarea class = 'gess_d'  onclick = "hideshow_profileUploder('upload_photo_D');"></textarea>
+                         <span class = 'Aitem'>D.</span><textarea class = 'qstnCmpz_gess_d gess_d'  onclick = "hideshow_profileUploder('upload_photo_D');"></textarea>
                          <div id = 'upload_photo_D' class = 'match_photo match_photo_D'>
                               <i class="fa fa-camera" id= 'cover_camera_prof'></i>
                          </div>
                     </div>
-               </div>
+              </div>
                
-               <textarea id = 'typeQn_ans' onclick = "hideshow_profileUploder('upload_photo_answ');" placeholder = 'Type Answer here' ></textarea>
+               <textarea id = 'typeQn_ans' onclick = "hideshow_profileUploder('upload_photo_answ');" placeholder = 'Type Answer here' class ='qstnCmpz_answer' ></textarea>
                <div id = 'upload_photo_answ' class = 'match_photo ans_photo'>
                     <i class="fa fa-camera" id= 'cover_camera_prof'></i>
                </div>
             </div>
             <div id = 'send_exam'>
-               <div id = 'post_v'><input class = 'p' type='submit' id='submit_post' value = 'Compose'></div>
-               <div id = 'hideAns' onclick= "blurChar('typeQn_ans');">FICHA JIBU</div> 
+              <div id = "idret"></div>
+               <div id = 'post_v' ><input class = 'p' type='submit' id='submit_post' onclick="qstncomposer();" value = 'Compose'></div>
+               <div id = 'hideAns' >
+               <input type="checkbox" class = 'qc_viewansw' >FICHA JIBU</div> 
             </div>
         </div>
 
@@ -1526,245 +1531,785 @@
         <div id ='QuizDisplay' class = 'QuizDisplay'>
             <div class = 'xoverflow'>
                 <div class = 'divSection'>
-                    <div class ='testSection'>SECTION A</div>
-                         
                     <i class="fa fa-print" aria-hidden="true"></i>
-                         
-                    <div class = 'QuizQust'>
-                        <div class = 'QstNo'>1.</div>
-                        <div class = 'question'>
-                           Solve the system of equations by graphing.
-                           Be sure to identify any solution
-                          <br/> y = 2x + 1 Y = -4x + 7
-                          
-                           <?php
-                           $match = 1;
-                           if($match == 0) {
-                           ?>
-                            <div class = 'matchz'>
-                                <div>
-                                    <div class = 'chois marchCOnsA'>A.</div>
-                                    <div class = 'ges gasessAnswA'>Kwa kweli</div>
-                                    <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                    <div id = "qc_dsply" class = 'xoverflow'>
+                        <div class = 'sectionWrap' id = "sectionA" >
+                            <div class = 'testSection'  >  SECTION A </div>
+                                 
+                            <div class = 'qc_QuizQust QuizQust'>
+                                <div class = 'QstNo'>1.</div>
+                                <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                   <?php
+                                   $match = 1;
+                                   if($match == 0) {
+                                   ?>
+                                    <div class = 'matchz'>
+                                        <div>
+                                            <div class = 'chois marchCOnsA'>A.</div>
+                                            <div class = 'ges gasessAnswA'>Kwa kweli</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                            <div class = 'chois marchCOnsB'>B.</div>
+                                            <div class = 'ges gasessAnswB'>Kwa uong</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                            <div class = 'chois marchCOnsC'>C.</div>
+                                            <div class = 'ges gasessAnswC'>Kwa sijui</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                            <div class = 'chois marchCOnsD'>D.</div>
+                                            <div class = 'ges gasessAnswD'>Kwa sijui</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                    </div>   
+                                          
+                                        
+                                    <?php
+                                    }
+                                   ?>
                                 </div>
-                                <div>
-                                    <div class = 'chois marchCOnsB'>B.</div>
-                                    <div class = 'ges gasessAnswB'>Kwa uong</div>
-                                    <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                <div class = 'soln'>
+                                    <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                    <span class = 'showSoln'>Unhide</span>
+                                    <span class = 'showSoln'>Edit</span>
                                 </div>
-                                <div>
-                                    <div class = 'chois marchCOnsC'>C.</div>
-                                    <div class = 'ges gasessAnswC'>Kwa sijui</div>
-                                    <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                               </div>
-                                <div>
-                                    <div class = 'chois marchCOnsD'>D.</div>
-                                    <div class = 'ges gasessAnswD'>Kwa sijui</div>
-                                    <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                               </div>
-                            </div>   
+                            </div>
+                                 
+                            <div class = 'qc_QuizQust QuizQust'>
+                               <div class = 'QstNo'>2.</div>
+                               <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                  <?php
+                                   $match = 1;
+                                   if($match == 0) {
+                                   ?>
+                                     <div class = 'matchz'>
+                                        <div>
+                                        <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                         </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                     </div>   
+                                          
+                                        
+                                    <?php
+                                   }
+                                  ?>
+                                </div>
+                                <div class = 'soln'>
+                                   <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                   <span class = 'showSoln'>Unhide</span>
+                                   <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                                 
+                            <div class = 'qc_QuizQust QuizQust'>
+                                <div class = 'QstNo'>3.</div>
+                                <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                  <?php
+                                   $match = 1;
+                                   if($match == 0) {
+                                   ?>
+                                     <div class = 'matchz'>
+                                        <div>
+                                        <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                         </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                     </div>   
+                                          
+                                        
+                                    <?php
+                                   }
+                                  ?>
+                                </div>
+                                <div class = 'soln'>
+                                    <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                    <span class = 'showSoln'>Unhide</span>
+                                    <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                                 
+                                 
+                            <div class = 'qc_QuizQust QuizQust'>
+                                <div class = 'QstNo'>4.</div>
+                                <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                  <?php
+                                   $match = 1;
+                                   if($match == 0) {
+                                   ?>
+                                     <div class = 'matchz'>
+                                        <div>
+                                        <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                         </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                     </div>   
+                                          
+                                        
+                                    <?php
+                                   }
+                                  ?>
+                                </div>
+                                <div class = 'soln'>
+                                  <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                  <span class = 'showSoln'>Unhide</span>
+                                  <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                                 
+                            <div class = 'qc_QuizQust QuizQust'>
+                                <div class = 'QstNo'>5.</div>
+                                <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                  <?php
+                                   $match = 1;
+                                   if($match == 1) {
+                                   ?>
+                                     <div class = 'matchz'>
+                                        <div>
+                                        <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                         </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                     </div>   
+                                          
+                                        
+                                    <?php
+                                   }
+                                  ?>
+                                </div>
+                                <div class = 'soln'>
+                                  <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                  <span class = 'showSoln'>Unhide</span>
+                                  <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                                 
+                            <div class = 'qc_QuizQust QuizQust'>
+                                <div class = 'QstNo'>6.</div>
+                                <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                  <?php
+                                   $match = 1;
+                                   if($match == 1) {
+                                   ?>
+                                     <div class = 'matchz'>
+                                        <div>
+                                        <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                         </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                     </div>   
+                                          
+                                        
+                                  <?php
+                                   }
+                                  ?>
+                                </div>
+                                <div class = 'soln'>
+                                   <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                   <span class = 'showSoln'>Unhide</span>
+                                   <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class = 'sectionWrap' id = "sectionB" >
+                            <div class = 'testSection'  >  SECTION B </div>
+                                 
+                            <div class = 'qc_QuizQust QuizQust'>
+                                <div class = 'QstNo'>1.</div>
+                                <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                   <?php
+                                   $match = 1;
+                                   if($match == 0) {
+                                   ?>
+                                    <div class = 'matchz'>
+                                        <div>
+                                            <div class = 'chois marchCOnsA'>A.</div>
+                                            <div class = 'ges gasessAnswA'>Kwa kweli</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                            <div class = 'chois marchCOnsB'>B.</div>
+                                            <div class = 'ges gasessAnswB'>Kwa uong</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                            <div class = 'chois marchCOnsC'>C.</div>
+                                            <div class = 'ges gasessAnswC'>Kwa sijui</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                            <div class = 'chois marchCOnsD'>D.</div>
+                                            <div class = 'ges gasessAnswD'>Kwa sijui</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                    </div>   
+                                          
+                                        
+                                    <?php
+                                    }
+                                   ?>
+                                </div>
+                                <div class = 'soln'>
+                                    <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                    <span class = 'showSoln'>Unhide</span>
+                                    <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                                 
+                            <div class = 'qc_QuizQust QuizQust'>
+                               <div class = 'QstNo'>2.</div>
+                               <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                  <?php
+                                   $match = 1;
+                                   if($match == 0) {
+                                   ?>
+                                     <div class = 'matchz'>
+                                        <div>
+                                        <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                         </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                     </div>   
+                                          
+                                        
+                                    <?php
+                                   }
+                                  ?>
+                                </div>
+                                <div class = 'soln'>
+                                   <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                   <span class = 'showSoln'>Unhide</span>
+                                   <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                                 
+                            <div class = 'qc_QuizQust QuizQust'>
+                                <div class = 'QstNo'>3.</div>
+                                <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                  <?php
+                                   $match = 1;
+                                   if($match == 0) {
+                                   ?>
+                                     <div class = 'matchz'>
+                                        <div>
+                                        <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                         </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                     </div>   
+                                          
+                                        
+                                    <?php
+                                   }
+                                  ?>
+                                </div>
+                                <div class = 'soln'>
+                                    <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                    <span class = 'showSoln'>Unhide</span>
+                                    <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <div class = 'sectionWrap' id = "sectionC" >
+                            <div class = 'testSection'  >  SECTION C </div>
+                                 
+                            <div class = 'QuizQust qc_QuizQust'>
+                                <div class = 'QstNo'>1.</div>
+                                <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                   <?php
+                                   $match = 1;
+                                   if($match == 0) {
+                                   ?>
+                                    <div class = 'matchz'>
+                                        <div>
+                                            <div class = 'chois marchCOnsA'>A.</div>
+                                            <div class = 'ges gasessAnswA'>Kwa kweli</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                            <div class = 'chois marchCOnsB'>B.</div>
+                                            <div class = 'ges gasessAnswB'>Kwa uong</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                            <div class = 'chois marchCOnsC'>C.</div>
+                                            <div class = 'ges gasessAnswC'>Kwa sijui</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                            <div class = 'chois marchCOnsD'>D.</div>
+                                            <div class = 'ges gasessAnswD'>Kwa sijui</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                    </div>   
+                                          
+                                        
+                                    <?php
+                                    }
+                                   ?>
+                                </div>
+                                <div class = 'soln'>
+                                    <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                    <span class = 'showSoln'>Unhide</span>
+                                    <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                                 
+                            <div class = 'QuizQust qc_QuizQust'>
+                               <div class = 'QstNo'>2.</div>
+                               <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                  <?php
+                                   $match = 1;
+                                   if($match == 0) {
+                                   ?>
+                                     <div class = 'matchz'>
+                                        <div>
+                                        <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                         </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                     </div>   
+                                          
+                                        
+                                    <?php
+                                   }
+                                  ?>
+                                </div>
+                                <div class = 'soln'>
+                                   <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                   <span class = 'showSoln'>Unhide</span>
+                                   <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                                 
+                            <div class = 'QuizQust qc_QuizQust'>
+                                <div class = 'QstNo'>3.</div>
+                                <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                  <?php
+                                   $match = 1;
+                                   if($match == 0) {
+                                   ?>
+                                     <div class = 'matchz'>
+                                        <div>
+                                        <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                         </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                     </div>   
+                                          
+                                        
+                                    <?php
+                                   }
+                                  ?>
+                                </div>
+                                <div class = 'soln'>
+                                    <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                    <span class = 'showSoln'>Unhide</span>
+                                    <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class = 'sectionWrap' id = "sectionD" >
+                            <div class = 'testSection'  >  SECTION D </div>
+                                 
+                            <div class = 'QuizQust qc_QuizQust'>
+                                <div class = 'QstNo'>1.</div>
+                                <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                   <?php
+                                   $match = 1;
+                                   if($match == 0) {
+                                   ?>
+                                    <div class = 'matchz'>
+                                        <div>
+                                            <div class = 'chois marchCOnsA'>A.</div>
+                                            <div class = 'ges gasessAnswA'>Kwa kweli</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                            <div class = 'chois marchCOnsB'>B.</div>
+                                            <div class = 'ges gasessAnswB'>Kwa uong</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                            <div class = 'chois marchCOnsC'>C.</div>
+                                            <div class = 'ges gasessAnswC'>Kwa sijui</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                            <div class = 'chois marchCOnsD'>D.</div>
+                                            <div class = 'ges gasessAnswD'>Kwa sijui</div>
+                                            <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                    </div>   
+                                          
+                                        
+                                    <?php
+                                    }
+                                   ?>
+                                </div>
+                                <div class = 'soln'>
+                                    <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                    <span class = 'showSoln'>Unhide</span>
+                                    <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                                 
+                            <div class = 'QuizQust qc_QuizQust'>
+                               <div class = 'QstNo'>2.</div>
+                               <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                  <?php
+                                   $match = 1;
+                                   if($match == 0) {
+                                   ?>
+                                     <div class = 'matchz'>
+                                        <div>
+                                        <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                         </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                     </div>   
+                                          
+                                        
+                                    <?php
+                                   }
+                                  ?>
+                                </div>
+                                <div class = 'soln'>
+                                   <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                   <span class = 'showSoln'>Unhide</span>
+                                   <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                                 
+                            <div class = 'QuizQust qc_QuizQust'>
+                                <div class = 'QstNo'>3.</div>
+                                <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                  <?php
+                                   $match = 1;
+                                   if($match == 0) {
+                                   ?>
+                                     <div class = 'matchz'>
+                                        <div>
+                                        <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                         </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                     </div>   
+                                          
+                                        
+                                    <?php
+                                   }
+                                  ?>
+                                </div>
+                                <div class = 'soln'>
+                                    <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                    <span class = 'showSoln'>Unhide</span>
+                                    <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+
+                            <div class = 'qc_QuizQust QuizQust'>
+                               <div class = 'QstNo'>2.</div>
+                               <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                  <?php
+                                   $match = 1;
+                                   if($match == 0) {
+                                   ?>
+                                     <div class = 'matchz'>
+                                        <div>
+                                        <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                         </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                     </div>   
+                                          
+                                        
+                                    <?php
+                                   }
+                                  ?>
+                                </div>
+                                <div class = 'soln'>
+                                   <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                   <span class = 'showSoln'>Unhide</span>
+                                   <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                                 
+                            <div class = 'qc_QuizQust QuizQust'>
+                                <div class = 'QstNo'>3.</div>
+                                <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                
+                                     <div class = 'matchz'>
+                                        <div>
+                                        <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                        </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsB'>B.</div>
+                                        <div class = 'ges gasessAnswB'>Kwa uong</div>
+                                        <div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                         </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                        <div>
+                                        <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                       </div>
+                                     </div>   
+                                          
+                                        
+                                 
+                                </div>
+                                <div class = 'soln'>
+                                    <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                    <span class = 'showSoln'>Unhide</span>
+                                    <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class = 'sectionWrap' id = "sectionE" >
+                            <div class = 'testSection'  >  SECTION E </div>
+                                 
+                            <div class = 'QuizQust qc_QuizQust'>
+                                <div class = 'QstNo'>1.</div>
+                                <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                                 
+                                </div>
+                                <div class = 'soln'>
+                                    <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                    <span class = 'showSoln'>Unhide</span>
+                                    <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                                 
+                            <div class = 'QuizQust qc_QuizQust'>
+                               <div class = 'QstNo'>12.</div>
+                               <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                
+                                 
+                                </div>
+                                <div class = 'soln'>
+                                   <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                   <span class = 'showSoln'>Unhide</span>
+                                   <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+                                 
+                            <div class = 'QuizQust qc_QuizQust'>
+                                <div class = 'QstNo'>13.</div>
+                                <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                  
+                               
+                                </div>
+                                <div class = 'soln'>
+                                    <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                    <span class = 'showSoln'>Unhide</span>
+                                    <span class = 'showSoln'>Edit</span>
+                                </div>
+                            </div>
+
+                            <div class = 'qc_QuizQust QuizQust'>
+                               <div class = 'QstNo'>14.</div>
+                               <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
                                   
                                 
-                            <?php
-                            }
-                           ?>
-                        </div>
-                        <div class = 'soln'>
-                            <span class = 'solnMsg'> Sorry Answer is hidden...</span>
-                            <span class = 'showSoln'>Unhide</span>
-                            <span class = 'showSoln'>Edit</span>
-                        </div>
-                    </div>
-                         
-                    <div class = 'QuizQust'>
-                       <div class = 'QstNo'>2.</div>
-                       <div class = 'question'>
-                           Solve the system of equations by graphing.
-                           Be sure to identify any solution
-                          <br/> y = 2x + 1 Y = -4x + 7
-                          
-                          <?php
-                           $match = 1;
-                           if($match == 0) {
-                           ?>
-                             <div class = 'matchz'>
-                                <div>
-                                <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
                                 </div>
-                                <div>
-                                <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                                 </div>
-                                <div>
-                                <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                               </div>
-                                <div>
-                                <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                               </div>
-                             </div>   
-                                  
-                                
-                            <?php
-                           }
-                          ?>
-                        </div>
-                        <div class = 'soln'>
-                           <span class = 'solnMsg'> Sorry Answer is hidden...</span>
-                           <span class = 'showSoln'>Unhide</span>
-                           <span class = 'showSoln'>Edit</span>
-                        </div>
-                    </div>
-                         
-                    <div class = 'QuizQust'>
-                        <div class = 'QstNo'>3.</div>
-                        <div class = 'question'>
-                           Solve the system of equations by graphing.
-                           Be sure to identify any solution
-                          <br/> y = 2x + 1 Y = -4x + 7
-                          
-                          <?php
-                           $match = 1;
-                           if($match == 0) {
-                           ?>
-                             <div class = 'matchz'>
-                                <div>
-                                <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                <div class = 'soln'>
+                                   <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                   <span class = 'showSoln'>Unhide</span>
+                                   <span class = 'showSoln'>Edit</span>
                                 </div>
-                                <div>
-                                <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                                 </div>
-                                <div>
-                                <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                               </div>
-                                <div>
-                                <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                               </div>
-                             </div>   
-                                  
-                                
-                            <?php
-                           }
-                          ?>
-                        </div>
-                        <div class = 'soln'>
-                            <span class = 'solnMsg'> Sorry Answer is hidden...</span>
-                            <span class = 'showSoln'>Unhide</span>
-                            <span class = 'showSoln'>Edit</span>
-                        </div>
-                    </div>
-                         
-                         
-                    <div class = 'QuizQust'>
-                        <div class = 'QstNo'>4.</div>
-                        <div class = 'question'>
-                           Solve the system of equations by graphing.
-                           Be sure to identify any solution
-                          <br/> y = 2x + 1 Y = -4x + 7
-                          
-                          <?php
-                           $match = 1;
-                           if($match == 0) {
-                           ?>
-                             <div class = 'matchz'>
-                                <div>
-                                <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                            </div>
+                                 
+                            <div class = 'qc_QuizQust QuizQust'>
+                                <div class = 'QstNo'>15.</div>
+                                <div class = 'question'>
+                                   Solve the system of equations by graphing.
+                                   Be sure to identify any solution
+                                  <br/> y = 2x + 1 Y = -4x + 7
+                                        
+                                 
                                 </div>
-                                <div>
-                                <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                                 </div>
-                                <div>
-                                <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                               </div>
-                                <div>
-                                <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                               </div>
-                             </div>   
-                                  
-                                
-                            <?php
-                           }
-                          ?>
-                        </div>
-                        <div class = 'soln'>
-                          <span class = 'solnMsg'> Sorry Answer is hidden...</span>
-                          <span class = 'showSoln'>Unhide</span>
-                          <span class = 'showSoln'>Edit</span>
-                        </div>
-                    </div>
-                         
-                    <div class = 'QuizQust'>
-                        <div class = 'QstNo'>5.</div>
-                        <div class = 'question'>
-                           Solve the system of equations by graphing.
-                           Be sure to identify any solution
-                          <br/> y = 2x + 1 Y = -4x + 7
-                          
-                          <?php
-                           $match = 1;
-                           if($match == 1) {
-                           ?>
-                             <div class = 'matchz'>
-                                <div>
-                                <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
+                                <div class = 'soln'>
+                                    <span class = 'solnMsg'> Sorry Answer is hidden...</span>
+                                    <span class = 'showSoln'>Unhide</span>
+                                    <span class = 'showSoln'>Edit</span>
                                 </div>
-                                <div>
-                                <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                                 </div>
-                                <div>
-                                <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                               </div>
-                                <div>
-                                <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                               </div>
-                             </div>   
-                                  
-                                
-                            <?php
-                           }
-                          ?>
+                            </div>
                         </div>
-                        <div class = 'soln'>
-                          <span class = 'solnMsg'> Sorry Answer is hidden...</span>
-                          <span class = 'showSoln'>Unhide</span>
-                          <span class = 'showSoln'>Edit</span>
-                        </div>
-                    </div>
-                         
-                    <div class = 'QuizQust'>
-                        <div class = 'QstNo'>6.</div>
-                        <div class = 'question'>
-                           Solve the system of equations by graphing.
-                           Be sure to identify any solution
-                          <br/> y = 2x + 1 Y = -4x + 7
-                          
-                          <?php
-                           $match = 1;
-                           if($match == 1) {
-                           ?>
-                             <div class = 'matchz'>
-                                <div>
-                                <div class = 'chois marchCOnsA'>A.</div><div class = 'ges gasessAnswA'>Kwa kweli</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                                </div>
-                                <div>
-                                <div class = 'chois marchCOnsB'>B.</div><div class = 'ges gasessAnswB'>Kwa uong</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                                 </div>
-                                <div>
-                                <div class = 'chois marchCOnsC'>C.</div><div class = 'ges gasessAnswC'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                               </div>
-                                <div>
-                                <div class = 'chois marchCOnsD'>D.</div><div class = 'ges gasessAnswD'>Kwa sijui</div><div class = 'radioMatched'><input type = 'radio' name = 'match'></div>
-                               </div>
-                             </div>   
-                                  
-                                
-                          <?php
-                           }
-                          ?>
-                        </div>
-                        <div class = 'soln'>
-                           <span class = 'solnMsg'> Sorry Answer is hidden...</span>
-                           <span class = 'showSoln'>Unhide</span>
-                           <span class = 'showSoln'>Edit</span>
-                        </div>
+
                     </div>
                   
                 </div>
@@ -4008,7 +4553,7 @@
         <div id= 'searchOnv_exam'><input type = 'text' id ='search' name ='search_v' placeholder='search pepars qustion,teachers,students etc'></div>
         </div>
        
-       
+        
         <div  id = 'allasked_exam'>
             <div id = 'overlowOfQuestion'>
                 <div id = 'knewknolgde'>
@@ -4100,16 +4645,16 @@
     
    
     <div id = 'exam'>
-    <div id ='paper' ></div>
-    <div id = 'propation'>
-        <i class="fa fa-angle-left" aria-hidden="true"></i>
-        <span id = 'page_1' class = 'no_page'>1</span>
-        <span id = 'page_2' class = 'no_page'>2</span>
-        <span id = 'page_3' class = 'no_page'>3</span>
-        <span id = 'page_3' class = 'no_page'>4</span>
-        <span id = 'page_3' class = 'no_page'>5</span>
-         <i class="fa fa-angle-right" aria-hidden="true"></i>
-    </div>
+      <div id ='paper' ></div>
+      <div id = 'propation'>
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
+          <span id = 'page_1' class = 'no_page'>1</span>
+          <span id = 'page_2' class = 'no_page'>2</span>
+          <span id = 'page_3' class = 'no_page'>3</span>
+          <span id = 'page_3' class = 'no_page'>4</span>
+          <span id = 'page_3' class = 'no_page'>5</span>
+           <i class="fa fa-angle-right" aria-hidden="true"></i>
+      </div>
     </div>
     
     <div id = 'v_chart'>
@@ -4659,7 +5204,8 @@
 				</div>
              
         </div>
-    </div></div>
+    </div>
+</div>
 
 <div id = 'timetable_temprate' class = 'abso_temprate'>
      

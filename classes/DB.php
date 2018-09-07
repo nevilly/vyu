@@ -10,9 +10,8 @@ class DB{
 			$_error = false,
 			$_results,
 			$count = 0,
-            $_lastId,
-            $_fetchall
-            ;
+      $_lastId,
+      $_fetchall;
 
 
     private function __construct(){
@@ -52,7 +51,7 @@ class DB{
             if($this->_query->execute()){
                 $this->_results = $this->_query->fetchAll(PDO::FETCH_OBJ);
                 $this->_count = $this->_query->rowCount();
-                $this->_fetchall = $this->_query->fetchAll();
+               // $this->_fetchall = $this->_query->fetchAll();
                // $this->_lastId = $this->_results->lastInsertId();
             }else{
               $this-> _error = true;

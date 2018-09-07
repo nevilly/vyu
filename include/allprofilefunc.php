@@ -27,11 +27,11 @@
 			   
 			    if($profile_picture->first()->profile){
 			    	if($sesion_id == $user_id ){
-	                  $prof_dir = "<img src =userdata/".$profile_picture->first()->profile." width =\"100px\" height =\"100px;\">";
+	                  $prof_dir = "<img  class = 'responsive-img' src =userdata/".$profile_picture->first()->profile." width =\"100px\" height =\"100px;\">";
 	                }elseif ($sesion_id != $user_id) {
 	                	# code...
 
-	                	   $prof_dir = "<img  src =userdata/".$profile_picture->first()->profile." width =\"100px\" height = \"100px;\"
+	                	   $prof_dir = "<img class = 'responsive-img' src =userdata/".$profile_picture->first()->profile." width =\"100px\" height = \"100px;\"
 	                	    style=\"margin:0px\" >";
 	                }
 
@@ -39,10 +39,10 @@
 			   
 			    }else{
 			    	if($sesion_id == $user_id ){
-			    	 $prof_dir = "<img src =\"userdata/profile/pro3.png\"  width =\"100px\" height = \"100px;\"class = \"mainUserprofile\">";
+			    	 $prof_dir = "<img src =\"userdata/profile/pro3.png\"  width =\"100px\" height = \"100px;\"class = \"mainUserprofile responsive-img \">";
 			    	}elseif ($sesion_id != $user_id) {
 			    		# code...
-	                    $prof_dir = "<img src =\"userdata/profile/pro3.png\" width =\"100px\" height =\"100px;\" style=\"margin:0px;\" >";
+	                    $prof_dir = "<img src =\"userdata/profile/pro3.png\" width =\"100px\" height =\"100px;\" style=\"margin:0px;\" class = 'responsive-img'>";
 			    	}
 			    	
 			    }
@@ -50,14 +50,14 @@
 			
 			if($sesion_id == $user_id ){
 				$user_upload = "<div onclick= \"openAbsolute(
-					'uploadprofile_pc');\" class = 'uploadProf_pc'><i class='fa fa-camera' ></i></div>";
+					'uploadprofile_pc');\" class = 'uploadProf_pc responsive-img'><i class='fa fa-camera' ></i></div>";
 			}
 
 	        $profile_cover = $db->query('SELECT user_id,photo FROM vy_photo WHERE user_id =? AND p_status=?', array($user_id,'b'));
 		    if(!$profile_cover->count()){
-			    $prof_cover_dir = '<img src = "img/profiles/life.jpg"/>';
+			    $prof_cover_dir = '<img src = "img/profiles/life.jpg"/ class = "responsive-img">';
 			}else{	
-			    $prof_cover_dir = '<img src =userdata/'.$profile_cover->first()->photo.' width ="100px" height ="100px;">';
+			    $prof_cover_dir = '<img src =userdata/'.$profile_cover->first()->photo.' width ="100px" height ="100px;" class = "responsive-img">';
 			}
 	/////// End Profile Queries				   	
 	//////////////////////////////////////////////////////////////////////////////////////
@@ -101,13 +101,6 @@
      
 
     $user_info = $db->query('SELECT * FROM student_acc,vy_users WHERE student_acc.user_id = vy_users.id AND user_id =?', array($user_id));
-	   // if(!$user_info->count()){
-	   // 	  echo 'faschoolnameil';
-	   // }else{	
-	   //  	  // foreach($user->results() as $user){
-	   //     //       echo escape($user-> suubject_name ).'<br/>';
-	   //  	  //  }
-	   //  }
 	@ $st_schulname      = $user_info->first()->schoolname;
 	@ $st_rname          = $user_info->first()->region;
 	@ $st_lev            = $user_info->first()->levelOrStandard;

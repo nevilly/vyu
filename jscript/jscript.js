@@ -1,19 +1,13 @@
  
- function _(x) {
-     return document.getElementById(x);
- }
 
 
- function tag(x) {
-     return document.getElementsByName(x);
- }
+ _  =   (x) => document.getElementById(x);
+Qs  =   (x) => document.querySelectorAll(x);
+tag =   (x) => document.getElementsByName(x);
+n   =   (x) => document.getElementsByClassName(x);
+ 
 
- function n(x) {
-     //code
-     return document.getElementsByClassName(x);
- }
-
- function id_Qselector(x) {
+ function Qs_id(x) {
      var y = [].map.call(x, function (elem) {
          return elem.id;
      });
@@ -30,27 +24,49 @@
 
 // teacher sliding show
  var showed_box = 0;
- function fNext(){
-	  showed_box +=  -158;
-	 
-  
+ function fNext(a,b){
+	showed_box +=  - b;
 
-	  if(showed_box < -800){
-	  showed_box = 0;
-	  }
+    if(showed_box < -800){
+       showed_box = 0;
+    }
 
-	  document.getElementById('sid').style.transform = "translateX("+ showed_box+"px)";
+	document.getElementById(a).style.transform = "translateX("+ showed_box+"px)";
  }  
 
-function fPrevious(){
-	  showed_box +=  158;
+function fPrevious(a,b){
+	  showed_box +=  b;
 
 	  if(showed_box > 0){
 	  showed_box = -800;
 	  }
 
-	  document.getElementById('sid').style.transform = "translateX("+ showed_box+"px)";
- }  
+	  document.getElementById(a).style.transform = "translateX("+ showed_box+"px)";
+}  
+
+
+ var showe_box = 0;
+function sNext(a){
+	  showe_box +=  -150;
+	 
+  
+
+	  if(showe_box < -800){
+	  showe_box = 0;
+	  }
+
+	  document.getElementById(a).style.transform = "translateX("+ showe_box+"px)";
+}  
+
+function sPrevious(a){
+	  showe_box +=  150;
+
+	  if(showe_box > 0){
+	  showe_box = -800;
+	  }
+
+	  document.getElementById(a).style.transform = "translateX("+ showe_box+"px)";
+}
  
 
 //______________________||_________________________\\
@@ -326,15 +342,12 @@ function replyQstn(arg,arg_one,arg_3){
     } 
 }
 
-
-
 function chats(){
     var adiv= 'msgBody';
     parameter= 'wallmsg=mainMsg';
     url = 'insidefunc.php';
     findVerif(adiv,url,parameter);
 }
-
 
 function sendRqst(user_id,status,dirUrl){
     user_d = user_id;
@@ -467,8 +480,8 @@ function showValues(subject_id,shulname,region,lev){
 		var topictitle     =  document.querySelectorAll('.topictitle');
 		var tpcinstr       =  document.querySelectorAll('.tpcinstr');
 	 
-		let tpctitle       = id_Qselector(topictitle);
-		let tpcinstraction = id_Qselector(tpcinstr);
+		let tpctitle       = Qs_id(topictitle);
+		let tpcinstraction = Qs_id(tpcinstr);
 
 	    for(i = 0;  i < tpctitle.length; i++){
 		 	tpcttle += _(tpctitle[i]).value;
@@ -483,8 +496,8 @@ function showValues(subject_id,shulname,region,lev){
 		var idtpcvalue   = document.querySelectorAll('.topicInput');
 		var idbodyvalue  = document.querySelectorAll('.textinstr');
 		
-		let tpcvalue     = id_Qselector(idtpcvalue);
-		let tpcbdy       = id_Qselector(idbodyvalue);
+		let tpcvalue     = Qs_id(idtpcvalue);
+		let tpcbdy       = Qs_id(idbodyvalue);
 	    
 		for(i = 0;  i < tpcvalue.length; i++){
 		 	tpcva += _(tpcvalue[i]).value+',';
@@ -1006,9 +1019,8 @@ function swicthVisibility(arg) {
     }else if(getComputedStyle(par).display == 'block'){
          par.style.display = 'none';
 	}
-
-	
 }
+
 	
 function blurChar(args) {
 	//code
@@ -1053,318 +1065,325 @@ function hideshow(d) {
 }
 
 
-	function top_headerhideshow(d) {
-        //code
-        var divx = _(d);
-		var divs = ['displaySeachresult',
-					'shopcartBell',
-					'bellNotification',
-					'topHeaderMor',
-					'topHeaderMore'					
-				];
-       
-	    for (var i = 0; i < divs.length; i++) {
-           //code
-       		if (divx  != _(divs[i])){
-			  _(divs[i]).style.display = 'none';
-            }
+function top_headerhideshow(d) {
+    //code
+    var divx = _(d);
+	var divs = ['displaySeachresult',
+				'shopcartBell',
+				'bellNotification',
+				'topHeaderMor',
+				'topHeaderMore'					
+			];
+   
+    for (var i = 0; i < divs.length; i++) {
+       //code
+   		if (divx  != _(divs[i])){
+		  _(divs[i]).style.display = 'none';
         }
-		divx.style.display = 'block';    
     }
+	divx.style.display = 'block';    
+}
 
     
-	var idContent = document.querySelectorAll("div.ContentDiv");
-	   var ids = [].map.call(idContent, function(elem) {
-	   return elem.id;  
-	});
+var idContent = document.querySelectorAll("div.ContentDiv");
+   var ids = [].map.call(idContent, function(elem) {
+   return elem.id;  
+});
 
 	
 
-	function display(d){
-	    var divx = _(d);
-	    var divs = ids;
+function display(d){
+    var divx = _(d);
+    var divs = ids;
 
-	    for(var i = 0; i < divs.length; i++){
-    	  	if(divs != _(divs[i])){
-    	  		_(divs[i]).style.display = "None";
-    	  	}
-	    }
-	    divx.style.display = 'block'; 
-	}
+    for(var i = 0; i < divs.length; i++){
+	  	if(divs != _(divs[i])){
+	  		_(divs[i]).style.display = "None";
+	  	}
+    }
+    divx.style.display = 'block'; 
+}
 
-    function changeHeader(TopicHeader,subject_title,ContentHeader){
+function changeHeader(TopicHeader,subject_title,ContentHeader){
 
-    	var topicHeader  =  _(TopicHeader);
-	    var subject_title  =  subject_title;
-	    var ContentHeader  =  ContentHeader;
+	var topicHeader  =  _(TopicHeader);
+    var subject_title  =  subject_title;
+    var ContentHeader  =  ContentHeader;
 
-    	if(TopicHeader == 'TopicHeader'){
-	        topicHeader.innerHTML = subject_title;
-	        display(ContentHeader);
-        }
-
-        if(TopicHeader == 'tTopicHeader' ){
-	        topicHeader.innerHTML = subject_title;
-	        display(ContentHeader);
-        }
-
-        if(TopicHeader == 'TopicHeader_ab'){
-          console.log(TopicHeader);
-
-          topictitle = _('topictitle');
-          tpcinstr = _('tpcinstr');
-
-          topictitle.value = subject_title;
-          tpcinstr.value = ContentHeader;
-        }
-
+	if(TopicHeader == 'TopicHeader'){
+        topicHeader.innerHTML = subject_title;
+        display(ContentHeader);
     }
 
-    function topicContent(TopicHeader,subject_title,ContentDiv){
-    	var TopicHeader  =  _(TopicHeader);
-    	var subject_title  =  subject_title;
-    	var ContentHeader  =  ContentHeader;
-        TopicHeader.innerHTML = subject_title ;
-        swicthVisibility(ContentDiv);
+    if(TopicHeader == 'tTopicHeader' ){
+        topicHeader.innerHTML = subject_title;
+        display(ContentHeader);
     }
 
-	function panel_hideshow(d) {
+    if(TopicHeader == 'TopicHeader_ab'){
+      console.log(TopicHeader);
+
+      topictitle = _('topictitle');
+      tpcinstr = _('tpcinstr');
+
+      topictitle.value = subject_title;
+      tpcinstr.value = ContentHeader;
+    }
+
+}
+
+function topicContent(TopicHeader,subject_title,ContentDiv){
+	var TopicHeader  =  _(TopicHeader);
+	var subject_title  =  subject_title;
+	var ContentHeader  =  ContentHeader;
+    TopicHeader.innerHTML = subject_title ;
+    swicthVisibility(ContentDiv);
+}
+
+function panel_hideshow(d) {
+    //code
+    var divx = _(d);
+	var divs = ['panel1',
+				'panel2',
+				'panel3',
+				'panel4',
+				'panel5'					
+			];
+   
+    for (var i = 0; i < divs.length; i++) {
         //code
-        var divx = _(d);
-		var divs = ['panel1',
-					'panel2',
-					'panel3',
-					'panel4',
-					'panel5'					
+   		if (divx  != _(divs[i])){
+		  _(divs[i]).style.display = 'none';
+        }
+    }
+	divx.style.display = 'block';    
+}
+
+function tp_hideshow(d) {
+    //code
+    var divx = _(d);
+	var divs = ['tmywall',
+				'check_covered_topic_teacher',
+				'parentsChember',
+				'Result',
+				'timetable',
+				'Stictix',
+				'cv',
+				'use_info',
+				'examscompose'
 				];
-       
-	    for (var i = 0; i < divs.length; i++) {
-            //code
-       		if (divx  != _(divs[i])){
-			  _(divs[i]).style.display = 'none';
-            }
-        }
-		divx.style.display = 'block';    
-    }
-
-    function tp_hideshow(d) {
-        //code
-        var divx = _(d);
-		var divs = ['tmywall',
-					'check_covered_topic_teacher',
-					'parentsChember',
-					'Result',
-					'timetable',
-					'Stictix',
-					'cv',
-					'use_info',
-					'examscompose'
-					];
-       
-	   for (var i = 0; i < divs.length; i++) {
-        //code
-        
-		if (divx  != _(divs[i])){
-
-			_(divs[i]).style.display = 'none';
-            }
-        }
-		divx.style.display = 'block';    
-    }
+		
+   
+   for (var i = 0; i < divs.length; i++) {
+    //code
+	   if (divx  != _(divs[i])){
     
-    function Ent_hideshow(d) {
-        //code
-        var divx = _(d);
-		var divs = ['myBusness',
-                    'tmywall',
-					'check_covered_topic_teacher',
-					'parentsChember',
-					'Result',
-					'timetable',
-					'Stictix',
-					'cv',
-					'use_info',
-					'examscompose'
-					];
-       
-	   for (var i = 0; i < divs.length; i++) {
-        //code
-        
-		if (divx  != _(divs[i])){
-
-			_(divs[i]).style.display = 'none';
-            }
+		_(divs[i]).style.display = 'none';
         }
-		divx.style.display = 'block';    
-    }
+    }			
+	divx.style.display = 'block';    
+}
 
-	function hideshow_mkoa(d) {
-        //code
-        var divx = _(d);
-		var divs = ['wilayaOne',
-		            'wilayaTwo',
-		            'wilayaThree'
-		        ];
-       
-	    for (var i = 0; i < divs.length; i++) {
-           //code
-       		if (divx  != _(divs[i])){
-			  _(divs[i]).style.display = 'none';
-            }
-        }
-		divx.style.display = 'block';    
-    }
-
-    function hideshow_profileUploder(d) {
-        //code
-        var divx = _(d);
-		var divs = ['upload_photo_qstn_exam',
-					'upload_photo_answ',
-					'upload_photo_A',
-					'upload_photo_B',
-					'upload_photo_C',
-					'upload_photo_D',
-		        ];
-       
-	    for (var i = 0; i < divs.length; i++) {
-           //code
-       		if (divx  != _(divs[i])){
-			  _(divs[i]).style.display = 'none';
-            }
-        }
-		divx.style.display = 'block';    
-    }
-
-    function finshng_hideShow(){
-
-	    for (var i = 0; i < divs.length; i++) {
-           //code
-       		if (divx  != _(divs[i])){
-			  _(divs[i]).style.display = 'none';
-            }
-        }
-		divx.style.display = 'block';  
-    }
+ 
     
-    function new_hideshow(d) {
-        //code
-        var divx = _(d);
-		var divs = ['tmywall'];
-       
-	    for (var i = 0; i < divs.length; i++) {
-            //code
-        
-		    if (divx  != _(divs[i])){
-			    _(divs[i]).style.display = 'none';
-            }
-        }
-		divx.style.display = 'block';    
-    }
-
+function Ent_hideshow(d) {
+    //code
+    var divx = _(d);
+	var divs = ['myBusness',
+                'tmywall',
+				'check_covered_topic_teacher',
+				'parentsChember',
+				'Result',
+				'timetable',
+				'Stictix',
+				'cv',
+				'use_info',
+				'examscompose'
+				];
+   
+   for (var i = 0; i < divs.length; i++) {
+    //code
     
-    function panelText_hidshow(d) {
-        //code
-        var divx = _(d);
-		var divs = [
-		        'panelTex_one',
-		        'panelTex_two',
-		        'panelTex_three',
-		        'panelTex_four'
-					];
-       
-	   for (var i = 0; i < divs.length; i++) {
-        //code
-        
-		if (divx  != _(divs[i])){
+	if (divx  != _(divs[i])){
 
-			_(divs[i]).style.display = 'none';
-            }
+		_(divs[i]).style.display = 'none';
         }
-		divx.style.display = 'block';    
     }
+	divx.style.display = 'block';    
+}
 
-
-    function checkbox_register(parone,partwo){
-	     first_par = (parone);
-	     sec_par = (partwo).value;
-
-	     if(sec_par == ""){
-	     	alert("empty");
-	     }else if(sec_par == true){
-	     	alert("yes");
-	     }
+function hideshow_mkoa(d) {
+    //code
+    var divx = _(d);
+	var divs = ['wilayaOne',
+	            'wilayaTwo',
+	            'wilayaThree'
+	        ];
+   
+    for (var i = 0; i < divs.length; i++) {
+       //code
+   		if (divx  != _(divs[i])){
+		  _(divs[i]).style.display = 'none';
+        }
     }
+	divx.style.display = 'block';    
+}
 
-	function dispVisibility(par_one,per_tw){
-	    //code
-		var first_panel =  _(par_one);
-		var sec_panel   =  _(per_tw);
-		
-		first_panel.style.display = "none";
-		sec_panel.style.display = "block";
-	}
+function hideshow_profileUploder(d) {
+    //code
+    var divx = _(d);
+	var divs = ['upload_photo_qstn_exam',
+				'upload_photo_answ',
+				'upload_photo_A',
+				'upload_photo_B',
+				'upload_photo_C',
+				'upload_photo_D',
+	        ];
+   
+    for (var i = 0; i < divs.length; i++) {
+       //code
+   		if (divx  != _(divs[i])){
+		  _(divs[i]).style.display = 'none';
+        }
+    }
+	divx.style.display = 'block';    
+}
 
-	function membaa_hidshow(d) {
-	    //code
-	    var divx = _(d);
-		var divs = [
-		        'news',
-		        'Activ',
-		        'Popula'
-		    ];
-	   
-	   for (var i = 0; i < divs.length; i++) {
-	    //code
-	    
-		if (divx  != _(divs[i])){
+function finshng_hideShow(){
 
-			_(divs[i]).style.display = 'none';
-	        }
-	    }
-		divx.style.display = 'block';    
-	}
+    for (var i = 0; i < divs.length; i++) {
+       //code
+   		if (divx  != _(divs[i])){
+		  _(divs[i]).style.display = 'none';
+        }
+    }
+	divx.style.display = 'block';  
+}
 
-		
-	function memba_hidshow(d) {
-	    //code
-	    var divx = _(d);
-		var divs = [
-		        'newst',
-		        'Active',
-		        'Popular'
-		    ];
-	   
-	   for (var i = 0; i < divs.length; i++) {
-	    //code
-	    
-		if (divx  != _(divs[i])){
-
-			_(divs[i]).style.display = 'none';
-	        }
-	    }
-		divx.style.display = 'block';    
-	}
-
-		
-	function cheikinput(d,dd){
-
-		var pOne = _(d);
-		var ptwo = _(dd);
-		
-		if(pOne.value == true){
-			ptwo.style.display = 'block';
-		}
-	}
-
-	function openAbsolute(args){
+function new_hideshow(d) {
+    //code
+    var divx = _(d);
+	var divs = ['tmywall'];
+   
+    for (var i = 0; i < divs.length; i++) {
         //code
-		var absolut_id = _(args);
-		absolut_id.style.display = 'block';
-		
+    
+	    if (divx  != _(divs[i])){
+		    _(divs[i]).style.display = 'none';
+        }
     }
+	divx.style.display = 'block';    
+}
 
 
-	function plusdoc(args,arg2){
+function panelText_hidshow(d) {
+    //code
+    var divx = _(d);
+	var divs = [
+	        'panelTex_one',
+	        'panelTex_two',
+	        'panelTex_three',
+	        'panelTex_four'
+				];
+   
+   for (var i = 0; i < divs.length; i++) {
+    //code
+    
+	if (divx  != _(divs[i])){
+
+		_(divs[i]).style.display = 'none';
+        }
+    }
+	divx.style.display = 'block';    
+}
+
+
+function checkbox_register(parone,partwo){
+     first_par = (parone);
+     sec_par = (partwo).value;
+
+     if(sec_par == ""){
+     	alert("empty");
+     }else if(sec_par == true){
+     	alert("yes");
+     }
+}
+
+function dispVisibility(par_one,per_tw){
+    //code
+	var first_panel =  _(par_one);
+	var sec_panel   =  _(per_tw);
+	
+	first_panel.style.display = "none";
+	sec_panel.style.display = "block";
+}
+
+function membaa_hidshow(d) {
+    //code
+    var divx = _(d);
+	var divs = [
+	        'news',
+	        'Activ',
+	        'Popula'
+	    ];
+   
+   for (var i = 0; i < divs.length; i++) {
+    //code
+    
+	if (divx  != _(divs[i])){
+
+		_(divs[i]).style.display = 'none';
+        }
+    }
+	divx.style.display = 'block';    
+}
+
+	
+function memba_hidshow(d) {
+    //code
+    var divx = _(d);
+	var divs = [
+	        'newst',
+	        'Active',
+	        'Popular'
+	    ];
+   
+   for (var i = 0; i < divs.length; i++) {
+    //code
+    
+	if (divx  != _(divs[i])){
+
+		_(divs[i]).style.display = 'none';
+        }
+    }
+	divx.style.display = 'block';    
+}
+
+	
+function cheikinput(d,dd){
+
+	var pOne = _(d);
+	var ptwo = _(dd);
+	
+	if(pOne.value == true){
+		ptwo.style.display = 'block';
+	}
+}
+
+function openAbsolute(args){
+    //code
+    
+	var absolut_id = _(args);
+	if(absolut_id){
+		console.log('found id =>' +args);
+	}else{
+		console.log('Not found id =>' +args);
+	}
+	absolut_id.style.display = 'block';
+}
+
+
+function plusdoc(args,arg2){
 	let par_one = _(arg2);
 
 	var absolut_id = _(args);
@@ -1379,43 +1398,43 @@ function hideshow(d) {
    if(getComputedStyle(par_one).display == 'block' ){
      
        par_one.style.display = "none";
-     
-   }
+    }
 
 }
-	function openAndvalue(arg,user_id,tcpId,sbtpcId,subject){
-	    
-		var absolut_id = _(arg);
-		absolut_id.style.display = 'block';	
 
-		url = 'insidefunc.php';
-        adiv = 'timetable_temprate';
-        parameter= 'tcpId='+tcpId+'&&tuser_id='+user_id+'&&sbtpcId='+sbtpcId+'&&tsubject='+subject;
-        findVerif(adiv,url,parameter);
+function openAndvalue(arg,user_id,tcpId,sbtpcId,subject){
+    
+	var absolut_id = _(arg);
+	absolut_id.style.display = 'block';	
 
-        // var reviewNotes =  vyu_ajax( adiv,url, parameter);
-        // reviewNotes.ajaxfunction();
-	}
+	url = 'insidefunc.php';
+    adiv = 'timetable_temprate';
+    parameter= 'tcpId='+tcpId+'&&tuser_id='+user_id+'&&sbtpcId='+sbtpcId+'&&tsubject='+subject;
+    findVerif(adiv,url,parameter);
 
-	function onlyBigsearch(args,arg,ar){
+    // var reviewNotes =  vyu_ajax( adiv,url, parameter);
+    // reviewNotes.ajaxfunction();
+}
 
-		var absolut_one = _(args);
-		var absolut_tu = _(arg);
-		var absolut_thre = _(ar);
-		
-		absolut_one.style.display = 'block';	
-		absolut_tu.style.width = '180%';	
-		absolut_thre.style.display = 'none';	
-	}
+function onlyBigsearch(args,arg,ar){
 
-	function quizStart(par_one,per_tw){
-	    //code
-		var cover_q =  _(par_one);
-		var real_quiz =  _(per_tw);
-		
-		cover_q.style.display = "none";
-		real_quiz.style.display = "block";
-	}
+	var absolut_one = _(args);
+	var absolut_tu = _(arg);
+	var absolut_thre = _(ar);
+	
+	absolut_one.style.display = 'block';	
+	absolut_tu.style.width = '180%';	
+	absolut_thre.style.display = 'none';	
+}
+
+function quizStart(par_one,per_tw){
+    //code
+	var cover_q =  _(par_one);
+	var real_quiz =  _(per_tw);
+	
+	cover_q.style.display = "none";
+	real_quiz.style.display = "block";
+}
 
 
 	// function dispVisibility(par_one,per_tw){
@@ -1426,6 +1445,29 @@ function hideshow(d) {
 	// 	first_panel.style.display = "none";
 	// 	sec_panel.style.display = "block";
 	// }
+
+
+	// var postQandAn = _('postQandAns');
+	// var send_exam = _('send_exam');
+	// var qstn_exam = _('qstn_exam');
+	// var typeQn_ans = _('typeQn_ans');
+	// var ans_qstn = _('ans_qstn');
+
+	// postQandAn.onmouseover = function(){
+	//     send_exam.style.display = 'block';
+	// 	 qstn_exam.style.height = '40px';
+	// 	 typeQn_ans.style.display = 'block';
+	// 	 ans_qstn.style.display = 'block';
+ //    };
+
+
+	// postQandAn.onmouseout =function(){
+	//     send_exam.style.display = 'none';
+	// 	qstn_exam.style.height = '20px';
+	// 	typeQn_ans.style.display = 'none';
+	// 	ans_qstn.style.display = 'none';
+ //    };
+
 
 	function closeDiv(args) {
 	  var absolut_id = _(args);
@@ -1495,7 +1537,7 @@ function hideshow(d) {
 	}
 
 
-		function switchVisblty_parentChember(pa_one,pa_two,pa_three,parent_id) {
+	function switchVisblty_parentChember(pa_one,pa_two,pa_three,parent_id) {
 		// ('ParentsWrap','parentChat','parebt','$p_id')
 		var chev_one =  _(pa_one);
 		var chev_sec =  _(pa_two);
@@ -1571,27 +1613,7 @@ function hideshow(d) {
 	// }
 
 
-	var postQandAns = _('postQandAns');
-	var send_exam = _('send_exam');
-	var qstn_exam = _('qstn_exam');
-	var typeQn_ans = _('typeQn_ans');
-	var ans_qstn = _('ans_qstn');
-
-	postQandAns.onmouseover = function(){
-	    send_exam.style.display = 'block';
-		 qstn_exam.style.height = '40px';
-		 typeQn_ans.style.display = 'block';
-		 ans_qstn.style.display = 'block';
-    };
-
-
-	postQandAns.onmouseout =function(){
-	    send_exam.style.display = 'none';
-		qstn_exam.style.height = '20px';
-		typeQn_ans.style.display = 'none';
-		ans_qstn.style.display = 'none';
-    };
-
+	
 	// on page  
 	// input_Top_header.onclick = function(){
 	//     input_Top_header.style.width  = "95%";

@@ -1220,6 +1220,12 @@ if ($user->isLoggedIn()) {
     }
 
 
+
+// if($_POST['Action'] == 'simpleGetId'){
+//       echo  $_POST['exmId'];
+// }
+
+
 }else{
   echo '<p>You need <a href = "login.php">Login</a> or <a href = "registration.php">Register</a></p>';
 }  

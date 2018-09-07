@@ -1,7 +1,8 @@
 
 
+
 <?php  
- include 'include/allprofilefunc.php';
+    include 'include/allprofilefunc.php';
     
     #SPECIAL CODE: for Subject.php
 
@@ -149,16 +150,15 @@
 	if($st_fa == null){
 		if($st_lev  == 'Form 1'){$facult = 'Pure Njuka';}
 		if($st_lev  == 'Form 2'){$facult = 'just form 2';}
-        
-	}else{
+    }else{
         $facult = $st_fa;
 	}
 
-	 $st_lev;
+	$st_lev;
  ?>
 
 
-	<?php   $user_id;
+	<?php  
 			    echo "<script>var user = {
 			    	user        : '$user_id',
 					user_id     : '$user_id',
@@ -199,16 +199,17 @@
 
 				<span class = 'subject_title'><?php echo strtoupper(escape($subj)); ?> WORD</span>
 				<header id = 'header_teach'>
-					<div id ='myWall'       class ='myWall'        onclick = "tp_hideshow('tmywall');"                      > My Wall         </div>
+					<div id ='myWall'       class ='myWall'        onclick = "tp_hideshow('tmywall');"                        > My Wall         </div>
 					<div id ='toCover'      class ='toCover'       onclick = "tp_hideshow('check_covered_topic_teacher');"  > Topic Cover     </div>
-					<div id ='nav_timtabl'  class ='nav_timtabl'   onclick = "tp_hideshow('timetable');"                    > Time table      </div>
+					<div id ='nav_timtabl'  class ='nav_timtabl'   onclick = "tp_hideshow('timetable');"                     > Time table      </div>
 					<div id ='nav_pchember' class ='nav_pchember'  onclick = "tp_hideshow('parentsChember');"               > <span></span> Books  </div>
 					<div id ='nav_resul'    class ='nav_resul'     onclick = "tp_hideshow('Result');"                       > <span></span> Result          </div>
-					<div id ='nav_static'   class ='nav_static'    onclick = "tp_hideshow('Stictix');"                      > <span></span> Planning        </div>
-					<div id ='nav_hist'     class ='nav_hist'      onclick = "tp_hideshow('cv');"                    > <span></span> Summary       </div>
-                    <div id ='nav_quiz'     class ='nav_quiz'      onclick = "tp_hideshow('examscompose');"          > <span></span> Exams     <!-- Quiz     --></div>
+					<div id ='nav_static'   class ='nav_static'    onclick = "tp_hideshow('Stictix');"                       > <span></span> Planning        </div>
+					<div id ='nav_hist'     class ='nav_hist'      onclick = "tp_hideshow('cv');"                   > <span></span> Summary       </div>
+                    <div id ='nav_quiz'     class ='nav_quiz'      onclick = "tp_hideshow('examscompose');"          > <span></span> Exams     <!-- Quiz   -->   -</div>
                     <div id ='nav_inf'      class ='nav_inf'       onclick = "tp_hideshow('use_info');" title ='and bios summary'   > About <span>Subject</span> </div>
 				</header>
+
             
             	<div id = 'tmywall' class = 'mywall'>
                    <div class="divPost">
@@ -230,20 +231,19 @@
 				    </div>
 
 				    <!-- feeds question for the wall -->
-				    <?php $submitforpage = 'st_page';?>
+				    <?php $submitforpage = 'st_page'; ?>
                     <?php include_once 'include/askquestion.php';?>
 
 				  
 				    <!-- Answer asked  feeds and other feed	 -->
-					<div id  = "studentSubj" class = 'xoverflow'> </div>
-				
+					<div id  = "studentSubj" class = 'xoverflow studentSubj'> </div>
 				</div>
 
 				<div class = 'Myfucults'>
 
 
-					<div id = 'check_covered_topic_teacher'>
-                         <div id = 'coco'></div>
+					<div id = 'check_covered_topic_teacher' class = 'check_covered_topic_t'>
+                        <div id = 'coco'></div>
 
                         <?php if ($sesion_id == $user_id) { ?>
 
@@ -770,7 +770,7 @@
 					</div>
                     
                     <!-- timetable in subject and persenal time table -->
-					<div id = 'timetable'>
+					<div id = 'timetable' class = 's_timetable'>
 
                         <div class = "todayTimeTableAlert">
                             <div class = "headerTmTable">
@@ -1123,82 +1123,159 @@
                             <a href = '#'>Nehemia Mwansasu</a><span id= 'id_static'><i  class="icofont icofont-chart-line" aria-hidden="true"></i> </span>
                             <a href = '#'>Nehemia Mwansasu</a><span id= 'id_static'><i  class="icofont icofont-chart-line" zaria-hidden="true"></i> </span>
                          </div>
-                      </div>
+                        </div>
                         </div>
                     </div>
 				</div>
 				
-				<div id = 'parentsChember'>
+				<div id = 'parentsChember' class = 's_parentsChember'>
+
+				    <?php 
+                        $favaroutBooks       = '';
+                        $ourClassBooks       = '';
+                        $allRcmnddBooks      = '';
+                        $parmfenct             = '';
+
+
+				        $bkQry =  "SELECT * FROM  vy_books";
+                        $books_sql =  $db->query( $bkQry);
+
+                        if($books_sql->count()){
+                           foreach ($books_sql->results() as $k) {
+                           	# code...
+                           	    $bk_userId     =   $k->user_id;
+                           	    $bk_subjId     =   $k->subj_id;
+                           	    $bk_book       =   $k->book;
+                           	    $bk_rcmd       =   $k->mustHaveBook;    // recomended books
+                           	    $usesBok       =   $k->usesBook;        // recomended books
+                           	    $parmfectBook  =   $k->parmfect;        // recomended books
+
+                                if($bk_userId == $user_id && $bk_rcmd == 1 && $bk_subjId  == $subject_id){
+                                    $allRcmnddBooks .=    '<div class = "panelslide" onclick = "openAbsolute(\'book_temprate\');">
+	                        			<div class = "bookImg"><img src = "'.$bk_book.'"></div>
+	                        			<div class = "deatails">
+	                        				<span class = "ans">'.$st_lev.'</span>
+	                        			</div>
+	                        		</div>';
+                                }
+                                
+                                if($bk_userId == 0 && $bk_subjId  == $subject_id &&  $usesBok  == 1){
+                                    $ourClassBooks .=    '<div class = "panelslide" onclick = \'openAbsolute("book_temprate");\'>
+	                        			<div class = "bookImg"><img src = "'.$bk_book.'"></div>
+	                        			<div class = "deatails">
+	                        				<span class = "ans">'.$st_lev.'</span>
+	                        			</div>
+	                        		</div>';
+                                }
+                               
+                                if( $bk_subjId  == $subject_id && $parmfectBook == 1){
+                                     $parmfenct  .= '<div class = "panelslide" onclick = \'openAbsolute("book_temprate");\'>
+			                        			<div class = "bookImg"><img src = "'.escape($bk_book).'"></div>
+			                        			<div class = "deatails">
+			                        				<span class = "ans">'.escape($st_lev).'</span>
+			                        			</div>
+			                        		</div>';
+                                }
+
+                           }
+                        }else{
+                        	echo "No Books For Ur Level";
+                        }
+  
+				    ?>
+
                     <div id = "SubjectBookLibray" class = "SubjectBookLibray">
                         <div class = "head">
                         	<h3 class = "FavouriteBooks">Favourite Books</h3>
                         	<h3>Book Plannig To Read</h3>
                         </div>
                         <div class = "firstDiv">
+
                         	<div class = "slidShowBody">
-                        		<div class = "slideArrow backArrwo"><i class = "fa fa-angle-double-left"></i></div>
-                        		<div class = "mainslidDiv">
-	                        		<div class = "panelslide">
-	                        			<div class = "bookImg"><img src = "img/books_cover/geo/form3.jpg"></div>
-	                        			<div class = "deatails">
-	                        				<span class = "ans">Bios third Ediiton</span>
-	                        			</div>
+                      
+                                 
+                        		<div class = "slideArrow backArrwo"  onclick  = "fPrevious('bookSlider',98)"><i class = "fa fa-angle-double-left"></i></div>
+	                        		<div class = "bookSlider">
+		                        		<div id ="bookSlider" class = "mainslidDiv ">
+			                        		<div class = "panelslide">
+			                        			<div class = "bookImg"><img src = "img/books_cover/geo/form3.jpg"></div>
+			                        			<div class = "deatails">
+			                        				<span class = "ans">Bios third Ediiton</span>
+			                        			</div>
+			                        		</div>
+		                                    
+		                                    <div class = "panelslide">
+			                        			<div class = "bookImg"><img src = "img/books_cover/geo/geo_from2.jpg"></div>
+			                        			<div class = "deatails">
+			                        			
+			                        			<span class = "ans">Bios third Ediiton</span>
+			                        			</div>
+			                        		</div>
+		                                    
+		                                    <div class = "panelslide">
+			                        			<div class = "bookImg"><img src = "img/books_cover/geo/form4.jpg"></div>
+			                        			<div class = "deatails">
+			                        				<span class = "ans">Bios third Ediiton</span>
+			                        			</div>
+			                        		</div>
+		                        		</div>
 	                        		</div>
-                                    
-                                    <div class = "panelslide">
-	                        			<div class = "bookImg"><img src = "img/books_cover/geo/geo_from2.jpg"></div>
-	                        			<div class = "deatails">
-	                        			
-	                        			<span class = "ans">Bios third Ediiton</span>
-	                        			</div>
-	                        		</div>
-                                    
-                                    <div class = "panelslide">
-	                        			<div class = "bookImg"><img src = "img/books_cover/geo/form4.jpg"></div>
-	                        			<div class = "deatails">
-	                        				<span class = "ans">Bios third Ediiton</span>
-	                        			</div>
-	                        		</div>
-                        		</div>
-                        		<div class = "slideArrow forwardArrwo"><i class = "fa fa-angle-double-right"></i></div>
+	                        		
+                        		<div class = "slideArrow forwardArrwo" onclick  = "fNext('bookSlider','98')"><i class = "fa fa-angle-double-right"></i></div>
                         	</div>
                         	
+
+
                         	<div class = "favaraoytBook">
-                        		<div class = "mainslidDiv favaraotBook">
-	                        		<div class = "panelslide">
-	                        			<div class = "bookImg"><img src = "img/books_cover/geo/form3.jpg"></div>
-	                        			<div class = "deatails">
-	                        				<span class = "ans">Bios third Ediiton</span>
-	                        			</div>
+                        	
+                                 
+                        		<div class = "slideArrow backArrwo"  onclick  = "fPrevious('bookSliderfvt','98')"><i class = "fa fa-angle-double-left"></i></div>
+	                        		<div class = "bookSlider">
+		                        		<div id ="bookSliderfvt" class = "mainslidDiv ">
+			                        		<div class = "panelslide">
+			                        			<div class = "bookImg"><img src = "img/books_cover/geo/form3.jpg"></div>
+			                        			<div class = "deatails">
+			                        				<span class = "ans">Bios third Ediiton</span>
+			                        			</div>
+			                        		</div>
+		                                    
+		                                    <div class = "panelslide">
+			                        			<div class = "bookImg"><img src = "img/books_cover/geo/geo_from2.jpg"></div>
+			                        			<div class = "deatails">
+			                        			
+			                        			<span class = "ans">Bios third Ediiton</span>
+			                        			</div>
+			                        		</div>
+		                                    
+		                                    <div class = "panelslide">
+			                        			<div class = "bookImg"><img src = "img/books_cover/geo/form4.jpg"></div>
+			                        			<div class = "deatails">
+			                        				<span class = "ans">Bios third Ediiton</span>
+			                        			</div>
+			                        		</div>
+		                        		</div>
 	                        		</div>
-                                    
-                                    <div class = "panelslide">
-	                        			<div class = "bookImg"><img src = "img/books_cover/geo/form3.jpg"></div>
-	                        			<div class = "deatails">
-	                        			
-	                        			<span class = "ans">Bios third Ediiton</span>
-	                        			</div>
-	                        		</div>
-                                    
-                                    <div class = "panelslide">
-	                        			<div class = "bookImg"><img src = "img/books_cover/geo/form3.jpg"></div>
-	                        			<div class = "deatails">
-	                        				<span class = "ans">Bios third Ediiton</span>
-	                        			</div>
-	                        		</div>
-                        		</div>
-                        		<div class = "peginatoin">
-                        			<span>1</span>
-                        			<span>2</span>
-                        			<span>3</span>
-                        			<span>4</span>
-                        			<span>5</span>
-                        		</div>
+	                        		
+                        		<div class = "slideArrow forwardArrwo" onclick  = "fNext('bookSliderfvt',98)"><i class = "fa fa-angle-double-right"></i></div>
                         	</div>
                         </div> 
 
                         <!-- All new book for sold and free will stay twu month -->
                         <div class = "secDiv">
+                            <div class = "head">
+                        	    <h3 class = "FavouriteBooks">
+	                        	    <span class = "newred">OUR CLASS </span>
+	                        	    <span>SUBJECT</span>
+	                        	    <span>BOOK</span>
+                        	    </h3>
+                        	</div>
+
+                        	<div class = "mainslidDiv">
+                                <?php echo $ourClassBooks;?>
+                            </div>
+                        </div>
+
+                       <!--  <div class = "secDiv">
                             <div class = "head">
                         	    <h3 class = "FavouriteBooks">
 	                        	    <span class = "newred">New</span>
@@ -1230,40 +1307,22 @@
 	                        			</div>
 	                        		</div>
                             </div>
-                        </div> 
+                        </div>  -->
 
                         <!--  freee books and Buyed books -->
                         <div class = "thridDiv">
                             
                             <div class = "head">
                         	    <h3 class = "FavouriteBooks">
+	                        	    <span>RECOMMENDED</span> 
 	                        	    <span>SUBJECT</span> 
-	                        	    <span>BOOK</span>
+	                        	    <span>BOOK's</span>
                         	    </h3>
                         	</div>
 
                         	<div class = "mainslidDiv">
-	                        		<div class = "panelslide" onclick = "openAbsolute('book_temprate');">
-	                        			<div class = "bookImg"><img src = "img/books_cover/geo/form3.jpg"></div>
-	                        			<div class = "deatails">
-	                        				<span class = "ans">Bios third Ediiton</span>
-	                        			</div>
-	                        		</div>
+                        	    <?php echo $allRcmnddBooks; ?>
                                     
-                                    <div class = "panelslide" onclick = "openAbsolute('book_temprate');">
-	                        			<div class = "bookImg"><img src = "img/books_cover/geo/form3.jpg"></div>
-	                        			<div class = "deatails">
-	                        			
-	                        			<span class = "ans">Bios third Ediiton</span>
-	                        			</div>
-	                        		</div>
-                                    
-                                    <div class = "panelslide" onclick = "openAbsolute('book_temprate');">
-	                        			<div class = "bookImg"><img src = "img/books_cover/geo/form3.jpg"></div>
-	                        			<div class = "deatails">
-	                        				<span class = "ans">Bios third Ediiton</span>
-	                        			</div>
-	                        		</div>
                             </div>
                         </div>    
 
@@ -1274,6 +1333,23 @@
                         	    <h3 class = "FavouriteBooks">
 	                        	    <span>SOLD</span> 
 	                        	    <span>SUBJECT</span> 
+	                        	    <span>PERMFECT</span>
+                        	    </h3>
+                        	</div>
+
+                        	<div class = "mainslidDiv">
+                                	   
+                        	    <?php echo $parmfenct; ?>
+	                        	
+                            </div>
+                        </div> 
+
+                        <div class = "forthdDiv">
+                            
+                            <div class = "head">
+                        	    <h3 class = "FavouriteBooks">
+	                        	    <span>OTHER</span> 
+	                        	    <span>STORIES,MOTIVATION,...</span> 
 	                        	    <span>BOOK</span>
                         	    </h3>
                         	</div>
@@ -1482,14 +1558,14 @@
                     </div>
 			    </div>	
 
-			    <div id = 'Stictix'>
+			    <div id = 'Stictix' class = 'Stictix'>
 				    <div class = "headerOnPlanner">
 				    	<div class ="headerOne" onclick = 'HomekComp("composePlanAnDrea","AcomplshedDream");'>YOUR GOALS & DREAM ACCOPKISHMENT</div>
 				    	<div class ="headerTwo" onclick = 'HomekComp("AcomplshedDream","composePlanAnDrea");'>COMPOSE PLAN & DREAM</div>
 				    </div>
 	                <!-- //planner progress -->
 				    <div id = "AcomplshedDream" class = "gD ompregressAndAcomplshedDream">
-				    	<div class = "panelPlaner">
+				    	<div class = " panelPlaner">
 				    	   <!--  panel Exam show pepars and Maxs progress -->
 				    		<div class = "panelExams">
 				    		    <div class = "header_planExams">
@@ -1498,9 +1574,9 @@
 				    			</div>
 
 	                            <div class ="panelExamWraper">
-	                            	<div class = "slideArrow backArrwo"><i class = "fa fa-angle-double-left"></i></div>
-	                            	<div class ="panelExamBody">
-	                            		<div class = "xoverflow">
+	                            	<div class = "slideArrow backArrwo" onclick  = "sPrevious('planSlider');"><i class = "fa fa-angle-double-left"></i></div>
+	                            	<div class ="32">
+	                            		<div id = 'planSlider' class = "xoverflow slider">
 	                            			
 	                            			<div class = "examspage">
 		                                         <div class = "examheader">
@@ -1537,7 +1613,7 @@
 	                            			</div>
 	                            		</div>
 	                            	</div>
-	                            	<div class = "slideArrow forwardArrwo"><i class = "fa fa-angle-double-right"></i></div>
+	                            	<div class = "slideArrow forwardArrwo" onclick="sNext('planSlider');"><i class = "fa fa-angle-double-right"></i></div>
 	                            </div>
 				    		</div>
 	                        
@@ -1574,6 +1650,7 @@
 	                            </div>
 				    		</div>
 				    	</div>
+				    	
 				    </div>
 
 				    <div id = "composePlanAnDrea" class = " gD composePlanAnDrea">
@@ -1590,24 +1667,29 @@
 		                        	
 		                        	<div class = "qtnOne">
 		                        	    <span  class = "qstn">When Start EXAMS</span>
-		                        	    <span><input type = "text" placeholder = " Start Date"></span>
+		                        	    <span><input type = "date" id = 'plan_startDate' ></span>
 		                        	</div>
 
+		                        	<div class = "qtnOne">
+		                        	    <span  class = "qstn">When Finish EXAMS</span>
+		                        	    <span><input type = "date" id = 'plan_fnshDate' ></span>
+		                        	</div>
+                                     
 		                        	<div class = "qtnOne planerName">
 		                        	    <span  class = "qstn">Giv  Your Planner Name</span>
-		                        	    <span><input type = "text" class = "planerName" placeholder = " example: Revolution Has began"></span>
+		                        	    <span><input type = "text" class = "planerName" placeholder = " example: Revolution Has began" id = 'plan_name'></span>
 		                        	</div>
 
 		                        	<div class = "qtnTwo">
 		                        	    
 		                        	    <span  class = "qstn">How many Exam Plan To do</span>
 		                        	    
-		                        	    <span class = " maxplaned examNoSpan"><input type = "text" placeholder = "" class = "examNo"></span>
+		                        	    <span class = " maxplaned examNoSpan"><input type = "text" placeholder = "" class = "examNo" id = 'plan_examNo'></span>
 		                        	    
 		                        	    <span class = "">per</span>
 		                        	    
 		                        	    <span class = "ChooseNo">
-		                        	    	<select id='qtnType'> 
+		                        	    	<select id='qtnType' class = 'plan_weekNo'> 
 					                            <option selected="selected"></option>
 					                            <option>1</option>
 					                            <option>2</option>
@@ -1622,73 +1704,87 @@
 			                               </select>
 			                            </span>
 
+                                    
+
 			                            <span class = "daysChoose">
-		                        	    	<select id='qtnType'> 
+		                        	    	<select id='qtnType' class = 'plan_period'> 
 					                            <option selected="selected">day</option>
 					                            <option>week</option>
 					                            <option>Month</option>
 					                            <option>year</option>
 					                            <option>years</option>
-
 					                        </select>
 			                            </span>
 		                        	</div>
 		                            
 		                            <div class = "qtnfour">
 		                        	    <span  class = "qstn">Avarage Max planed to get</span>
-		                        	    <span   class = "maxplaned examNoSpan"><input type = "text" placeholder = "Max" class = "examNo">% </span>  
+		                        	    <span   class = "maxplaned examNoSpan"><input type = "text" placeholder = "Max" id = 'plan_maxAvrg' class = "examNo">% </span>  
 		                        	    <span   class = "">:it cost</span>  
 		                        	    <span   class = "">50,000tzs</span>  
 		                        	    <span   class = "">(1% = 1500tzs )</span>  
 		                        	</div>
-
-
+                                 
+                                    
 		                        	<div class = "qtnSix">
 		                        	    <span  class = "qstn">Money You Plan to get</span>
-		                        	    <span><input type = "text" placeholder = "Assume Money"></span>
+		                        	    <span><input type = "text" placeholder = "Assume Money" id = 'plan_moneyAsume'></span>
 		                        	</div>
 		                        </div>
 	                            
 	                            <div class = "plannigWraper">
 	                                <h3>CHOOSE EXAMS AND MAX YOU WANT </h3>
-		                        	 
-		                        	 <div class = "gd selectSubject">
-	                                    <div class = 'chooseSubject'> 
-	                                        <span class = "inputSelctSubject"><input type="checkbox"></span>
-	                                        <span class = "subjectName">Biology</span>
-	                                        <span class = "AssumedMax"><input  type="text" class = "assumMax"></span>
-	                                        <span class = "simpleState">it equal</span>
-	                                        <span class = "costEstmated">5,000tz</span>
-	                                    </div>
 
-	                                    <div class = 'chooseSubject'> 
-	                                        <span class = "inputSelctSubject"><input type="checkbox"></span>
-	                                        <span class = "subjectName">Kiswahili</span>
-	                                        <span class = "AssumedMax"><input  type="text" class = "assumMax"></span>
-	                                        <span class = "simpleState">it equal</span>
-	                                        <span class = "costEstmated">5,000tz</span>
-	                                    </div>
+	                                 <div class = "gd selectSubject">
+
+	                                <?php 
+	                                    echo $st_lev;
+	                                    if($st_lev == "Form 1"){$levl = 1; } 
+	                                    if($st_lev == "Form 2"){$levl = 2; } 
+	                                    if($st_lev == "Form 3"){$levl = 3; } 
+	                                    if($st_lev == "form 4"){$levl = 4; } 
+	                                    if($st_lev == "Form 5"){$levl = 5; } 
+	                                    if($st_lev == "Form 6"){$levl = 6; } 
 	                                    
-	                                    <div class = 'chooseSubject'> 
-	                                        <span class = "inputSelctSubject"><input type="checkbox"></span>
-	                                        <span class = "subjectName">Physics</span>
-	                                        <span class = "AssumedMax"><input  type="text" class = "assumMax"></span>
-	                                        <span class = "simpleState">it equal</span>
-	                                        <span class = "costEstmated">4,000tz</span>
-	                                    </div>
+	                                    $qry =  "SELECT * FROM vy_subjects WHERE level = ?";
+                                        $sql = $db->query($qry,array($levl));
 
-	                                    <div class = 'chooseSubject'> 
-	                                        <span class = "inputSelctSubject"><input type="checkbox"></span>
-	                                        <span class = "subjectName">Mathematics</span>
-	                                        <span class = "AssumedMax"><input  type="text" class = "assumMax"></span>
-	                                        <span class = "simpleState">it equal</span>
-	                                        <span class = "costEstmated">7,000tz</span>
-	                                    </div>
+                                        if($sql->count()){
+                                            foreach ($sql->results() as $k) {
+                                            	# code...
+                                                $s_id        = 	$k->id;
+                                                $s_subjName  =	$k->suubject_name;
+
+
+                                                
+                                                // $check = false;
+                                                // if($subject_id == $s_id ){
+                                                // 	$check =  true;
+                                                // }
+                                                
+                                                echo '<div class = "chooseSubject"> 
+					                                        <span class = "inputSelctSubject"><input type="radio" value = '.$s_id.' name = "chuseSubj"   ></span>
+					                                        <span class = "subjectName">'.$s_subjName.'</span>
+					                                        <span class = "AssumedMax"><input  type="text" class = "assumMax" ></span>
+					                                        <span class = "simpleState">it equal</span>
+					                                        <span class = "costEstmated">5,000tz</span>
+					                                    </div>
+					                                ';
+
+                                            }
+                                        }else{
+                                        echo "Sorry subject For ur Level";
+                                        }
+
+	                                ?>
+		                        	 
+		                        	<!--  -->
 		                        	 	
-		                        	 </div>
+		                        	</div>
+		                        	<div class = "createTender saveplanButon"> SAVE PLAN </div>
 		                        </div>
 
-
+                                   
 		                        <div class = "plannigWraper">
 	                                <h3>GAME OF DEVELOPMENT AND SUCCESS </h3>
 		                        	 <div class = "DreamSearch">
@@ -1699,90 +1795,50 @@
 		                        	    <h4>HOUSE DREAMS</h4>
 					                        <div class = "showpanel">
 					                            <div class = "xoverflow">
-						                        	<div class = "dreamImg">
-						                        		<img src = "img/planner/house/hous1/house.jpeg">
 
-							                        	<div class = "details">
-							                        		<div class = "sold">
-							                        			<span class = "roundColor"></span>
-							                        			<span class = "cash">MONEY:</span>
-							                        		 	<span class = "cash">15550000 tzs</span>
-							                        		</div>
+					                            <?php 
+                                                   $sql_houses =  "SELECT * FROM vy_dreamholder WHERE status = ?";
+                                                    $sql_h = $db->query($sql_houses,array('h'));  // h => stand for house
 
-							                        		<div class = "sold plannerButton">
-							                        			<span class = "CheckDetails" onclick = "openAbsolute('MyDream');">Check Details</span>
-							                        			<span class = "BemyDream">Be my Dream</span>
-							                                </div>
+			                                        if($sql_h->count()){
+			                                            foreach ($sql_h->results() as $h) {
+			                                            	# code...
+			                                                $h_id         = $h->id;
+			                                                $h_header     =	$h->header;
+			                                                $h_body       =	$h->body;
+			                                                $h_cost       =	$h->planCost;
+			                                                
+			                                                $check = false;
+			                                                if($subject_id == $s_id ){
+			                                                	$check =  true;
+			                                                }
+			                                                
+				                                        echo '<div class = "dreamImg">
+							                        		<img src = "img/planner/house/hous1/house.jpeg">
+
+								                        	<div class = "details">
+								                        		<div class = "sold">
+								                        			<span class = "roundColor"></span>
+								                        			<span class = "cash">MONEY:</span>
+								                        		 	<span class = "cash">'.$h_cost.' tzs</span>
+								                        		</div>
+
+								                        		<div class = "sold plannerButton">
+								                        			<span class = "CheckDetails" onclick = \'openAbsolute("MyDream")\';>Check Details</span>
+								                        			<span class = "BemyDream"><input type = "radio" value = '.$h_id.'  name = "planning_Dream">Be my Dream</span>
+								                                </div>
+								                        	</div>
 							                        	</div>
-						                        	</div>
 
-						                        	<div class = "dreamImg">
-						                        		<img src = "img/planner/house/hous1/house.jpeg">
+								                        ';
 
-							                        	<div class = "details">
-							                        		<div class = "sold">
-							                        			<span class = "roundColor"></span>
-							                        			<span class = "cash">MONEY:</span>
-							                        			<span class = "cash">15550000 tzs</span>
-							                        		</div>
+			                                            }
+			                                        }else{
+			                                        echo "Sorry NO Houses Dreams";
+			                                        }
 
-							                        		<div class = "sold plannerButton">
-							                        			<span class = "CheckDetails">Check Details</span>
-							                        			<span class = "BemyDream">Be my Dream</span>
-							                                </div>
-							                        	</div>
-						                        	</div>
-			                                        
-			                                        <div class = "dreamImg">
-						                        		<img src = "img/planner/house/hous1/house.jpeg">
-
-							                        	<div class = "details">
-							                        		<div class = "sold">
-							                        			<span class = "roundColor"></span>
-							                        			<span class = "cash">MONEY:</span>
-							                        			<span class = "cash">15550000 tzs</span>
-							                        		</div>
-
-							                        		<div class = "sold plannerButton">
-							                        			<span class = "CheckDetails">Check Details</span>
-							                        			<span class = "BemyDream">Be my Dream</span>
-							                                </div>
-							                        	</div>
-						                        	</div>
-
-			                                        <div class = "dreamImg">
-						                        		<img src = "img/planner/house/hous1/house.jpeg">
-
-							                        	<div class = "details">
-							                        		<div class = "sold">
-							                        			<span class = "roundColor"></span>
-							                        			<span class = "cash">MONEY:</span>
-							                        			<span class = "cash">15550000 tzs</span>
-							                        		</div>
-
-							                        		<div class = "sold plannerButton">
-							                        			<span class = "CheckDetails">Check Details</span>
-							                        			<span class = "BemyDream">Be my Dream</span>
-							                                </div>
-							                        	</div>
-						                        	</div>
-
-			                                        <div class = "dreamImg">
-						                        		<img src = "img/planner/house/hous1/house.jpeg">
-
-							                        	<div class = "details">
-							                        		<div class = "sold">
-							                        			<span class = "roundColor"></span>
-							                        			<span class = "cash">MONEY:</span>
-							                        			<span class = "cash">15550000 tzs</span>
-							                        		</div>
-
-							                        		<div class = "sold plannerButton">
-							                        			<span class = "CheckDetails">Check Details</span>
-							                        			<span class = "BemyDream">Be my Dream</span>
-							                                </div>
-							                        	</div>
-						                        	</div>
+					                            ?>
+						                        	
 					                        	</div>
 
 		                                        <div class = "peginatoin">
@@ -1800,90 +1856,48 @@
 		                        	    <h4>FARMARS BUSINESS DREAMS</h4>
 					                        <div class = "showpanel">
 					                            <div class = "xoverflow">
-						                        	<div class = "dreamImg">
-						                        		<img src = "img/planner/house/hous1/house.jpeg">
+					                            <?php 
+                                                   $sqlf =  "SELECT * FROM vy_dreamholder WHERE status = ?";
+                                                    $sql_f = $db->query($sqlf,array('f'));  // h => stand for farm
 
-							                        	<div class = "details">
-							                        		<div class = "sold">
-							                        			<span class = "roundColor"></span>
-							                        			<span class = "cash">MONEY:</span>
-							                        		 	<span class = "cash">15550000 tzs</span>
-							                        		</div>
+			                                        if($sql_f->count()){
+			                                            foreach ($sql_f->results() as $f) {
+			                                            	# code...
+			                                                $f_id         = $f->id;
+			                                                $f_header     =	$f->header;
+			                                                $f_body       =	$f->body;
+			                                                $f_cost       =	$f->planCost;
+			                                                
+			                                                $check = false;
+			                                                if($subject_id == $s_id ){
+			                                                	$check =  true;
+			                                                }
+			                                                
+				                                                echo '<div class = "dreamImg">
+							                        		<img src = "img/planner/house/hous1/house.jpeg">
 
-							                        		<div class = "sold plannerButton">
-							                        			<span class = "CheckDetails" onclick = "openAbsolute('MyDream');">Check Details</span>
-							                        			<span class = "BemyDream">Be my Dream</span>
-							                                </div>
+								                        	<div class = "details">
+								                        		<div class = "sold">
+								                        			<span class = "roundColor"></span>
+								                        			<span class = "cash">MONEY:</span>
+								                        		 	<span class = "cash">'.$f_cost.' tzs</span>
+								                        		</div>
+
+								                        		<div class = "sold plannerButton">
+								                        			<span class = "CheckDetails" onclick = \'openAbsolute("MyDream")\'>Check Details</span>
+								                        			<span class = "BemyDream"><input  value = '.$f_id.' type = "radio" name = "planning_Dream">Be my Dream</span>
+								                                </div>
+								                        	</div>
 							                        	</div>
-						                        	</div>
 
-						                        	<div class = "dreamImg">
-						                        		<img src = "img/planner/house/hous1/house.jpeg">
+								                                ';
 
-							                        	<div class = "details">
-							                        		<div class = "sold">
-							                        			<span class = "roundColor"></span>
-							                        			<span class = "cash">MONEY:</span>
-							                        			<span class = "cash">15550000 tzs</span>
-							                        		</div>
+			                                            }
+			                                        }else{
+			                                        echo "Sorry NO Farmers Dreams";
+			                                        }
 
-							                        		<div class = "sold plannerButton">
-							                        			<span class = "CheckDetails">Check Details</span>
-							                        			<span class = "BemyDream">Be my Dream</span>
-							                                </div>
-							                        	</div>
-						                        	</div>
-			                                        
-			                                        <div class = "dreamImg">
-						                        		<img src = "img/planner/house/hous1/house.jpeg">
-
-							                        	<div class = "details">
-							                        		<div class = "sold">
-							                        			<span class = "roundColor"></span>
-							                        			<span class = "cash">MONEY:</span>
-							                        			<span class = "cash">15550000 tzs</span>
-							                        		</div>
-
-							                        		<div class = "sold plannerButton">
-							                        			<span class = "CheckDetails">Check Details</span>
-							                        			<span class = "BemyDream">Be my Dream</span>
-							                                </div>
-							                        	</div>
-						                        	</div>
-
-			                                        <div class = "dreamImg">
-						                        		<img src = "img/planner/house/hous1/house.jpeg">
-
-							                        	<div class = "details">
-							                        		<div class = "sold">
-							                        			<span class = "roundColor"></span>
-							                        			<span class = "cash">MONEY:</span>
-							                        			<span class = "cash">15550000 tzs</span>
-							                        		</div>
-
-							                        		<div class = "sold plannerButton">
-							                        			<span class = "CheckDetails">Check Details</span>
-							                        			<span class = "BemyDream">Be my Dream</span>
-							                                </div>
-							                        	</div>
-						                        	</div>
-
-			                                        <div class = "dreamImg">
-						                        		<img src = "img/planner/house/hous1/house.jpeg">
-
-							                        	<div class = "details">
-							                        		<div class = "sold">
-							                        			<span class = "roundColor"></span>
-							                        			<span class = "cash">MONEY:</span>
-							                        			<span class = "cash">15550000 tzs</span>
-							                        		</div>
-
-							                        		<div class = "sold plannerButton">
-							                        			<span class = "CheckDetails">Check Details</span>
-							                        			<span class = "BemyDream">Be my Dream</span>
-							                                </div>
-							                        	</div>
-						                        	</div>
+					                            ?>
 					                        	</div>
 
 		                                        <div class = "peginatoin">
@@ -1901,90 +1915,50 @@
 		                        	    <h4>CARS DREAMS</h4>
 					                        <div class = "showpanel">
 					                            <div class = "xoverflow">
-						                        	<div class = "dreamImg">
-						                        		<img src = "img/planner/house/hous1/house.jpeg">
 
-							                        	<div class = "details">
-							                        		<div class = "sold">
-							                        			<span class = "roundColor"></span>
-							                        			<span class = "cash">MONEY:</span>
-							                        		 	<span class = "cash">15550000 tzs</span>
-							                        		</div>
+					                            <?php 
+                                                   $sqlc =  "SELECT * FROM vy_dreamholder WHERE status = ?";
+                                                    $sql_c = $db->query($sqlc,array('c'));  // h => stand for cars
 
-							                        		<div class = "sold plannerButton">
-							                        			<span class = "CheckDetails" onclick = "openAbsolute('MyDream');">Check Details</span>
-							                        			<span class = "BemyDream">Be my Dream</span>
-							                                </div>
+			                                        if($sql_c->count()){
+			                                            foreach ($sql_c->results() as $c) {
+			                                            	# code...
+			                                                $c_id         = $c->id;
+			                                                $c_header     =	$c->header;
+			                                                $c_body       =	$c->body;
+			                                                $c_cost       =	$c->planCost;
+			                                                
+			                                                $check = false;
+			                                                if($subject_id == $s_id ){
+			                                                	$check =  true;
+			                                                }
+			                                                
+				                                                echo '<div class = "dreamImg">
+							                        		<img src = "img/planner/house/hous1/house.jpeg">
+
+								                        	<div class = "details">
+								                        		<div class = "sold">
+								                        			<span class = "roundColor"></span>
+								                        			<span class = "cash">MONEY:</span>
+								                        		 	<span class = "cash">'.$c_cost.' tzs</span>
+								                        		</div>
+
+								                        		<div class = "sold plannerButton">
+								                        			<span class = "CheckDetails" onclick =\'openAbsolute("MyDream")\'>Check Details</span>
+								                        			<span class = "BemyDream"><input type = "radio" value = '.$c_id.' name = "planning_Dream">Be my Dream</span>
+								                                </div>
+								                        	</div>
 							                        	</div>
-						                        	</div>
 
-						                        	<div class = "dreamImg">
-						                        		<img src = "img/planner/house/hous1/house.jpeg">
+								                                ';
 
-							                        	<div class = "details">
-							                        		<div class = "sold">
-							                        			<span class = "roundColor"></span>
-							                        			<span class = "cash">MONEY:</span>
-							                        			<span class = "cash">15550000 tzs</span>
-							                        		</div>
+			                                            }
+			                                        }else{
+			                                        echo "Sorry NO Cars Dreams";
+			                                        }
 
-							                        		<div class = "sold plannerButton">
-							                        			<span class = "CheckDetails">Check Details</span>
-							                        			<span class = "BemyDream">Be my Dream</span>
-							                                </div>
-							                        	</div>
-						                        	</div>
-			                                        
-			                                        <div class = "dreamImg">
-						                        		<img src = "img/planner/house/hous1/house.jpeg">
-
-							                        	<div class = "details">
-							                        		<div class = "sold">
-							                        			<span class = "roundColor"></span>
-							                        			<span class = "cash">MONEY:</span>
-							                        			<span class = "cash">15550000 tzs</span>
-							                        		</div>
-
-							                        		<div class = "sold plannerButton">
-							                        			<span class = "CheckDetails">Check Details</span>
-							                        			<span class = "BemyDream">Be my Dream</span>
-							                                </div>
-							                        	</div>
-						                        	</div>
-
-			                                        <div class = "dreamImg">
-						                        		<img src = "img/planner/house/hous1/house.jpeg">
-
-							                        	<div class = "details">
-							                        		<div class = "sold">
-							                        			<span class = "roundColor"></span>
-							                        			<span class = "cash">MONEY:</span>
-							                        			<span class = "cash">15550000 tzs</span>
-							                        		</div>
-
-							                        		<div class = "sold plannerButton">
-							                        			<span class = "CheckDetails">Check Details</span>
-							                        			<span class = "BemyDream">Be my Dream</span>
-							                                </div>
-							                        	</div>
-						                        	</div>
-
-			                                        <div class = "dreamImg">
-						                        		<img src = "img/planner/house/hous1/house.jpeg">
-
-							                        	<div class = "details">
-							                        		<div class = "sold">
-							                        			<span class = "roundColor"></span>
-							                        			<span class = "cash">MONEY:</span>
-							                        			<span class = "cash">15550000 tzs</span>
-							                        		</div>
-
-							                        		<div class = "sold plannerButton">
-							                        			<span class = "CheckDetails">Check Details</span>
-							                        			<span class = "BemyDream">Be my Dream</span>
-							                                </div>
-							                        	</div>
-						                        	</div>
+					                            ?>
+						                        
 					                        	</div>
 
 		                                        <div class = "peginatoin">
@@ -2000,46 +1974,85 @@
 		                        </div>
 				        	</div>
 				        </div>
+				        <div class = "createTender saveplanButon" onclick="planningGameSave()"> SAVE PLAN </div>
 				    </div>
                 </div>
 
-                <div id = "examscompose">
+                <div id ="examscompose" class = 's_examscompose'>
                 	<div class = "uplaodDocuments">
 			    		<form action="upload.php" method="post" enctype="multipart/form-data">
 						    <input type="file" name="fileToUpload" id="fileToUpload">
 						   	<input type="submit"  value="Upload file" name="submit">
 						</form>
 
-						<div class = 'homeWorkPlace'>
+						<!-- <div class = 'homeWorkPlace'>
 						    <span onclick = "openAbsolute('HomeworkCompose');">Create Homework</span>
-					    </div>
+					    </div> -->
 				    </div>
 
 				    <div class = "exmsList">
-				    	<div class = "examwrap" >
-				    	   <span class = "arrfont"><i class = "fa fa-arrow-right"></i></span>
-				    	   <span class = "title" onclick = "openAbsolute('exam_temprate');">Safari examinaation</span>
-				    	   <span class = "name">quiz</span>
-				    	   <span class = "date">2/2/2012</span>
-				    	</div>
+				    <?php 
 
-				    	<div class = "examwrap" >
-				    	   <span class = "arrfont"><i class = "fa fa-arrow-right"></i></span>
-				    	   <span class = "title" onclick = "openAbsolute('exam_temprate');">Safari examinaation</span>
-				    	   <span class = "name">quiz</span>
-				    	   <span class = "date">2/2/2012</span>
-				    	</div>
+				    // SELECT 
+				    //                 d.examChoosenId   as dexmChozen, 
+      
+				       
 
-				    	<div class = "examwrap" >
-				    	   <span class = "arrfont"><i class = "fa fa-arrow-right"></i></span>
-				    	   <span class = "title" onclick = "openAbsolute('exam_temprate');">Ubungo safi </span>
-				    	   <span class = "name">examinaation</span>
-				    	   <span class = "date">2/2/2012</span>
-				    	</div>				   
+				        $qry_ExmDon =  "SELECT 
+				                    d.id              as did, 
+				                    d.examChoosenId   as dexmChozen, 
+                                    d.user_id         as duid, 
+                                    d.complishion     as dc, 
+
+				                    x.id              as xid, 
+                                    x.exam_name       as examName, 
+                                    x.exam_type       as examtype, 
+                                    x.subj_id         as xsubj_id, 
+                                    x.date            as examDate
+                                    
+				            FROM vy_dreamworkexam d
+
+				            LEFT JOIN  vy_exmcompoz AS x   ON (d.examChoosenId = x.id)
+
+				            WHERE d.complishion = ? AND d.user_id = ? AND x.subj_id = ? ";
+
+
+				         $sql_ExmDon = $db->query($qry_ExmDon,array(1,$user_id,$subject_id));
+
+				         $examWrap = '';
+
+				        if($sql_ExmDon->count()){
+                            foreach ($sql_ExmDon->results() as $e){
+                             	# code...
+
+                             	$examChznID = $e->dexmChozen; //exam choosen Id
+                             	$did     =  $e->did;
+                             	$examNam =  $e->examName;
+                             	$examtyp =  $e->examtype;
+                             	$examDat =  $e->examDate;
+
+                             	$examWrap .= '<div class = "examwrap" >
+										    	   <span class = "arrfont"><i class = "fa fa-arrow-right"></i></span>
+										    	   <span class = "title" id = "exmDone_title" onclick = "ExamDoneList(\'exam_temprate\',\''.$examChznID.'\');">'.$examNam.'</span>
+										    	   <span class = "name">'.$examtyp.'</span>
+										    	   <span class = "date">'.$examDat.'</span>
+										    	</div>
+										    '
+										;
+                            }
+				        }else{
+				        	echo $examWrap = "<div class = 'ErrorMsg'>You Dont Hve Any Exam OR Any Complited Exam</div>";
+				        }
+
+				    ?>
+				        <h1>ALL PEPARS YOU DONE</h1>
+				    	
+                        <?php echo $examWrap;?>
+				    				   
 				    </div>
                 </div>
 
-			    <div id = 'cv'>
+			    <div id = 'cv' class = 'summaryHolder'>
 			    	<div class = "schoolSummary">
 			    		<form action="upload.php" method="post" enctype="multipart/form-data" class = "summaryForm">
 						    <input type="file" name="fileToUpload" id="fileToUpload">
@@ -2054,193 +2067,10 @@
 				    <div class = "summariesWraper">
 				       <h3 class = "headerShareSummary">SHARES SUMMARIES</h3>
 
-				        
-				        <div class = "summaryPanel">
-                            <div class = "sumaruHeader">
-                             	<div class = "title">
-                             	   <span class = "SumaryTopic">Topic:</span>
-                             	   <span class = "SumaryTopicName">GENETICS</span>
-                                </div>
+				        <div id =  "wallSummary" class="xoverflow">
+					     
 
-                                <div class = "summaryNo">
-                             	   <span class = "SumaryTopic">Summery No</span>
-                             	   <span class = "SumaryNo">01</span>
-                                </div>
-
-                                <div class = "subtitle">
-                             	   <span class = "SumaryTopic">Sub Topic</span>
-                             	   <span class = "SumaryTopicName">irigation</span>
-                                </div>
-                            </div>
-
-                            <div class = "summarybody">
-                                <div class = "MainBodySummaary">
-	                             	what is respitaration:<br/>
-	                             	is prosecess of breath in and breath out by usin g mouth through ousophogus to the lungs<br>
-
-                             	</div>
-                             	
-                             	<footer>
-                             	 	<div class = "writenBy">
-                             	 	    <a href = "#">
-	                             	 		<span class = "writenTitle" >Written By</span>
-	                             	 		<span class = "writenname" >Nehemia Mwansasu</span>
-                             	 		</a>
-                             	 	</div>
-                             	</footer>
-                            </div>
-
-                            <div class = "iconGroup summaryIcon">
-                            	<div class = "firstIcon"><span><i class = "fa fa-thumbs-o-up"></i></span><span>125</span></div>
-                            	<div class = "sectIcon" onclick = "openAbsolute('shareTo');"><span ><i class = "fa fa-share-square"></i></span><span>45</span></div>
-                            	<div class = "thirdIcon"><span><i class = "readed">readed</i></span><span>425</span></div>
-                            	<div class = "forthIcon" onclick = "openAbsolute('printList');"><span><i class = "fa fa-print"></i></span><span>printList</span></div>
-                            </div>
-				        </div>
-
-				        <div class = "summaryPanel">
-                            <div class = "sumaruHeader">
-                             	<div class = "title">
-                             	   <span class = "SumaryTopic">Topic:</span>
-                             	   <span class = "SumaryTopicName">GROWTH AND RESPIRATION</span>
-                                </div>
-
-                                <div class = "summaryNo">
-                             	   <span class = "SumaryTopic">Summery No</span>
-                             	   <span class = "SumaryNo">08</span>
-                                </div>
-
-                                <div class = "subtitle">
-                             	   <span class = "SumaryTopic">Sub Topic</span>
-                             	   <span class = "SumaryTopicName">irigation, movement,transporation, yaliyaree,Respiration</span>
-                                </div>
-                            </div>
-
-                            <div class = "summarybody">
-                                <div class = "MainBodySummaary">
-	                             	<img src ='img/profiles/s2.jpg' >
-                             	</div>
-                             	
-                             	<footer>
-                             	 	<div class = "writenBy">
-                             	 	    <a href = "#">
-	                             	 		<span class = "writenTitle" >Written By</span>
-	                             	 		<span class = "writenname" >Nehemia Mwansasu</span>
-                             	 		</a>
-                             	 	</div>
-                             	</footer>
-                            </div>
-
-                            <div class = "iconGroup summaryIcon">
-                            	<div class = "firstIcon"><span><i class = "fa fa-thumbs-o-up"></i></span><span>125</span></div>
-                            	<div class = "sectIcon" onclick = "openAbsolute('shareTo');"><span ><i class = "fa fa-share-square"></i></span><span>45</span></div>
-                            	<div class = "thirdIcon"><span><i class = "readed">readed</i></span><span>425</span></div>
-                            	<div class = "forthIcon" onclick = "openAbsolute('printList');"><span><i class = "fa fa-print"></i></span><span>printList</span></div>
-                            </div>
-				        </div>
-
-				        <div class = "summaryPanel">
-                            <div class = "sumaruHeader">
-                             	<div class = "title">
-                             	   <span class = "SumaryTopic">Topic:</span>
-                             	   <span class = "SumaryTopicName">GROWTH AND RESPIRATION</span>
-                                </div>
-
-                                <div class = "summaryNo">
-                             	   <span class = "SumaryTopic">Summery No</span>
-                             	   <span class = "SumaryNo">08</span>
-                                </div>
-
-                                <div class = "subtitle">
-                             	   <span class = "SumaryTopic">Sub Topic</span>
-                             	   <span class = "SumaryTopicName">irigation, movement,transporation, yaliyaree,Respiration</span>
-                                </div>
-                            </div>
-
-                            <div class = "summarybody">
-                                <div class = "MainBodySummaary">
-	                             	<img src ='img/profiles/s2.jpg' >
-                             	</div>
-                             	
-                             	<footer>
-                             	 	<div class = "writenBy">
-                             	 	    <a href = "#">
-	                             	 		<span class = "writenTitle" >Written By</span>
-	                             	 		<span class = "writenname" >Nehemia Mwansasu</span>
-                             	 		</a>
-                             	 	</div>
-                             	</footer>
-                            </div>
-
-                            <div class = "iconGroup summaryIcon">
-                            	<div class = "firstIcon"><span><i class = "fa fa-thumbs-o-up"></i></span><span>125</span></div>
-                            	<div class = "sectIcon" onclick = "openAbsolute('shareTo');"><span ><i class = "fa fa-share-square"></i></span><span>45</span></div>
-                            	<div class = "thirdIcon"><span><i class = "readed">readed</i></span><span>425</span></div>
-                            	<div class = "forthIcon" onclick = "openAbsolute('printList');"><span><i class = "fa fa-print"></i></span><span>printList</span></div>
-
-                            </div>
-				        </div>
-
-				        <div class = "summaryPanel">
-                            <div class = "sumaruHeader">
-                             	<div class = "title">
-                             	   <span class = "SumaryTopic">Topic:</span>
-                             	   <span class = "SumaryTopicName">GROWTH AND RESPIRATION</span>
-                                </div>
-
-                                <div class = "summaryNo">
-                             	   <span class = "SumaryTopic">Summery No</span>
-                             	   <span class = "SumaryNo">08</span>
-                                </div>
-
-                                <div class = "subtitle">
-                             	   <span class = "SumaryTopic">Sub Topic</span>
-                             	   <span class = "SumaryTopicName">irigation, movement,transporation, yaliyaree,Respiration</span>
-                                </div>
-                            </div>
-
-                            <div class = "summarybody">
-                                <div class = "MainBodySummaary">
-	                             	what is respitaration:<br/>
-	                             	is prosecess of breath in and breath out by usin g mouth through ousophogus to the lungs
-                             	</div>
-                             	
-                             	<footer>
-                             	 	<div class = "writenBy">
-                             	 	    <a href = "#">
-	                             	 		<span class = "writenTitle" >Written By</span>
-	                             	 		<span class = "writenname" >Nehemia Mwansasu</span>
-                             	 		</a>
-                             	 	</div>
-                             	</footer>
-                            </div>
-
-                            <div class = "iconGroup summaryIcon">
-                            	<div class = "firstIcon"><span><i class = "fa fa-thumbs-o-up"></i></span><span>125</span></div>
-                            	<div class = "sectIcon" onclick = "openAbsolute('shareTo');"><span ><i class = "fa fa-share-square"></i></span><span>45</span></div>
-                            	<div class = "thirdIcon"><span><i class = "readed">readed</i></span><span>425</span></div>
-                            	<div class = "forthIcon" onclick = "openAbsolute('printList');"><span><i class = "fa fa-print"></i></span><span>printList</span></div>
-                            </div>
-				        </div>
-				    </div>
-
-				    <div class = "divSharedSummary">
-				        <h3 class = "headerShareSummary">MY SUMMARIES</h3>
-				        <div class="AllpostestesSummaries">
-			        		<div class = "divSenderDetels">
-			        		    <a href = "#">
-				        			<div class = 'profImg'>
-									    <img src ='img/profiles/p4.jpg' >
-							        </div>
-
-							        <div class ='name_time'>
-									    <span class = 'name'>Jessica Sanders</span>
-									    <span class = 'time_ago'>5hrs Ago</span>
-									</div>
-								</a>
-			        		</div>
-
-				            <div class = "summaryPanel">
+					        <div class = "summaryPanel">
 	                            <div class = "sumaruHeader">
 	                             	<div class = "title">
 	                             	   <span class = "SumaryTopic">Topic:</span>
@@ -2277,73 +2107,220 @@
 	                            	<div class = "firstIcon"><span><i class = "fa fa-thumbs-o-up"></i></span><span>125</span></div>
 	                            	<div class = "sectIcon" onclick = "openAbsolute('shareTo');"><span ><i class = "fa fa-share-square"></i></span><span>45</span></div>
 	                            	<div class = "thirdIcon"><span><i class = "readed">readed</i></span><span>425</span></div>
+	                            	<div class = "forthIcon" onclick = "openAbsolute('printList');"><span><i class = "fa fa-print"></i></span><span>printList</span></div>
 	                            </div>
-				            </div>
+					        </div>
+
+					        <div class = "summaryPanel">
+	                            <div class = "sumaruHeader">
+	                             	<div class = "title">
+	                             	   <span class = "SumaryTopic">Topic:</span>
+	                             	   <span class = "SumaryTopicName">GROWTH AND RESPIRATION</span>
+	                                </div>
+
+	                                <div class = "summaryNo">
+	                             	   <span class = "SumaryTopic">Summery No</span>
+	                             	   <span class = "SumaryNo">08</span>
+	                                </div>
+
+	                                <div class = "subtitle">
+	                             	   <span class = "SumaryTopic">Sub Topic</span>
+	                             	   <span class = "SumaryTopicName">irigation, movement,transporation, yaliyaree,Respiration</span>
+	                                </div>
+	                            </div>
+
+	                            <div class = "summarybody">
+	                                <div class = "MainBodySummaary">
+		                             	<img src ='img/profiles/s2.jpg' >
+	                             	</div>
+	                             	
+	                             	<footer>
+	                             	 	<div class = "writenBy">
+	                             	 	    <a href = "#">
+		                             	 		<span class = "writenTitle" >Written By</span>
+		                             	 		<span class = "writenname" >Nehemia Mwansasu</span>
+	                             	 		</a>
+	                             	 	</div>
+	                             	</footer>
+	                            </div>
+
+	                            <div class = "iconGroup summaryIcon">
+	                            	<div class = "firstIcon"><span><i class = "fa fa-thumbs-o-up"></i></span><span>125</span></div>
+	                            	<div class = "sectIcon" onclick = "openAbsolute('shareTo');"><span ><i class = "fa fa-share-square"></i></span><span>45</span></div>
+	                            	<div class = "thirdIcon"><span><i class = "readed">readed</i></span><span>425</span></div>
+	                            	<div class = "forthIcon" onclick = "openAbsolute('printList');"><span><i class = "fa fa-print"></i></span><span>printList</span></div>
+
+	                            </div>
+					        </div>
+
+					        <div class = "summaryPanel">
+	                            <div class = "sumaruHeader">
+	                             	<div class = "title">
+	                             	   <span class = "SumaryTopic">Topic:</span>
+	                             	   <span class = "SumaryTopicName">GROWTH AND RESPIRATION</span>
+	                                </div>
+
+	                                <div class = "summaryNo">
+	                             	   <span class = "SumaryTopic">Summery No</span>
+	                             	   <span class = "SumaryNo">08</span>
+	                                </div>
+
+	                                <div class = "subtitle">
+	                             	   <span class = "SumaryTopic">Sub Topic</span>
+	                             	   <span class = "SumaryTopicName">irigation, movement,transporation, yaliyaree,Respiration</span>
+	                                </div>
+	                            </div>
+
+	                            <div class = "summarybody">
+	                                <div class = "MainBodySummaary">
+		                             	what is respitaration:<br/>
+		                             	is prosecess of breath in and breath out by usin g mouth through ousophogus to the lungs
+	                             	</div>
+	                             	
+	                             	<footer>
+	                             	 	<div class = "writenBy">
+	                             	 	    <a href = "#">
+		                             	 		<span class = "writenTitle" >Written By</span>
+		                             	 		<span class = "writenname" >Nehemia Mwansasu</span>
+	                             	 		</a>
+	                             	 	</div>
+	                             	</footer>
+	                            </div>
+
+	                            <div class = "iconGroup summaryIcon">
+	                            	<div class = "firstIcon"><span><i class = "fa fa-thumbs-o-up"></i></span><span>125</span></div>
+	                            	<div class = "sectIcon" onclick = "openAbsolute('shareTo');"><span ><i class = "fa fa-share-square"></i></span><span>45</span></div>
+	                            	<div class = "thirdIcon"><span><i class = "readed">readed</i></span><span>425</span></div>
+	                            	<div class = "forthIcon" onclick = "openAbsolute('printList');"><span><i class = "fa fa-print"></i></span><span>printList</span></div>
+	                            </div>
+					        </div>
 				        </div>
+				    </div>
+
+				    <div class = "divSharedSummary">
+				        <h3 class = "headerShareSummary">MY SUMMARIES</h3>
+				        
+				        <div class = "xoverflow" id = "mySummary_holder">
+					     
+					        <div class="AllpostestesSummaries">
+				        		<div class = "divSenderDetels">
+				        		    <a href = "#">
+					        			<div class = 'profImg'>
+										    <img src ='img/profiles/p4.jpg' >
+								        </div>
+
+								        <div class ='name_time'>
+										    <span class = 'name'>Jessica Sanders</span>
+										    <span class = 'time_ago'>5hrs Ago</span>
+										</div>
+									</a>
+				        		</div>
+
+					            <div class = "summaryPanel">
+		                            <div class = "sumaruHeader">
+		                             	<div class = "title">
+		                             	   <span class = "SumaryTopic">Topic:</span>
+		                             	   <span class = "SumaryTopicName">GROWTH AND RESPIRATION</span>
+		                                </div>
+
+		                                <div class = "summaryNo">
+		                             	   <span class = "SumaryTopic">Summery No</span>
+		                             	   <span class = "SumaryNo">08</span>
+		                                </div>
+
+		                                <div class = "subtitle">
+		                             	   <span class = "SumaryTopic">Sub Topic</span>
+		                             	   <span class = "SumaryTopicName">irigation, movement,transporation, yaliyaree,Respiration</span>
+		                                </div>
+		                            </div>
+
+		                            <div class = "summarybody">
+		                                <div class = "MainBodySummaary">
+			                             	<img src ='img/profiles/s2.jpg' >
+		                             	</div>
+		                             	
+		                             	<footer>
+		                             	 	<div class = "writenBy">
+		                             	 	    <a href = "#">
+			                             	 		<span class = "writenTitle" >Written By</span>
+			                             	 		<span class = "writenname" >Nehemia Mwansasu</span>
+		                             	 		</a>
+		                             	 	</div>
+		                             	</footer>
+		                            </div>
+
+		                            <div class = "iconGroup summaryIcon">
+		                            	<div class = "firstIcon"><span><i class = "fa fa-thumbs-o-up"></i></span><span>125</span></div>
+		                            	<div class = "sectIcon" onclick = "openAbsolute('shareTo');"><span ><i class = "fa fa-share-square"></i></span><span>45</span></div>
+		                            	<div class = "thirdIcon"><span><i class = "readed">readed</i></span><span>425</span></div>
+		                            </div>
+					            </div>
+					        </div>
 
 
-				        <div class="AllpostestesSummaries">
-			        		<div class = "divSenderDetels">
-			        		    <a href = "#">
-				        			<div class = 'profImg'>
-									    <img src ='img/profiles/p4.jpg' >
-							        </div>
+					        <div class="AllpostestesSummaries">
+				        		<div class = "divSenderDetels">
+				        		    <a href = "#">
+					        			<div class = 'profImg'>
+										    <img src ='img/profiles/p4.jpg' >
+								        </div>
 
-							        <div class ='name_time'>
-									    <span class = 'name'>Jessica Sanders</span>
-									    <span class = 'time_ago'>5hrs Ago</span>
-									</div>
-								</a>
-			        		</div>
+								        <div class ='name_time'>
+										    <span class = 'name'>Jessica Sanders</span>
+										    <span class = 'time_ago'>5hrs Ago</span>
+										</div>
+									</a>
+				        		</div>
 
-				            <div class = "summaryPanel">
-                            <div class = "sumaruHeader">
-                             	<div class = "title">
-                             	   <span class = "SumaryTopic">Topic:</span>
-                             	   <span class = "SumaryTopicName">NUTRITION</span>
-                                </div>
+					            <div class = "summaryPanel">
+		                            <div class = "sumaruHeader">
+		                             	<div class = "title">
+		                             	   <span class = "SumaryTopic">Topic:</span>
+		                             	   <span class = "SumaryTopicName">NUTRITION</span>
+		                                </div>
 
-                                <div class = "summaryNo">
-                             	   <span class = "SumaryTopic">Summery No</span>
-                             	   <span class = "SumaryNo">08</span>
-                                </div>
+		                                <div class = "summaryNo">
+		                             	   <span class = "SumaryTopic">Summery No</span>
+		                             	   <span class = "SumaryNo">08</span>
+		                                </div>
 
-                                <div class = "subtitle">
-                             	   <span class = "SumaryTopic">Sub Topic</span>
-                             	   <span class = "SumaryTopicName">Respiration</span>
-                                </div>
-                            </div>
+		                                <div class = "subtitle">
+		                             	   <span class = "SumaryTopic">Sub Topic</span>
+		                             	   <span class = "SumaryTopicName">Respiration</span>
+		                                </div>
+		                            </div>
 
-                            <div class = "summarybody">
-                                <div class = "MainBodySummaary">
-	                            what is respitaration:<br/>
-	                             	is prosecess of breath in and breath out by usin g mouth through ousophogus to the lungs<br>
-	                             	is prosecess of breath in and breath out by usin g mouth through ousophogus to the lungs<br>
-	                             	is prosecess of breath in and breath out by usin g mouth through ousophogus to the lungs<br>
-                             	</div>
-                             	
-                             	<footer>
-                             	 	<div class = "writenBy">
-                             	 	    <a href = "#">
-	                             	 		<span class = "writenTitle" >Written By</span>
-	                             	 		<span class = "writenname" >Nehemia Mwansasu</span>
-                             	 		</a>
-                             	 	</div>
-                             	</footer>
-                            </div>
+		                            <div class = "summarybody">
+		                                <div class = "MainBodySummaary">
+			                            what is respitaration:<br/>
+			                             	is prosecess of breath in and breath out by usin g mouth through ousophogus to the lungs<br>
+			                             	is prosecess of breath in and breath out by usin g mouth through ousophogus to the lungs<br>
+			                             	is prosecess of breath in and breath out by usin g mouth through ousophogus to the lungs<br>
+		                             	</div>
+		                             	
+		                             	<footer>
+		                             	 	<div class = "writenBy">
+		                             	 	    <a href = "#">
+			                             	 		<span class = "writenTitle" >Written By</span>
+			                             	 		<span class = "writenname" >Nehemia Mwansasu</span>
+		                             	 		</a>
+		                             	 	</div>
+		                             	</footer>
+		                            </div>
 
-                            <div class = "iconGroup summaryIcon">
-                            	<div class = "firstIcon"><span><i class = "fa fa-thumbs-o-up"></i></span><span>125</span></div>
-                            	<div class = "sectIcon" onclick = "openAbsolute('shareTo');"><span ><i class = "fa fa-share-square"></i></span><span>45</span></div>
-                            	<div class = "thirdIcon"><span><i class = "readed">readed</i></span><span>425</span></div>
-                            </div>
-				        </div>				        
+		                            <div class = "iconGroup summaryIcon">
+		                            	<div class = "firstIcon"><span><i class = "fa fa-thumbs-o-up"></i></span><span>125</span></div>
+		                            	<div class = "sectIcon" onclick = "openAbsolute('shareTo');"><span ><i class = "fa fa-share-square"></i></span><span>45</span></div>
+		                            	<div class = "thirdIcon"><span><i class = "readed">readed</i></span><span>425</span></div>
+		                            </div>
+					            </div>				        
+					        </div>
 				        </div>
 
 				    </div>
 				</div>
 
-			    <div id = 'use_info'>
+			    <div id = 'use_info' class = 'suse_info'>
                     <!-- <div class = 'allAbout'>
 						<h3>ABOUT </h3>
 						<div class = 'username'>
@@ -2460,8 +2437,10 @@
     </div>
     
 </div>
+ 
 <?php include 'include/skelotonBottom_login.php'; ?>
 <script src="jscript/studentfunction/s.subject.js"></script>
 <!-- <script src="jscript/tsliderlive.js"></script> -->
+<!-- <script src="jscript/ckeditor/ckeditor.js"></script> -->
 
 

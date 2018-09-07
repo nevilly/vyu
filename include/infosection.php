@@ -10,32 +10,7 @@
    
 ?> 
     <div class = 'infoSection'>
-			<?php  
-    //require_once 'Core/Init.php';
-    // $profile = '';
-    // $user = new User();
-    // //echo $user->data()->username;
-    // if ($user->isLoggedIn()) {
-    //   # code...
-    //   // echo 'logged In';
-    //   // echo escape($user->data()->username);
-
-    // $db = DB::getInstance();
-    // if(!$username = Input::get('user')){
-    //    Redirect::to('page.php');
-    // }else{
-    // 	 $user = new User($username);
-    // 	 if(!$user ->exists()){
-    //         Redirect::to(404);
-    // 	 }else{
-    // 	 	$user_id = $user->data()->id;
-    // 	 	$user_uname = $user->data()->username;
-
-    	
-    // 	 }
-    // }
-
-?>
+	
 
 				<span class = 'membars'>MEMBARS</span>
 				<div id ='info_list'>
@@ -52,11 +27,11 @@
                       	 	# code...
                                    $p = ($new_memba->profile) ? 
                                    '<div id ="profilecycle">
-                                        <img src = userdata/'.$new_memba->profile.' width="70px" height ="60px">
+                                        <img src = userdata/'.$new_memba->profile.' class = "responsive-img">
                                     </div>' 
                                     :
                                    '<div id ="profilecycle">
-                                        <img src ="userdata/profile/pro3.png" width ="70px" height ="60px;">
+                                        <img src ="userdata/profile/pro3.png" class = "responsive-img">
                                    </div>';
                             
 

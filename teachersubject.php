@@ -1,7 +1,7 @@
  
 
 <?php  
- include 'include/allprofilefunc.php';
+    include 'include/allprofilefunc.php';
     
     #SPECIAL CODE: for Subject.php
 
@@ -42,8 +42,7 @@
 
     ///////////////////////////////////////////////////////////////////////////////////
 	///// Subject Name
-        $checksubject = $db->get('vy_subjects',array('id','=',$subject_id));
-        $subj = $checksubject->first()->suubject_name;
+        $subj = get($db,'vy_subjects','id',$subject_id,'suubject_name');
     ///// END: Subject Name
     ////////////////////////////////////////////////////////////////////////////////////
 
@@ -58,8 +57,9 @@
 	   //     //       echo escape($user-> suubject_name ).'<br/>';
 	   //  	  //  }
 	   //  }
-	       @ $teach_Id      =  $teacher_info->first()->id;
-		   @ $teacherId    =  $teacher_info->first()->user_id;
+	       @ $teach_Id          =  $teacher_info->first()->id;
+		   @ $teacherId         =  $teacher_info->first()->user_id;
+		   @ $teacherUname      =  $teacher_info->first()->username;
 	       @ $teacher_schulname =  $teacher_info->first()->schoolname;
 		   @ $teacher_rname     =  $teacher_info->first()->region;
 	       @ $teacher_lev       =  $teacher_info->first()->levelOrStandard;
@@ -77,15 +77,11 @@
 	       }else{
                 $basedSubj = $profesional_subj."ist Teacher";
 	       }
-
-
 	///// END: Subject Name
     ////////////////////////////////////////////////////////////////////////////////////
 
     ///////////////////////////////////////////////////////////////////////////////////
 	///// Teacher Account Query
-
-
 	///// END: Subject Name
     ////////////////////////////////////////////////////////////////////////////////////
 ?>
@@ -106,9 +102,9 @@
 		
 		<div id='mainWraper'>
 			<div class = 'section'>
-				<?php include 'include/profileheader.php'; ?>
+				<?php// include 'include/profileheader.php'; ?>
 
-				<span class = 'subject_title'><?php echo strtoupper(escape($subj)); ?> WORLD</span>
+				<!-- <span class = 'subject_title'><?php //echo strtoupper(escape($subj)); ?> WORLD</span> -->
 				<header id = 'header_teach'>
 					<div id ='myWall'       class ='myWall'        onclick = "tp_hideshow('tmywall');"                       > My Wall         </div>
 					<div id ='toCover'      class ='toCover'       onclick = "tp_hideshow('check_covered_topic_teacher');"  > Topic Cover     </div>
@@ -121,36 +117,36 @@
                     <div id ='nav_inf'      class ='nav_inf'       onclick = "tp_hideshow('use_info');"                     > info       </div>
                 </header>
              
-            <div id="divuser_id" style="visibility:hidden">
-   
-    <?php echo $user_id;
-    echo "<script>var user = {
-    	    user      : '$user_id',
-		    id        : '$teach_Id',
-    	    user_id   : '$user_id',
-            username  : '$username',
-            profile   : '$profile',
-            frompage  : '$frompage',
-            status    : 'b',
-            subjectName : '$subj',
-            subject_id  : '$subject_id',
-            basedSubj   : '$basedSubj',
-            schoolname  : '$schoolname', 
-            region      : '$teacher_rname', 
-			levelOrStandard  : '$teacher_lev',
-			mkondo           : '$mkondo',
-			level_identify   : '$level_identify'
-			
-            };
-            </script>" ?>
+                <div id="divuser_id" style="visibility:hidden">
+	  
+				    <?php echo $user_id;
+					    echo "<script>var user = {
+					    	    user      : '$user_id',
+							    id        : '$teach_Id',
+							    sesion_id : '$sesion_id',
+					    	    user_id   : '$user_id',
+					            username  : '$username',
+					            teacher_id  : '$teacher_Id',
+								teacherUname: '$teacherUname',
+					            profile   : '$profile',
+					            frompage  : '$frompage',
+					            status    : 'b',
+					            subjectName : '$subj',
+					            subject_id  : '$subject_id',
+					            basedSubj   : '$basedSubj',
+					            schoolname  : '$schoolname', 
+					            region      : '$teacher_rname', 
+								levelOrStandard  : '$teacher_lev',
+								mkondo           : '$mkondo',
+								level_identify   : '$level_identify'
+								
+					            };
+					            </script>";
+				    ?>
+                </div>
 
-
-
-
-
-  
-</div>
-            	<div id = 'tmywall' class = 'mywall'>
+                
+            	<div id = 'tmywall' class = 'mywall teacherWall'>
                    <div class="divPost">
 	                   	<div class = " NormalIdeas" onclick = "dispVisibility('composqsn','whatsOnurmid');">Chats</div> 
 	                    <div class = " composeQstnWall"  onclick="dispVisibility('whatsOnurmid','composqsn');">Compose Question</div>
@@ -181,7 +177,7 @@
 
 
 
-				<div class = 'Myfucults'>                	
+				<div class = 'Myfucults Ttop_recover'>                	
                    
 					<div id = 'check_covered_topic_teacher'>
                         <?php if ($sesion_id == $user_id) { ?>
@@ -381,7 +377,7 @@
 					</div>
                     
                     <!-- /*timetable teacher composer*/ -->
-					<div id = 'timetable'>
+					<div id = 'timetable' class = 'Ttop_timtable'>
                         
                         <div class = "topicDetails">
                               <div onclick="openAbsolute('timetableCompser');" class = 'SmplBookComp'>Timetable Composer</div>
@@ -813,7 +809,7 @@
                                             
 
 
-                                             echo    '<div class = "tymorow">
+                                             echo  '<div class = "tymorow">
 						                           	    <div class = "showsubject">
 						                                    <span class = "subject">'.$subj.'</span>
 
@@ -857,8 +853,6 @@
                                 	        </div>';
                                 }
                               ?>
-
-
 
                         </div>
 
@@ -1311,237 +1305,236 @@
 				
 				<div id = 'parentsChember'>
                    <div class = "main ">
-                	<div class = 'nav prevouis' onclick  = "fPrevious()"><</div>
-				    
-				    <div class =  "sliderContainer">
+	                	<div class = 'nav prevouis' onclick  = "fPrevious('sid',158);"><</div>
+					    
+					    <div class =  "sliderContainer">
 
-				    	<div id = 'sid' class = "slider">
+					    	<div id = 'sid' class = "slider">
 
-				    	
-				    		<div class = "box">
-				    			<div class = parentSlider>
-					    			<div class="slideContainer">
-								        <div class="topcontainer">
-								            <a href="#" class="studentProfile"><img src =  'img/loginSlider/pa.png'></a>
-								        </div>
-								        <div class="another">
-								            
-								            <div class = "ParentPicture">
-								                <img src = 'img/loginSlider/bad.jpg'>
-								             </div>
+					    		<div class = "box">
+					    			<div class = parentSlider>
+						    			<div class="slideContainer">
+									        <div class="topcontainer">
+									            <a href="#" class="studentProfile"><img src =  'img/loginSlider/pa.png'></a>
+									        </div>
+									        <div class="another">
+									            
+									            <div class = "ParentPicture">
+									                <img src = 'img/loginSlider/bad.jpg'>
+									             </div>
 
-								            <div class="profileDetails">
-								                <div class="info">
-								                    <div class="infoDiv">
-								                        <span class="infod parentNames" title="">Parent:</span>
-								                        <span class="info2 parentNames"><a href="#">Nehemia Daud Mwansasu</a></span>
-								                    </div>
-								                   
-								                    <div class="infoDiv">
-								                            <span class="infod classLevel">reader:</span>
-								                            <span class="info2 parentNames">Chairman</span>
-								                 
-								                    </div>
+									            <div class="profileDetails">
+									                <div class="info">
+									                    <div class="infoDiv">
+									                        <span class="infod parentNames" title="">Parent:</span>
+									                        <span class="info2 parentNames"><a href="#">Nehemia Daud Mwansasu</a></span>
+									                    </div>
+									                   
+									                    <div class="infoDiv">
+									                            <span class="infod classLevel">reader:</span>
+									                            <span class="info2 parentNames">Chairman</span>
+									                 
+									                    </div>
 
-								                    <div class="infoDiv">
+									                    <div class="infoDiv">
+									                            <span class="infod classLevel">Level:</span>
+									                            <span class="info2 parentNames">Form 1 B</span>
+									                 
+									                    </div>
+
+									                      <div class="last" onclick="switchVisbltyQ('ParentsWrap','parentChat','parebt')">
+									                            <i class="fa fa-angle-double-down" ></i>
+									                    </div>
+									                 
+									                </div>
+									            </div>
+									        </div>
+
+		                                </div>
+					    			</div>
+					    		</div>
+
+					    		<div class = "box">
+					    			<div class = parentSlider>
+						    			<div class="slideContainer">
+									        <div class="topcontainer">
+									            <a href="#" class="studentProfile"><img src = 'img/loginSlider/pa.png'></a>
+									        </div>
+									        <div class="another">
+									            
+									            <div class = "ParentPicture">
+									                <img src = 'img/loginSlider/bad.jpg'>
+									             </div>
+
+									            <div class="profileDetails">
+									                <div class="info">
+									                    <div class="infoDiv">
+									                        <span class="infod parentNames" title="">Parent:</span>
+									                        <span class="info2 parentNames"><a href="#">Nehemia Daud Mwansasu</a></span>
+									                    </div>
+									                   
+									                    <div class="infoDiv">
+									                            <span class="infod classLevel">reader:</span>
+									                            <span class="info2 parentNames">Chairman</span>
+									                 
+									                    </div>
+
+									                    <div class="infoDiv">
+									                            <span class="infod classLevel">Level:</span>
+									                            <span class="info2 parentNames">Form 1 B</span>
+									                 
+									                    </div>
+
+									                      <div class="last">
+									                            
+									                            <i class="fa fa-angle-double-down" ></i>
+									                 
+									                    </div>
+									                 
+									                </div>
+									            </div>
+									        </div>
+
+		                                </div>
+					    			</div>
+					    		</div>
+
+					    	    <div class = "box">
+					    			<div class = parentSlider>
+						    			<div class="slideContainer">
+									        <div class="topcontainer">
+									            <a href="#" class="studentProfile"><img src =  'img/loginSlider/pa.png'></a>
+									        </div>
+									        <div class="another">
+									            
+									            <div class = "ParentPicture">
+									                <img src = 'img/loginSlider/bad.jpg'>
+									             </div>
+
+									            <div class="profileDetails">
+									                <div class="info">
+									                    <div class="infoDiv">
+									                        <span class="infod parentNames" title="">Parent:</span>
+									                        <span class="info2 parentNames"><a href="#">Nehemia Daud Mwansasu</a></span>
+									                    </div>
+									                   
+									                    <div class="infoDiv">
+									                            <span class="infod classLevel">reader:</span>
+									                            <span class="info2 parentNames">Chairman</span>
+									                 
+									                    </div>
+
+									                    <div class="infoDiv">
+									                            <span class="infod classLevel">Level:</span>
+									                            <span class="info2 parentNames">Form 1 B</span>
+									                 
+									                    </div>
+
+									                      <div class="last">
+									                            
+									                            <i class="fa fa-angle-double-down" ></i>
+									                 
+									                    </div>
+									                 
+									                </div>
+									            </div>
+									        </div>
+
+		                                </div>
+					    			</div>
+					    		</div>
+
+					    	    <div class = "box">
+					    			<div class = parentSlider>
+						    			<div class="slideContainer">
+									        <div class="topcontainer">
+									            <a href="#" class="studentProfile"><img src =  'img/loginSlider/pa.png'></a>
+									        </div>
+									        <div class="another">
+									            
+									            <div class = "ParentPicture">
+									                <img src = 'img/loginSlider/bad.jpg'>
+									             </div>
+
+									            <div class="profileDetails">
+									                <div class="info">
+									                    <div class="infoDiv">
+									                        <span class="infod parentNames" title="">Parent:</span>
+									                        <span class="info2 parentNames"><a href="#">Nehemia Daud Mwansasu</a></span>
+									                    </div>
+									                   
+									                    <div class="infoDiv">
+									                            <span class="infod classLevel">reader:</span>
+									                            <span class="info2 parentNames">Chairman</span>
+									                 
+									                    </div>
+
+									                    <div class="infoDiv">
+									                            <span class="infod classLevel">Level:</span>
+									                            <span class="info2 parentNames">Form 1 B</span>
+									                 
+									                    </div>
+
+									                      <div class="last">
+									                            
+									                            <i class="fa fa-angle-double-down" ></i>
+									                 
+									                    </div>
+									                 
+									                </div>
+									            </div>
+									        </div>
+
+		                                </div>
+					    			</div>
+					    		</div>
+					    		
+					    		<div class = "box">
+					    			<div class = parentSlider>
+						    			<div class="slideContainer">
+									        <div class="topcontainer">
+									            <a href="#" class="studentProfile"><img src =  'img/loginSlider/pa.png'></a>
+									        </div>
+									        <div class="another">
+									            
+									            <div class = "ParentPicture">
+									                <img src = 'img/loginSlider/bad.jpg'>
+									             </div>
+
+									            <div class="profileDetails">
+									                <div class="info">
+									                    <div class="infoDiv">
+									                        <span class="infod parentNames" title="">Parent:</span>
+									                        <span class="info2 parentNames"><a href="#">Nehemia Daud Mwansasu</a></span>
+									                    </div>
+									                   
+									                    <div class="infoDiv">
+									                            <span class="infod classLevel">reader:</span>
+									                            <span class="info2 parentNames">Chairman</span>
+									                    </div>
+
+									                    <div class="infoDiv">
 								                            <span class="infod classLevel">Level:</span>
 								                            <span class="info2 parentNames">Form 1 B</span>
-								                 
-								                    </div>
+									                    </div>
 
-								                      <div class="last" onclick="switchVisbltyQ('ParentsWrap','parentChat','parebt')">
-								                            <i class="fa fa-angle-double-down" ></i>
-								                    </div>
-								                 
-								                </div>
-								            </div>
-								        </div>
+									                    <div class="last">
+									                            
+									                            <i class="fa fa-angle-double-down" ></i>
+									                    </div>
+									                 
+									                </div>
+									            </div>
+									        </div>
 
-	                                </div>
-				    			</div>
-				    		</div>
+		                                </div>
+					    			</div>
+					    		</div>
+					    	</div>
+					    </div>
 
-				    		<div class = "box">
-				    			<div class = parentSlider>
-					    			<div class="slideContainer">
-								        <div class="topcontainer">
-								            <a href="#" class="studentProfile"><img src = 'img/loginSlider/pa.png'></a>
-								        </div>
-								        <div class="another">
-								            
-								            <div class = "ParentPicture">
-								                <img src = 'img/loginSlider/bad.jpg'>
-								             </div>
-
-								            <div class="profileDetails">
-								                <div class="info">
-								                    <div class="infoDiv">
-								                        <span class="infod parentNames" title="">Parent:</span>
-								                        <span class="info2 parentNames"><a href="#">Nehemia Daud Mwansasu</a></span>
-								                    </div>
-								                   
-								                    <div class="infoDiv">
-								                            <span class="infod classLevel">reader:</span>
-								                            <span class="info2 parentNames">Chairman</span>
-								                 
-								                    </div>
-
-								                    <div class="infoDiv">
-								                            <span class="infod classLevel">Level:</span>
-								                            <span class="info2 parentNames">Form 1 B</span>
-								                 
-								                    </div>
-
-								                      <div class="last">
-								                            
-								                            <i class="fa fa-angle-double-down" ></i>
-								                 
-								                    </div>
-								                 
-								                </div>
-								            </div>
-								        </div>
-
-	                                </div>
-				    			</div>
-				    		</div>
-
-				    	    <div class = "box">
-				    			<div class = parentSlider>
-					    			<div class="slideContainer">
-								        <div class="topcontainer">
-								            <a href="#" class="studentProfile"><img src =  'img/loginSlider/pa.png'></a>
-								        </div>
-								        <div class="another">
-								            
-								            <div class = "ParentPicture">
-								                <img src = 'img/loginSlider/bad.jpg'>
-								             </div>
-
-								            <div class="profileDetails">
-								                <div class="info">
-								                    <div class="infoDiv">
-								                        <span class="infod parentNames" title="">Parent:</span>
-								                        <span class="info2 parentNames"><a href="#">Nehemia Daud Mwansasu</a></span>
-								                    </div>
-								                   
-								                    <div class="infoDiv">
-								                            <span class="infod classLevel">reader:</span>
-								                            <span class="info2 parentNames">Chairman</span>
-								                 
-								                    </div>
-
-								                    <div class="infoDiv">
-								                            <span class="infod classLevel">Level:</span>
-								                            <span class="info2 parentNames">Form 1 B</span>
-								                 
-								                    </div>
-
-								                      <div class="last">
-								                            
-								                            <i class="fa fa-angle-double-down" ></i>
-								                 
-								                    </div>
-								                 
-								                </div>
-								            </div>
-								        </div>
-
-	                                </div>
-				    			</div>
-				    		</div>
-
-				    	    <div class = "box">
-				    			<div class = parentSlider>
-					    			<div class="slideContainer">
-								        <div class="topcontainer">
-								            <a href="#" class="studentProfile"><img src =  'img/loginSlider/pa.png'></a>
-								        </div>
-								        <div class="another">
-								            
-								            <div class = "ParentPicture">
-								                <img src = 'img/loginSlider/bad.jpg'>
-								             </div>
-
-								            <div class="profileDetails">
-								                <div class="info">
-								                    <div class="infoDiv">
-								                        <span class="infod parentNames" title="">Parent:</span>
-								                        <span class="info2 parentNames"><a href="#">Nehemia Daud Mwansasu</a></span>
-								                    </div>
-								                   
-								                    <div class="infoDiv">
-								                            <span class="infod classLevel">reader:</span>
-								                            <span class="info2 parentNames">Chairman</span>
-								                 
-								                    </div>
-
-								                    <div class="infoDiv">
-								                            <span class="infod classLevel">Level:</span>
-								                            <span class="info2 parentNames">Form 1 B</span>
-								                 
-								                    </div>
-
-								                      <div class="last">
-								                            
-								                            <i class="fa fa-angle-double-down" ></i>
-								                 
-								                    </div>
-								                 
-								                </div>
-								            </div>
-								        </div>
-
-	                                </div>
-				    			</div>
-				    		</div>
-				    		
-				    		<div class = "box">
-				    			<div class = parentSlider>
-					    			<div class="slideContainer">
-								        <div class="topcontainer">
-								            <a href="#" class="studentProfile"><img src =  'img/loginSlider/pa.png'></a>
-								        </div>
-								        <div class="another">
-								            
-								            <div class = "ParentPicture">
-								                <img src = 'img/loginSlider/bad.jpg'>
-								             </div>
-
-								            <div class="profileDetails">
-								                <div class="info">
-								                    <div class="infoDiv">
-								                        <span class="infod parentNames" title="">Parent:</span>
-								                        <span class="info2 parentNames"><a href="#">Nehemia Daud Mwansasu</a></span>
-								                    </div>
-								                   
-								                    <div class="infoDiv">
-								                            <span class="infod classLevel">reader:</span>
-								                            <span class="info2 parentNames">Chairman</span>
-								                    </div>
-
-								                    <div class="infoDiv">
-							                            <span class="infod classLevel">Level:</span>
-							                            <span class="info2 parentNames">Form 1 B</span>
-								                    </div>
-
-								                    <div class="last">
-								                            
-								                            <i class="fa fa-angle-double-down" ></i>
-								                    </div>
-								                 
-								                </div>
-								            </div>
-								        </div>
-
-	                                </div>
-				    			</div>
-				    		</div>
-				    	</div>
-				    </div>
-
-				 
-				    <div class = 'nav Next'     onclick  = "fNext()">></div>
+					 
+					    <div class = 'nav Next'     onclick  = "fNext('sid',158)">></div>
 			        </div>
 					
 					<div class ='ParentsWrap' id = 'ParentsWrap' >
@@ -1767,24 +1760,117 @@
 					</div>
 
 
-                    <div class ='ParentsWrap' id = 'parentChatSingle' >
+                    
+                    <div class ='ParentsWrap' id = 'parentChat' >
+                       
+                       <div class = 'MsgContainer chatBox'>
+
+                        <div class = 'back' onclick=\"switchVisbltyQ('ParentsWrap','parentChat$p_accId','parebt')\">Go Back </div>
+                        <div class='chatContainer'>
+
+                            <div class = 'chatheader divdivision' >
+                                <div class='introHeader'>
+                                    <span class='parentTitle'>Parent</span>
+                                    <span class='pname'>$p_uname</span>
+                                    
+                                    <div >
+                                        <a href = ''>
+                                        <span>Moses Mwakatobe (Child Name):</span>
+                                        <span style='font-style:italic;'>Form 1 B ,</span></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class = 'ContainerChat'>
+        
+
+                                <div class='xoverflow' id = 'prvtMsgs3'>
+
+                                    <div class='chatholder'>
+                                        <div class='divcirlce'>
+                                            <div class = 'cicle'>$p_prof</div>
+                                        </div>
+                                        
+                                        <div class ='textChat'>
+                                        
+                                            <p>
+                                                $msg
+                                            </p>
+                                                    
+                                                        
+                                        </div>
+                                        <div class = 'clear'></div>
+                                    </div>
+
+                               </div>
+                            </div>
+                            
+                            <div class='textEditor'>
+                                <div class = 'down_Document' id = 'textDownload'>
+                                    <div  class ='potea' onclick = "closeDiv('textDownload');">X</div>
+
+                                    <div class= 'thedoc'  onclick ="docchoosen('doc_slideBox','textDownload')">Test.txt</div>
+                                    <div class='thedoc' onclick ="docchoosen('doc_slideBox','textDownload')">Assiment</div>
+                                    <div class='thedoc' onclick ="docchoosen('doc_slideBox','textDownload')">Photo</div>
+                                </div>
+                                
+                                <div id ='doc_slideBox' class ='doc_slideBox'>
+                                 <div id = 'slideDown' class = 'openAndClose'  onclick = "changeHeightslideDown('slideDown','slideUp','doc_slideBox')">  <i class = 'fa fa-angle-down'></i></div>
+
+
+                                 <div id = 'slideUp' class = 'openAndClose'   onclick = "changeHeightslideUp('slideUp','slideDown','doc_slideBox')"> <i class = 'fa fa-angle-up'></i></div>
+
+
+                                    <div  id = 'doc_title' class = 'doc_title'>
+
+                                        <div class='doc_discr'>
+                                            <span>Test Name</span>
+                                            <span>Form 3 B</span>
+                                            <span>created: 27/2/2008</span>
+                                        </div>
+                                    </div>
+
+                                    <div  id = 'doc_title' class = 'doc_title'>
+
+                                        <div class='doc_discr'>
+                                            <span>Test Name</span>
+                                            <span>Form 3 B</span>
+                                            <span>created: 27/2/2008</span>
+                                        </div>  
+                                    </div>
+                                      
+                                </div>
+
+                                <div class='chatholder'>
+                                        <div class='divcirlce'>
+                                            <div class = 'cicle' id = 'chehh' onclick= "plusdoc('textDownload','doc_slideBox');">+</div>
+                                        </div>
+                                        
+                                        <div class = 'textChat'>
+                                            <textarea  autofocus='none'   placeholder = 'write something' name='' id='prvtTxt_tp3' cols=''rows=''></textarea> 
+                                              <div onclick="allChembar_pvtMsg('prvtTxt_tp',3,'prvtMsgs','$u_two')" class='sendPlan'><i class='fa fa-send'></i></div>      
+                                        </div>
+                                        <div class = 'clear'></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
 						
 					</div>	
-			
-
-				</div>
+			    </div>
 
 				
-			   <div id = 'Result' class='resultPlace'>
+			    <div id = 'Result' class='resultPlace'>
 			    	<div class = 'uploadResult'>
 				    	<div class = 'uploadManual'>
 		                    <div class = 'examname'>
-		                        <input type = 'text' placeholder = 'Test Name'>
+		                        <input type = 'text' placeholder = 'Test Name' id = 'RexamName'>
 		                    </div>
-
+                            
 		                    <div class = 'chuseQtionType'>
 		                        <label for='qstty'></label>
-		                        <select id='qtnType'> 
+		                        <select id='RqtnType'> 
 		                            <option selected="selected">Examination</option>
 		                            <option>Quiz</option>
 		                            <option>Test</option>
@@ -1795,64 +1881,103 @@
 		                    </div>
 
                             <div class = "dateDone">
-                           	  <div class = 'Endtime daterecord'>
-                              <h4>Date</h4>
-                              
-                               <div class = 'hrx wiki'>
-                                   <select id='hrz wikibox'> 
-                                        <option selected="selected">Monday</option>
-                                        <option>Tue</option>
-                                        <option>Wesnd</option>
-                                        <option>Thursd</option>
-                                        <option>frie</option>
-                                        <option>sat</option>
-                                        <option>Sund</option>
-                                   </select>
+	                           	<div class = 'Endtime daterecord'>
+	                              <h4>Date</h4>
+	                              <input type =  "date" id = "resultDate">
                               </div>
-                               
-                               
-                              <div class = 'hrx datee'>
-                                   <select id='hrz datebox'> 
-                                        <option selected="selected">00</option>
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                        <option>04</option>
-                                        <option>05</option>
-                                   </select>
-                              </div>
-                         
-                              
-                               <div class = 'Semdotds datestrok'> / </div>
-                              
-                              <div class = 'Minx monthee'>
-                                   <select id='Minitc monthbox'> 
-                                        <option selected="selected">00</option>
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                        <option>04</option>
-                                        <option>05</option>
-                                   </select>
-                              </div>
-                              
-                             <div class = 'Semdotds datestrok'> / </div>
-                             
-                              <div class = 'pm_am yearx'>
-                                   <select id='qtnType yearbox'> 
-                                        <option selected="selected">2017</option>
-                                        <option>2018</option>
-                                        <option>2019</option>
-                                        <option>2020</option>
-                                        <option>2021</option>
-                                   </select>
-                              </div></div>
                             </div>      
                         </div>
 
 
 		                <div class = 'StudentList anybotton' onclick = 'HomekComp("browsdResult","ListStud");'> <h4>StudentList </h4></div>
 		                <div class = 'anybotton uploadPdf' onclick = 'HomekComp("ListStud","browsdResult");'><h4>UPLOAD RESULT PDF</h4></div>
+		                <?php
+
+                            $list = '';
+                            $result_qry = 'SELECT s.id as sid,s.user_id as suid ,s.levelOrStandard as slv,s.mkondo as smk, s.*, v.id, v.profile as vpro, v.username as vuname,v.fullname as fname
+                                            FROM student_acc s
+                                            LEFT JOIN vy_users as v ON(s.user_id = v.id) WHERE 
+                                            schoolname = ? AND
+                                            mkondo    = ? AND 
+                                            levelOrStandard = ? AND 
+                                            region = ?';
+
+
+                            $rslt_qry = $db->query($result_qry, array($teacher_schulname,$mkondo,$teacher_lev,$teacher_rname));
+
+                            if($rslt_qry->count()){
+                                //echo $rslt_qry->count().'<br/>';
+                                foreach($rslt_qry->results() as $s){
+                                        $r_id        =  $s->sid;
+                                        $r_uid       =  $s->suid;
+                                        $r_uname     =  $s->vuname;
+                                        $r_fname     =  $s->fname;
+                                        $r_profile   =  $s->vpro;
+                                        $r_lv        =  $s->slv;
+                                        $r_smk       =  $s->smk;
+
+                                        $width       =    '';
+							            $height      =    '';
+							            $class       =    '';
+							            $r_prof      =    $db->prfl_pctwithClass($r_profile, $width, $height, $class);
+
+
+
+                                        $list .= "<tr class = tableList>
+						                            <td class = 'no'>
+						                                <input type = 'checkbox' class = 'checkfeez' name= 'checkfordsplay' id='inputOne' onclick = \"cheikinput('inputOne','bableReason');\" >
+						                                <div id = 'bableReason' class = 'bableReason'>
+						                                    <div class ='triangle'></div>
+						                                    <div class = 'textReason'>
+						                                        <textarea placeholder='Ex:Paid school fees' id = 'r_feesReason$r_id' class = 'r_fesReason'></textarea>
+						                                    </div>
+						                                </div>
+						                            </td>
+						                          
+						                            <td class = 'prfile'>
+						                               <div class = 'profImg'>
+														    $r_prof
+													    </div>
+											        </td>
+						                        
+						                            <td class = 'name nameL'><a href='#'>$r_fname</a></td>
+						                           
+						                            <td class = 'T_opnion'>
+						                            	<div class = ''>
+						                                   <select id='opn$r_id' class = 'teacher_option'> 
+						                                        <option selected='selected'>Very Good</option>
+						                                        <option>Parfet</option>
+						                                        <option>See Me</option>
+						                                        <option>Good</option>
+						                                        <option>Pull up ur socks</option>
+						                                        <option>Keep it up</option>
+						                                        <option>This Not You</option>
+						                                   </select>
+						                                </div>
+						                               
+						                               <div class = 'dateTosee'>
+						                                	<input type='text' name='dateToSee' class = 'DatetoSeeTeacher' id='dateToSee$r_id' placeholder='date to see'>
+						                               </div>
+						                            </td>
+                                                     
+						                            <td class = 'max'>
+						                                <input type = 'text' id = '$r_uid' class = 'max_r' placeholder='Max'>
+						                                <span>%</span>
+						                            </td>
+						                           
+						                            <td class = 'static'><a href= 'statics.php'>
+						                                <i  class='icofont icofont-chart-line' aria-hidden='true'></i>
+						                            </td>
+
+							                   	</tr>";
+
+
+                                  
+                                }
+                            }else{
+                             	echo "<div class = 'errorMsg'>No Student In </div>";
+                            }
+		                ?>
 
 				        <div id = 'ListStud' class = 'ListStud'>
 		                   	<div class = 'staticsSimpleshow'>
@@ -1864,9 +1989,19 @@
                    	       
                    	       <div id = 'studLst'>
 
-	                	        <div id = 'alllst'>
+	                	       <div id = 'alllst'>
 			                      	<h4>
-			                      	   <span class = 'adf'>Student List</span>
+			                           <span class = 'adf'>School Fee Option</span>
+			                      	    
+			                      	   <span id = 'studListClassNae'>  
+			                         	    <select id='resultsFees'> 
+			                                  <option selected="selected">ALL ( SHOOL FEE )</option>
+			                                  <option>Paid Only</option>
+			                                  <option>Not Paid Only</option>
+			                              </select>
+			                           </span>
+
+			                           <span class = 'adf'>Student List</span>
 			                      	    
 			                      	   <span id = 'studListClassNae'>  
 			                         	    <select id='selectsstand'> 
@@ -1894,127 +2029,17 @@
 					                   	   <td  class ='static'>Statistic</td>		
 					                   	</tr>
 
-					                   	<tr class = tableList>
-				                            <td class = 'no'>
-				                                <input type = 'checkbox' class = 'checkfeez' name= 'checkfordsplay' id='inputOne' onclick = 'cheikinput("inputOne","bableReason");' >
-				                                <div id = "bableReason" class = "bableReason">
-				                                    <div class ='triangle'></div>
-				                                    <div class = 'textReason'>
-				                                        <textarea placeholder="Ex:Paid school fees"></textarea>
-				                                    </div>
-				                                </div>
-				                            </td>
-				                          
-				                            <td class = 'prfile'>
-				                               <div class = 'profImg'>
-												    <img src ='img/profiles/p4.jpg' >
-											    </div>
-									        </td>
-				                          
-				                            <td class = 'name nameL'><a href="#">fasdfaf</a></td>
-				                           
-				                            <td class = 'T_opnion'>
-				                            	<div class = ''>
-				                                   <select id='opn'> 
-				                                        <option selected="selected">Very Good</option>
-				                                        <option>Parfet</option>
-				                                        <option>See Me</option>
-				                                        <option>Good</option>
-				                                        <option>Pull up ur socks</option>
-				                                        <option>Keep it up</option>
-				                                        <option>This Not You</option>
-				                                   </select>
-				                                </div>
-				                               
-				                               <div class = 'dateTosee'>
-				                                	<input type="text" name="dateToSee" placeholder="date to see">
-				                               </div>
-				                            </td>
-
-				                            <td class = 'max'>
-				                                <input type = 'text' placeholder="Max">
-				                                <span>%</span>
-				                            </td>
-				                           
-				                            <td class = 'static'><a href= 'statics.php'>
-				                                 <i  class="icofont icofont-chart-line" aria-hidden="true"></i>
-				                            </td>
-
-					                   	</tr>
-
-						               <!-- <tr class = tableList>
-					                           <td class = 'no'>
-					                                <input type = 'checkbox' class = 'checkfeez' name= 'checkfordsplay' id='inputwo' onclick = 'cheikinput("inputwo","bableReason2");'>
-					                                <div id = "bableReason2" class = "bableReason">
-					                                    <div class ='triangle'></div>
-					                                    <div class = 'textReason'>
-					                                        <textarea placeholder="Ex:Paid school fees"></textarea>
-					                                    </div>
-					                                </div>
-					                           </td>
-
-					                           <td class = 'prfile'>
-					                               <div class = 'profImg'>
-														<img src ='img/profiles/p4.jpg' >
-													</div>
-										       </td>
-
-					                           <td class = 'name'><a href="#">fasdfaf</a></td>
-
-					                           <td class = 'max'><input type = 'text' placeholder="Enter Max"><span>%</span></td>
-
-					                          <td class = 'static'><a href= 'statics.php'>
-					                              <i  class="icofont icofont-chart-line" aria-hidden="true"></i>
-					                           </td>
-						                   	</tr>
-
-						                   	<tr class = tableList>
-					                           <td class = 'no'><input type = 'checkbox' class = 'checkfeez' name= 'checkfordsplay'></td>
-					                           <td class = 'prfile'>
-					                               <div class = 'profImg'>
-													    <img src ='img/profiles/p4.jpg' >
-												    </div>
-										        </td>
-					                           <td class = 'name'><a href="#">Nehemia Mwansasu</a></td>
-					                           <td class = 'max'><input type = 'text' placeholder="Enter Max"><span>%</span></td>
-					                           <td class = 'static'><a href= 'statics.php'>
-					                              <i  class="icofont icofont-chart-line" aria-hidden="true"></i>
-					                           </td>
-						                   	</tr>
-
-
-
-						                	<tr class = tableList>
-						                        <td class = 'no'>
-						                           <input type = 'checkbox' class = 'checkfeez' name= 'checkfordsplay'>
-						                        </td>
-						                        
-						                        <td class = 'prfile'>
-						                           <div class = 'profImg'>
-																<img src ='img/profiles/p4.jpg' >
-															</div>
-											         </td>
-						                        
-						                        <td class = 'name'>
-						                           <a href="#">Neema Mwansasu</a>
-						                        </td>
-						                        
-						                        <td class = 'max'>
-						                           <input type = 'text' placeholder="Enter Max"><span>%</span>
-						                        </td>
-
-						                        <td class = 'static'><a href= 'statics.php'>
-						                           <i  class="icofont icofont-chart-line" aria-hidden="true"></i>
-						                        </td>
-
-						                	</tr>
-					                     -->               
+					                   	<?php echo $list; ?>
+           
 				                    </table>
 			                    </div>
 
-			                   <div class="uploadRes">Upload Result</div>
+ 
+			                   <div class="uploadRes" id = 'uploadRes' onclick = "post_ExamResult('max_r','DatetoSeeTeacher','teacher_option','r_fesReason','RexamName','RqtnType','resultDate');" >Upload Result</div>
                            </div>
                         </div>
+
+
 			    	
 				    	<div id = 'browsdResult' class = 'browsdResult'>
 				    		<form action="upload.php" method="post" enctype="multipart/form-data">
@@ -2027,7 +2052,7 @@
 				    	</div>
 			        </div>
 
-			        <div class = 'resultWrapper'>
+			        <div id = 'resultWraper' class = 'resultWrapper'>
 			        	<div class = 'championShow'>
 			        	   <div class = 'ExamNAmeanDexame'>
 			        	   	    <h4>Safari Examination</h4><div class = 'donedate'>2/2/2018</div>
@@ -2170,206 +2195,206 @@
 			        
 					    <div id = 'wallRsult'>
 						    <h4><span class = 'classNamw'>FORM 4 A</span> RESULTS</h4>
-						    	<table>
-				                   	<tr class = "tableList heda">
-				                   	   <td class="checkf">No</td>	
-				                   	   <td>Profile</td>	
-				                   	   <td>student Name</td>
-				                   	    <td class = 'T_opnion'>Opnion</td>	
-				                   	   <td>Max</td>
-				                   	   <td  class ='static'>Statistic</td>		
-				                   	</tr>
+					    	<table>
+			                   	<tr class = "tableList heda">
+			                   	   <td class="checkf">No</td>	
+			                   	   <td>Profile</td>	
+			                   	   <td>student Name</td>
+			                   	    <td class = 'T_opnion'>Opnion</td>	
+			                   	   <td>Max</td>
+			                   	   <td  class ='static'>Statistic</td>		
+			                   	</tr>
 
-				                   	<tr class = tableList>
-			                           <td class = 'no'>
-			                                 1
-			                            </td>
-			                           <td class = 'prfile'>
-			                               <div class = 'profImg'>
-												<img src ='img/profiles/p4.jpg' >
-											</div>
-								        </td>
-			                           <td class = 'name'><a href="#">fasdfaf</a></td>
-			                           <td class = 'T_opnion'>
-			                                <span class = 'viw_opt'>Very GOod</span>
-			                                <span class = 'viw_opt_date'>2/2/2016</span>
-			                           </td>
+			                   	<tr class = tableList>
+		                           <td class = 'no'>
+		                                 1
+		                            </td>
+		                           <td class = 'prfile'>
+		                               <div class = 'profImg'>
+											<img src ='img/profiles/p4.jpg' >
+										</div>
+							        </td>
+		                           <td class = 'name'><a href="#">fasdfaf</a></td>
+		                           <td class = 'T_opnion'>
+		                                <span class = 'viw_opt'>Very GOod</span>
+		                                <span class = 'viw_opt_date'>2/2/2016</span>
+		                           </td>
 
-			                           <td class = 'max'>
-			                             <span class = 'r_max'>64</span>
-				                           <span class = 'Maxparc'>%</span>
-			                            </td>
-			                           <td class = 'static'><a href= 'statics.php'>
-			                              <i  class="icofont icofont-chart-line" aria-hidden="true"></i>
-			                           </td>
-				                   	</tr>
+		                           <td class = 'max'>
+		                             <span class = 'r_max'>64</span>
+			                           <span class = 'Maxparc'>%</span>
+		                            </td>
+		                           <td class = 'static'><a href= 'statics.php'>
+		                              <i  class="icofont icofont-chart-line" aria-hidden="true"></i>
+		                           </td>
+			                   	</tr>
 
-				                   	<tr class = tableList>
-			                           <td class = 'no'>
-			                                2
-			                           </td>
+			                   	<tr class = tableList>
+		                           <td class = 'no'>
+		                                2
+		                           </td>
 
-			                           <td class = 'prfile'>
-			                               <div class = 'profImg'>
-												<img src ='img/profiles/p4.jpg' >
-											</div>
-								       </td>
+		                           <td class = 'prfile'>
+		                               <div class = 'profImg'>
+											<img src ='img/profiles/p4.jpg' >
+										</div>
+							       </td>
 
-			                           <td class = 'name'><a href="#">fasdfaf</a></td>
-			                            <td class = 'T_opnion'>
-			                                <span class = 'viw_opt'>Parfect</span>
-			                                <span class = 'viw_opt_date'></span>
+		                           <td class = 'name'><a href="#">fasdfaf</a></td>
+		                            <td class = 'T_opnion'>
+		                                <span class = 'viw_opt'>Parfect</span>
+		                                <span class = 'viw_opt_date'></span>
 
-			                            </td>
-			                           <td class = 'max'>
-			                                 <span class = 'r_max'>89</span>
-				                           <span class = 'Maxparc'>%</span>
-			                           </td>
+		                            </td>
+		                           <td class = 'max'>
+		                                 <span class = 'r_max'>89</span>
+			                           <span class = 'Maxparc'>%</span>
+		                           </td>
 
-			                          <td class = 'static'><a href= 'statics.php'>
-			                              <i  class="icofont icofont-chart-line" aria-hidden="true"></i>
-			                           </td>
-				                   	</tr>
+		                          <td class = 'static'><a href= 'statics.php'>
+		                              <i  class="icofont icofont-chart-line" aria-hidden="true"></i>
+		                           </td>
+			                   	</tr>
 
-				                   	<tr class = tableList>
-			                           <td class = 'no'>3</td>
-			                           <td class = 'prfile'>
-			                               <div class = 'profImg'>
-											    <img src ='img/profiles/p4.jpg' >
-										    </div>
-								        </td>
-			                           <td class = 'name'><a href="#">Nehemia Mwansasu</a></td>
+			                   	<tr class = tableList>
+		                           <td class = 'no'>3</td>
+		                           <td class = 'prfile'>
+		                               <div class = 'profImg'>
+										    <img src ='img/profiles/p4.jpg' >
+									    </div>
+							        </td>
+		                           <td class = 'name'><a href="#">Nehemia Mwansasu</a></td>
 
-			                           <td class = 'T_opnion'>
-			                                <span class = 'viw_opt'>see me</span>
-			                                <span class = 'viw_opt_date'>2/2/2016</span>
+		                           <td class = 'T_opnion'>
+		                                <span class = 'viw_opt'>see me</span>
+		                                <span class = 'viw_opt_date'>2/2/2016</span>
 
-			                            </td>
-			                           <td class = 'max'>
-				                           <span class = 'r_max'>44</span>
-				                           <span class = 'Maxparc'>%</span>
-			                           </td>
-			                           <td class = 'static'><a href= 'statics.php'>
-			                              <i  class="icofont icofont-chart-line" aria-hidden="true"></i>
-			                           </td>
-				                   	</tr>
+		                            </td>
+		                           <td class = 'max'>
+			                           <span class = 'r_max'>44</span>
+			                           <span class = 'Maxparc'>%</span>
+		                           </td>
+		                           <td class = 'static'><a href= 'statics.php'>
+		                              <i  class="icofont icofont-chart-line" aria-hidden="true"></i>
+		                           </td>
+			                   	</tr>
 
-				                	   <tr class = tableList>
-				                        <td class = 'no'>
-				                           4
-				                        </td>
-				                        
-				                        <td class = 'prfile'>
-				                           <div class = 'profImg'>
-														<img src ='img/profiles/p4.jpg' >
-													</div>
-									         </td>
-				                        
-				                        <td class = 'name'>
-				                           <a href="#">Neema Mwansasu</a>
-				                        </td>
-				                        
-				                        <td class = 'T_opnion'>
-			                                <span class = 'viw_opt'>Very GOod</span>
-			                                <span class = 'viw_opt_date'></span>
+			                	   <tr class = tableList>
+			                        <td class = 'no'>
+			                           4
+			                        </td>
+			                        
+			                        <td class = 'prfile'>
+			                           <div class = 'profImg'>
+													<img src ='img/profiles/p4.jpg' >
+												</div>
+								         </td>
+			                        
+			                        <td class = 'name'>
+			                           <a href="#">Neema Mwansasu</a>
+			                        </td>
+			                        
+			                        <td class = 'T_opnion'>
+		                                <span class = 'viw_opt'>Very GOod</span>
+		                                <span class = 'viw_opt_date'></span>
 
-			                            </td>
-				                        <td class = 'max'>
-				                            <span class = 'r_max'>94</span>
-				                           <span class = 'Maxparc'>%</span>
+		                            </td>
+			                        <td class = 'max'>
+			                            <span class = 'r_max'>94</span>
+			                           <span class = 'Maxparc'>%</span>
 
-				                        </td>
+			                        </td>
 
-				                        <td class = 'static'><a href= 'statics.php'>
-				                           <i  class="icofont icofont-chart-line" aria-hidden="true"></i>
-				                        </td>
+			                        <td class = 'static'><a href= 'statics.php'>
+			                           <i  class="icofont icofont-chart-line" aria-hidden="true"></i>
+			                        </td>
 
-				                	   </tr>
-			                   	</table>
-			                   	<div class = 'teacha_advc'>
-			                   		<div class = "teacha_advc_header">
-				                   		<div class = "blckA">
-				                   		    <span>T</span>
-				                   		    <span>e</span>
-				                   		    <span>a</span> 
-				                   		    <span>c</span>
-				                   		    <span>h</span>
-				                   		    <span>e</span>
-				                   		    <span>r</span>
-				                   		</div>
-
-				                   		<div class = "blckB">
-				                   		    <span> A</span>
-				                   		    <span>d</span>
-				                   		    <span>i</span>
-				                   		    <span>v</span>
-				                   		    <span> e</span>
-				                   		</div>
+			                	   </tr>
+		                   	</table>
+		                   	<div class = 'teacha_advc'>
+		                   		<div class = "teacha_advc_header">
+			                   		<div class = "blckA">
+			                   		    <span>T</span>
+			                   		    <span>e</span>
+			                   		    <span>a</span> 
+			                   		    <span>c</span>
+			                   		    <span>h</span>
+			                   		    <span>e</span>
+			                   		    <span>r</span>
 			                   		</div>
-			                   		<div class = "Advx">
-			                   			Matokeo xo mazuri kabsa kwa sababu watu hawasomi haiwezekan wa kwanza ana 90 wa pili ana sabini kwan mm nafundisha mtu mmja darasana kummazenu watoto machoko kweli
+
+			                   		<div class = "blckB">
+			                   		    <span> A</span>
+			                   		    <span>d</span>
+			                   		    <span>i</span>
+			                   		    <span>v</span>
+			                   		    <span> e</span>
 			                   		</div>
-			                   	</div>
+		                   		</div>
+		                   		<div class = "Advx">
+		                   			Matokeo xo mazuri kabsa kwa sababu watu hawasomi haiwezekan wa kwanza ana 90 wa pili ana sabini kwan mm nafundisha mtu mmja darasana kummazenu watoto machoko kweli
+		                   		</div>
+		                   	</div>
 
-			                   	<div class = "chart">
-			                   	    
-				    <div class = 'whatsOnurmid'>
-				    	<textarea  class = 'Onurmind'></textarea>
-				    	<div id = 'send_vchart'>
-			                <div id = 'post_v' class = 'post_post'><input class = 'p' type='submit' id='submit_post' value = 'Post Update'></div>
-			                <div id = 'upload_photo' class = 'psot_post post_photo'><i class="fa fa-camera" id= 'cover_camera_prof'></i></div>
-                        </div>
-				    </div>
-					<div class = 'xoverflow'>
-	                   
-	                    <div id = 'posted' class = 'chartUserOne'>
-							<div class = 'posted_profile'>
-								<div class = 'profImg'>
-									<img src ='img/profiles/p4.jpg' >
-							   </div>
-							</div>
-							
-							<div class ='name_time'>
-							    <span class = 'name'>Jessica Sanders</span>
-							    <span class = 'time_ago'>5hrs Ago</span>
-							</div>
-							
-							<div class ='msg'>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-							</div>
+				                <div class = "chart">
+				                   	    
+								    <div class = 'whatsOnurmid'>
+								    	<textarea  class = 'Onurmind'></textarea>
+								    	<div id = 'send_vchart'>
+							                <div id = 'post_v' class = 'post_post'><input class = 'p' type='submit' id='submit_post' value = 'Post Update'></div>
+							                <div id = 'upload_photo' class = 'psot_post post_photo'><i class="fa fa-camera" id= 'cover_camera_prof'></i></div>
+				                        </div>
+								    </div>
+									<div class = 'xoverflow'>
+					                   
+					                    <div id = 'posted' class = 'chartUserOne'>
+											<div class = 'posted_profile'>
+												<div class = 'profImg'>
+													<img src ='img/profiles/p4.jpg' >
+											   </div>
+											</div>
+											
+											<div class ='name_time'>
+											    <span class = 'name'>Jessica Sanders</span>
+											    <span class = 'time_ago'>5hrs Ago</span>
+											</div>
+											
+											<div class ='msg'>
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+											</div>
 
-							<div class ='icons'>
-								<span id='reply' class = 'ico reply'><i class = 'fa fa-reply'></i></span>
-								<span id='love' class = 'ico reply'><i class = 'fa fa-heart-o'></i></span>
-								<span id='thumb_up' class = 'ico reply'><i class = 'fa fa-thumbs-up'></i></span>
-								<span id='delete' class = 'ico reply'><i class= 'fa fa-remove'></i></span>
-								<span id='spam' class = 'ico reply'>spam</span>
-								<span id='delete' class = 'ico reply'><i class= 'fa fa-unlock-alt'></i></span>
-							</div>
-						</div>
+											<div class ='icons'>
+												<span id='reply' class = 'ico reply'><i class = 'fa fa-reply'></i></span>
+												<span id='love' class = 'ico reply'><i class = 'fa fa-heart-o'></i></span>
+												<span id='thumb_up' class = 'ico reply'><i class = 'fa fa-thumbs-up'></i></span>
+												<span id='delete' class = 'ico reply'><i class= 'fa fa-remove'></i></span>
+												<span id='spam' class = 'ico reply'>spam</span>
+												<span id='delete' class = 'ico reply'><i class= 'fa fa-unlock-alt'></i></span>
+											</div>
+										</div>
 
 
-                        <div id = 'reply_posted'>
-							<div class = 'posted_profile'>
-								<div class = 'posted_cicle'>
-									<img src ='img/profiles/p1.jpg' >
-							   </div>
-							</div>
-							<div class ='name_time'>
-							<span class = 'name'>Challo</span><span class = 'time_ago'>8hrs Ago</span></div>
-							<div class ='msg'>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi</div>
-							<div class ='icons'>
-								<span id='reply' class = 'ico reply'><i class = 'fa fa-reply'></i></span>
-								<span id='love' class = 'ico reply'><i class = 'fa fa-heart-o'></i></span>
-								<span id='thumb_up' class = 'ico reply'><i class = 'fa fa-thumbs-up'></i></span>
-								<span id='delete' class = 'ico reply'><i class= 'fa fa-remove'></i></span>
-								<span id='spam' class = 'ico reply'>spam</span>
-								<span id='delete' class = 'ico reply'><i class= 'fa fa-unlock-alt'></i></span>
-							</div>
-				        </div>
-					</div>
-			                   		
-			                   	</div>
+				                        <div id = 'reply_posted'>
+											<div class = 'posted_profile'>
+												<div class = 'posted_cicle'>
+													<img src ='img/profiles/p1.jpg' >
+											   </div>
+											</div>
+											<div class ='name_time'>
+											<span class = 'name'>Challo</span><span class = 'time_ago'>8hrs Ago</span></div>
+											<div class ='msg'>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi</div>
+											<div class ='icons'>
+												<span id='reply' class = 'ico reply'><i class = 'fa fa-reply'></i></span>
+												<span id='love' class = 'ico reply'><i class = 'fa fa-heart-o'></i></span>
+												<span id='thumb_up' class = 'ico reply'><i class = 'fa fa-thumbs-up'></i></span>
+												<span id='delete' class = 'ico reply'><i class= 'fa fa-remove'></i></span>
+												<span id='spam' class = 'ico reply'>spam</span>
+												<span id='delete' class = 'ico reply'><i class= 'fa fa-unlock-alt'></i></span>
+											</div>
+								        </div>
+									</div>
+				                   		
+				                </div>
 						</div>
                     </div>
 			    </div>	

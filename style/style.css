@@ -5,8 +5,10 @@
   font-family:Arial,sans-serif;
   font-family: 'Open Sans', sans-serif;
   font-family: 'Lato', sans-serif;
+  font-family: 'Lucida Grande', sans-serif;
   font-size: 13px;
   color: grey;
+  font-display:auto;
 }
   
 a{
@@ -18,64 +20,64 @@ a{
   transition: color 0.1s linear 0s;
 }
    
-     a:hover,
-     a:active,
-     a:focus{
-       outline: 0;
-       text-decoration:none;
-       }
+ a:hover,
+ a:active,
+ a:focus{
+   outline: 0;
+   text-decoration:none;
+   }
+  
+ input, button, select, textarea {
+  font-weight: 300;
+  font-family: 'Titillium Web', sans-serif;
+  outline: 0;
+    }
+
       
-     input, button, select, textarea {
-      font-weight: 300;
-      font-family: 'Titillium Web', sans-serif;
-      outline: 0;
-        }
-   
-          
-     body{
-       margin:0px;
-       font-family:tohamaa,Gaveva,sans-serif;
-       font-weight:300;
-       font-size:15px; 
-     }
+ body{
+   margin:0px;
+   font-family:Arial,sans-serif;
+   font-weight:300;
+   font-size:13px; 
+ }
      
      
-         #pageTop {
-      width: 100%;
-      height: 80px;
-      background:#30455c;
-            position:fixed;
-            top:0px;
-     }
+#pageTop {
+  width: 100%;
+  height: 80px;
+  background:#30455c;
+        position:fixed;
+        top:0px;
+ }
         
          
-           #pageTop  > .logo{
-                      width: 14%;
-                      height: 10%;
-                      float:left;
-                      text-align: center;
-                      margin-left:10px;
-                      margin-top: 1%;
-                      font-size:2em;
-                      font-family: Tohama;
-                      font-weight: bold;
-                      font-style:italic;
-                      color:white;
-            cursor:pointer; 
-      
-            
-     }
+#pageTop  > .logo{
+  width: 14%;
+  height: 10%;
+  float:left;
+  text-align: center;
+  margin-left:10px;
+  margin-top: 1%;
+  font-size:2em;
+  font-family: Tohama;
+  font-weight: bold;
+  font-style:italic;
+  color:white;
+  cursor:pointer; 
+
+    
+}
          
           
               
-          #pageTop  > .search{
-                      float:left;
-                      margin-left:2%;
-                      margin-top:1%;
-                      width:22%;
-                      height:60%; 
-           
-           }
+#pageTop  > .search{
+  float:left;
+  margin-left:2%;
+  margin-top:1%;
+  width:22%;
+  height:60%; 
+ 
+ }
            
          
             #pageTop  > .search >input{
@@ -892,6 +894,7 @@ a{
                       height:11%;
                      /* background:#799;*/
                      background:white;
+                     background:#30445c;
                       box-shadow: 0px 0px 2px rgba(115,115,115,.5);
            }
            
@@ -902,10 +905,13 @@ a{
                       color:#545;
                       margin-top: 2%;
                       margin-left: 3%;
+                      color:#4dcadd
            }
            
           #Pagewraper > #side_two > .top_header >  #sid_nav_open{
                       display:none;
+                      color:#e9ebee;
+
           }
            
            
@@ -919,18 +925,30 @@ a{
                       width:28%;
                       border-top:none;
                       border-left:none;
-                      margin-top: 1%;
+                      margin-top: 1.5%;
                       margin-left: 3%;
                       height: 65%;
            }
           
           
-           #Pagewraper > #side_two > .top_header >  .input_to_header > .input_Top_header{
+          /* #Pagewraper > #side_two > .top_header >  .input_to_header > .input_Top_header{
                       float:left;
                       width:70%;
                       height:95%;
                       color:#999999;
-                      border-radius: 3px 3px;
+                      border-radius: 50px 3px;
+                      background: white;
+                      border:1px solid #999999 ;
+                      -webkit-transition: width 2s; /* Safari */
+                     /* transition: width 2s;   */ 
+
+          
+           #Pagewraper > #side_two > .top_header >  .input_to_header > .input_Top_header{
+                      float:left;
+                      width:70%;
+                      height:65%;
+                      color:#999999;
+                      border-radius: 50px 3px;
                       background: white;
                       border:1px solid #999999 ;
                       -webkit-transition: width 2s; /* Safari */
@@ -941,7 +959,7 @@ a{
           
            #Pagewraper > #side_two > .top_header >  .input_to_header > .fa{
                       float:left;
-                      margin-top: 5%;
+                      margin-top: 2%;
                       margin-left: -8%;
                       font-size: 16px;
                       color:#999999;
@@ -984,7 +1002,7 @@ a{
             width:100%;
             font-size: 14px;
             font-family: tohama;
-            color:grey;
+            color:#c1c1c1;
             cursor:pointer;
             
            }
@@ -1387,17 +1405,18 @@ a{
          
          #mainWraper{
            width:99.5%;
-           background:white;
+           background:#f7f8fb;
+           background:#e9ebee;
            height:87.5%;
            margin-top:6.6%;
-         overflow-x:hidden;
-          
+           overflow-x:hidden;
          }
          
          #mainWraper > .section {
             border-right:1px solid #cccccc;
             float:left;
             width:77%; 
+            background: #e9ebee;
          }
          
          
@@ -1405,6 +1424,7 @@ a{
             width:100%;
            height: 290px;
             float:left;
+           background: #e9ebee;
            
          }
          
@@ -2157,7 +2177,8 @@ a{
        float: left;
        width:100%;
        margin-top:9%;
-       background: #f9f9f9;
+       /*background: #f9f9f9;*/
+       background: #e9ebee;
 }
 
 .Myfucults > h3{
@@ -4565,7 +4586,7 @@ a{
 #book_temprate > #v_chart > .overflow{
        float:left;
        background:rgba(115,115,115,.7);
-           background:rgba(0,10,10,.9);
+       background:rgba(0,10,10,.9);
        width:105%;
        color:white;
        height: 100%;
@@ -7605,7 +7626,6 @@ abso_temprate > .centerPlace {
 
 #header_teach  > div{
    float: left;
-   border-: 1px solid rgba(225,225,225,.4); 
    width:10%;
    height: 69%;
    margin-bottom:3%;
@@ -7683,6 +7703,14 @@ abso_temprate > .centerPlace {
        margin-top: -7%;
        
 }
+
+#check_coveredTopic{
+       float:left;
+       width:100%;
+       display: none;
+       margin-top: -7%;
+       
+}
 #check_covered_topic_teacher > #topic{
        color:#999991;
        padding-left:8%;
@@ -7714,6 +7742,44 @@ abso_temprate > .centerPlace {
        padding-bottom:1px; 
 }
 
+.check_covered_topic_teacher{
+       float:left;
+       width:100%;
+       display: none;
+       margin-top: -7%;
+       
+}
+.check_covered_topic_teacher > #topic{
+       color:#999991;
+       padding-left:8%;
+       float:left;
+       width:100%;
+       padding-bottom:10px;
+       cursor: pointer;
+}
+
+.check_covered_topic_teacher >#topic_checkBox{
+       width: 70%;
+       float:left;
+       margin-left:17%;
+       display:none;
+}
+
+.check_covered_topic_teacher >#topic_checkBox >span{
+       float:left;
+       width:70%;
+       padding-top:4px;
+       padding-bottom:5px; 
+       color:#999999;
+}
+
+.check_covered_topic_teacher >#topic_checkBox >input{
+       float:left;
+       width:10%;
+       padding-top:2px;
+       padding-bottom:1px; 
+}
+
 .topicCoveredNotes{
   border:1px solid red;
   width:100%;
@@ -7722,13 +7788,20 @@ abso_temprate > .centerPlace {
   margin-top:3%;
 }
 
+.saveplanButon{
+  width:300px;
+  float:right;
+}
 
 .mywall{
     float:left;
     width:100%;
     margin-left:9px;
     margin-top:9px;
-    display:block;
+}
+
+.teacherWall{
+  margin-top:-8%;
 }
 .whatsOnurmid{
        float:left;
@@ -7782,7 +7855,7 @@ abso_temprate > .centerPlace {
        resize: none;
        border-radius:3px;
        padding-left:2%;
-       background:white;
+      /* background:white;*/
        padding-top:5px;
        padding-bottom:1px;
        border:none;
@@ -7905,6 +7978,16 @@ abso_temprate > .centerPlace {
  display:none;
 }
 
+#stimetable{
+ width: 100%;
+ height: 500px;
+ float:left;
+ text-align: center;
+ padding-top:2px;
+ padding-bottom:4%;
+ display:none;
+}
+
 .Myfucults > #timetable > .timetableA{
  width: 100%;
  float:left;
@@ -7924,12 +8007,16 @@ abso_temprate > .centerPlace {
  margin-left:1%;
 }
 
+
+
 .Myfucults > #timetable > .timetableA >table tr{
  width: 10%;
  height:100px;
  float:left;
  text-align: center;
 }
+
+
 
 .Myfucults > #timetable > .timetableA >table .headerTable{
  width: 12%;
@@ -7938,15 +8025,22 @@ abso_temprate > .centerPlace {
  text-align: center;
 }
 
+.s_timetable > .timetableA >table .headerTable{
+ width: 12%;
+ height:100px;
+ float:left;
+ text-align: center;
+}
 
-.Myfucults > #timetable > .timetableA >table .bodyTable{
+
+.s_timetable > .timetableA >table .bodyTable{
  width: 16%;
  height: 99px;
  float:left;
  text-align: center;
 }
 
-.Myfucults > #timetable > .timetableA >table tr th{
+.s_timetable > .timetableA >table tr th{
  width: 100%;
  height: 50%;
  float:left;
@@ -7957,7 +8051,7 @@ abso_temprate > .centerPlace {
 }
 
 
-.Myfucults > #timetable > .timetableA >table tr td{
+.s_timetable > .timetableA >table tr td{
   border:1px solid grey;
   width: 100%;
   height: 58%;
@@ -7965,7 +8059,7 @@ abso_temprate > .centerPlace {
   text-align: center;
 }
 
-.Myfucults > #timetable > .timetableA >table tr td >div{
+.s_timetable > .timetableA >table tr td >div{
  width: 100%;
  float:left;          
 }
@@ -7977,11 +8071,27 @@ abso_temprate > .centerPlace {
        
 }
 
+.s_timetable > .timetableA >table tr td > .period_tech{
+ width: 100%;
+ float:left; 
+       
+}
+
 .Myfucults > #timetable > .timetableA >table tr td > .period_tech > .period{
   font-size:18px;  
 }
 
+.s_timetable > .timetableA >table tr td > .period_tech > .period{
+  font-size:18px;  
+}
+
 .Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime{
+ width: 80%;
+ float:left;
+ margin-left:5%;
+}
+
+.s_timetable > .timetableA >table tr td > .period_tech >.periodtime{
  width: 80%;
  float:left;
  margin-left:5%;
@@ -7998,13 +8108,25 @@ abso_temprate > .centerPlace {
 .Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime >.startTime_p{
 
 }
+.s_timetable > .timetableA >table tr td > .period_tech >.periodtime >.startTime_p{
+
+}
 
 .Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime > .too{
   width:10%;
   margin-left:4%;
 }
 
+.s_timetable > .timetableA >table tr td > .period_tech >.periodtime > .too{
+  width:10%;
+  margin-left:4%;
+}
+
 .Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime > .fineshtime_p{
+   margin-left:1%;
+}
+
+.s_timetable > .timetableA >table tr td > .period_tech >.periodtime > .fineshtime_p{
    margin-left:1%;
 }
 
@@ -8108,6 +8230,16 @@ abso_temprate > .centerPlace {
  height: 900px;
  margin-top:-7%;
  display:none ;
+float:left;
+}
+
+#sparentsChember{
+ border-bottom: 1px groove rgba(2,2,2,.2);
+ border-top: 1px groove rgba(2,2,2,.2);
+ width:100%;
+ height: 900px;
+ margin-top:-7%;
+ display:none ;
   float:left;
 }
 
@@ -8115,6 +8247,7 @@ abso_temprate > .centerPlace {
   width:100%;
   float:left;
 }
+
 
 
 #parentsChember > div > div{
@@ -8128,9 +8261,12 @@ abso_temprate > .centerPlace {
 }
 
 
+
+
 #parentsChember > .parentsProfiles > .parProfile{
   width:20%;
   }
+
 
  .parProfile{
   width:20%;
@@ -8222,7 +8358,6 @@ abso_temprate > .centerPlace {
 .parentsProfiles >div > .detalsProf >span{
   font-size: 11px;
   float:left;
-  font-family: nehemia;
 }
 
 .parentsProfiles >div > .detalsProf > .name{
@@ -8236,7 +8371,6 @@ abso_temprate > .centerPlace {
 .parentsProfiles >div > .detalsProf > .title{
  font-size: 10px;
  float:left;
- font-family: nehemia;
  font-weight:bold;
  color:grey;
  padding-left:2px;
@@ -8465,6 +8599,14 @@ abso_temprate > .centerPlace {
    margin-bottom:2px;
 }
 
+.s_parentsChember > .ParentsWrap > .allParents > .allparentsChart >.xoverflow >div >.profDisng {
+  
+   float: left;
+   width:100%;
+   height:50px;
+   margin-bottom:2px;
+}
+
 .profDisng {
    
    float: left;
@@ -8574,15 +8716,8 @@ abso_temprate > .centerPlace {
    margin-top:-10px;
    margin-left:-10%;
 }
-@font-face {
-    font-family: LobsterRegular;
-    src: url(familyfont/Lobster/LobsterRegular.ttf)
-}
 
-@font-face {
-    font-family: OpenSansSemibold;
-    src: url(familyfont/Open_Sans/OpenSansRegular.ttf)
-}
+
 
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow >div >.profDisng> div >.Parimg >img {
    background:white;
@@ -8614,21 +8749,18 @@ abso_temprate > .centerPlace {
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow >div >.profDisng> div > .ParName >span {
  float:left;
  font-size: 16px;
- font-family:LobsterRegular;
  color:grey;
 }
 
 .profDisng> div > .ParName >span {
  float:left;
  font-size: 16px;
- font-family:LobsterRegular;
  color:grey;
 }
 
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow >div >.profDisng> div > .Stname {
    float:left;
    font-size: 16px;
-   font-family:LobsterRegular;
    color:grey;
    margin-left:28%;
    margin-top:1%;
@@ -8637,8 +8769,7 @@ abso_temprate > .centerPlace {
 .profDisng> div > .Stname {
    float:left;
    font-size: 16px;
-   font-family:LobsterRegular;
-   color:grey;
+  color:grey;
    margin-left:28%;
    margin-top:1%;
 }
@@ -8646,14 +8777,12 @@ abso_temprate > .centerPlace {
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow >div > .profDisng> div > .Stname span {
    float:left;
    font-size: 13px;
-   font-family:OpenSansSemibold;
    color:grey;
 }
 
 .profDisng> div > .Stname span {
    float:left;
    font-size: 13px;
-   font-family:OpenSansSemibold;
    color:grey;
 }
 
@@ -8661,14 +8790,12 @@ abso_temprate > .centerPlace {
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow >div > div{
        float:left;
        font-size: 13px;
-       font-family:OpenSansSemibold;
        color:grey;
 }
 
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow >div > .msg{
    float:left;
    font-size: 13px;
-   font-family:OpenSansSemibold;
    color:grey;
    width:92%;
    margin-left:4%;
@@ -8681,7 +8808,6 @@ abso_temprate > .centerPlace {
 .ParentsWrap > .allParents > .allparentsChart >.xoverflow >div >.icon_time {
    float:left;
    font-size: 13px;
-   font-family:OpenSansSemibold;
    color:grey;
    width:87%;
    margin-left:4%;
@@ -11169,6 +11295,7 @@ abso_temprate > .centerPlace {
        float:left;
        overflow-y: hidden;
        background:#fff ;
+       background:#e9ebee ;
        
 }
 
@@ -11237,20 +11364,21 @@ abso_temprate > .centerPlace {
 }
 
 .infoSection > #newst > #newstProfile >#profilecycle  {
-       border:#ccc 1px solid;
+       border:#4dcadd 2px solid;
        float:left;
-       width:45px;
-       height:45px;
+       width:40px;
+       height:40px;
        border-radius: 50%;
        margin-top:7px;
        margin-left:9px;
+       padding:1px;
       
 }
 
 .infoSection > #newst > #newstProfile >#profilecycle >img  {
        float:left;
-       width:45px;
-        height:45px;       
+       width:40px;
+        height:40px;       
        border-radius: 50%;
 }
 
@@ -11347,27 +11475,30 @@ abso_temprate > .centerPlace {
 }
 
 #Ideas > .p_idea{
-       text-align: center;
-       width:100%;    
-       margin-top:10%;
-       float:left;
+  text-align: center;
+  width:80%;    
+  margin-top:10%;
+  float:left;
+  background: #cdd0d4;
+  margin-left:5%;
+  border-radius: 3px;
 }
 
 #Ideas > .p_idea > h2{
-       text-align: left;
-       font-size: 17px;
-     padding-left:3%;
-       font-family:tohama;
-       margin-bottom:3%;
+  text-align: left;
+  font-size: 17px;
+  padding-left:3%;
+  font-family:tohama;
+  margin-bottom:3%;
 }
 
 #Ideas > .p_idea > h4{
-       text-align: left;
-       font-size: 14px;
-       color:green;
-       font-family:tohama;
-       margin-top:-3%;
-       margin-bottom:3%;
+  text-align: left;
+  font-size: 14px;
+  color:green;
+  font-family:tohama;
+  margin-top:-3%;
+  margin-bottom:3%;
        
 }
 
@@ -11378,49 +11509,53 @@ abso_temprate > .centerPlace {
 
 #Ideas > .p_idea > .header >.h_img{
   float:left;
-      margin-left:13px;
-       width:60px;
-       height: 70px;
+  width:100%;
+  height: 100px;
+  margin-bottom: 6px;
      
        
 }
 
 #Ideas > .p_idea > .header >.h_img >img{
-       float:left;
-       width:60px;
-       height: 60px;
-      
-       
-}
-#Ideas > .p_idea > .header >h2{
-     float:left;
-     font-size: 14px;
-     text-align: left;
-       width:65%;
-      
-       height: 40px;
-    
-      padding-left:5%;
+  float:left;
+  width:100%;
+  height: 100%;
        
 }
 
-#Ideas > .p_idea > .header >h4{
-      float:left;
-      font-size: 13px;
-       float:right;
-       color:grey;
-      
-       
+#Ideas > .p_idea > .header > h2{
+  float:left;
+  font-size: 11px;
+  text-align: left;
+  width:95%;
+  padding-left:3%;
+  padding-left:2px;
+  margin-left:2%;       
 }
+
+#Ideas > .p_idea > .header > h4{
+  float:left;
+  font-size: 9px;
+  font-style:italic;
+  color:#9e9d9d;
+  float:right;
+  color:grey;
+  width:60%;
+  color: #9e9d9d;
+  width: 60%;
+  text-align: right;
+  margin-right: 5px;
+}
+
 
 #Ideas > .p_idea > .soln{
-       text-align: left;
-       font-size: 14px;
-       color:grey;
-       padding-left:8%;
-       float:right;
-       width:70%
-      
+  text-align: left;
+  font-size: 12px;
+  color:grey;
+  /*padding-left:8%;*/
+  float:right;
+  width:96%;  
+  padding-bottom: 5px;   
 }
 
 
@@ -15273,7 +15408,7 @@ abso_temprate > .centerPlace {
 }
 
 .Myfucults > #timetable > .timetableA >table tr td > .period_tech > .period{
-      font-size:18px;
+  font-size:18px;
       
 }
 
@@ -15290,6 +15425,7 @@ abso_temprate > .centerPlace {
        font-family: tohama;
        width:40px;
 }
+
 .Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime >.startTime_p{
    
 }
@@ -15371,7 +15507,7 @@ abso_temprate > .centerPlace {
        color:grey;
 }
  
- #composeNotes{
+#composeNotes{
        padding-left:1%;
        padding-right:1%;
        padding-top:2px;
@@ -16342,16 +16478,64 @@ abso_temprate > .centerPlace {
 .absolutePage > .insideCover >.QuizList > .xoverflow > div {
        margin-top: 1%;
        width:100%;
-       bofder:1px solid ;
        float:left;
 }
 
+.qc_QuizQust{
+  float:left;
+  width:100%;
+  margin-top:2%;
+}
 
 
+.qc_QuizQust > .QstNo{
+  width:10%;
+  float:left;
+  margin-top: 2%;
+}
 
+.qc_QuizQust > .question{
+  width:87%;
+  float:left;
+}
+.qc_QuizQust > .soln{
+  width:100%;
+  float:left;
+}
+
+.sectionWrap > .testSection{
+  font-weight: bold;
+  font-size: 13px;
+  margin-top: 4%;
+}
+
+.qc_QuizQust > .question > .matchz{
+  float:left;
+  width:100%;
+  margin-top:1%;
+}
+
+.qc_QuizQust > .question > .matchz > div {
+  float:left;
+  width:100%;
+}
+
+.qc_QuizQust > .question > .matchz > div > .chois{
+  float:left;
+  width:5%;
+}
+
+.qc_QuizQust > .question > .matchz > div > .ges{
+  float:left;
+  width:80%;
+}
+.qc_QuizQust > .question > .matchz > div > .radioMatched{
+  float:left;
+  width:5%;
+}
 
 .absolutePage > .insideCover >.QuizList > .xoverflow > .QuizQust {
-       width:100%;  
+  width:100%;  
 }
 
 .absolutePage > .insideCover >.QuizList > .xoverflow > .QuizQust >div {
@@ -21442,7 +21626,7 @@ abso_temprate > .centerPlace {
 }
 
 .abso_temprate > #v_chart > .overflow  > #posted_vchart >.posted_profile > .name_time > .name {
-       fbook_temprateont-style:italic;
+       font-style:italic;
        color:#31659c ;
        font-size:14px;
        margin-left:2%;
@@ -21898,80 +22082,6 @@ abso_temprate > .centerPlace {
        padding-left:2%;
        color:grey;  
 }
-/* teacher profile */
-#header_teach  {
-  
-}
-
-
-#header_teach  > div{
-       float: left;
-       border-: 1px solid rgba(225,225,225,.4); 
-       width:10%;
-       height: 69%;
-       margin-bottom:3%;
-       border-radius: 2px;
-       display: block;
-       cursor: pointer;
-       text-align: center;
-       padding-top:1%;
-        padding-bottom:1%;
-       font-size:12px;
-       font-weight:bold;
-       font-style:italic;
-       color: white;
-}
-
-#header_teach  > div:hover{
-       background:rgb(48,61,80);
-       color: white;
-}
-
-
-#header_teach  > .myWall{
-       border-right: 1px solid rgba(225,225,225,.4);
-       padding-left:4%;
-}
-
-#header_teach  > #toCover{
-       border-right: 1px solid rgba(225,225,225,.4);
-      
-}
-
-#header_teach  > .nav_timtabl{
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-
-#header_teach  > .nav_resul{
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-
-#header_teach  > .nav_inf{
-        width:10%;
-       border-right: none; 
-       padding-right:;
-}
-
-
-
-#header_teach  > .nav_static{
-        width:10%;
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-
-#header_teach  > .nav_pchember{
-        width:15%;
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-
-#header_teach  > .nav_hist{
-        width:10%;
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-#header_teach  > .nav_quiz{
-        width:10%;
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
 
 
 
@@ -22019,7 +22129,7 @@ abso_temprate > .centerPlace {
        float:left;
        width:75%;
        height: 337px;
-       ovarflow:hidden;
+       overflow:hidden;
        border-right:1px solid;
         border-top:1px solid;
         border-bottom:1px solid grey;
@@ -22098,7 +22208,7 @@ abso_temprate > .centerPlace {
        padding-bottom:2px;
        margin-top:2%;
        display:none;
-}*/
+}
 /*
 .Myfucults > #timetable > .timetableA{
        width: 100%;
@@ -23952,7 +24062,7 @@ abso_temprate > .centerPlace {
        float: left;
        width:100%;
        height:40px;
-       margin-top:6%;
+       margin-top:1px;
        margin-bottom:1px;
        /*! padding-left:; */
        background:#30445c;
@@ -23962,438 +24072,7 @@ abso_temprate > .centerPlace {
 }
 
 
-#header_teach  > div{
-       float: left;
-       border-: 1px solid rgba(225,225,225,.4); 
-       width:10%;
-       height: 69%;
-       margin-bottom:3%;
-       border-radius: 2px;
-       display: block;
-       cursor: pointer;
-       text-align: center;
-       padding-top:1%;
-        padding-bottom:1%;
-       font-size:12px;
-       font-weight:bold;
-       font-style:italic;
-       color: white;
-}
 
-#header_teach  > div:hover{
-       background:rgb(48,61,80);
-       color: white;
-}
-
-
-#header_teach  > .myWall{
-       border-right: 1px solid rgba(225,225,225,.4);
-       padding-left:4%;
-}
-
-#header_teach  > #toCover{
-       border-right: 1px solid rgba(225,225,225,.4);
-      
-}
-
-#header_teach  > .nav_timtabl{
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-
-#header_teach  > .nav_resul{
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-
-#header_teach  > .nav_inf{
-        width:10%;
-       border-right: none; 
-       padding-right:;
-}
-
-
-
-#header_teach  > .nav_static{
-        width:10%;
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-
-#header_teach  > .nav_pchember{
-        width:15%;
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-
-#header_teach  > .nav_hist{
-        width:10%;
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-#header_teach  > .nav_quiz{
-        width:10%;
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-
-
-
-
-/*#check_covered_topic_teacher{
-       float:left;
-       width:20%;
-       display: none;
-       
-}
-#check_covered_topic_teacher > #topic{
-       color:#999991;
-       padding-left:8%;
-       float:left;
-       width:100%;
-       padding-bottom:10px;
-       cursor: pointer;
-}
-
-#check_covered_topic_teacher >#topic_checkBox{
-       width: 70%;
-       float:left;
-       margin-left:17%;
-       display:none;
-}
-
-#check_covered_topic_teacher >#topic_checkBox >span{
-       float:left;
-       width:70%;
-       padding-top:4px;
-       padding-bottom:5px; 
-       color:#999999;
-}
-
-#check_covered_topic_teacher >#topic_checkBox >input{
-       float:left;
-       width:10%;
-       padding-top:2px;
-       padding-bottom:1px; 
-}
-
-
-
-#student_List{
-       float:left;
-       width:95%;
-       height: 337px;
-       ovarflow:hidden;
-       border:1px groove rgba(2,2,2,.5);
-        /*! border-top:1px solid; */
-/*        border-bottom:1px solid grey;
-       
-       margin-top: 5%;
-       margin-left: 3%;
-}
-#student_List > #topic{
-       color:#999991;
-       padding-left:8%;
-       float:left;
-       width:92%;
-       padding-bottom:10px;
-       cursor: pointer;
-       border-bottom:1px solid rgba(2,2,2,.4);
-       padding-top: 2%;
-       font-size: 18px;
-       font-weight: bold;
-}
-
-#student_List >#stdent_listInteacher{
-       width: 100%;
-       float:left;
-       margin-left:1%;
-       display:none;
-       
-       
-}
-
-#student_List > #stdent_listInteacher >span{
-       float:left;
-       width:70%;
-       padding-top:4px;
-       padding-bottom:5px; 
-       color:#999999;
-      
-}
-
-#student_List >#stdent_listInteacher >input{
-       float:left;
-       width:10%;
-       padding-top:2px;
-       padding-bottom:1px; 
-}
-
-#student_List > #stdent_listInteacher > .class_stude_list{
-       width: 32%;
-       float:left;*/
-      /*! border-left:1px solid; */
-   /*! padding-left:2px; */
-/*}
-#student_List > #stdent_listInteacher > .class_stude_list >a{
-       width: 78%;
-       float:left;
-       border-bottom:1px solid;
-       padding-top:2px;
-       padding-bottom:2px;
-       margin-bottom: 2%;
-       padding-left:2px;
-       color:grey;
-       cursor: pointer;
-   
-}
-
-#student_List > #stdent_listInteacher > .class_stude_list > span{
-       width: 10%;
-       float:left;
-       border:1px solid;
-       text-align: center;
-       padding-top:2px;
-       padding-bottom:2px;
-}*/*/
-
-/*.Myfucults > #timetable 3*/
-/*
-.Myfucults > #timetable
-.Myfucults > #timetable{
-       width: 100%;
-       height: 795px;
-       float:left;
-       text-align: center;
-       padding-top:2px;
-       padding-bottom:2px;
-       margin-top:2%;
-       display:none;
-}*/
-
-/*.Myfucults > #timetable > #header_classTimetable{
-       width: 100%;
-       height: 30px;
-       margin-top:-3%;
-       background: grey;
-}
-
-.Myfucults > #timetable > #header_classTimetable > div{
-      
-       float:left;
-       color:white;
-       border-right:1px solid rgba(255,255,255,.5);
-       width: 33%;
-       height: 65%;
-       text-align: center;
-       padding-top:7px;
-       padding-bottom:2px;
-       font-size: 13px;
-       
-}
-
-.Myfucults > #timetable > #header_classTimetable > div{
-       float:left;
-       color:white;
-       border-right:1px solid rgba(255,255,255,.5);
-       width: 33%;
-       height: 65%;
-       text-align: center;
-       padding-top:7px;
-       padding-bottom:2px;
-       font-size: 13px;
-}
-*/
-/*/*.Myfucults > #timetable > .timetableA{
-       width: 100%;
-       float:left;
-       text-align: center;
-       padding-top:2px;
-       padding-bottom:2px;
-       margin-top:1%;
-}
-
-.Myfucults > #timetable > .timetableA >table {
-        
-       width: 100%;
-       height:99%;
-       float:left;
-       text-align: center;
-       padding-top:2px;
-       padding-bottom:2px;
-/*        margin-top:1%; */
-     /*    margin-left:1%;
-}
-
-.Myfucults > #timetable > .timetableA >table tr{
-       width: 10%;
-       height:100px;
-       float:left;
-       text-align: center;
-}
-
-.Myfucults > #timetable > .timetableA >table .headerTable{
-       width: 12%;
-       height:100px;
-       float:left;
-       text-align: center;
-}
-
-
-.Myfucults > #timetable > .timetableA >table .bodyTable{
-       width: 16%;
-       height: 99px;
-       float:left;
-       text-align: center;
-}
-
-.Myfucults > #timetable > .timetableA >table tr th{
-       width: 100%;
-       height: 50%;
-       float:left;
-       border:1px solid;
-       border-right:none;
-       text-align: center;
-       padding-top:5%;
-       padding-bottom:2%;  
-}
-
-
-.Myfucults > #timetable > .timetableA >table tr td{
-      border:1px solid grey;
-       width: 100%;
-       height: 58%;
-       float:left;
-       text-align: center;
-}
-
-.Myfucults > #timetable > .timetableA >table tr td >div{
-       width: 100%;
-       float:left;          
-}
-
-
-.Myfucults > #timetable > .timetableA >table tr td > .period_tech{
-       width: 100%;
-       float:left; 
-       
-}
-
-.Myfucults > #timetable > .timetableA >table tr td > .period_tech > .period{
-      font-size:18px;
-      
-}
-
-.Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime{
-       width: 80%;
-       float:left;
-       margin-left:5%;
-}
-
-
-.Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime >span{
-       float:left;   
-       font-size:13px;
-       font-family: tohama;
-       width:40px;
-}
-.Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime >.startTime_p{
-
-}
-
-.Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime > .too{
-        width:10%;
-        margin-left:4%;
-}
-
-.Myfucults > #timetable > .timetableA >table tr td > .period_tech >.periodtime > .fineshtime_p{
-      margin-left:1%;
-}
-
-.Myfucults > #timetable > .timetableA >table tr td > .period_tech{
-       width: 100%;
-       float:left;          
-}
-
-
-.Myfucults > #timetable > .timetableA >table tr td > .period_tech span{
-       width: 100%;
-       float:left;          
-}
-
-.Myfucults > #timetable > .timetableA >table tr td > .teacherName {
-       font-size:12px;
-       float:right;
-}
-
-.Myfucults > #timetable > .timetableA >table tr td > .teacherName > a{
-     color:grey;
-       font-style:italic;
-       float:right;
-       margin-right: 4%;
-     
-}
-
-.Myfucults > #timetable > .timetableA >table tr td > .periodtime {
-       width: 40%;
-       float:right;  
-        font-size:12px;
-}
-
-.Myfucults > #timetable > .timetableA >table tr td > .periodtime >span {
-       width: 20%;
-       float:right;  
-        font-size:12px;
-}
-
-
-.Myfucults > #timetable > .timetableA >table .breaktime {
-       width: 5%;
-       height:347px;
-        font-size:12px;
-}
-
-.Myfucults > #timetable > .timetableA >table tr .break {
-       width: 100%;
-       height:100%;
-        font-size:12px;
-}
-
-.Myfucults > #timetable > .timetableA >table tr td > .breakTime{
-       width: 100%;
-       height:100%;
-       float:right;  
-        font-size:12px;
-}
-
-
-.Myfucults > #timetable > .timetableA >table tr td > .breakTime >span{
-       width: 100%;
-        height:9.4%;
-       float:right;  
-        font-size:12px;
-       line-height: 30px;
-       font-weight: bold;
-       font-size: 18px;
-       color:grey;
-}
- 
- #composeNotes{
-       padding-left:1%;
-       padding-right:1%;
-       padding-top:2px;
-       padding-bottom:1px;
-       margin-top:1%;
-       margin-right:2%;
-       float:right;  
-       font-weight: bold;
-       font-size: 16px;
-       color:#94bae7;
-       border:2px solid #94bae7;
-       border-radius:3px;
-       cursor: pointer;
-}  
-
-.Myfucults > #timetable > #composeNotes:hover{
-       background:#94bae7; 
-       color:white;
-       border:2px solid #94bae7;
-       border-radius:3px;
-}*/
 
 
 
@@ -24424,7 +24103,7 @@ abso_temprate > .centerPlace {
 .resultPlace >div >.uploadManual > div {
        float:left;
        width:50%;
-       font-family: LatoBlack;
+      
        color:grey;
 }
 
@@ -24432,33 +24111,33 @@ abso_temprate > .centerPlace {
   margin-top:1%;
   float:left;
   width:27%;
-  font-family: LatoBlack;
+ 
   color:grey;
   margin-left:2px;
 }
 
 .resultPlace >div >.uploadManual > .examname > input {
   margin-left:1px;
-  font-family: LatoBlack;
+ 
   font-size: 14px;
   background: white;
 }
 
 .resultPlace >div >.uploadManual > .chuseQtionType {
   margin-left:2%;
-  font-family: LatoBlack;
+ 
   width:23%;
   margin-top:1.2%;
 }
 
 .resultPlace >div >.uploadManual > .chuseQtionType >select {
-  font-family: LatoBlack;
+ 
   font-size: 14px;
   background: white;
 }
 
 .resultPlace >div >.uploadManual > .dateDone {
- font-family: LatoBlack;
+
  font-size: 14px;
  width:42%;
  float:right;
@@ -24483,22 +24162,22 @@ abso_temprate > .centerPlace {
 .resultPlace >div >.uploadManual > .dateDone  > div > .wiki >select{
    width:100%;
    float:left;
-   color:rgaba(105,105,105,.6);
-   font-family:LatoBlack;
+  color:rgba(105,105,105,.6);
+  
 }
 
 .resultPlace >div >.uploadManual > .dateDone  > div > .datee{
        width:15%;
        float:left;
        color:rgba(105,105,105,.6);
-       font-family:LatoBlack;
+      
 }
 
 .resultPlace >div >.uploadManual > .dateDone  > div > .datee > select{
  width:100%;
  float:left;
  color:rgba(105,105,105,.6);
- font-family:LatoBlack;
+
  padding-left:1%;
 }
 
@@ -24506,7 +24185,7 @@ abso_temprate > .centerPlace {
        width:1%;
        float:left;
        color:rgba(105,105,105,.6);
-       font-family:LatoBlack;
+      
        padding-left:1%;
        margin-left:1%;
        margin-right:1%;
@@ -24516,7 +24195,7 @@ abso_temprate > .centerPlace {
        width:15%;
        float:left;
        color:rgba(105,105,105,.6);
-       font-family:LatoBlack;
+      
        padding-left:1%;
        margin-left:1%;
        margin-right:1%;
@@ -24526,7 +24205,7 @@ abso_temprate > .centerPlace {
        width:100%;
        float:left;
        color:rgba(105,105,105,.6);
-       font-family:LatoBlack;
+      
        padding-right:3%;
        margin-left:1%;
        margin-right:1%;
@@ -24537,7 +24216,7 @@ abso_temprate > .centerPlace {
        width:20%;
        float:left;
        color:rgba(105,105,105,.6);
-       font-family:LatoBlack;
+      
        padding-left:1%;
        margin-left:1%;
        margin-right:1%;
@@ -24547,7 +24226,7 @@ abso_temprate > .centerPlace {
        width:20%;
        float:left;
        color:rgba(105,105,105,.6);
-       font-family:LatoBlack;
+      
        padding-left:1%;
        margin-left:1%;
        margin-right:1%;
@@ -26207,7 +25886,7 @@ abso_temprate > .centerPlace {
 /*date*/
 
  .dateDone {
-       font-family: LatoBlack;
+      
        font-size: 14px;
        width:100%;
        float:left;
@@ -26232,22 +25911,22 @@ abso_temprate > .centerPlace {
 .dateDone  > div > div >select{
        width:100%;
        float:left;
-       color:rgaba(105,105,105,.6);
-       font-family:LatoBlack;
+      color:rgba(105,105,105,.6);
+      
 }
 
 .dateDone  > div > .datee{
        width:15%;
        float:left;
        color:rgba(105,105,105,.6);
-       font-family:LatoBlack;
+      
 }
 
  .dateDone  > div > .datestrok{
        width:1%;
        float:left;
        color:rgba(105,105,105,.6);
-       font-family:LatoBlack;
+      
        padding-left:1%;
        margin-left:1%;
        margin-right:1%;
@@ -26257,7 +25936,7 @@ abso_temprate > .centerPlace {
        width:13%;
        float:left;
        color:rgba(105,105,105,.6);
-       font-family:LatoBlack;
+      
        padding-left:1%;
        margin-left:1%;
        margin-right:1%;
@@ -26266,7 +25945,7 @@ abso_temprate > .centerPlace {
        width:100%;
        float:left;
        color:rgba(105,105,105,.6);
-       font-family:LatoBlack;
+      
        padding-left:1%;
        margin-left:1%;
        margin-right:1%;
@@ -29954,89 +29633,6 @@ abso_temprate > .centerPlace {
        color:grey;  
 }
 /* teacher profile 1 */
-#header_teach  {
-       float: left;
-       width:100%;
-       height:40px;
-       margin-top:6%;
-       margin-bottom:3%;
-       padding-left:;
-       background:#30445c;
-       font-size:12px;
-       font-style:italic;
-       color: rgba(115,115,115,.9);
-}
-
-
-#header_teach  > div{
-       float: left;
-       border-: 1px solid rgba(225,225,225,.4); 
-       width:10%;
-       height: 69%;
-       margin-bottom:3%;
-       border-radius: 2px;
-       display: block;
-       cursor: pointer;
-       text-align: center;
-       padding-top:1%;
-        padding-bottom:1%;
-       font-size:12px;
-       font-weight:bold;
-       font-style:italic;
-       color: white;
-}
-
-#header_teach  > div:hover{
-       background:rgb(48,61,80);
-       color: white;
-}
-
-
-#header_teach  > .myWall{
-       border-right: 1px solid rgba(225,225,225,.4);
-       padding-left:4%;
-}
-
-#header_teach  > #toCover{
-       border-right: 1px solid rgba(225,225,225,.4);
-      
-}
-
-#header_teach  > .nav_timtabl{
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-
-#header_teach  > .nav_resul{
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-
-#header_teach  > .nav_inf{
-        width:10%;
-       border-right: none; 
-       padding-right:;
-}
-
-
-
-#header_teach  > .nav_static{
-        width:10%;
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-
-#header_teach  > .nav_pchember{
-        width:15%;
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-
-#header_teach  > .nav_hist{
-        width:10%;
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-#header_teach  > .nav_quiz{
-        width:10%;
-       border-right: 1px solid rgba(225,225,225,.4); 
-}
-
 
 
 
@@ -30062,6 +29658,13 @@ abso_temprate > .centerPlace {
        color:white;
        border:2px solid #94bae7;
        border-radius:3px;
+}
+
+.Ttop_recover{
+  margin-top: 3%;
+}
+.Ttop_timtable{
+  margin-top: -8%;
 }
 
 
@@ -31952,14 +31555,14 @@ abso_temprate > .centerPlace {
 .resultPlace >div >.uploadManual{
        float:left;
        width:70%;
-       font-family: LatoBlack;
+      
        color:grey;
 }
 
 .resultPlace >div >.uploadManual > div {
        float:left;
        width:20%;
-       font-family: LatoBlack;
+      
        color:grey;
 }
 
@@ -31967,31 +31570,31 @@ abso_temprate > .centerPlace {
        margin-top:1%;
        float:left;
        width:27%;
-       font-family: LatoBlack;
+      
        color:grey;
        margin-left:2px;
 }
 
 .resultPlace >div >.uploadManual > .examname > input {
        margin-left:1px;
-       font-family: LatoBlack;
+      
        font-size: 14px;
 }
 
 .resultPlace >div >.uploadManual > .chuseQtionType {
        margin-left:2%;
-       font-family: LatoBlack;
+      
        width:23%;
        margin-top:1.2%;
 }
 
 .resultPlace >div >.uploadManual > .chuseQtionType >select {
-       font-family: LatoBlack;
+      
         font-size: 14px;
 }
 
 .resultPlace >div >.uploadManual > .dateDone {
-       font-family: LatoBlack;
+      
        font-size: 14px;
        width:44%;
        height:20px;
@@ -32016,22 +31619,22 @@ abso_temprate > .centerPlace {
 .resultPlace >div >.uploadManual > .dateDone  > div > .wiki >select{
        width:100%;
        float:left;
-       color:rgaba(105,105,105,.6);
-       font-family:LatoBlack;
+      color:rgba(105,105,105,.6);
+      
 }
 
 .resultPlace >div >.uploadManual > .dateDone  > div > .datee{
    width:16%;
    float:left;
    color:rgba(105,105,105,.6);
-   font-family:LatoBlack;
+  
 }
 
 .resultPlace >div >.uploadManual > .dateDone  > div > .datestrok{
    width:1%;
    float:left;
    color:rgba(105,105,105,.6);
-   font-family:LatoBlack;
+  
    padding-left:1%;
    margin-left:1%;
    margin-right:1%;
@@ -32041,7 +31644,7 @@ abso_temprate > .centerPlace {
    width:16%;
    float:left;
    color:rgba(105,105,105,.6);
-   font-family:LatoBlack;
+  
    margin-left:1%;
    margin-right:1%;
 }
@@ -32050,7 +31653,7 @@ abso_temprate > .centerPlace {
   width:100%;
   float:left;
   color:rgba(105,105,105,.6);
-  font-family:LatoBlack;
+ 
   padding-right:3%;
   margin-left:1%;
   margin-right:1%;
@@ -32125,8 +31728,20 @@ abso_temprate > .centerPlace {
   font-size:13px;
 }
 
-.resultPlace >div> .ListStud > #studLst > #alllst > h4 > #studListClassNae > #selectsstand > option {
+.resultPlace >div> .ListStud > #studLst > #alllst > h4 > #studListClassNae > #resultsFees {
+  background:#6f8294;
+  border-radius:3px;
+  color:white;
+  border:1px groove rgba(255,255,255,.5);
+  padding-left: 1%;
+  padding-right: 2%;
+  height: 20px;
+  font-size:13px;
+}
+
+.resultPlace >div> .ListStud > #studLst > #alllst > h4 > #studListClassNae > select > option {
    font-size:13px;
+   color:white;
  }
 
 
@@ -32152,8 +31767,21 @@ abso_temprate > .centerPlace {
   display: none;
   margin-top: -4%;
 }
+.Stictix{
+   width:100%;
+  float:left;
+  display: none;
+  margin-top: -4%;
+}
 
 #Stictix > .teacherStatistics{
+  width:100%;
+  float:left;
+  margin-left:4%;
+  margin-top: -4%;
+
+}
+.Stictix > .teacherStatistics{
   width:100%;
   float:left;
   margin-left:4%;
@@ -32165,10 +31793,22 @@ abso_temprate > .centerPlace {
   float: left;
   width:25%;
   margin-top:5%;
+}
+.Stictix > .teacherStatistics > .nectaResult{
+  float: left;
+  width:25%;
+  margin-top:5%;
 
 }
 
 #Stictix > .teacherStatistics > .nectaResult > div{
+  float: left;
+  width:100%;
+  background: silver;
+  border-radius: 3px;
+}
+
+.Stictix > .teacherStatistics > .nectaResult > div{
   float: left;
   width:100%;
   background: silver;
@@ -32183,7 +31823,19 @@ abso_temprate > .centerPlace {
   padding-top: 2%;
 }
 
+.Stictix > .teacherStatistics > .nectaResult > div > div{
+  float: left;
+  width:100%;
+  text-align: center;
+  padding-bottom: 2px;
+  padding-top: 2%;
+}
+
 #Stictix > .teacherStatistics > .nectaResult > div > .ResultPos{
+  font-size: 2em;
+}
+
+.Stictix > .teacherStatistics > .nectaResult > div > .ResultPos{
   font-size: 2em;
 }
 
@@ -32323,6 +31975,13 @@ abso_temprate > .centerPlace {
   float:left;
   display:none;}
 
+.s_examscompose{
+  width:100%;
+  height: 400px;
+  margin-top:-7%;
+  float:left;
+  display:none;}
+
  .uplaodDocuments{
   width:100%;
   float:left;
@@ -32357,7 +32016,8 @@ abso_temprate > .centerPlace {
   border-top:1px groove rgba(2,2,2,.2);
   border-right:1px groove rgba(2,2,2,.2);
   float:left;
-  width:65%;
+  width:60%;
+  overflow: hidden;
 
 }
 
@@ -32381,6 +32041,11 @@ abso_temprate > .centerPlace {
 }
 
 .printTable{}
+
+.summary_print{
+  float:right;
+  margin-right: 5px;
+}
 
 .printListMainplace > .printList_list{
   border-left:none;
@@ -32477,6 +32142,7 @@ abso_temprate > .centerPlace {
   float:left;
   margin-left:2%;
   margin-top:2%;
+  background: white;
 }
 
 .sumaruHeader > div > span{
@@ -32519,6 +32185,12 @@ abso_temprate > .centerPlace {
   width: 150%;
 }
 
+.summaryHolder{
+    height: 5000px;
+}
+#summaryHolder{
+   display: none;
+}
 
 .sumaruHeader > .summaryNo{
   float:right;
@@ -32556,6 +32228,7 @@ abso_temprate > .centerPlace {
   padding-top: 2%;
   font-size: 12px;
   border-bottom: none;
+  background: white;
 }
 
 .summarybody > .MainBodySummaary{
@@ -32568,18 +32241,20 @@ abso_temprate > .centerPlace {
 }
 
 .summarybody > .MainBodySummaary > img{
-  width:97%;
+  width:100%;
   height:185px;
   min-height:185px;
   min-height:185px;
   float:left;
   font-size: 12px;
   border-bottom: none;
+  border:1px solid green;
 }
 
 .summarybody > footer{
   width:100%;
   float:left;
+  background: white;
 }
 
 .summarybody > footer > .writenBy{
@@ -32622,8 +32297,8 @@ abso_temprate > .centerPlace {
 .divSharedSummary{
   border-top:1px groove rgba(2,2,2,.2);
   float :left;
-  width:34.5%;
-  height: 500px;
+  width:39.8%;
+  
 }
 
 .divSharedSummary > .headerShareSummary{
@@ -32633,19 +32308,26 @@ abso_temprate > .centerPlace {
 }
 
 .AllpostestesSummaries{
-  width:100%;
+  width:52%;
+  float:left;
 }
 
-.AllpostestesSummaries{
-  width:100%;
+.mysummaries{
+  width:90%;
+}
+
+#wallSummary{
+  overflow-x:hidden;
 }
 
 .AllpostestesSummaries > .summaryPanel{
   margin-top:-1px;
   border-top:none;
   margin-left:12%;
+  width:75%;
   box-shadow: none;
   border-radius: 0px 0px 3px 3px;
+  background: white;
 }
 
 .divSenderDetels{
@@ -32657,6 +32339,7 @@ abso_temprate > .centerPlace {
   margin-left:5%;
   padding-top: 1%;
   padding-bottom: 1%;
+  background: white;
 }
 
 .divSenderDetels > a{
@@ -32810,6 +32493,7 @@ abso_temprate > .centerPlace {
   padding-bottom:1%;
   margin-left:3%;
   width:46%;
+  text-align: center;
 }
 
 .head > h3 > span{
@@ -32878,6 +32562,8 @@ abso_temprate > .centerPlace {
   height: 95%;
   border-radius: 3px;
   margin-top:2px;
+  margin-left:4px;
+  float:left;
 
 }
 
@@ -32886,6 +32572,17 @@ abso_temprate > .centerPlace {
   height: 100%;
   float:left;
   margin-left:;
+  transition: all 1s ease-in-out;
+}
+
+.sliderPlaner{
+  height: 100%;
+  float:left;
+  margin-left:;
+  transition: all 1s ease-in-out;
+  width:6000px;
+  height: 100%;
+  float: left;
 }
 
 .panelslide > div{
@@ -32967,6 +32664,7 @@ abso_temprate > .centerPlace {
 .thridDiv{
   border-top:1px groove rgba(2,2,2,.2);
   margin-top:1%;
+  float:left;
 }
 
 /*<!-- timetable in subject and persenal time table -->
@@ -33525,14 +33223,17 @@ display: none;
   width:100%;
   height: 251px;
   float:left;
+  margin-top:2%;
+
 }
 
 /*<!--  panel Exam show pepars and Maxs progress --> subject page line:1246*/
 .panelPlaner > .panelExams{
   border:1px groove rgba(2,2,2,.5);
   width:70%;
-  height: 240px;
-  margin-top:2%;
+  height: 250px;
+  margin-top:4%;
+  margin-bottom:2%;
   margin-left:1%;
   float:left;
   border-radius:0px 3px 3px 0px;
@@ -33548,7 +33249,7 @@ display: none;
 
 .panelPlaner > .panelExams > .header_planExams > h3{
   
-  width:70%;
+  width:30%;
   margin-top:2px;
   float:left;
 }
@@ -33559,6 +33260,33 @@ display: none;
   font-style:italic;
   font-weight:bold;
   font-size: 12px;
+}
+
+
+.PlanningSumOfExam{
+  float:left;
+  
+  width:50%;
+}
+
+.PlanningSumOfExam > span{
+  float:left;
+}
+
+.PlanningSumOfExam > span > span{
+  float:left;
+   border:1px solid rgba(2,2,2,.1);
+  width:100%;
+  font-size:10px;
+  color:grey;
+  text-align: center;
+  font-family: tohama;
+}
+
+.AssumMoney{
+  color:red;
+  font-weight: bold;
+
 }
 
 .panelPlaner > .panelExams > .header_planExams > .dataStart{
@@ -33592,18 +33320,18 @@ display: none;
 }
 
 .panelPlaner > .panelExams > .panelExamWraper > .panelExamBody > .xoverflow{
-  width:187%;
+  width:797%;
+  height: 100%;
 }
 
 .panelExamBody > .xoverflow > .examspage{
   width:135px;
-  height: 190px;
   float:left;
   border:1px groove rgba(17,102,136,.8);
   border-radius: 3px;
-  margin-top:1%;
-  margin-left:1%;
-  padding-top:1%;
+  margin-top:2px;
+  margin-left:12px;
+  padding-top:1px;
 }
 
 .panelExamBody > .xoverflow > .examspage > .examheader{
@@ -34107,6 +33835,29 @@ display: none;
   margin-top: 2%;
   padding-bottom:1px;
   float:left;
+}
+
+.MaxWish{
+    font-size: 15px;
+    padding-top: 0px;
+    border: 1px solid #b5b0b0a6;
+    text-align: center;
+    width: 22%;
+    border-radius: 4px;
+    margin-top: 5%;'
+    font-family: tohama;
+}
+
+.MaxWish > b{
+   font-size: 25px;
+   font-style: italic;
+   color:green;
+}
+
+.MaxWish > .b1{
+   font-size: 19px;
+   font-style: italic;  
+   color:grey;
 }
 
 .ExamFontPage > .startBoton{
@@ -34864,8 +34615,21 @@ donation{
   border-left:1px solid rgba(2,2,2,.2);
   margin-top: 2%;
 }
+.s_examscompose > .exmsList{
+  width:40%;
+  height:499px;
+  float:right;
+  border-left:1px solid rgba(2,2,2,.2);
+  margin-top: 2%;
+}
 
 #examscompose > .exmsList > .examwrap{
+  width:80%;
+  float:left;
+  margin-top: 5%;
+}
+
+.s_examscompose > .exmsList > .examwrap{
   width:80%;
   float:left;
   margin-top: 5%;
@@ -35289,6 +35053,10 @@ donation{
 
 
 #use_info{
+   display: none;
+
+}
+.suse_info{
    display: none;
 
 }
@@ -35813,7 +35581,7 @@ donation{
    float:left;
    width:29%;
     height: 40px;
-   font-family: LatoBlack;
+  
    color:grey;
    margin-top:2%;
    margin-left:15%;
@@ -35931,7 +35699,7 @@ donation{
   color:#9da5a8;
   border-bottom: 1px groove rgba(2,2,2,.4); 
   margin-left: 5%;
-  font-family: LatoBlack;
+ 
   padding-top: 2%;
   padding-bottom: 2%;
   padding-left:1%;
@@ -37967,7 +37735,7 @@ donation{
 /*date*/
 
  .dateDone {
-       font-family: LatoBlack;
+      
        font-size: 14px;
        width:100%;
        float:left;
@@ -37992,22 +37760,22 @@ donation{
 .dateDone  > div > div >select{
        width:100%;
        float:left;
-       color:rgaba(105,105,105,.6);
-       font-family:LatoBlack;
+      color:rgba(105,105,105,.6);
+      
 }
 
 .dateDone  > div > .datee{
        width:15%;
        float:left;
        color:rgba(105,105,105,.6);
-       font-family:LatoBlack;
+      
 }
 
  .dateDone  > div > .datestrok{
        width:1%;
        float:left;
        color:rgba(105,105,105,.6);
-       font-family:LatoBlack;
+      
        padding-left:1%;
        margin-left:1%;
        margin-right:1%;
@@ -38017,7 +37785,7 @@ donation{
        width:13%;
        float:left;
        color:rgba(105,105,105,.6);
-       font-family:LatoBlack;
+      
        padding-left:1%;
        margin-left:1%;
        margin-right:1%;
@@ -38026,7 +37794,7 @@ donation{
        width:100%;
        float:left;
        color:rgba(105,105,105,.6);
-       font-family:LatoBlack;
+      
        padding-left:1%;
        margin-left:1%;
        margin-right:1%;
@@ -39231,14 +38999,25 @@ color:white;
 }
 
 .qstnAndAnsBody{
-  border:1px groove rgba(2,2,2,.2);
-  border-radius: 3px;
-  margin-left:2%;
+  border:1px groove rgba(2,2,2,.1);
+  /*border-radius: 3px;*/
+  margin-left:10%;
   margin-top:2%;
   float:left;
-  width:90%;
+  width:70%;
+  background:white;
+  padding-top:2%;
+  padding-bottom:1%;
+
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 1 1px 1px 1px;
 }
 
+
+#studentSubj{
+  height: 8000px;
+}
 #studentSubj > .qstnAndAnsBody{
   max-height: 150px;
 
@@ -39251,21 +39030,23 @@ color:white;
 }
 
 .qstnAndAnsBody >.anseQstnDiv > .despl{
-  border-right:1px groove rgba(2,2,2,.2);
+ /* border-right:1px groove rgba(2,2,2,.2);*/
   float:left;
   width:75%;
+
 }
 
 
 .qstnAndAnsBody >.anseQstnDiv > .despl > .detdispl{
   float:left;
-  width:90%;
+  width:80%;
   margin-left:1%;
 }
 
 .qstnAndAnsBody >.anseQstnDiv > .despl > .detdispl > .firsdeta{
   width:40%;
   float:left;
+  margin-left:2%;
 }
 
 .qstntype{
@@ -39299,6 +39080,9 @@ color:white;
 .midleInstr > .qstnNo{
   float:left;
   width:11%;
+
+  margin-left:-5px;
+  padding-right: 2px;
 }
 
 .qstnNo{
@@ -39309,7 +39093,10 @@ color:white;
 .qstnNo > span{
   float:left;
   margin-left:8%;
-  width: 30%;
+  width: 100%;
+  float:left;
+  text-align: center;
+  font-size:11px;
 }
 
 .qstnBody{
@@ -40054,7 +39841,7 @@ font-weight: bold;
   float: left;
   width: 60%;
   margin-left: 18%;
-  margin-top: -3.9%;
+  margin-top: -1%;
   background: #30445c;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -40078,11 +39865,12 @@ font-weight: bold;
   margin-bottom: 2%;
   margin-right: 2%;
   cursor: pointer;
+  color:white;
 }
 
 .composqsnWall{
-  width:95%;
-  margin-left: 4%;
+  width:75%;
+  margin-left: 7%;
   float:left;
   display: none;
   margin-top: 2%;
@@ -40609,6 +40397,7 @@ addplace{
 .listbookBody > .xoverflow{
   float: left;
   width:107%; 
+  transition: all 1s ease-in-out;
 }
 
 .abs_topic{
@@ -40925,10 +40714,13 @@ addplace{
 
 /*END timetable teacher composer*/
 
-
+  .top_tchember{
+    margin-top:3%;
+  }
   #parentsChember > .main{
                       width: 99%;
-                      margin-top:-10%;
+                      margin-top:3%;
+                      float:left;
                     }
 
       #parentsChember > .main > .sliderContainer{
@@ -41501,24 +41293,7 @@ addplace{
 
                       }
 
-               	  
-
-               	    #parentsChember > .main{
-               	    	width: 99%;
-               	    	margin-top:-10%;
-               	    	float:left;
-               	    }
-
-               	    #parentsChember > .main > .sliderContainer{
-               	    	width: 88%;
-               	    	height: 165px;
-               	    }
-
-
-               	    #parentsChember > .main > .nav{
-               	    	width: 5%;
-               	    }
-               	    
+               	   
                     .main{
                     	width:98%;
                     	float:left;
@@ -41534,8 +41309,14 @@ addplace{
                     }
 
                     .sliderContainer .slider{
+                      width:6000px;
+                      height: 130px;
+                      transition: all 1s ease-in-out;
+                      /*border:1px solid yellow;*/
+                    }
+
+                    .slider{
                     	width:6000px;
-                    	height: 130px;
                     	transition: all 1s ease-in-out;
                     	/*border:1px solid yellow;*/
                     }
@@ -41562,6 +41343,26 @@ addplace{
                     	float:left;
                     	width:100%;
                     	height: 100%;	
+                    }
+
+                    .bookSlider{
+                      width:84.7%;
+                      float: left;
+                      overflow: hidden;
+                    }
+
+                    .bookSliderfvt{
+
+                      width:84.7%;
+                      float: left;
+                      overflow: hidden;
+                    
+                    }
+
+                    .bookSlider > .mainslidDiv{
+                      width:6000px;
+                      height: 100%;
+                      float: left;
                     }
 
               

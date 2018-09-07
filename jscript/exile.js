@@ -144,6 +144,12 @@ Exile = function (selector) {
         }
     };
 
+     ex.Id = function(){
+        if(this.element !== null){
+            return this.element.id;
+        }
+    };
+
 
 
     /**

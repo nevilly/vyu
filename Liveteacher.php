@@ -319,36 +319,55 @@ if(isset($_GET['action']) && $_GET['action'] == 'teacherLive' ){
         $result = array('data'=>'Nooo data found','status'=>$status);
     }
 
-        #parent and their student profiles slide show on Parents Chember
-        
-        $user_id     =  preg_replace("#[^0-9]#",'',$_GET['user_id']);
-        $sesion_id   =  preg_replace("#[^0-9]#",'',$_GET['sesion_id']);       // login session id
+    #parent and their student profiles slide show on Parents Chember
+    
+    $user_id     =  preg_replace("#[^0-9]#",'',$_GET['user_id']);
+    $sesion_id   =  preg_replace("#[^0-9]#",'',$_GET['sesion_id']);       // login session id
 
-        $teach_id    =  preg_replace("#[^0-9]#",'',$_GET['teacher_id']);      // teacher id
-        $teach_Uname =  preg_replace("#[^0-9]#",'',$_GET['teacherUname']);    // teacher username
+    $teach_id    =  preg_replace("#[^0-9]#",'',$_GET['teacher_id']);      // teacher id
+    $teach_Uname =  preg_replace("#[^0-9]#",'',$_GET['teacherUname']);    // teacher username
 
-        #School Info
-        $subjectName =  $_GET['subjectName'];
-        $schoolname  =  $_GET['schoolname'];
-        $region      =  $_GET['region'];
-        $lvl_Std     =  $_GET['levelOrStandard'];
-        $mkondo      =  $_GET['mkondo'];
-        $lvl_id      =  $_GET['level_identify'];
+    #School Info
+    $subjectName =  $_GET['subjectName'];
+    $schoolname  =  $_GET['schoolname'];
+    $region      =  $_GET['region'];
+    $lvl_Std     =  $_GET['levelOrStandard'];
+    $mkondo      =  $_GET['mkondo'];
+    $lvl_id      =  $_GET['level_identify'];
+  
 
+    $p_accId     = '';
+    $p_accuserId =  '';
 
-        
-        $p_ChmbrSl   = ParentsChember_slide($db,$user_id,$schoolname,$region,$lvl_Std);
-        $p_slider    =  $p_ChmbrSl[0];
-        $result['PrntSlider_pch'] = $p_slider;
+    if(isset($_GET['p_accId']) && isset($_GET['p_accuserId'])){
+        $p_accId     = $_GET['p_accId'];          // parent Account Id;
+        $p_accuserId =  $_GET['p_accuserId'];     // parent user Id;
+       
+        $result['check1'] = $p_accuserId;
+    }
 
-        
-        $p_Chmbrall  = '';
-        $p_ChmbrAll  = ParentChember_AllChatWall($db,$user_id,$schoolname,$region,$lvl_Std,$mkondo,$lvl_id);
+    $result['check'] = $p_accuserId;
+    
+    $p_ChmbrSl   = ParentsChember_slide($db,$user_id,$schoolname,$region,$lvl_Std);
+    $p_slider    =  $p_ChmbrSl[0];
+    $result['PrntSlider_pch'] = $p_slider;
 
-        $p_Chmbrall  = $p_ChmbrAll[0];
-        $result['AllCaht_pCh'] = $p_Chmbrall;
+     
+    $sngPChat    = singleParentChat($db,$user_id,$p_accId,$p_accuserId);
+    $result['parent_SingleChat']  = $sngPChat[0];
+    $result['parent_SingleChatId'] = $sngPChat[1];
+    
+    $p_Chmbrall  = '';
+    $p_ChmbrAll  = ParentChember_AllChatWall($db,$user_id,$schoolname,$region,$lvl_Std,$mkondo,$lvl_id);
+
+    $result['AllCaht_pCh'] = $p_ChmbrAll[0];
+    $result['AllChat_Id']  = $p_ChmbrAll[1];
+
+    $t_Result = result_box($db,$schoolname,$region,$lvl_Std,$mkondo);
+    $result['resultInfo'] =  $t_Result[0];
+    $result['resultdate'] =  $t_Result[1];
 }
-
+ 
 
 #teacher functions
 function get_replies($pid,$db,$classCss,$real_user){
@@ -431,8 +450,6 @@ function get_replies2($pid,$db,$classCss,$real_user){
 							</div> 
 								<div class='replybady'><span>$user</span><p>$reply</p></div>
 						</div>";   
-
-
         }
       
     }
@@ -660,7 +677,7 @@ function ParentChember_AllChatWall($db,$user_id,$schoolname,$region,$lvl_Std,$mk
 
 	if($sql->count() > 0){
 		$status       =  true;
-		$lid          =  '';
+		$tid          =  '';
 		$box          =  '';
 		$class        =  '';
 		$width        =  '';
@@ -676,7 +693,8 @@ function ParentChember_AllChatWall($db,$user_id,$schoolname,$region,$lvl_Std,$mk
 		   
 			#DETAILS
 				#Post All Charts  Details
-				$p_id       =  $r->pid;           // post id
+                $p_id       =  $r->pid;           // post id
+				$tid        += $p_id ;           // post id
 				$p_sId      =  $r->p_sId;         // post user id
 				$p_Msg      =  $r->p_Msg;         // post msg
 				$p_date     =  $r->p_date;        // post  date
@@ -775,7 +793,7 @@ function ParentChember_AllChatWall($db,$user_id,$schoolname,$region,$lvl_Std,$mk
 		}
 	}
 
-	return [$box];
+	return [$box,$tid];
 }
 
 function ParentChember_AllChatWallRply($pid,$db){
@@ -842,223 +860,1072 @@ function ParentChember_AllChatWallRply($pid,$db){
 }
 
 
-if(isset($_GET['action']) && $_GET['action'] === 'singleParentChat'){
+function singleParentChat($db,$user_id,$p_accId,$p_accuserId){
+
+    $pdata = '';
+    $pid = '';
+    // // if(isset($_GET['actions']) && $_GET['actions'] === 'singleParentChat'){
+    //     $sql        =  null;
+    //     $data       =  'No Slider found';
+    //     $pid        =  '';
+    //     $pdata      =  '';
+    //     $p_accId    =  $p_accId;
+    //     $u_two      =  31;  //$p_accuserId;
+
+
+
+    //     $qry =  "SELECT 
+    //                     m.id          as mid,
+    //                     m.u_one       as m_one, 
+    //                     m.u_two       as m_two, 
+    //                     m.msj         as m_msj,
+    //                     m.status      as m_status,
+
+    //                     v.id          as vid,
+    //                     v.username    as vu,
+    //                     v.profile     as vpr
+    //                     FROM vy_themsg m 
+
+    //                     LEFT JOIN vy_users as v ON(m.u_two = v.id) 
+                        
+    //                     WHERE u_one = ?  AND
+    //                           u_two = ? 
+    //             "
+    //     ;
+
+
+    //     $sql = $db->query($qry,array($user_id,$u_two));
+
+
+    //     if($sql->count() > 0){
+    //         $status       =  true;
+    //         $class        =  '';
+    //         $width        =  '';
+    //         $height       =  '';
+    //         $st_profile   =  '';
+    //         $mkondo       =  '';
+
+    //         foreach ($sql->results() as $r) {
+    //             $width      =  100;
+    //             $height     =  100;
+
+    //             #Parent  Details
+    //             $p_id       =  $r->mid;           // parent  id
+    //             $pid       +=  $p_id;             // parent  id
+    //             $u_one      =  $r->u_one;         // teacher id
+    //             $p_two      =  $r->u_two;         // parent  id
+    //             $msg        =  $r->m_msj;         // teacher id
+
+    //             $p_uname    = $r->vu;             // parent username
+    //             $p_prof     =  $r->vpr;           // parent profile
+    //             $p_class    =  'p_profile';
+    //             $p_prof     =  $db->prfl_pctwithClass($p_prof, $width, $height, $class);    // parent profile   
+
+
+             
+    //             $pdata .= "
+    //                      parentChat$p_accId
+    //                 <div class ='ParentsWrap' id = 'parentChat' >
+    //                     <div class = 'MsgContainer chatBox'>
+
+    //                         <div class = 'back' onclick=\"switchVisbltyQ('ParentsWrap','parentChat$p_accId','parebt')\">Go Back </div>
+    //                         <div class='chatContainer'>
+
+    //                             <div class = 'chatheader divdivision' >
+    //                                 <div class='introHeader'>
+    //                                     <span class='parentTitle'>Parent</span>
+    //                                     <span class='pname'>$p_uname</span>
+                                        
+    //                                     <div >
+    //                                         <a href = ''>
+    //                                         <span>Moses Mwakatobe (Child Name):</span>
+    //                                         <span style='font-style:italic;'>Form 1 B ,</span></a>
+    //                                     </div>
+    //                                 </div>
+    //                             </div>
+
+    //                             <div class = 'ContainerChat'>
+            
+
+    //                                 <div class='xoverflow' id = 'prvtMsgs3'>
+
+    //                                     <div class='chatholder'>
+    //                                         <div class='divcirlce'>
+    //                                             <div class = 'cicle'>$p_prof</div>
+    //                                         </div>
+                                            
+    //                                         <div class ='textChat'>
+                                            
+    //                                             <p>
+    //                                                 $msg
+    //                                             </p>
+                                                        
+                                                            
+    //                                         </div>
+    //                                         <div class = 'clear'></div>
+    //                                     </div>
+
+    //                                </div>
+    //                             </div>
+                                
+    //                             <div class='textEditor'>
+    //                                 <div class = 'down_Document' id = 'textDownload'>
+    //                                     <div  class ='potea' onclick = \"closeDiv('textDownload');\">X</div>
+
+    //                                     <div class= 'thedoc'  onclick =\"docchoosen('doc_slideBox','textDownload')\">Test.txt</div>
+    //                                     <div class='thedoc' onclick =\"docchoosen('doc_slideBox','textDownload')\">Assiment</div>
+    //                                     <div class='thedoc' onclick =\"docchoosen('doc_slideBox','textDownload')\">Photo</div>
+    //                                 </div>
+                                    
+    //                                 <div id ='doc_slideBox' class ='doc_slideBox'>
+    //                                  <div id = 'slideDown' class = 'openAndClose'  onclick = \"changeHeightslideDown('slideDown','slideUp','doc_slideBox')\">  <i class = 'fa fa-angle-down'></i></div>
+
+
+    //                                  <div id = 'slideUp' class = 'openAndClose'   onclick = \"changeHeightslideUp('slideUp','slideDown','doc_slideBox')\"> <i class = 'fa fa-angle-up'></i></div>
+
+
+    //                                     <div  id = 'doc_title' class = 'doc_title'>
+
+    //                                         <div class='doc_discr'>
+    //                                             <span>Test Name</span>
+    //                                             <span>Form 3 B</span>
+    //                                             <span>created: 27/2/2008</span>
+    //                                         </div>
+    //                                     </div>
+
+    //                                     <div  id = 'doc_title' class = 'doc_title'>
+
+    //                                         <div class='doc_discr'>
+    //                                             <span>Test Name</span>
+    //                                             <span>Form 3 B</span>
+    //                                             <span>created: 27/2/2008</span>
+    //                                         </div>  
+    //                                     </div>
+                                          
+    //                                 </div>
+
+    //                                 <div class='chatholder'>
+    //                                         <div class='divcirlce'>
+    //                                             <div class = 'cicle' id = 'chehh' onclick= \"plusdoc('textDownload','doc_slideBox');\">+</div>
+    //                                         </div>
+                                            
+    //                                         <div class = 'textChat'>
+    //                                             <textarea  autofocus='none'   placeholder = 'write something' name='' id='prvtTxt_tp3' cols=''rows=''></textarea> 
+    //                                               <div onclick=\"allChembar_pvtMsg('prvtTxt_tp',3,'prvtMsgs','$u_two')\" class='sendPlan'><i class='fa fa-send'></i></div>      
+    //                                         </div>
+    //                                         <div class = 'clear'></div>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //                 ";
+                
+    //         }
+    //     }else{
+    //          $pdata .= "
+    //                   parentChat2$p_accId
+    //                 <div class ='ParentsWrap' id = 'parentChat' >
+    //                     <div class = 'MsgContainer chatBox'>
+
+    //                         <div class = 'back' onclick=\"switchVisbltyQ('ParentsWrap','parentChat$p_accId','parebt')\">Go Back </div>
+    //                         <div class='chatContainer'>
+    //                             <div class = 'chatheader divdivision' >
+    //                                 <div class='introHeader'>
+    //                                     <span class='parentTitle'>Parent</span><span class='pname'>Nehemia Daud Mwansasu</span>
+    //                                     <div ><a href = ''><span>Moses Mwakatobe :</span><span style='font-style:italic;'>Form 1 B ,</span></a></div>
+    //                                     <div ><a href = ''><span>Moses Mwakatobe Mwansasu :</span><span style='font-style:italic; '>Form 1 B parentChat$p_accId ,</span></a></div>
+    //                                     <div ><a href = ''><span>Moses Mwakatobe :</span><span style='font-style:italic;'>Form 1 B ,</span></a></div>
+    //                                 </div>
+    //                             </div>
+
+    //                             <div class = 'ContainerChat'>
+            
+
+    //                                 <div id = 'prvtMsgs3' class='xoverflow'>
+
+    //                                     <div class='chatholder'>
+                                           
+                                            
+    //                                         <div class ='textChat'>
+                                            
+    //                                             <p>
+    //                                                  NO MESSAGE
+                                            
+    //                                             </p>
+                                                        
+                                                            
+    //                                         </div>
+    //                                         <div class = 'clear'></div>
+    //                                     </div>
+
+                                     
+    //                                </div>
+    //                             </div>
+                                
+    //                             <div class='textEditor'>
+    //                                 <div class = 'down_Document' id = 'textDownload'>
+    //                                     <div  class ='potea' onclick = \"closeDiv('textDownload');\">X</div>
+
+    //                                     <div class= 'thedoc'  onclick =\"docchoosen('doc_slideBox','textDownload')\">Test.txt</div>
+    //                                     <div class='thedoc' onclick =\"docchoosen('doc_slideBox','textDownload')\">Assiment</div>
+    //                                     <div class='thedoc' onclick =\"docchoosen('doc_slideBox','textDownload')\">Photo</div>
+    //                                 </div>
+                                    
+    //                                 <div id ='doc_slideBox' class ='doc_slideBox'>
+    //                                  <div id = 'slideDown' class = 'openAndClose'  onclick = \"changeHeightslideDown('slideDown','slideUp','doc_slideBox')\">  <i class = 'fa fa-angle-down'></i></div>
+
+
+    //                                  <div id = 'slideUp' class = 'openAndClose'   onclick = \"changeHeightslideUp('slideUp','slideDown','doc_slideBox')\"> <i class = 'fa fa-angle-up'></i></div>
+
+
+    //                                     <div  id = 'doc_title' class = 'doc_title'>
+
+    //                                         <div class='doc_discr'>
+    //                                             <span>Test Name</span>
+    //                                             <span>Form 3 B</span>
+    //                                             <span>created: 27/2/2008</span>
+    //                                         </div>
+    //                                     </div>
+
+    //                                     <div  id = 'doc_title' class = 'doc_title'>
+
+    //                                         <div class='doc_discr'>
+    //                                             <span>Test Name</span>
+    //                                             <span>Form 3 B</span>
+    //                                             <span>created: 27/2/2008</span>
+    //                                         </div>  
+    //                                     </div>
+                                          
+    //                                 </div>
+
+    //                                 <div class='chatholder'>
+    //                                         <div class='divcirlce'>
+    //                                             <div class = 'cicle' id = 'chehh' onclick= \"plusdoc('textDownload','doc_slideBox');\">+</div>
+    //                                         </div>
+                                            
+    //                                         <div class = 'textChat'>
+    //                                             <textarea  autofocus='none'   placeholder = 'write something' name='' id='prvtTxt_tp' cols=''rows=''>
+
+    //                                             </textarea>   
+
+    //                                             <div onclick=\"allChembar_pvtMsg('prvtTxt_tp',3,'prvtMsgs','$u_two')\" class='sendPlan'><i class='fa fa-send'></i></div>  
+    //                                         </div>
+    //                                         <div class = 'clear'></div>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //                 ";
+                
+    //     }
+
+
+
+    return [$pdata,$pid];
+}
+
+
+if(isset($_GET['Actionx']) && $_GET['Actionx'] === 'qstnComoser'){
     $sql        =  null;
-    $data       =  'No Slider found';
+    $data       =  'No Questionin COmposer found';
     $user_id    =  preg_replace("#[^0-9]#",'',$_GET['user_id']);
     $schoolname =  $_GET['schoolname'];
-    $region     =  $_GET['region'];
     $region     =  $_GET['region'];
     $lvl_Std    =  $_GET['levelOrStandard'];
     $p_accId    =  $_GET['p_accId'];
     $u_two      =  $_GET['p_accuserId'];
+    $last_id    =  $_GET['qstnCompose_lastId'];
+    // $last_id    =  1;
 
 
 
-    $qry =  "SELECT 
-                    m.id          as mid,
-                    m.u_one       as m_one, 
-                    m.u_two       as m_two, 
-                    m.msj         as m_msj,
-                    m.status      as m_status,
+    $qry =  "SELECT
+                q.id             as q_Id,
+                q.qstnCompz_id   as q_qCompzId,
+                q.section        as q_sect,
+                q.qNo            as q_no,
+                q.qColum         as q_Cno,
+                q.topic_title    as q_ttle,
+                q.sub_tpc        as q_sttle,
+                q.qstn           as q_q,
+                q.match_a        as q_match_a,
+                q.match_b        as q_match_b,
+                q.match_c        as q_match_c,
 
-                    v.id          as vid,
-                    v.username    as vu,
- 	                v.profile     as vpr
-                    FROM vy_themsg m 
 
-                    LEFT JOIN vy_users as v ON(m.two = v.id) 
-                    
-                    WHERE u_one = ?  AND
-                          u_two = ? 
+                m.id             as mid,
+                m.user_id        as m_uid, 
+                m.subj_id        as m_subjId, 
+                m.exam_name      as m_exName,
+                m.strt_time      as m_start,
+                m.end_time       as m_end,
+                m.exam_date      as m_Exdate,
+                m.exam_instr     as m_Instr,
+                m.schoolname     as m_status,
+                m.levelOrStandard     as m_lv,
+                m.mkondo         as m_mk,
+                m.region         as m_reg,
+
+                v.id          as vid,
+                v.username    as vu,
+                v.profile     as vpr
+
+                FROM vy_qustion q
+
+                LEFT JOIN vy_exmcompoz as m ON(q.qstnCompz_id = m.id) 
+                LEFT JOIN vy_users as v ON(m.user_id = v.id) 
+                
+                WHERE q.qstnCompz_id = ?
             "
     ;
 
 
 
-    $sql = $db->query($qry,array($user_id,$u_two));
+    $sql = $db->query($qry,array($last_id));
 
 
     if($sql->count() > 0){
         $status       =  true;
         $lid          =  '';
-        $pdata        =  '';
+        $qdata        =  '';
         $class        =  '';
         $width        =  '';
         $height       =  '';
-        $st_profile   =  '';
+        $matchIt      =  '';
         $mkondo       =  '';
 
         foreach ($sql->results() as $r) {
         	$width      =  100;
             $height     =  100;
+            $matchIt    =  '';
+            $$sectionA  =  '';
 
-        	#Parent  Details
-            $p_id       =  $r->id;           // parent id
-            $u_one      =  $r->u_one;         // teacher id
-            $p_uname    =  $r->u_two;         // parent id
+        	#  Question Table
 
-            $p_prof     =  $r->vpr;           // parent profile
-            $p_class    =  'p_profile';
-            $p_prof     =  $db->prfl_pctwithClass($p_prof, $width, $height, $class);    // parent profile   
+            $q_id       =  $r->q_Id;          // qustion Id
+            $q_id       =  $r->q_qCompzId;    // qustion compose Id
+            $q_sect     =  $r->q_sect;        // qustion section
+            $q_no       =  $r->q_no;          // qustion number
+            $q_Cno      =  $r->q_Cno;         // qustion colum number
+            $q_topic    =  $r->q_ttle;        // qustion topic
+            $q_subtopic =  $r->q_sttle;       // qustion sub topic
+            $q_q        =  $r->q_q;           // qustion the question
+            $match_a    =  $r->q_match_a;     // qustion match_a
+            $match_b    =  $r->q_match_b;     // qustion match_b
+            $match_c    =  $r->q_match_c;     // qustion match_c
 
-            
-    
+            #profile Info
+            $p_prof     =  $r->vu;            // username
+            $p_prof     =  $r->vpr;           // profile
+            $p_class    =  '';
+            $p_prof     =  $db->prfl_pctwithClass($p_prof, $width, $height, $class);  
 
 
-            // #student Details
-                // $st_id       =  $r->sid;           // student id
-	            // $st_uId      =  $r->suid;          // student user id
-	            // $st_uname    =  $r->xu;            // student username
-	            // $st_prof     =  $r->xpr;           // student profile
-	            // $st_lev      =  $r->s_sl;          // student level or stanbdard eg form 1 or certificate
-	            // $st_mkond    =  $r->s_mkondo;      // student level or stanbdard eg form 1 or certificate
-	            // $st_prof     =  $db->prfl_pctwithClass($st_prof, $width, $height, $p_class);    // Student profile  
-	   	         //  $mkondo    = " <span class='info2 parentNames'> $p_lev / $p_mkondo </span>";
-	            
-	            
-            	// $st_profile   = "<a href='' class='studentProfile'>$st_prof</a>";
-            // $mkondo       =  "<span class='info2 parentNames'> $p_lev / $p_mkondo </span>";
+            if(!empty($match_a) && !empty($match_b) && !empty($match_c)){
+                $matchIt .= "
+                            <div class='matchz'>
+                                <div>
+                                    <div class='chois marchCOnsA'>A.</div>
+                                    <div class='ges gasessAnswA'>$match_a</div>
+                                    <div class='radioMatched'>
+                                        <input type='radio' name='match'>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class='chois marchCOnsB'>B.</div>
+                                    <div class='ges gasessAnswB'>$match_b</div>
+                                    <div class='radioMatched'>
+                                        <input type='radio' name='match'>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class='chois marchCOnsC'>C.</div>
+                                    <div class='ges gasessAnswC'>$match_c</div>
+                                    <div class='radioMatched'>
+                                        <input type='radio' name='match'>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        "
+                ;
+            }  
 
            
+           if($q_sect  == "SECTION A" ){
+             
+               $sectionA .=  "<div class='qc_QuizQust QuizQust'>
+                                <div class='QstNo'> $q_no .</div>
+                                <div class='question'>
+                                    $q_q <br/>
 
-
-            $pdata .= "
-
-                <div class ='ParentsWrap' id = 'parentChat3' >
-					<div class = 'MsgContainer chatBox'>
-					
-
-				
-					   
-					     <div class = 'back' onclick=\"switchVisbltyQ('ParentsWrap','parentChat$p_accId','parebt')\">Go Back </div>
-					    <div class='chatContainer'>
-					        <div class = 'chatheader divdivision' >
-					            <div class='introHeader'>
-					                <span class='parentTitle'>Parent</span><span class='pname'>Nehemia Daud Mwansasu</span>
-					                <div ><a href = ''><span>Moses Mwakatobe :</span><span style='font-style:italic;'>Form 1 B ,</span></a></div>
-					                <div ><a href = ''><span>Moses Mwakatobe Mwansasu :</span><span style='font-style:italic; '>Form 1 B ,</span></a></div>
-					                <div ><a href = ''><span>Moses Mwakatobe :</span><span style='font-style:italic;'>Form 1 B ,</span></a></div>
-					            </div>
-					        </div>
-
-					        <div class = 'ContainerChat'>
-		
-
-					            <div class=xoverflow>
-
-					                <div class='chatholder'>
-					                    <div class='divcirlce'>
-
-					                        <div class = 'cicle'></div>
-					                    </div>
-					                    
-					                    <div class ='textChat'>
-					                    
-					                        <p>
-					                                hellow teacher Yam Rsdasdasd
-					                    
-					                        </p>
-					                                
-					                                    
-					                    </div>
-					                    <div class = 'clear'></div>
-					                </div>
-
-					                <div class='chatholder'>
-					                    
-				                        <div class='divcirlce rightdiv' style ='float:right'>
-				                            <div class = 'cicle'></div>
-				                        </div>
-				                        
-				                        <div class = 'textChat' style ='float:right'>
-				                            <p>
-				                                    asdfsafafjkalfaf akjsfakljfafa fkaljfak fakj fka
-				                            </p>         
-				                        </div>
-				                    
-				                        <div class ='clear'></div>
-					                </div>
-
-					                <div class='chatholder'>
-				                        <div class='divcirlce'>
-				                            <div class = 'cicle'></div>
-				                        </div>
-				                        
-				                        <div class ='textChat'>
-				                            <p>
-				                                hellow teacher
-				                            </p>                
-				                        </div>
-				                        <div class = 'clear'></div>
-					                </div>
-					           </div>
-					        </div>
-					        
-					        <div class='textEditor'>
-						        <div class = 'down_Document' id = 'textDownload'>
-						            <div  class ='potea' onclick = \"closeDiv('textDownload');\">X</div>
-
-						            <div class= 'thedoc'  onclick =\"docchoosen('doc_slideBox','textDownload')\">Test.txt</div>
-						            <div class='thedoc' onclick =\"docchoosen('doc_slideBox','textDownload')\">Assiment</div>
-						            <div class='thedoc' onclick =\"docchoosen('doc_slideBox','textDownload')\">Photo</div>
-						        </div>
-                                
-						        <div id ='doc_slideBox' class ='doc_slideBox'>
-						         <div id = 'slideDown' class = 'openAndClose'  onclick = \"changeHeightslideDown('slideDown','slideUp','doc_slideBox')\">  <i class = 'fa fa-angle-down'></i></div>
-
-
-						         <div id = 'slideUp' class = 'openAndClose'   onclick = \"changeHeightslideUp('slideUp','slideDown','doc_slideBox')\"> <i class = 'fa fa-angle-up'></i></div>
-
-
-						        	<div  id = 'doc_title' class = 'doc_title'>
-
-						        	    <div class='doc_discr'>
-						        	     	<span>Test Name</span>
-						        	     	<span>Form 3 B</span>
-						        	     	<span>created: 27/2/2008</span>
-						        	    </div>
-						            </div>
-
-						            <div  id = 'doc_title' class = 'doc_title'>
-
-						        	    <div class='doc_discr'>
-						        	     	<span>Test Name</span>
-						        	     	<span>Form 3 B</span>
-						        	     	<span>created: 27/2/2008</span>
-						        	    </div>  
-						        	</div>
-                                      
-						        </div>
-
-			                    <div class='chatholder'>
-			                            <div class='divcirlce'>
-			                                <div class = 'cicle' id = 'chehh' onclick= \"plusdoc('textDownload','doc_slideBox');\">+</div>
-			                            </div>
-			                            
-			                            <div class = 'textChat'>
-			                                <textarea  autofocus='none'   placeholder = 'write something' name='' id='' cols=''rows=''></textarea>      
-			                            </div>
-			                            <div class = 'clear'></div>
-			                    </div>
-					        </div>
-					    </div>
-					</div>
-				</div>
+                                    $matchIt
+                                </div>
+                                <div class='soln'>
+                                    <span class='solnMsg'> Sorry Answer is hidden...</span>
+                                    <span class='showSoln'>Unhide</span>
+                                    <span class='showSoln'>Edit</span>
+                                </div>
+                            </div>";
+           }
+          
+            $qstn .= "
+                    <div class='sectionWrap' id='sectionA'>
+                        <div class='testSection'>  SECTION A </div>
+                        $sectionA
+                    </div>
 		    	";
 			
         }
         
-    $result = array('pdata'=>$data,'status'=>$status);
+    $result['qdata'] = $qstn ; $result['status'] = $status;
 
 
 	}else{
-	    $result = array('data'=>'Error No  teacher Chat Error !!');
+	    $result['qdata'] = 'Error No  teacher Chat Error !!';
 	}
 }
 
 
+function result_box($db,$schoolname,$region,$lvl_Std,$mkondo){
+    #slide on parent chember;
+    $sql        =  null;
+    $box        =  'No Slider found';
+    $rslt       = array();
 
+    $qry =  "SELECT  
+                    r.id                  as pid,
+                    r.t_id                as r_tid, 
+                    r.s_id                as r_sid,  
+                    r.subj_id             as r_subjId,
+                    r.exm_name            as r_exmname,
+                    r.exmType             as r_exmtyp, 
+                    r.dateDone            as r_dtDone, 
+                    r.result              as r_rst, 
+                    r.date                as r_date, 
+                    
+                    r.schoolname          as r_schul,
+                    r.region              as r_region,
+                    r.levelOrStandard     as r_sl,
+                    r.mkondo              as r_mkondo,
+                    r.level_identify      as r_lIdenty,
+
+                    x.username    as xu,
+                    x.profile     as xpr 
+                    
+                    FROM vy_results  r 
+                    LEFT JOIN vy_users as x  ON (r.s_id = x.id) 
+                    
+                    WHERE 
+                       schoolName = ? AND
+                       levelOrStandard = ? AND
+                       mkondo  = ? AND 
+                       region = ?
+                    
+                    ORDER BY date DESC
+                  
+            "
+    ;
+
+    $sql = $db->query($qry,array($schoolname,$lvl_Std,$mkondo,$region));
+
+    if($sql->count() > 0){
+        $status       =  true;
+        $Unic_date    =  '';
+        $box          =  '';
+        $class        =  '';
+        $width        =  '';
+        $height       =  '';
+        $st_profile   =  '';
+        $mkondo       =  '';
+        $f_student    =  '';
+        $s_student    =  '';
+        $t_student    =  '';
+
+
+        foreach ($sql->results() as $r) {
+            $width      =  100;
+            $height     =  100;
+
+            #teacher  Details
+                $p_id       =  $r->pid;           //  id;
+                $p_uId      =  $r->r_tid;         // teacher id;
+                $st_id      =  $r->r_sid;         // student id;
+           
+
+            #Details
+                $examType   =  $r->r_exmname;      // Exam name;
+                $dateDone   =  $r->r_dtDone;       // Exam daate Done;
+                $result     =  $r->r_rst;          // Exam Results;
+                $subject    =  $r->r_subjId;       // Subject Id;
+                $Unic_date  =  $r->r_date;         // Subject Id;
+
+            #profile
+                $class       =  '';
+                $st_uname    =  $r->xu;            //  username;
+                $profile     =  $r->xpr;           //  profile;
+                $prof        =  $db->prfl_pctwithClass($profile, $width, $height, $class);    // profile ;
+             
+
+            #School Deatails
+                $s_name      =  $r->r_schul;       //  School name;
+                $s_lev       =  $r->r_sl;          //  Standard Level
+                $mkondo      =  $r->r_mkondo;      //  Mkondo
+                $region      =  $r->r_region;      //  region
+
+
+            #class Inayo onnoza Kwa wastan
+
+
+            #Student Anaye Ongoza
+                // echo $result;
+                //$h = $rslt[]          = $result;
+            // print_r($h);
+         
+
+            // @$firstStudent    = $h[0];
+            // @$firstSecond     = $h[1];
+            // @$firstThird      = $h[2];
+
+            // if($firstStudent == $result){
+            //    $f_student   = $prof;
+            // }
+
+            // if($firstSecond  == $result){
+            //   $s_student   = $prof;
+            // }
+
+            // if($firstThird   == $result){
+            //     $t_student   = $prof;
+            // }
+          
+          
+           $top3Sdnt = '<div class="divBr Top3Student">
+                           <div class="barOne ">
+                               <span class="classWin"> 
+                                    <a href="#">
+                                     '.$f_student .'
+                                    </a>
+                                </span>
+                           </div>
+                           <div class="barTwo">
+                                <span class="classWin">   
+                                     <a href="#">
+                                       '.$s_student.'
+                                    </a>
+
+                                </span>
+                           </div>
+
+                           <div class="barThree">
+                                <span class="classWin">   
+                                    <a href="#">
+                                       '. $t_student .'
+                                    </a>
+
+                                </span>
+                           </div>
+                        </div>
+                    '
+                ;
+
+
+            $top10 ='<div class="studentLevel">
+                                        <span class="no">1.</span>
+                                        <div class="profImg">                       
+                                            <img title="Patent Profile" src="img/profiles/p8.jpg" id="parent_img/">
+                                        </div>  
+
+                                        <div class="jina">                      
+                                            <a href="#">Nehemia Mwansasu</a>
+                                        </div>
+                                       
+                                        <div class="Winningmedal">
+                                            <i>m</i>
+                                         </div>
+                                       
+                                        <div class="max">                       
+                                            92%
+                                        </div>
+                    </div>
+                      
+            ';
+          
+
+
+
+            $box = '<div class="championShow">
+                           <div class="ExamNAmeanDexame">
+                                <h4>Safari Examination</h4><div class="donedate">'.$dateDone.'</div>
+                                <div>
+                                    <i class="icofont icofont-paper"></i>
+                                    <span class="examprevw" onclick=\'swicthVisibility("exam_temprate");\'>preview</span>
+                                    <span class="emDwn">Exam Download</span>
+                                </div>
+                           </div>
+
+                            <div class="winnersBar">
+                               
+                               <div class="divBr">
+                                   <div class="barOne">
+                                       <span class="classWin">Form 4 A</span>
+                                       <!-- <div class = "posNo posTwo">2</div>  -->
+                                   </div>
+                                   <div class="barTwo">
+                                       <span class="classWin">Form 4 B</span>
+                                       <!-- <div class = "posNo posFirst">1</div>  -->
+                                   </div>
+
+                                   <div class="barThree">
+                                       <span class="classWin">Form 4 C</span>
+                                    <!--   <div class = "posNo postHREE">3</div>  -->
+                                   </div>
+                               </div>
+                               <header>Winner Class</header>
+                            </div>
+
+                            <div class="winnersBar ">
+
+                               '. $top3Sdnt .'
+
+                                <header>Super Student</header>
+                            </div>
+
+                            <div class="top10Student">
+                                <header>Top 10</header>
+
+                                <div class="topTEnList">
+                                    <div class="xoverflow">
+                                        '.$top10.'
+                                        <div class="studentLevel">
+                                            <span class="no">2.</span>
+                                            <div class="profImg">                       
+                                                <img title="Patent Profile" src="img/profiles/p8.jpg" id="parent_img/">
+                                            </div>  
+
+                                            <div class="jina">                      
+                                                <a href="#">Johm Mkeleketwa</a>
+                                            </div>
+
+                                            <div class="max">                       
+                                                82%
+                                            </div>
+                                        </div>
+
+                                        <div class="studentLevel">
+                                            <span class="no">3.</span>
+                                            <div class="profImg">                       
+                                                <img title="Patent Profile" src="img/profiles/p8.jpg" id="parent_img/">
+                                            </div>  
+
+                                            <div class="jina">                      
+                                                <a href="#">Nanji oska</a>
+                                            </div>
+
+                                            <div class="max">                       
+                                                72%
+                                            </div>
+                                        </div>
+
+                                        <div class="studentLevel">
+                                            <span class="no">4.</span>
+                                            <div class="profImg">                       
+                                                <img title="Patent Profile" src="img/profiles/p8.jpg" id="parent_img/">
+                                            </div>  
+
+                                            <div class="jina">                      
+                                                <a href="#">Ney wakuta</a>
+                                            </div>
+
+                                            <div class="max">                       
+                                                62%
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="viewResults_Charts" onclick=\'swicthVisibility("wallRsult");\'>View results and Charts</div>
+                        
+                        
+                        <div id="wallRsult" >
+                            <h4><span class="classNamw">FORM 4 A</span> RESULTS</h4>
+                            
+                            <table>
+                                <tbody><tr class="tableList heda">
+                                   <td class="checkf">No</td>   
+                                   <td>Profile</td> 
+                                   <td>student Name</td>
+                                    <td class="T_opnion">Opnion</td>    
+                                   <td>Max</td>
+                                   <td class="static">Statistic</td>        
+                                </tr>
+
+                                <tr class="tableList">
+                                   <td class="no">
+                                         1
+                                    </td>
+                                   <td class="prfile">
+                                       <div class="profImg">
+                                            <img src="img/profiles/p4.jpg">
+                                        </div>
+                                    </td>
+                                   <td class="name"><a href="#">fasdfaf</a></td>
+                                   <td class="T_opnion">
+                                        <span class="viw_opt">Very GOod</span>
+                                        <span class="viw_opt_date">2/2/2016</span>
+                                   </td>
+
+                                   <td class="max">
+                                     <span class="r_max">64</span>
+                                       <span class="Maxparc">%</span>
+                                    </td>
+                                   <td class="static"><a href="statics.php">
+                                      <i class="icofont icofont-chart-line" aria-hidden="true"></i>
+                                   </a></td>
+                                </tr>
+
+                                <tr class="tableList">
+                                   <td class="no">
+                                        2
+                                   </td>
+
+                                   <td class="prfile">
+                                       <div class="profImg">
+                                            <img src="img/profiles/p4.jpg">
+                                        </div>
+                                   </td>
+
+                                   <td class="name"><a href="#">fasdfaf</a></td>
+                                    <td class="T_opnion">
+                                        <span class="viw_opt">Parfect</span>
+                                        <span class="viw_opt_date"></span>
+
+                                    </td>
+                                   <td class="max">
+                                         <span class="r_max">89</span>
+                                       <span class="Maxparc">%</span>
+                                   </td>
+
+                                  <td class="static"><a href="statics.php">
+                                      <i class="icofont icofont-chart-line" aria-hidden="true"></i>
+                                   </a></td>
+                                </tr>
+
+                                <tr class="tableList">
+                                   <td class="no">3</td>
+                                   <td class="prfile">
+                                       <div class="profImg">
+                                            <img src="img/profiles/p4.jpg">
+                                        </div>
+                                    </td>
+                                   <td class="name"><a href="#">Nehemia Mwansasu</a></td>
+
+                                   <td class="T_opnion">
+                                        <span class="viw_opt">see me</span>
+                                        <span class="viw_opt_date">2/2/2016</span>
+
+                                    </td>
+                                   <td class="max">
+                                       <span class="r_max">44</span>
+                                       <span class="Maxparc">%</span>
+                                   </td>
+                                   <td class="static"><a href="statics.php">
+                                      <i class="icofont icofont-chart-line" aria-hidden="true"></i>
+                                   </a></td>
+                                </tr>
+
+                                   <tr class="tableList">
+                                    <td class="no">
+                                       4
+                                    </td>
+                                    
+                                    <td class="prfile">
+                                       <div class="profImg">
+                                                    <img src="img/profiles/p4.jpg">
+                                                </div>
+                                         </td>
+                                    
+                                    <td class="name">
+                                       <a href="#">Neema Mwansasu</a>
+                                    </td>
+                                    
+                                    <td class="T_opnion">
+                                        <span class="viw_opt">Very GOod</span>
+                                        <span class="viw_opt_date"></span>
+
+                                    </td>
+                                    <td class="max">
+                                        <span class="r_max">94</span>
+                                       <span class="Maxparc">%</span>
+
+                                    </td>
+
+                                    <td class="static"><a href="statics.php">
+                                       <i class="icofont icofont-chart-line" aria-hidden="true"></i>
+                                    </a></td>
+
+                                   </tr>
+                            </tbody></table>
+                          
+                            <div class="teacha_advc">
+                                <div class="teacha_advc_header">
+                                    <div class="blckA">
+                                        <span>T</span>
+                                        <span>e</span>
+                                        <span>a</span> 
+                                        <span>c</span>
+                                        <span>h</span>
+                                        <span>e</span>
+                                        <span>r</span>
+                                    </div>
+
+                                    <div class="blckB">
+                                        <span> A</span>
+                                        <span>d</span>
+                                        <span>i</span>
+                                        <span>v</span>
+                                        <span> e</span>
+                                    </div>
+                                </div>
+                                <div class="Advx">
+                                    Matokeo xo mazuri kabsa kwa sababu watu hawasomi haiwezekan wa kwanza ana 90 wa pili ana sabini kwan mm nafundisha mtu mmja darasana kummazenu watoto machoko kweli
+                                </div>
+                            </div>
+
+                                <div class="chart">
+                                        
+                                    <div class="whatsOnurmid">
+                                        <textarea class="Onurmind"></textarea>
+                                        <div id="send_vchart">
+                                            <div id="post_v" class="post_post"><input class="p" type="submit" id="submit_post" value="Post Update"></div>
+                                            <div id="upload_photo" class="psot_post post_photo"><i class="fa fa-camera" id="cover_camera_prof"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="xoverflow">
+                                       
+                                        <div id="posted" class="chartUserOne">
+                                            <div class="posted_profile">
+                                                <div class="profImg">
+                                                    <img src="img/profiles/p4.jpg">
+                                               </div>
+                                            </div>
+                                            
+                                            <div class="name_time">
+                                                <span class="name">Jessica Sanders</span>
+                                                <span class="time_ago">5hrs Ago</span>
+                                            </div>
+                                            
+                                            <div class="msg">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                            </div>
+
+                                            <div class="icons">
+                                                <span id="reply" class="ico reply"><i class="fa fa-reply"></i></span>
+                                                <span id="love" class="ico reply"><i class="fa fa-heart-o"></i></span>
+                                                <span id="thumb_up" class="ico reply"><i class="fa fa-thumbs-up"></i></span>
+                                                <span id="delete" class="ico reply"><i class="fa fa-remove"></i></span>
+                                                <span id="spam" class="ico reply">spam</span>
+                                                <span id="delete" class="ico reply"><i class="fa fa-unlock-alt"></i></span>
+                                            </div>
+                                        </div>
+
+
+                                        <div id="reply_posted">
+                                            <div class="posted_profile">
+                                                <div class="posted_cicle">
+                                                    <img src="img/profiles/p1.jpg">
+                                               </div>
+                                            </div>
+                                            <div class="name_time">
+                                            <span class="name">Challo</span><span class="time_ago">8hrs Ago</span></div>
+                                            <div class="msg">Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi</div>
+                                            <div class="icons">
+                                                <span id="reply" class="ico reply"><i class="fa fa-reply"></i></span>
+                                                <span id="love" class="ico reply"><i class="fa fa-heart-o"></i></span>
+                                                <span id="thumb_up" class="ico reply"><i class="fa fa-thumbs-up"></i></span>
+                                                <span id="delete" class="ico reply"><i class="fa fa-remove"></i></span>
+                                                <span id="spam" class="ico reply">spam</span>
+                                                <span id="delete" class="ico reply"><i class="fa fa-unlock-alt"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        
+                                </div>
+                        </div>
+
+
+
+           ';
+         
+
+        }
+    }
+
+    return [$box,$Unic_date];
+}
+
+
+
+// function qstnComoser($db,$d){
+
+    //     // if(isset($_GET['action']) && $_GET['action'] === 'qstnComoser'){
+    //     $sql        =  null;
+    //     $data       =  'No Questionin COmposer found';
+       
+
+    //     $qry =  "SELECT
+    //                 q.id             as q_Id,
+    //                 q.qstnCompz_id   as q_qCompzId,
+    //                 q.section        as q_sect,
+    //                 q.qNo            as q_no,
+    //                 q.qColum         as q_Cno,
+    //                 q.topic_title    as q_ttle,
+    //                 q.sub_tpc        as q_sttle,
+    //                 q.qstn           as q_q,
+    //                 q.match_a        as q_match_a,
+    //                 q.match_b        as q_match_b,
+    //                 q.match_c        as q_match_c,
+
+
+    //                 m.id             as mid,
+    //                 m.user_id        as m_uid, 
+    //                 m.subj_id        as m_subjId, 
+    //                 m.exam_name      as m_exName,
+    //                 m.strt_time      as m_start,
+    //                 m.end_time       as m_end,
+    //                 m.exam_date      as m_Exdate,
+    //                 m.exam_instr     as m_Instr,
+    //                 m.schoolname     as m_status,
+    //                 m.levelOrStandard     as m_lv,
+    //                 m.mkondo         as m_mk,
+    //                 m.region         as m_reg,
+
+    //                 v.id          as vid,
+    //                 v.username    as vu,
+    //                 v.profile     as vpr
+
+    //                 FROM vy_qustion q
+
+    //                 LEFT JOIN vy_exmcompoz as m ON(q.qstnCompz_id = m.id) 
+    //                 LEFT JOIN vy_users as v ON(m.user_id = v.id) 
+                    
+    //                 WHERE q.qstnCompz_id = ?
+    //             "
+    //     ;
+
+
+
+    //     $sql = $db->query($qry,array($d));
+
+
+    //     if($sql->count() > 0){
+    //         $status       =  true;
+    //         $lid          =  '';
+    //         $qdata        =  '';
+    //         $class        =  '';
+    //         $width        =  '';
+    //         $height       =  '';
+    //         $matchIt      =  '';
+    //         $mkondo       =  '';
+
+    //         foreach ($sql->results() as $r) {
+    //             $width      =  100;
+    //             $height     =  100;
+    //             $matchIt    =  '';
+    //             $$sectionA  =  '';
+
+    //             #  Question Table
+
+    //             $q_id       =  $r->q_Id;          // qustion Id
+    //             $q_id       =  $r->q_qCompzId;    // qustion compose Id
+    //             $q_sect     =  $r->q_sect;        // qustion section
+    //             $q_no       =  $r->q_no;          // qustion number
+    //             $q_Cno      =  $r->q_Cno;         // qustion colum number
+    //             $q_topic    =  $r->q_ttle;        // qustion topic
+    //             $q_subtopic =  $r->q_sttle;       // qustion sub topic
+    //             $q_q        =  $r->q_q;           // qustion the question
+    //             $match_a    =  $r->q_match_a;     // qustion match_a
+    //             $match_b    =  $r->q_match_b;     // qustion match_b
+    //             $match_c    =  $r->q_match_c;     // qustion match_c
+
+    //             #profile Info
+    //             $p_prof     =  $r->vu;            // username
+    //             $p_prof     =  $r->vpr;           // profile
+    //             $p_class    =  '';
+    //             $p_prof     =  $db->prfl_pctwithClass($p_prof, $width, $height, $class);  
+
+
+    //             if(!empty($match_a) && !empty($match_b) && !empty($match_c)){
+    //                 $matchIt .= "
+    //                             <div class='matchz'>
+    //                                 <div>
+    //                                     <div class='chois marchCOnsA'>A.</div>
+    //                                     <div class='ges gasessAnswA'>$match_a</div>
+    //                                     <div class='radioMatched'>
+    //                                         <input type='radio' name='match'>
+    //                                     </div>
+    //                                 </div>
+
+    //                                 <div>
+    //                                     <div class='chois marchCOnsB'>B.</div>
+    //                                     <div class='ges gasessAnswB'>$match_b</div>
+    //                                     <div class='radioMatched'>
+    //                                         <input type='radio' name='match'>
+    //                                     </div>
+    //                                 </div>
+
+    //                                 <div>
+    //                                     <div class='chois marchCOnsC'>C.</div>
+    //                                     <div class='ges gasessAnswC'>$match_c</div>
+    //                                     <div class='radioMatched'>
+    //                                         <input type='radio' name='match'>
+    //                                     </div>
+    //                                 </div>
+                                    
+    //                             </div>
+    //                         "
+    //                 ;
+    //             }  
+
+               
+    //            if($q_sect  == "SECTION A" ){
+                 
+    //                $sectionA .=  "<div class='qc_QuizQust QuizQust'>
+    //                                 <div class='QstNo'> $q_no .</div>
+    //                                 <div class='question'>
+    //                                     $q_q <br/>
+
+    //                                     $matchIt
+    //                                 </div>
+    //                                 <div class='soln'>
+    //                                     <span class='solnMsg'> Sorry Answer is hidden...</span>
+    //                                     <span class='showSoln'>Unhide</span>
+    //                                     <span class='showSoln'>Edit</span>
+    //                                 </div>
+    //                             </div>";
+    //            }
+              
+    //             $qstn .= "
+    //                     <div class='sectionWrap' id='sectionA'>
+    //                         <div class='testSection'>  SECTION A </div>
+    //                         $sectionA
+    //                     </div>
+    //                 ";
+                
+    //         }
+            
+       
+    //     }
+
+    //     return [$qstn];
+// }
 
 
 echo "data:".json_encode($result)."\n\n";

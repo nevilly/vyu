@@ -154,6 +154,13 @@
 
                     <span class = "sendBotton" id = "sendQstn" >Send </span>
 
+                  
+<?php
+                    }else if($submitforpage == 'ex_page'){
+                    ?>
+
+                    <span class = "sendBotton" id = "ExamList" >Send </span>
+
                     <?php
                     }
                     ?>
